@@ -4,7 +4,7 @@
     <color name="orange_40">#000000</color>
     <color name="tool_icon_color">#000000</color>
     <color name="colorPrimaryLight">#000000</color>
-    <color name="colorSecondary">#000000</color>
+    <color name="colorSecondary">#EEEEEE</color>
     <color name="white">#FFFFFF</color>
     <color name="offWhite">#cccccc</color>
     <color name="positive">#0F9A05</color>

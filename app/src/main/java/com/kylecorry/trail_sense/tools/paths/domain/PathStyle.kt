@@ -12,9 +12,9 @@ data class PathStyle(
     companion object {
         fun default(): PathStyle {
             return PathStyle(
-                LineStyle.Dotted,
+                LineStyle.Solid,
                 PathPointColoringStyle.None,
-                AppColor.Gray.color,
+                AppColor.Orange.color,
                 true
             )
         }

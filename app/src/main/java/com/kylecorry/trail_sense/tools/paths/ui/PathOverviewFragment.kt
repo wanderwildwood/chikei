@@ -1,5 +1,8 @@
 package com.kylecorry.trail_sense.tools.paths.ui
 
+import com.kylecorry.trail_sense.tools.offline_maps.map_layers.TrailMapsTileSource
+import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
+import com.kylecorry.trail_sense.shared.map_layers.ui.layers.LayerFactory
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -296,8 +299,11 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
             binding.pathImage.userAzimuth = compass.bearing
         }
 
+        // Topo: the track over the topo sheet it was walked on, not over a blank box
+        val trailMapsLayer = Tools.getMapLayerDefinition(requireContext(), TrailMapsTileSource.SOURCE_ID)
+            ?.let { LayerFactory().createLayer(it) }
         binding.pathImage.setLayers(
-            listOf(layer, myLocationLayer, scaleBarLayer)
+            listOfNotNull(trailMapsLayer, layer, myLocationLayer, scaleBarLayer)
         )
 
         binding.pathLineStyle.setOnClickListener {

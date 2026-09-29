@@ -93,7 +93,8 @@ class NavigationPreferences(private val context: Context) : ICompassStylePrefere
     var defaultPathColor: AppColor
         get() {
             val id = cache.getLong(context.getString(R.string.pref_backtrack_path_color))
-            return AppColor.values().firstOrNull { it.id == id } ?: AppColor.Gray
+            // Topo: your own track is the boldest line on the sheet, solid black, among dotted trails
+            return AppColor.values().firstOrNull { it.id == id } ?: AppColor.Orange
         }
         set(value) {
             cache.putLong(context.getString(R.string.pref_backtrack_path_color), value.id)
@@ -108,7 +109,8 @@ class NavigationPreferences(private val context: Context) : ICompassStylePrefere
                 "square" -> LineStyle.Square
                 "diamond" -> LineStyle.Diamond
                 "cross" -> LineStyle.Cross
-                else -> LineStyle.Dotted
+                "dotted" -> LineStyle.Dotted
+                else -> LineStyle.Solid
             }
         }
     private val defaultPathPointStyle: PathPointColoringStyle
