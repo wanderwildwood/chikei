@@ -129,3 +129,8 @@ sonarqube-report.json
 trace_processor
 tracebox
 .scratch/
+# chikei
+/signing/
+mapdata/work/
+*.map
+__pycache__/

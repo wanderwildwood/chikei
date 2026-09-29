@@ -33,4 +33,4 @@ dependencyResolutionManagement {
 }
 
 include(":app")
-rootProject.name = "Trail Sense"
+rootProject.name = "chikei"

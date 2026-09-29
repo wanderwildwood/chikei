@@ -132,8 +132,13 @@ object Tools {
             registry.map { it.getTool(context.applicationContext) }
         }
 
-        return tools.filter { !availableOnly || it.isAvailable(context) }
+        return tools.filter { !availableOnly || (it.id in shown && it.isAvailable(context)) }
     }
+
+    // Topo shows only the trail tools. The rest stay registered because they provide services
+    // the shown tools depend on (paths use the pedometer, for one); hiding them here keeps
+    // them out of the tool list, bottom navigation, search and map layers.
+    private val shown = setOf(MAP, PATHS, BEACONS, NAVIGATION, OFFLINE_MAPS, SETTINGS)
 
     fun getMapLayerDefinition(context: Context, sourceId: String): MapLayerDefinition? {
         return getTools(context).flatMap { it.mapLayers }.firstOrNull { it.id == sourceId }

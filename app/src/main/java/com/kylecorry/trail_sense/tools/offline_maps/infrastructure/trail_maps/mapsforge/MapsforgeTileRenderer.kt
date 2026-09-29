@@ -164,6 +164,6 @@ class MapsforgeTileRenderer(
     }
 
     companion object {
-        private const val MAPSFORGE_THEME = "mapsforge/trail_sense_outdoors.xml"
+        private const val MAPSFORGE_THEME = "mapsforge/chikei_topo.xml"
     }
 }

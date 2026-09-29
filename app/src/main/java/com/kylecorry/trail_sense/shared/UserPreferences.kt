@@ -227,14 +227,9 @@ class UserPreferences(ctx: Context) : IDeclinationPreferences {
         Theme.System
     )
 
+    // The Kompakt's panel is black on white; dark and coloured themes only cost it contrast.
     var theme: Theme
-        get() {
-            if (isLowPowerModeOn) {
-                return Theme.Black
-            }
-
-            return _theme
-        }
+        get() = Theme.Light
         set(value) {
             _theme = value
         }
@@ -246,7 +241,7 @@ class UserPreferences(ctx: Context) : IDeclinationPreferences {
     )
 
     val useDynamicColors: Boolean
-        get() = DynamicColors.isDynamicColorAvailable() && _useDynamicColors
+        get() = false
 
     private val _useDynamicColorsOnCompass by BooleanPreference(
         cache,
@@ -393,10 +388,10 @@ class UserPreferences(ctx: Context) : IDeclinationPreferences {
             return (cache.getIntArray(context.getString(R.string.pref_bottom_navigation_tools))
                 ?.map { it.toLong() }
                 ?: listOf(
-                    Tools.NAVIGATION,
                     Tools.MAP,
-                    Tools.WEATHER,
-                    Tools.ASTRONOMY
+                    Tools.PATHS,
+                    Tools.BEACONS,
+                    Tools.NAVIGATION
                 ))
                 .padRight(maxLength, 0)
                 .subList(0, maxLength)

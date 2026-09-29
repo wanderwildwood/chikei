@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" translatable="false">Trail Sense</string>
+    <string name="app_name" translatable="false">Topo</string>
     <!--Tabs-->
     <string name="navigation">Navigation</string>
     <string name="weather">Weather</string>
@@ -426,7 +426,7 @@
     <string name="tool_whistle_title">Whistle</string>
     <string name="action_inventory_clear_confirm">Clear all packed amounts?</string>
     <string name="inventory_empty_text">No items</string>
-    <string name="email" translatable="false">trailsense@protonmail.com</string>
+    <string name="email" translatable="false">email@wanderthe.dev</string>
     <string name="distance_from">From</string>
     <string name="distance_to">To</string>
     <string name="unit_meters">Meters</string>

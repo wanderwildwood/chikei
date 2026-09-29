@@ -95,7 +95,7 @@ class PreferenceMigrator private constructor() {
         internal const val LEGACY_LAST_HORIZONTAL_ACCURACY = "last_horizontal_accuracy"
         internal const val LEGACY_LAST_VERTICAL_ACCURACY = "last_vertical_accuracy"
 
-        internal const val version = 38
+        internal const val version = 39
         internal val migrations = listOf(
             PreferenceMigration(0, 1) { _, prefs ->
                 if (prefs.contains("pref_enable_experimental")) {
@@ -588,6 +588,32 @@ class PreferenceMigrator private constructor() {
                         NavigationGeoJsonSource.SOURCE_ID,
                         CellTowerGeoJsonSource.SOURCE_ID,
                         TideGeoJsonSource.SOURCE_ID,
+                        PathGeoJsonSource.SOURCE_ID,
+                        BeaconGeoJsonSource.SOURCE_ID,
+                        MyLocationGeoJsonSource.SOURCE_ID
+                    )
+                )
+            },
+            // Topo: the region packs carry their own contours and public-land tint, so the
+            // coloured basemap, elevation and hillshade layers only grey the sheet out.
+            PreferenceMigration(38, 39) { _, _ ->
+                val repo = getAppService<MapLayerPreferenceRepo>()
+                repo.setActiveLayerIds(
+                    MapToolRegistration.MAP_ID,
+                    listOf(
+                        TrailMapsTileSource.SOURCE_ID,
+                        PhotoMapTileSource.SOURCE_ID,
+                        PathGeoJsonSource.SOURCE_ID,
+                        BeaconGeoJsonSource.SOURCE_ID,
+                        MyLocationGeoJsonSource.SOURCE_ID
+                    )
+                )
+                repo.setActiveLayerIds(
+                    NavigationToolRegistration.MAP_ID,
+                    listOf(
+                        TrailMapsTileSource.SOURCE_ID,
+                        PhotoMapTileSource.SOURCE_ID,
+                        NavigationGeoJsonSource.SOURCE_ID,
                         PathGeoJsonSource.SOURCE_ID,
                         BeaconGeoJsonSource.SOURCE_ID,
                         MyLocationGeoJsonSource.SOURCE_ID

@@ -13,11 +13,11 @@ android {
 
     defaultConfig {
         vectorDrawables.useSupportLibrary = true
-        applicationId = "com.kylecorry.trail_sense"
+        applicationId = "com.wanderwildwood.chikei"
         minSdk = 24
         targetSdk = 37
-        versionCode = 149
-        versionName = "8.3.0"
+        versionCode = 1
+        versionName = "0.1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["clearPackageData"] = "true"
     }
