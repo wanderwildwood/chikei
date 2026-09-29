@@ -9,7 +9,7 @@ class GpxIOService(private val uriPicker: UriPicker, private val uriService: Uri
     IOService<GPXData> {
     override suspend fun export(data: GPXData, filename: String): Boolean = onIO {
         val uri = uriPicker.create(filename, "application/gpx+xml") ?: return@onIO false
-        val gpxString = GPXParser.toGPX(data, "Trail Sense")
+        val gpxString = GPXParser.toGPX(data, "Topo")
         uriService.write(uri, gpxString)
     }
 

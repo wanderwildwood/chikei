@@ -47,6 +47,7 @@ import com.kylecorry.trail_sense.tools.paths.ui.commands.MergePathCommand
 import com.kylecorry.trail_sense.tools.paths.ui.commands.MoveIPathCommand
 import com.kylecorry.trail_sense.tools.paths.ui.commands.RenamePathCommand
 import com.kylecorry.trail_sense.tools.paths.ui.commands.RenamePathGroupGroupCommand
+import com.kylecorry.trail_sense.tools.paths.ui.commands.SharePathCommand
 import com.kylecorry.trail_sense.tools.paths.ui.commands.SimplifyPathCommand
 import com.kylecorry.trail_sense.tools.paths.ui.commands.ToggleBacktrackCommand
 import com.kylecorry.trail_sense.tools.paths.ui.commands.TogglePathVisibilityCommand
@@ -270,6 +271,7 @@ class PathsFragment : BoundFragment<FragmentToolPathsBinding>() {
 
     private fun handleAction(path: Path, action: PathAction) {
         when (action) {
+            PathAction.Share -> SharePathCommand(requireContext(), this, pathService).execute(path)
             PathAction.Export -> exportPath(path)
             PathAction.Delete -> deletePath(path)
             PathAction.Merge -> merge(path)

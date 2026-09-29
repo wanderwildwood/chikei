@@ -86,6 +86,7 @@ import com.kylecorry.trail_sense.tools.paths.ui.commands.NavigateToPathCommand
 import com.kylecorry.trail_sense.tools.paths.ui.commands.NavigateToPointCommand
 import com.kylecorry.trail_sense.tools.paths.ui.commands.RenamePathCommand
 import com.kylecorry.trail_sense.tools.paths.ui.commands.ReplacePathElevationsCommand
+import com.kylecorry.trail_sense.tools.paths.ui.commands.SharePathCommand
 import com.kylecorry.trail_sense.tools.paths.ui.commands.SimplifyPathCommand
 import com.kylecorry.trail_sense.tools.paths.ui.commands.TogglePathVisibilityCommand
 import kotlinx.coroutines.launch
@@ -408,6 +409,7 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
             PathAction.Rename,
             PathAction.Keep,
             PathAction.ToggleVisibility,
+            PathAction.Share,
             PathAction.Export,
             PathAction.Simplify,
             PathAction.ReplaceElevations,
@@ -421,6 +423,7 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
                 if (path.style.visible) getString(R.string.hide) else getString(
                     R.string.show
                 ),
+                getString(R.string.share_path),
                 getString(R.string.export),
                 getString(R.string.simplify),
                 getString(R.string.replace_elevations),
@@ -428,6 +431,7 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
             )
         ) {
             when (actions[it]) {
+                PathAction.Share -> SharePathCommand(requireContext(), this, pathService).execute(path)
                 PathAction.Export -> exportPath(path)
                 PathAction.Rename -> renamePath(path)
                 PathAction.Keep -> keepPath(path)

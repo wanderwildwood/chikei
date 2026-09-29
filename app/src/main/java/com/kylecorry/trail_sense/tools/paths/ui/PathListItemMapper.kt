@@ -50,6 +50,7 @@ class PathListItemMapper(
             if (temporary) ListMenuItem(context.getString(R.string.keep_forever)) {
                 action(PathAction.Keep)
             } else null,
+            ListMenuItem(context.getString(R.string.share_path)) { action(PathAction.Share) },
             ListMenuItem(context.getString(R.string.export)) { action(PathAction.Export) },
             ListMenuItem(context.getString(R.string.merge)) { action(PathAction.Merge) },
             ListMenuItem(context.getString(R.string.delete)) { action(PathAction.Delete) },

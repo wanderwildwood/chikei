@@ -104,6 +104,7 @@
     </plurals>
     <!--Navigation Tab - Beacon List - Sharesheet-->
     <string name="share_action_send">Send</string>
+    <string name="share_path">Share GPX</string>
     <string name="maps">Maps</string>
     <!--Navigation Tab - Create beacon-->
     <string name="name">Name</string>
