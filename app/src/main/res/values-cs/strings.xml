@@ -66,7 +66,6 @@
     <string name="discharging_slow">Pomalu vybíjeno (%s)</string>
     <string name="charging_slow">Pomalu nabíjeno (%s)</string>
     <string name="charging_fast">Rychle nabíjeno (%s)</string>
-    <string name="access_background_location_rationale">Trail Sense používá polohu na pozadí pro kalibraci tlaku výšky nad mořem v monitoru počasí a pro poskytnutí přesnějších upozornění na západ slunce. [Zobrazit zásady ochrany osobních údajů](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="navigation">Navigace</string>
     <string name="share_action_send">Poslat</string>
     <plurals name="beacon_group_summary">
@@ -112,7 +111,7 @@
 \n
 \n-  Nastavte tuto hodnotu na 1.
 \n
-\n- Změřte, jaká hodnota pravítka aplikace Trail Sense odpovídá jedné jednotce fyzického pravítka.
+\n- Změřte, jaká hodnota pravítka aplikace Topo odpovídá jedné jednotce fyzického pravítka.
 \n
 \n- Zadejte sem naměřenou hodnotu."</string>
     <string name="sunset_alert_channel_title">Upozornění na západ slunce</string>
@@ -202,9 +201,9 @@
     <string name="pref_email_title">Napsat e-mail vývojáři</string>
     <string name="continue_button">POKRAČOVAT</string>
     <string name="error_occurred">Došlo k chybě</string>
-    <string name="error_occurred_message">Trail Sense narazil na chybu. Zašlete prosím vývojáři e-mail, aby tento problém vyřešil.</string>
+    <string name="error_occurred_message">Topo narazil na chybu. Zašlete prosím vývojáři e-mail, aby tento problém vyřešil.</string>
     <string name="tool_user_guide_title">Uživatelská příručka</string>
-    <string name="tool_user_guide_summary">Průvodce používáním aplikace Trail Sense</string>
+    <string name="tool_user_guide_summary">Průvodce používáním aplikace Topo</string>
     <string name="delete_beacon_group_message">%s a všechny jeho majáky budou odstraněny.</string>
     <string name="group">Skupina</string>
     <string name="no_group">Žádná skupina</string>
@@ -267,7 +266,7 @@
     <string name="stratus_desc">Nízká oblačnost, která zakrývá oblohu. Objekty nevrhají stíny a může být mlha.</string>
     <string name="cumulus_desc">Nízká nadýchaná oblačnost, které vypadají jako vata. Jsou rozmístěny v určitých rozestupech a obvykle jsou bílé s tmavšími skvrnami pod nimi.</string>
     <string name="cirrus_desc">Vysoká oblačnost, která vypadá jako shluky bílých vlasů.</string>
-    <string name="onboarding_user_guide">V uživatelské příručce se dozvíte, jak používat funkce Trail Sense. Je k dispozici v dolní části karty Nástroje. \n \nDalší návody budou brzy přibývat.</string>
+    <string name="onboarding_user_guide">V uživatelské příručce se dozvíte, jak používat funkce Topo. Je k dispozici v dolní části karty Nástroje. \n \nDalší návody budou brzy přibývat.</string>
     <string name="import_btn">Importovat</string>
     <string name="pref_backtrack_save_cell_summary">Zaznamenává telefonní signál v navigačním bodě. Nepoužívá internet.</string>
     <string name="pref_backtrack_save_cell_title">Nahrát telefonní signál</string>
@@ -417,27 +416,6 @@
     <string name="cumulonimbus_desc">Nízká nadýchaná oblačnost, která je velice vysoká. Obvykle mají kovadlinovitý tvar a jsou tmavé.</string>
     <string name="cirrus">Řasa</string>
     <string name="cirrocumulus">Řasokupa</string>
-    <string name="onboarding_privacy">- Trail Sense respektuje vaše soukromí a údaje o poloze nikdy neopustí vaše zařízení.
-\n
-\n- Trail Sense nikdy nebude vyžadovat povolení k použití internetu
-\n
-\n- Zobrazit [zásady ochrany osobních údajů](https://kylecorry.com/Trail-Sense/privacy_policy.html) (otevře se v prohlížeči telefonu)
-\n
-\n- Některé funkce aplikace Trail Sense vyžaduje povolení k určování polohy
-\n
-\n- Udělením povolení k určování polohy povolíte následující funkce:
-\n
-\n\t- Navigace k majákům
-\n
-\n\t- Vylepšená přesnost předpovědi (není k dispozici na všech zařízeních).
-\n
-\n\t- Zpětnou navigaci
-\n
-\n\t- Časy Slunce a Měsíce pro vaši aktuální polohu (upozornění na západ slunce mohou vyžadovat polohu na pozadí)
-\n
-\n- Pokud se rozhodnete neudělit povolení k určování polohy, můžete polohu zadat manuální v nabídce Nastavení &gt; Senzory &gt; Kalibrace GPS v menu Trail Sense.
-\n
-\n- Po klepnutí na tlačítko pokračovat budete vyzváni k udělení povolení k poloze. Odmítnutí tohoto povolení zabrání aplikaci Trail Sense v přístupu k určování vaší polohy, proto se doporučuje manuální zadání polohy.</string>
     <plurals name="beacons_exported">
         <item quantity="one">%d maják exportován</item>
         <item quantity="few">%d majáky exportovány</item>
@@ -582,7 +560,7 @@
     <string name="sighting_compass">Zaměřovací kompas</string>
     <string name="no_resolution">Žádné rozlišení</string>
     <string name="get_gps_signal">Vyjděte ven s ničím nerušeným výhledem na oblohu.</string>
-    <string name="unblock_notification_channel">Odblokovat oznámení %s pro Trail Sense</string>
+    <string name="unblock_notification_channel">Odblokovat oznámení %s pro Topo</string>
     <string name="location_override_resolution">Povolte automatickou úpravu polohy v nastavení.</string>
     <string name="auto">Auto</string>
     <string name="autofill">Automatické vyplňování</string>
@@ -655,7 +633,7 @@
         <item quantity="other">%d dní</item>
         <item quantity="many">%d dní</item>
     </plurals>
-    <string name="pref_tiles_enabled_summary">Může zabránit aplikacím spořiče baterie v úplném zastavení Trail Sense</string>
+    <string name="pref_tiles_enabled_summary">Může zabránit aplikacím spořiče baterie v úplném zastavení Topo</string>
     <string name="kilograms">Kilogramy</string>
     <string name="ounces_weight">Unce</string>
     <string name="find_next_occurrence">Najít další výskyt</string>
@@ -677,7 +655,7 @@
     <string name="no_permission">Povolení nebylo uděleno</string>
     <string name="no_issues">Nebyly zjištěny žádné problémy</string>
     <string name="wgs84">WGS 84</string>
-    <string name="battery_restricted_resolution">Nastavte Trail Sense jako neoptimalizované</string>
+    <string name="battery_restricted_resolution">Nastavte Topo jako neoptimalizované</string>
     <string name="power_saving_mode_resolution">Vypněte úsporný režim</string>
     <string name="navigate">Navigovat</string>
     <string name="no_paths">Žádné cesty</string>
@@ -687,7 +665,7 @@
     <string name="pick_file">Vybrat soubor</string>
     <string name="units">Jednotky</string>
     <string name="privacy">Soukromí</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Když je Trail Sense otevřený</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Když je Topo otevřený</string>
     <string name="pref_flashlight_toggle_with_volume_title">Přepínání pomocí tlačítek hlasitosti</string>
     <string name="unit_yards">Yardy</string>
     <string name="base_elevation">Výchozí nadmořská výška</string>
@@ -744,9 +722,9 @@
         <item quantity="other">%d cest importováno</item>
         <item quantity="many">%d cest importováno</item>
     </plurals>
-    <string name="allow_ignore_battery_restrictions_instructions">Odstranění omezení baterie pro Trail Sense může zlepšit přesnost.
+    <string name="allow_ignore_battery_restrictions_instructions">Odstranění omezení baterie pro Topo může zlepšit přesnost.
 \n
-\nNa většině zařízení klikněte na tlačítko %s, přepněte na všechny aplikace a vypněte optimalizaci baterie pro Trail Sense.
+\nNa většině zařízení klikněte na tlačítko %s, přepněte na všechny aplikace a vypněte optimalizaci baterie pro Topo.
 \n
 \nPokyny pro konkrétní zařízení naleznete na stránce [Don\'t kill my app](https://dontkillmyapp.com/).</string>
     <string name="season_spring">Jaro</string>
@@ -841,23 +819,6 @@
     <string name="view">Zobrazit</string>
     <string name="pref_flashlight_timeout_title">Vypnout po</string>
     <string name="pressure_tendency">Tendence</string>
-    <string name="onboarding_explore">- Určeno pro turistiku pěší, s batohem, kempování a geocaching.
-\n
-\n- Umístěte majáky a navigujte k nim
-\n
-\n- Následujte cesty
-\n
-\n- Rekapitulujte své kroky pomocí zpětné navigace
-\n
-\n- Připravte si seznam věcí v batohu
-\n
-\n- Buďte ve střehu, než zapadne slunce
-\n
-\n- Předvídejte počasí
-\n
-\n- Používejte telefon jako svítilnu
-\n
-\n- A mnoho dalšího!</string>
     <string name="map_export_error">Mapu nelze exportovat do zvoleného souboru</string>
     <string name="point_added">Bod přidán do cesty</string>
     <string name="tide_diurnal">Denní</string>
@@ -1415,7 +1376,6 @@
     <string name="planet_neptune">Neptun</string>
     <string name="load_pdf_tiles">Načíst dlaždice PDF</string>
     <string name="load_pdf_tiles_summary">PDF mapy budou ostřejší, může to mít ale vliv na výkon</string>
-    <string name="map_tool_disclaimer">Tento nástroj neobsahuje vestavěné uliční mapy, satelitní snímky ani data o turistických trasách. Nestahuje mapy z internetu. Chcete-li zobrazit mapové pozadí, musíte importovat vlastní obrázek pomocí nástroje Fotografické mapy. Pokud potřebujete živé nebo předem načtené uliční, satelitní nebo turistické mapy, použijte místo toho specializovanou mapovou aplikaci.</string>
     <string name="open_settings">Otevřít nastavení</string>
     <string name="basemap">Podkladová mapa</string>
     <string name="show_gps_accuracy">Zobrazit přesnost GPS</string>

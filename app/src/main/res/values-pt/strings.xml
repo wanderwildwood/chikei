@@ -178,9 +178,9 @@
     <string name="no_group">Nenhum grupo</string>
     <string name="group">Grupo</string>
     <string name="delete_beacon_group_message">%s e todos os alfinetes pertencentes serão eliminados.</string>
-    <string name="tool_user_guide_summary">Um guia de como usar o Trail Sense</string>
+    <string name="tool_user_guide_summary">Um guia de como usar o Topo</string>
     <string name="tool_user_guide_title">Guia do utilizador</string>
-    <string name="error_occurred_message">Surgiu um erro no Trail Sense. Por favor envie um e-mail ao programador para corrigir este problema.</string>
+    <string name="error_occurred_message">Surgiu um erro no Topo. Por favor envie um e-mail ao programador para corrigir este problema.</string>
     <string name="error_occurred">Ocorreu um erro</string>
     <string name="pref_email_title">Enviar email ao programador</string>
     <string name="pref_github_title">GitHub</string>
@@ -233,7 +233,7 @@
 \n
 \n- Aplique o valor 1.
 \n
-\n- Meça o valor da régua do Trail Sense correspondente a uma unidade de uma régua física.
+\n- Meça o valor da régua do Topo correspondente a uma unidade de uma régua física.
 \n
 \n- Introduza aqui o valor medido.</string>
     <string name="pref_ruler_calibration_title">Escala de régua</string>
@@ -354,28 +354,7 @@
     <string name="gps_user">Utilizador</string>
     <string name="import_btn">Importar</string>
     <string name="export">Exportar</string>
-    <string name="onboarding_privacy">- O Trail Sense respeita a sua privacidade por isso os seus dados de localização nunca deixam o seu aparelho
-\n
-\n- O Trail Sense nunca pedirá permissão para aceder à Internet
-\n
-\n- Veja a [Política de privacidade](https://kylecorry.com/Trail-Sense/privacy_policy.html) (abre no navegador do seu telemóvel)
-\n
-\n- Algumas funcionalidades do Trail Sense exigem acesso à sua localização
-\n
-\n- A concessão da permissão de localização permitirá as seguintes funcionalidades:
-\n
-\n\t- Navegação até aos alfinetes (pontos marcados no mapa)
-\n
-\n\t- Maior precisão na previsão (requer localização em segundo plano, não disponível em todos os aparelhos)
-\n
-\n\t- Voltar para trás (requer localização em segundo plano)
-\n
-\n\t- Horários do por do sol e lua ajustados à sua localização atual
-\n
-\n- Se optar por não conceder a permissão de localização, pode digitar manualmente uma localização no menu Configurações &gt; Calibração do GPS no Trail Sense.
-\n
-\n- Depois de clicar em continuar, será questionado se quer conceder as permissões de localização e localização em segundo plano. A negação dessas permissões impedirá o Trail Sense de aceder à sua localização, e nesse caso recomenda-se a inserção manual da localização.</string>
-    <string name="onboarding_user_guide">Saiba como usar as funcionalidades do Trail Sense com o guia do utilizador. Disponível na parte inferior da aba Ferramentas. \n \nBrevemente estarão disponíveis mais guias do utilizador.</string>
+    <string name="onboarding_user_guide">Saiba como usar as funcionalidades do Topo com o guia do utilizador. Disponível na parte inferior da aba Ferramentas. \n \nBrevemente estarão disponíveis mais guias do utilizador.</string>
     <string name="privacy_and_location">Privacidade e localização</string>
     <string name="cirrus_desc">Nuvens altas e onduladas que parecem tufos de cabelo branco.</string>
     <string name="cumulonimbus_desc">Nuvens baixas e inchadas muito altas. Têm tipicamente uma forma de bigorna e são escuras.</string>
@@ -443,7 +422,6 @@
     <string name="precise_nautical_miles_format">%s nm</string>
     <string name="precise_miles_format">%s mi</string>
     <string name="precise_feet_format">%s pés</string>
-    <string name="access_background_location_rationale">O Trail Sense utiliza dados de localização em segundo plano. Estes são usados para a calibração da pressão ao nível do mar no monitoramento do tempo e para fornecer alertas mais precisos do pôr do sol. [Ver política de privacidade](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="access_background_location">Atualizar as configurações de localização</string>
     <plurals name="waypoints_to_be_deleted">
         <item quantity="one">%d ponto de passagem será eliminado</item>
@@ -464,12 +442,12 @@
 \n### Resolução
 \n%4$s</string>
     <string name="gps_unavailable_resolution">Ative a localização ou mude o tipo de localização para \"Somente dispositivo\" ou \"Alta precisão\"</string>
-    <string name="battery_restricted_resolution">Defina o Trail Sense como \"não otimizado\"</string>
+    <string name="battery_restricted_resolution">Defina o Topo como \"não otimizado\"</string>
     <string name="power_saving_mode_resolution">Desativar o modo de economia da bateria</string>
     <string name="location_override_not_set_resolution">Introduza a localização simulada nas configurações</string>
     <string name="location_override_resolution">Ativar o ajuste automático da localização nas configurações.</string>
     <string name="elevation_override_resolution">Ativar a calibração automática nas configurações.</string>
-    <string name="unblock_notification_channel">Desbloquear %s notificação do Trail Sense</string>
+    <string name="unblock_notification_channel">Desbloquear %s notificação do Topo</string>
     <string name="get_gps_signal">Vá para um espaço exterior e sem obstruções em redor.</string>
     <string name="activity_recognition">Reconhecimento de atividades</string>
     <string name="background_location_permission">Localização (permitir sempre)</string>
@@ -533,8 +511,8 @@
     <string name="pref_auto_low_power_title">Poupança automática de bateria</string>
     <string name="pref_auto_low_power_summary">Quando a bateria estiver fraca</string>
     <string name="pref_flashlight_toggle_with_volume_title">Alternar com botões de volume</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Enquanto o Trail Sense estiver aberto</string>
-    <string name="pref_tiles_enabled_summary">Pode impedir que as aplicações de poupança da bateria parem o Trail Sense</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Enquanto o Topo estiver aberto</string>
+    <string name="pref_tiles_enabled_summary">Pode impedir que as aplicações de poupança da bateria parem o Topo</string>
     <string name="pref_tiles_enabled_title">Tiles do sistema</string>
     <string name="location_not_mocked">A usar localização real</string>
     <string name="location_mocked">A usar localização simulada</string>
@@ -860,26 +838,9 @@
     <string name="note">Nota</string>
     <string name="beacon">Alfinete</string>
     <string name="pref_flashlight_timeout_title">Desligar após</string>
-    <string name="onboarding_explore">- Criado para caminhadas, com a mochila às costas, acampamento e geocaching
+    <string name="allow_ignore_battery_restrictions_instructions">A remoção de restrições de bateria para o Topo pode melhorar a precisão.
 \n
-\n- Adicione pontos de orientação e percorra-os
-\n
-\n- Siga caminhos
-\n
-\n- Faça o caminho de regresso com \"voltar para trás\"
-\n
-\n- Planeie o que deve levar na mochila
-\n
-\n- Seja alertado antes do pôr-do-sol
-\n
-\n- Preveja as condições climatéricas
-\n
-\n- Use o telemóvel como lanterna com várias funcionalidades
-\n
-\n- E muito mais!</string>
-    <string name="allow_ignore_battery_restrictions_instructions">A remoção de restrições de bateria para o Trail Sense pode melhorar a precisão.
-\n
-\nNa maioria dos dispositivos, clique em \'%s\', depois mude para todas as aplicações, e desligue a otimização da bateria para o Trail Sense.
+\nNa maioria dos dispositivos, clique em \'%s\', depois mude para todas as aplicações, e desligue a otimização da bateria para o Topo.
 \n
 \nVisite [Don\'t kill my app](https://dontkillmyapp.com/) para instruções específicas do seu dispositivo.</string>
     <string name="tide_instructions">Use uma tabela oficial de marés para introduzir marés de referência para o período da sua viagem.</string>
@@ -1398,7 +1359,6 @@
     <string name="planet_neptune">Netuno</string>
     <string name="load_pdf_tiles">Carregar blocos em PDF</string>
     <string name="load_pdf_tiles_summary">Os mapas em PDF ficarão mais nítidos, mas o desempenho poderá ser afetado</string>
-    <string name="map_tool_disclaimer">Esta ferramenta exibe os seus ponto de referências, caminhos e mapas fotográficos. Não é um substituto para uma app de mapas dedicado.</string>
     <string name="open_settings">Ir para configurações</string>
     <string name="plugins">Plugins</string>
     <string name="map_layers">Camadas de mapa</string>

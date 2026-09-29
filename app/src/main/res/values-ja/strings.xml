@@ -51,7 +51,7 @@
 \nこの警告はアプリの設定で無効にできます。</string>
     <string name="pref_ruler_calibration_summary">調整方法:
 \n- この値を 1 に設定する。
-\n- Trail Sense のものさしの長さを実際のものさしで測る。
+\n- Topo のものさしの長さを実際のものさしで測る。
 \n- ここに計測された長さを入力する。</string>
     <string name="pressure_reading_time_ago">%1$s - %2$s 前</string>
     <string name="degree_format">%.0f°</string>
@@ -223,7 +223,7 @@
     <string name="battery_health_cold">冷たい</string>
     <string name="battery_health_dead">電池切れ</string>
     <string name="category_clothing">衣料</string>
-    <string name="tool_user_guide_summary">Trail Senseの使い方ガイド</string>
+    <string name="tool_user_guide_summary">Topoの使い方ガイド</string>
     <string name="pip_notification_scheduled">%s後に通知予定</string>
     <string name="tool_category_signaling">信号伝達</string>
     <string name="pip_button">システム時刻を更新</string>
@@ -275,13 +275,12 @@
     <string name="copied_to_clipboard_toast">クリップボードにコピー</string>
     <string name="access_background_location">位置情報の設定を更新</string>
     <string name="degree">%s度</string>
-    <string name="error_occurred_message">Trail Senseでエラーが発生しました。開発者に電子メールで報告してください。</string>
+    <string name="error_occurred_message">Topoでエラーが発生しました。開発者に電子メールで報告してください。</string>
     <string name="error_occurred">エラーを検知</string>
     <string name="precise_centimeters_format">%sセンチメートル</string>
     <string name="water_purification_step_1">水をろ過します</string>
     <string name="water_purification_step_3">タイマーを開始してください</string>
     <string name="tool_category_angles">アングル</string>
-    <string name="access_background_location_rationale">Trail Sense はバックグラウンドで位置情報を取得します。これは移動中のより正確な日没通知を提供するために使用されます。[プライバシーポリシーを閲覧する](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="navigation_nearby_category">付近</string>
     <string name="edit_item_title">所持品を編集</string>
     <string name="tool_cliff_height_disclaimer">安全を確保できる場合にのみ使用してください。下に物を落としてもケガや災害が起きないことを確かめてください。使い方は説明書をお読みください。</string>

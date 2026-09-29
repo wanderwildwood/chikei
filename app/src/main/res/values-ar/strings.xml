@@ -63,7 +63,6 @@
     <string name="duration_hour_format">%d ساعة</string>
     <string name="duration_minute_format">%d دقيقة</string>
     <string name="access_background_location">تحديث إعدادات الموقع</string>
-    <string name="access_background_location_rationale">يستخدم Trail Sense بيانات الموقع في الخلفية لمعايرة ضغط مستوى البحر في مراقبة الطقس ولتوفير تنبيهات غروب الشمس بدقة أعلى. [عرض سياسة الخصوصية](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="precise_feet_format">%s قدم</string>
     <string name="precise_miles_format">%s ميل</string>
     <string name="elevation_diff_format">%1$s%2$s</string>
@@ -140,7 +139,7 @@
     <string name="coordinate_format_utm">UTM</string>
     <string name="fahrenheit">فهرنهايت</string>
     <string name="never">أبدًا</string>
-    <string name="tool_user_guide_summary">دليل إرشادي لاستخدام Trail Sense</string>
+    <string name="tool_user_guide_summary">دليل إرشادي لاستخدام Topo</string>
     <string name="tool_cliff_height_title">ارتفاع الجرف</string>
     <string name="battery_power_ac">تيار متردد</string>
     <string name="cumulonimbus">سحب ركامية مطرية</string>
@@ -204,7 +203,7 @@
     <string name="category">الفئة</string>
     <string name="temperature">درجة الحرارة</string>
     <string name="pref_ruler_calibration_title">مقياس المسطرة</string>
-    <string name="pref_ruler_calibration_summary">بروتوكول المعايرة: \n- اضبط هذه القيمة على 1. \n- قم بقياس قيمة مسطرة Trail Sense المقابلة لوحدة واحدة من مسطرة فيزيائية. \n- أدخل القيمة المقاسة هنا.</string>
+    <string name="pref_ruler_calibration_summary">بروتوكول المعايرة: \n- اضبط هذه القيمة على 1. \n- قم بقياس قيمة مسطرة Topo المقابلة لوحدة واحدة من مسطرة فيزيائية. \n- أدخل القيمة المقاسة هنا.</string>
     <string name="pref_compass_sensor_title">البوصلة</string>
     <string name="override_from_gps">تعيين التجاوز من GPS</string>
     <string name="compass_declination">الانحراف المغناطيسي</string>
@@ -231,7 +230,7 @@
     <string name="pref_open_source_licenses_title">التراخيص</string>
     <string name="pref_app_version_title">الإصدار</string>
     <string name="pref_github_title">GitHub</string>
-    <string name="error_occurred_message">واجه Trail Sense خطأ. يرجى التواصل مع المطور عبر البريد الإلكتروني لإصلاح هذه المشكلة.</string>
+    <string name="error_occurred_message">واجه Topo خطأ. يرجى التواصل مع المطور عبر البريد الإلكتروني لإصلاح هذه المشكلة.</string>
     <string name="delete_beacon_group_message">سيتم حذف %s وجميع مناراتها.</string>
     <string name="delete_path_group_message">سيتم حذف %s وجميع مساراتها.</string>
     <string name="delete_map_group_message">سيتم حذف %s وجميع خرائطها.</string>
@@ -298,8 +297,7 @@
     <string name="cumulus_desc">سحب منخفضة منتفخة تشبه كرات القطن. متباعدة وعادةً بيضاء مع بقع داكنة أسفلها.</string>
     <string name="cumulonimbus_desc">سحب منخفضة منتفخة طويلة جدًا. عادةً لها شكل سندان وهي داكنة.</string>
     <string name="privacy_and_location">الخصوصية والموقع</string>
-    <string name="onboarding_user_guide">تعرف على كيفية استخدام ميزات Trail Sense مع دليل المستخدم. متوفر في أسفل علامة تبويب الأدوات.\n\nسيتم إصدار المزيد من الأدلة قريبًا.</string>
-    <string name="onboarding_privacy">- يحترم Trail Sense خصوصيتك وبيانات موقعك لا تغادر جهازك أبدًا\n\n- لن يتطلب Trail Sense إذن الإنترنت أبدًا\n\n- عرض [سياسة الخصوصية](https://kylecorry.com/Trail-Sense/privacy_policy.html) (يفتح في متصفح هاتفك)\n\n- بعض ميزات Trail Sense تتطلب الوصول إلى موقعك\n\n- منح إذن الموقع سيمكن الميزات التالية:\n\n\t- الملاحة إلى المنارات\n\n\t- تحسين دقة التوقعات (غير متوفر على جميع الأجهزة)\n\n\t- التتبع العكسي\n\n\t- أوقات الشمس والقمر لموقعك الحالي (تنبيهات الغروب قد تتطلب موقعًا في الخلفية)\n\n- إذا اخترت عدم منح إذن الموقع، يمكنك إدخال موقع يدويًا في قائمة الإعدادات &gt; المستشعرات &gt; معايرة GPS في Trail Sense.\n\n- بعد النقر على متابعة، سيُطلب منك منح إذن الموقع. رفض هذا الإذن سيمنع Trail Sense من الوصول إلى موقعك، لذا يُوصى بإدخال موقع يدويًا.</string>
+    <string name="onboarding_user_guide">تعرف على كيفية استخدام ميزات Topo مع دليل المستخدم. متوفر في أسفل علامة تبويب الأدوات.\n\nسيتم إصدار المزيد من الأدلة قريبًا.</string>
     <string name="acceleration_m_s2_format">%s م/ث²</string>
     <string name="help">مساعدة</string>
     <string name="beacon_export_error">تعذر تصدير المنارات</string>
@@ -359,7 +357,7 @@
     <string name="reset_distance_title">إعادة تعيين المسافة؟</string>
     <string name="warning">يحذر</string>
     <string name="camera_capture">التقاط</string>
-    <string name="allow_ignore_battery_restrictions_instructions">إزالة قيود البطارية لـ Trail Sense قد تحسن الدقة.\n\nعلى معظم الأجهزة، انقر على \'%s\'، ثم انتقل إلى جميع التطبيقات، وقم بإيقاف تحسين البطارية لـ Trail Sense.\n\nتفضل بزيارة [Don\'t kill my app](https://dontkillmyapp.com/) للحصول على تعليمات خاصة بالجهاز.</string>
+    <string name="allow_ignore_battery_restrictions_instructions">إزالة قيود البطارية لـ Topo قد تحسن الدقة.\n\nعلى معظم الأجهزة، انقر على \'%s\'، ثم انتقل إلى جميع التطبيقات، وقم بإيقاف تحسين البطارية لـ Topo.\n\nتفضل بزيارة [Don\'t kill my app](https://dontkillmyapp.com/) للحصول على تعليمات خاصة بالجهاز.</string>
     <string name="file">ملف</string>
     <string name="point_added">تم إضافة نقطة إلى المسار</string>
     <string name="tide_frequency_description">عدد المد العالي يوميًا. معظم المد والجزر نصف يومي.</string>
@@ -380,7 +378,6 @@
     <string name="sun">الشمس</string>
     <string name="moon">القمر</string>
     <string name="beacon">المنارة</string>
-    <string name="onboarding_explore">- مصمم للمشي لمسافات طويلة، التخييم، والبحث عن الكنز\n\n- وضع منارات والملاحة إليها\n\n- اتباع المسارات\n\n- إعادة تتبع خطواتك مع التتبع العكسي\n\n- التخطيط لما يجب تعبئته\n\n- تلقي تنبيهات قبل غروب الشمس\n\n- توقع الطقس\n\n- استخدام هاتفك ككشاف\n\n- وأكثر من ذلك بكثير!</string>
     <string name="average_speed">السرعة المتوسطة</string>
     <string name="off">إيقاف</string>
     <string name="current_speed">السرعة الحالية</string>

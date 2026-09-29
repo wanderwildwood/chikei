@@ -15,11 +15,6 @@ object OnboardingPages {
                 R.drawable.steps
             ),
             OnboardingPage(
-                context.getString(R.string.tool_user_guide_title),
-                context.getString(R.string.onboarding_user_guide),
-                R.drawable.user_guide
-            ),
-            OnboardingPage(
                 context.getString(R.string.privacy_and_location),
                 context.getString(R.string.onboarding_privacy),
                 R.drawable.ic_not_visible

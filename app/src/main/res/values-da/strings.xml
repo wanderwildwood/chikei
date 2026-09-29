@@ -69,7 +69,6 @@
     <string name="direction_north_east">NØ</string>
     <string name="weather">Vejr</string>
     <string name="access_background_location">Opdater placeringsindstillinger</string>
-    <string name="access_background_location_rationale">Trail Sense bruger placeringsdata i baggrunden. De bruges til kalibrering af tryk ved havniveau i vejrovervågning og til at give mere præcise solnedgangsalarmer. [Se fortrolighedspolitik](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="precise_feet_format">%s fod</string>
     <string name="precise_nautical_miles_format">%s nm</string>
     <string name="direction_south_east">SØ</string>
@@ -138,7 +137,7 @@
     <string name="sensors">Sensorer</string>
     <string name="pref_ruler_calibration_summary">Kalibreringsprotokol:
 \n- Indstil denne værdi til 1.
-\n- Mål værdien af Trail Sense-linealen, der svarer til én enhed af en fysisk lineal.
+\n- Mål værdien af Topo-linealen, der svarer til én enhed af en fysisk lineal.
 \n- Rapporter den målte værdi her.</string>
     <string name="pref_compass_sensor_title">Kompas</string>
     <string name="true_north">Det sande nord</string>
@@ -219,7 +218,7 @@
     <string name="no_permission">Tilladelse ikke givet</string>
     <string name="overridden">Korrigeret</string>
     <string name="power_saving_mode_resolution">Deaktiver strømsparetilstand</string>
-    <string name="battery_restricted_resolution">Indstil Trail Sense som Ikke Optimeret</string>
+    <string name="battery_restricted_resolution">Indstil Topo som Ikke Optimeret</string>
     <string name="precipitation_snow">Sne</string>
     <string name="precipitation_chance">Nedbørsrisiko: %s</string>
     <string name="no_camera_access">Kan ikke få adgang til kameraet</string>
@@ -246,8 +245,8 @@
     <string name="pref_forecast_sensitivity_title">Prognosefølsomhed</string>
     <string name="sun_astronomical">Astronomisk</string>
     <string name="pref_category_about">Om</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Mens Trail Sense er åben</string>
-    <string name="pref_tiles_enabled_summary">Kan forhindre batterispareapps i at stoppe Trail Sense fuldstændigt</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Mens Topo er åben</string>
+    <string name="pref_tiles_enabled_summary">Kan forhindre batterispareapps i at stoppe Topo fuldstændigt</string>
     <string name="low_amount">Lav (%s)</string>
     <string name="sighting_compass">Sigtekompas</string>
     <string name="medium_amount">Middel (%s)</string>
@@ -325,7 +324,7 @@
     <string name="pref_show_pressure_in_notification_title">Vis tryk i notifikationen</string>
     <string name="always">Altid</string>
     <string name="error_occurred">En fejl opstod</string>
-    <string name="error_occurred_message">Trail Sense løb ind i en fejl. Send venligst en email til udvikleren for at få problemet løst.</string>
+    <string name="error_occurred_message">Topo løb ind i en fejl. Send venligst en email til udvikleren for at få problemet løst.</string>
     <string name="tool_user_guide_title">Brugervejledning</string>
     <string name="delete_path_group_message">%s og alle dens stier vil blive slettet.</string>
     <string name="group">Gruppe</string>
@@ -388,23 +387,6 @@
     <string name="simplification_quality">Simplificeringskvalitet</string>
     <string name="pressure_tendency">Tendens</string>
     <string name="steps">Skridt</string>
-    <string name="onboarding_explore">- Designet til vandreture, backpacking, camping og geocaching
-\n
-\n- Placer beacons og naviger til dem
-\n
-\n- Følg stier
-\n
-\n- Gå tilbage med backtrack
-\n
-\n- Planlæg hvad du skal pakke
-\n
-\n- Bliv advaret før solen går ned
-\n
-\n- Forudsig vejret
-\n
-\n- Brug din telefon som lommelygte
-\n
-\n- Og meget mere!</string>
     <string name="save">Gem</string>
     <string name="current_speed">Aktuel hastighed</string>
     <string name="current_speed_pedometer">Aktuel hastighed (Skridttæller)</string>
@@ -474,7 +456,7 @@
     <string name="stratocumulus">Stratocumulus</string>
     <string name="altocumulus_desc">Puffede skyer i mellemhøjde, der ligner vatkugler. De er typisk hvide med mørkere pletter forneden og kan være adskilte eller arklignende.</string>
     <string name="cirrus_desc">Høje pjuskede skyer, der ligner totter af hvidt hår.</string>
-    <string name="onboarding_user_guide">Lær hvordan du bruger Trail Senses funktioner med brugervejledningen. Tilgængelig nederst på fanen Værktøjer. \n \nFlere guider kommer snart.</string>
+    <string name="onboarding_user_guide">Lær hvordan du bruger Topos funktioner med brugervejledningen. Tilgængelig nederst på fanen Værktøjer. \n \nFlere guider kommer snart.</string>
     <string name="import_btn">Importer</string>
     <plurals name="beacons_imported">
         <item quantity="one">%d beacon importeret</item>
@@ -552,7 +534,7 @@
     <string name="other">Andet</string>
     <string name="background_location_permission">Placering (tillad hele tiden)</string>
     <string name="get_gps_signal">Gå udenfor med et uhindret udsyn til himlen.</string>
-    <string name="unblock_notification_channel">Fjern blokering af %s-notifikation for Trail Sense</string>
+    <string name="unblock_notification_channel">Fjern blokering af %s-notifikation for Topo</string>
     <string name="location_override_resolution">Aktiver autojustering af placering i indstillingerne.</string>
     <string name="pick_file">Vælg fil</string>
     <string name="pref_clinometer_baseline_distance_title">Grundlinjeafstand</string>
@@ -794,9 +776,9 @@
     <string name="estimated">Anslået</string>
     <string name="current_speed_gps">Aktuel hastighed (GPS)</string>
     <string name="error">Fejl</string>
-    <string name="allow_ignore_battery_restrictions_instructions">Fjernelse af batterirestriktioner for Trail Sense kan forbedre nøjagtigheden.
+    <string name="allow_ignore_battery_restrictions_instructions">Fjernelse af batterirestriktioner for Topo kan forbedre nøjagtigheden.
 \n
-\nPå de fleste enheder skal du klikke på \'%s\', derefter skifte til alle apps og slå batterioptimering fra for Trail Sense.
+\nPå de fleste enheder skal du klikke på \'%s\', derefter skifte til alle apps og slå batterioptimering fra for Topo.
 \n
 \nBesøg [Don\'t kill my app](https://dontkillmyapp.com/) for enhedsspecifikke instruktioner.</string>
     <string name="tide_user_guide_recommendation">Hjemmesider med officielle tidevandstabeller kan findes i brugervejledningen.</string>
@@ -854,7 +836,7 @@
     <string name="pref_sunset_alert_time_title">Alarmtid for solnedgang</string>
     <string name="pref_app_version_title">Version</string>
     <string name="pref_github_title">GitHub</string>
-    <string name="tool_user_guide_summary">En vejledning til brug af Trail Sense</string>
+    <string name="tool_user_guide_summary">En vejledning til brug af Topo</string>
     <string name="unit_miles">Mil</string>
     <string name="solar_panel_instructions">Placer din telefon på forsiden af solpanelet for at begynde.</string>
     <string name="pip_notification_scheduled">Notifikation planlagt til %s</string>
@@ -936,26 +918,5 @@
         <item quantity="other">%d stier importeret</item>
     </plurals>
     <string name="backtrack_notification_channel_description">Lokationsopdateringer for backtracking</string>
-    <string name="onboarding_privacy">- Trail Sense respekterer dit privatliv og placeringsdata forlader aldrig din enhed
-\n
-\n- Trail Sense vil aldrig kræve internettilladelse
-\n
-\n- Se [Fortrolighedspolitikken](https://kylecorry.com/Trail-Sense/privacy_policy.html) (åbner i din mobilbrowser)
-\n
-\n- Nogle funktioner i Trail Sense kræver adgang til din placering
-\n
-\n- Tildeling af placeringstilladelse aktiverer disse funktioner:
-\n
-\n- Navigation til beacons
-\n
-\n- Forbedret prognosenøjagtighed (kræver baggrundsplacering, ikke tilgængelig på alle enheder)
-\n
-\n- Backtrack (kræver baggrundsplacering)
-\n
-\n- Sol- og månetider for din nuværende placering
-\n
-\n- Hvis du vælger ikke at give placeringstilladelse, kan du manuelt indtaste placering i menuen Indstillinger &gt; GPS-kalibrering i Trail Sense.
-\n
-\n- Når du har klikket på Fortsæt, bliver du bedt om at give tilladelser til placering og baggrundsplacering. Hvis du afviser disse tilladelser, kan Trail Sense ikke få adgang til din placering, så manuel placeringsindtastning anbefales.</string>
     <string name="backtrack_battery_warning">Små intervaller (under 15 min.) kan forårsage højt batteriforbrug</string>
 </resources>

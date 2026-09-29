@@ -240,9 +240,9 @@
     <string name="beacons">Jelzőpontok</string>
     <string name="bearing">Irány</string>
     <string name="file">Fájl</string>
-    <string name="allow_ignore_battery_restrictions_instructions">A Trail Sense akkukorlátozásainak eltávolítása javíthatja a pontosságot.
+    <string name="allow_ignore_battery_restrictions_instructions">A Topo akkukorlátozásainak eltávolítása javíthatja a pontosságot.
 \n
-\nA legtöbb eszközön nyomd meg az \'%s\'-t, válts át minden alkalmazásra, majd kapcsold ki az akkuoptimalizálást a Trail Sense-nél.
+\nA legtöbb eszközön nyomd meg az \'%s\'-t, válts át minden alkalmazásra, majd kapcsold ki az akkuoptimalizálást a Topo-nél.
 \n
 \nEszközspecifikus útmutatóért látogass el a [Don\'t kill my app] (https://dontkillmyapp.com/) oldalra.</string>
     <string name="kilograms_format">%s kg</string>
@@ -402,7 +402,7 @@
     <string name="pressure_12_hours">12 óra</string>
     <string name="pressure_4_hours">4 óra</string>
     <string name="pref_sun_time_mode_title">Napkelte / Napnyugta időpontjai</string>
-    <string name="error_occurred_message">A Trail Sense hibába futott. Kérlek, írj e-mailt a fejlesztőnek a hiba javításához.</string>
+    <string name="error_occurred_message">A Topo hibába futott. Kérlek, írj e-mailt a fejlesztőnek a hiba javításához.</string>
     <string name="pref_sunset_alert_time_title">Napnyugta figyelmeztetés ideje</string>
     <string name="tap_sun_moon_hint">Nyomj a Napra vagy a Holdra a pozíció részleteiért</string>
     <string name="forecasts_category">Előrejelzések</string>
@@ -450,7 +450,7 @@
     <string name="humidity_history">Páratartalom előzmények - elmúlt %s</string>
     <string name="preview">Előnézet</string>
     <string name="location_not_mocked">Valós hely használata</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Míg a Trail Sense meg van nyitva</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Míg a Topo meg van nyitva</string>
     <string name="pref_flashlight_toggle_with_volume_title">Kapcsolás hangerőgombokkal</string>
     <string name="ounces_volume_format">%s oz</string>
     <string name="gallon_format">%s gal</string>
@@ -475,7 +475,7 @@
     <string name="no_resolution">Nincs felbontás</string>
     <string name="activity_recognition">Testmozgás felismerés</string>
     <string name="get_gps_signal">Menj kültérre, ahol semmi nem takarja az eget.</string>
-    <string name="unblock_notification_channel">Oldd fel a Trail Sense %s értesítésének blokkolását</string>
+    <string name="unblock_notification_channel">Oldd fel a Topo %s értesítésének blokkolását</string>
     <string name="location_override_not_set_resolution">Állítsd be a hely felülírást a beállításokban</string>
     <string name="diagnostic_message_template">%1$s: %2$s
 \n
@@ -605,7 +605,7 @@
     <string name="tool_user_guide_title">Felhasználói Útmutató</string>
     <string name="delete_path_group_message">%s és minden ösvénye törölve lesz.</string>
     <string name="error_occurred">Hiba történt</string>
-    <string name="tool_user_guide_summary">Egy \'hogy és miként\' útmutató a Trail Sense használatához</string>
+    <string name="tool_user_guide_summary">Egy \'hogy és miként\' útmutató a Topo használatához</string>
     <string name="action_inventory_clear_confirm">Minden bepakolt mennyiséget törölsz\?</string>
     <string name="category_fire">Tűz</string>
     <string name="water_boil_timer_channel_description">A víz forr</string>
@@ -730,24 +730,6 @@
     <string name="average_speed_backtrack">Átlagsebesség (Visszakövetés)</string>
     <string name="navigate_back_onto_path">Navigálás a legközelebbi ösvény ponthoz</string>
     <string name="point_added">Pont hozzáadva az ösvényhez</string>
-    <string name="access_background_location_rationale">A Trail Sense helyadatokat használ a háttérben a tengerszinti nyomás kalibrálásához és a pontosabb naplemente-figyelmeztetéshez. [Adatvédelmi Irányelvek Megtekintése](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
-    <string name="onboarding_explore">- Gyalogtúrához, hátizsákos túrához, kempingezéshez és geocachinghez tervezve
-\n
-\n- Helyezz el jelzőpontokat és navigálj hozzájuk
-\n
-\n- Kövess ösvényeket
-\n
-\n- Kövesd vissza a bejárt útvonalad visszakövetéssel
-\n
-\n- Tervezd meg a bepakolandó dolgaid
-\n
-\n- Kapj figyelmeztetést, mielőtt lemegy a nap
-\n
-\n- Jósold meg az időjárást
-\n
-\n- Használd a telefonod zseblámpaként
-\n
-\n- És sok minden más!</string>
     <string name="tool_cliff_height_description">Szirt vagy szakadék magasságának mérése</string>
     <string name="turn_off">Kikapcsolás</string>
     <string name="units_mmhg">mmHg</string>
@@ -762,7 +744,7 @@
     <string name="pref_use_24_hour_title">24 órás formátum használata</string>
     <string name="coordinate_format_degrees_decimal_minutes">Fokok és tizedes percek</string>
     <string name="sensors">Érzékelők</string>
-    <string name="pref_ruler_calibration_summary">"Kalibrálási eljárás:\n\n-  Állítsd ezt az értéket 1-re.\n\n- Mérd meg, mennyit mutat a Trail Sense vonalzója egy fizikai vonalzó egy egységénél.\n\n- Írd be a mért értéket ide."</string>
+    <string name="pref_ruler_calibration_summary">"Kalibrálási eljárás:\n\n-  Állítsd ezt az értéket 1-re.\n\n- Mérd meg, mennyit mutat a Topo vonalzója egy fizikai vonalzó egy egységénél.\n\n- Írd be a mért értéket ide."</string>
     <string name="compass_accuracy">Iránytű pontossága</string>
     <string name="category_safety">Biztonság</string>
     <string name="never">Soha</string>
@@ -795,7 +777,7 @@
     <string name="pref_gps_override_title">Hely felülírása</string>
     <string name="stratus_desc">Alacsony felhő, mely beborítja az eget. Nincsenek éles árnyékok és ködös lehet az idő.</string>
     <string name="gps_stale">Elévült</string>
-    <string name="onboarding_user_guide">Tanuld meg a Trail Sense funkcióinak használatát a felhasználói útmutatóval. Elérhető az Eszközök fül legalján. \n \nTovábbi útmutatók hamarosan.</string>
+    <string name="onboarding_user_guide">Tanuld meg a Topo funkcióinak használatát a felhasználói útmutatóval. Elérhető az Eszközök fül legalján. \n \nTovábbi útmutatók hamarosan.</string>
     <string name="unavailable">Nem elérhető</string>
     <string name="quality_poor">Rossz</string>
     <string name="pref_backtrack_save_cell_summary">Menti a térerőt az útvonalpontnál. Nem használ Internetet.</string>
@@ -821,7 +803,6 @@
     <string name="highest_point_elevation">Legmagasabb pont</string>
     <string name="lowest_point_elevation">Legalacsonyabb pont</string>
     <string name="path_slope">Lejtés</string>
-    <string name="onboarding_privacy">- A Trail Sense tiszteletben tartja a magánszférád, a helyadatok pedig sosem hagyják el a készüléked\n\n- A Trail Sense-nek sosem lesz szüksége internetkapcsolatra\n\n- Tekintsd meg az [adatvédelmi irányelveket](https://kylecorry.com/Trail-Sense/privacy_policy.html) (a telefonod böngészőjében, angolul nyílik meg)\n\n- A Trail Sense néhány funkciója hozzáférést igényel a helyadataidhoz\n\n- A helyhozzáférés megadása a következő funkciókat teszi lehetővé:\n\n\t- Jelzőpontokhoz navigálás\n\n\t- Jobb előrejelzési pontosság (nem minden készüléken elérhető)\n\n\t- Visszakövetés\n\n\t- Nap és Hold időpontok az aktuális helyed szerint (a naplemente figyelmeztetésnek szüksége lehet háttérbeli helyadatokhoz)\n\n- Ha úgy döntesz, nem adod meg a helyhozzáférési engedélyt, kézzel is megadhatsz egy helyet a Trail Sense Beállítások &gt; GPS kalibráció menüjében.\n\n- A folytatás megnyomása után felugró ablakban dönthetsz a helyadatok engedélyének megadásáról. Az engedély megtagadása meggátolja a Trail Sense hozzáférését a helyzetedhez, így a manuális helymegadás javasolt.</string>
     <string name="pref_daily_weather_time_title">Napi időjárás ideje</string>
     <string name="time_until_empty">múlva lemerül</string>
     <string name="actual_frequency_disclaimer">A valós frekvencia változó lehet, mivel egyes eszközöknek vannak háttérbeli korlátozásai.</string>
@@ -836,7 +817,7 @@
     <string name="pref_cell_signal_refresh_cache_title">Térerő gyorsítótár frissítése</string>
     <string name="liters">Liter</string>
     <string name="pref_backtrack_history_days_title">VIsszakövetés előzmények</string>
-    <string name="pref_tiles_enabled_summary">Megakadályozhatja az akkuoptimalizáló appokat a Trail Sense teljes leállításában</string>
+    <string name="pref_tiles_enabled_summary">Megakadályozhatja az akkuoptimalizáló appokat a Topo teljes leállításában</string>
     <string name="imperial_gallons">Angolszász gallon</string>
     <string name="sort">Rendezés</string>
     <string name="lightning_dangerously_close">Veszélyesen közeli villámlás</string>
@@ -847,7 +828,7 @@
     <string name="pack_sort_percent_low_to_high">Becsomagolt százalék (növekvő)</string>
     <string name="quarter_moon">Negyed hold</string>
     <string name="camera">Kamera</string>
-    <string name="battery_restricted_resolution">Trail Sense beállítása nem korlátozottként</string>
+    <string name="battery_restricted_resolution">Topo beállítása nem korlátozottként</string>
     <string name="gps_unavailable_resolution">Kapcsold be a helyet vagy állítsd a helyforrást \'Csak eszköz\'-re, vagy \'Nagy Pontosság\'-ra</string>
     <string name="no_permission">Hozzáférés megtagadva</string>
     <string name="new_text">Új</string>

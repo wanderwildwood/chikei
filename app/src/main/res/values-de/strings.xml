@@ -166,7 +166,6 @@
     <string name="error_occurred_message">Ein Fehler ist aufgetreten. Bitte sende eine E-Mail an den Entwickler, um den Fehler beheben zu lassen.</string>
     <string name="error_occurred">Ein Fehler ist aufgetreten</string>
     <string name="access_background_location">Standortseinstellungen aktualisieren</string>
-    <string name="access_background_location_rationale">Trail Sense nutzt Ortungsdaten im Hintergrund zur Kalibrierung des Luftdrucks auf Meereshöhe im Wettermonitor und um Sonnenuntergangsbenachrichtigungen anzubieten. [Datenschutzbestimmungen](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="pref_adjust_for_temperature_title">Faktor für Temperatur</string>
     <string name="navigation_nearby_category">Nahegelegen</string>
     <string name="forecasts_category">Vorhersagen</string>
@@ -181,7 +180,7 @@
     <string name="compass_reported_accuracy">Festgestellte Genauigkeit: %s</string>
     <string name="override_from_gps">Überschreibung durch GPS einstellen</string>
     <string name="set_inclination_instructions">Tippen oder Halten zum Sperren oder Entsperren</string>
-    <string name="tool_user_guide_summary">Ein Handbuch für die Benutzung von Trail Sense</string>
+    <string name="tool_user_guide_summary">Ein Handbuch für die Benutzung von Topo</string>
     <string name="advanced">Fortgeschritten</string>
     <string name="tool_bubble_level_summary">Stelle fest, ob eine Oberfläche eben ist</string>
     <string name="pref_adjust_for_temperature_summary">Verwende die Temperatur zur Umrechnung auf Meereshöhe</string>
@@ -362,27 +361,6 @@
     <string name="create_at_distance">Mit Abstand festlegen</string>
     <string name="unit_inches_abbreviation">in</string>
     <string name="unit_centimeters_abbreviation">cm</string>
-    <string name="onboarding_privacy">- Trail Sense respektiert deine Privatsphäre und Ortsdaten bleiben auf deinem Gerät
-\n
-\n- Trail Sense wird niemals Zugang zum Internet verlangen
-\n
-\n- [Datenschutz-Bestimmungen](https://kylecorry.com/Trail-Sense/privacy_policy.html) (wird im Browser des Geräts geöffnet)
-\n
-\n- Einige Funktionen von Trail Sense benötigen Zugriff auf deinen Standort
-\n
-\n- Freigabe der Ortsdaten ermöglicht die Nutzung folgende Funktionen:
-\n
-\n\t- Navigation zu Wegpunkten
-\n
-\n\t- Verbesserte Vorhersagegenauigkeit (benötigt Zugriff auf Ortsdaten im Hintergrund, nicht auf allen Geräten verfügbar)
-\n
-\n\t- Rückweg (benötigt Ortsdaten im Hintergrund)
-\n
-\n\t- Sonnen und Mondzeiten für deinen Standort
-\n
-\n- Falls du dich entscheidest, den Zugriff auf Ortsdaten nicht zu erlauben, kannst du manuell Koordinaten in den Trail Sense Einstellungen -&gt; GPS eingeben.
-\n
-\n- Nach dem Klicken auf \"Weiter\" wirst du darum gebeten, die Standortberechtigung im Vorder- und Hintergrund zu erteilen. Die Ablehnung dieser Rechte verhindert, dass Trail Sense Zugriff auf deinen Standort erhält. In diesem Fall wird empfohlen, Koordinaten manuell einzugeben.</string>
     <string name="export">Exportieren</string>
     <string name="import_btn">Importieren</string>
     <string name="unavailable">Nicht verfügbar</string>
@@ -425,7 +403,7 @@
     <string name="pref_backtrack_save_cell_summary">Nehme Mobilfunksignale an den Wegpunkten auf. Das Internet wird nicht genutzt.</string>
     <string name="distance_from_flashlight">Distanz vom Handy zur Taschenlampe</string>
     <string name="beacon_export_error">Beacons konnten nicht exportiert werden</string>
-    <string name="onboarding_user_guide">Lernen Sie mithilfe des Benutzerhandbuchs, wie Sie die Funktionen von Trail Sense nutzen. Es befindet sich auf der Werkzeuge-Seite.</string>
+    <string name="onboarding_user_guide">Lernen Sie mithilfe des Benutzerhandbuchs, wie Sie die Funktionen von Topo nutzen. Es befindet sich auf der Werkzeuge-Seite.</string>
     <string name="backtrack_disabled_low_power_toast">Rückweg ist im Energiespar-Modus deaktiviert</string>
     <string name="magnetic_field_format_precise">%s uT</string>
     <string name="turn_off">Ausschalten</string>
@@ -524,7 +502,7 @@
         <item quantity="other">%d Tage</item>
     </plurals>
     <string name="pref_backtrack_history_days_title">Rückweg-Verlauf</string>
-    <string name="pref_tiles_enabled_summary">Könnte Akku-Manager-Apps davon abhalten, Trail Sense vollständig zu beenden</string>
+    <string name="pref_tiles_enabled_summary">Könnte Akku-Manager-Apps davon abhalten, Topo vollständig zu beenden</string>
     <string name="pref_tiles_enabled_title">Schnelleinstellungskacheln</string>
     <string name="location_not_mocked">Nutze echten Standort</string>
     <string name="location_mocked">Nutze simulierten Standort</string>
@@ -533,7 +511,7 @@
     <string name="units">Einheiten</string>
     <string name="pref_privacy_screenshot_protection_title">Screenshots verhindern</string>
     <string name="pref_flashlight_toggle_with_volume_title">Mit Lautstärketasten steuern</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Während Trail Sense geöffnet ist</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Während Topo geöffnet ist</string>
     <string name="unit_yards">Yards</string>
     <string name="yards_format">%s yd</string>
     <string name="find_next_occurrence">Nächstes Vorkommen finden</string>
@@ -612,7 +590,7 @@
     <string name="elevation_history_length">Länge des Höhenverlaufs</string>
     <string name="last_duration">Letzte %s</string>
     <string name="elevation_override_resolution">Auto-Kalibrierung in den Einstellungen aktivieren.</string>
-    <string name="unblock_notification_channel">%s-Benachrichtigungen für Trail Sense entblockieren</string>
+    <string name="unblock_notification_channel">%s-Benachrichtigungen für Topo entblockieren</string>
     <string name="get_gps_signal">Gehen nach draußen mit freiem Blick auf den Himmel.</string>
     <string name="activity_recognition">Körperliche Aktivität</string>
     <string name="grant_permission">Erteile die %s-Berechtigung</string>
@@ -636,7 +614,7 @@
 \n%4$s</string>
     <string name="gps_unavailable_resolution">Aktivieren Sie die Standortbestimmung oder ändern Sie Ihre Standortquelle auf „Nur Gerät“ oder „Hohe Genauigkeit“</string>
     <string name="background_location_permission">Standort (Immer zulassen)</string>
-    <string name="battery_restricted_resolution">Trail Sense als nicht optimiert festlegen</string>
+    <string name="battery_restricted_resolution">Topo als nicht optimiert festlegen</string>
     <string name="power_saving_mode_resolution">Stromsparmodus deaktivieren</string>
     <string name="location_override_not_set_resolution">Standort in den Einstellungen überschreiben</string>
     <string name="location_override_resolution">Automatisches Anpassen des Standorts in den Einstellungen aktivieren.</string>
@@ -798,23 +776,6 @@
     <string name="activity_recognition_permission_denied">Körperliche-Aktivität-Berechtigung verweigert, kann Schrittzähler-Features nicht aktivieren. Du kannst sie in den Einstellungen erteilen.</string>
     <string name="estimated">Geschätzt</string>
     <string name="disclaimer_estimated_tide">Geschätzte Gezeiten können ungenau sein. Bitte verwende eine offizielle Gezeitentabelle für die genauen Zeiten.</string>
-    <string name="onboarding_explore">- Entwickelt fürs Wandern, Backpacking, Camping und Geocaching
-\n
-\n- Wegpunkte platzieren und zu ihnen navigieren
-\n
-\n- Pfaden folgen
-\n
-\n- Schritte mit Rückweg zurückverfolgen
-\n
-\n- Einpack-Planner
-\n
-\n- Vor dem Sonnenuntergang benachrichtigt werden
-\n
-\n- Wettervorhersage
-\n
-\n- Taschenlampe
-\n
-\n- und vieles mehr!</string>
     <string name="steps">Schritte</string>
     <string name="soon">Bald</string>
     <string name="off">Aus</string>
@@ -858,9 +819,9 @@
     <string name="pref_only_navigate_path_points_title">Nur zu aufgenommenen Punkten navigieren</string>
     <string name="error">Fehler</string>
     <string name="warning">Warnung</string>
-    <string name="allow_ignore_battery_restrictions_instructions">Die Akkuoptimierung für Trail Sense auszuschalten kann die Genauigkeit verbessern.
+    <string name="allow_ignore_battery_restrictions_instructions">Die Akkuoptimierung für Topo auszuschalten kann die Genauigkeit verbessern.
 \n
-\nAuf den meisten Geräten, klicke „%s“, dann gehe zu allen Apps und deaktiviere Akkuoptimierung für Trail Sense.
+\nAuf den meisten Geräten, klicke „%s“, dann gehe zu allen Apps und deaktiviere Akkuoptimierung für Topo.
 \n
 \nBesuche [Don\'t kill my app](https://dontkillmyapp.com/) für gerätespezifische Anleitungen.</string>
     <string name="exporting_map">Exportiere Karte</string>
@@ -1391,7 +1352,6 @@
     <string name="planet_neptune">Neptun</string>
     <string name="open_settings">Einstellungen öffnen</string>
     <string name="show_labels">Beschriftungen anzeigen</string>
-    <string name="map_tool_disclaimer">Dieses Tool beinhaltet keine eingebauten Straßenkarten, Satellitenbilder oder Wanderwegdaten. Es lädt keine Karten aus dem Internet herunter. Um einen Kartenhintergrund anzuzeigen, müssen Sie ihr eigenes Bild mithilfe des Bilderkarten-Tools importieren. Falls Sie Live- oder vorgeladene Karten brauchen, nutzen Sie stattdessen eine separate Kartenapp.</string>
     <string name="basemap">Hintergrundkarte</string>
     <string name="load_pdf_tiles">Lade PDF teile</string>
     <string name="load_pdf_tiles_summary">PDF-Karten sind schärfer, aber die Leistung wird verringert</string>
@@ -1548,7 +1508,7 @@
         <item quantity="other">Geräteuhr geht %d Sekunden vor</item>
     </plurals>
     <string name="pref_default_beacon_color_title">Standardwegpunktfarbe</string>
-    <string name="pref_copy_trail_maps_title">Karten zu Trail Sense kopieren</string>
+    <string name="pref_copy_trail_maps_title">Karten zu Topo kopieren</string>
     <string name="current_temperature">Aktuelle Temperatur</string>
     <string name="pref_navigation_show_azimuth_indicator_title">Azimutindikator anzeigen</string>
 </resources>

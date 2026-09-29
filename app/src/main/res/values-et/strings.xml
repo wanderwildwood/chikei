@@ -21,7 +21,6 @@
     <string name="weather">Ilm</string>
     <string name="kilometers_per_hour_format">%s km/h</string>
     <string name="degree">%s°</string>
-    <string name="access_background_location_rationale">Trail Sense kasutab asukohaandmeid taustal. Seda kasutatakse täpsemate päikeseloojanguteadete jagamiseks reisi ajal. [Vaata privaatsuspoliitikat](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="duration_second_format">%ds</string>
     <string name="precise_feet_format">%s ft</string>
     <string name="duration_hour_format">%dh</string>

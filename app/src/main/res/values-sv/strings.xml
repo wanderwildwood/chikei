@@ -225,7 +225,6 @@
     <string name="plugin_disconnect_title">Koppla från insticksmodulen?</string>
     <string name="plugin_disconnect_message">Koppla från %s?</string>
     <string name="access_background_location">Uppdatera platsinställningarna</string>
-    <string name="access_background_location_rationale">Trail Sense använder platsdata i bakgrunden även när appen är stängd eller inte används. Bakgrundsåtkomsten används för att kalibrera väderövervakarens lufttryck vid havsnivå, för tillbakaspårning och uppdatering av widgetar samt för att ge mer exakta varningar om soluppgång och solnedgång. [Visa integritetspolicyn](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="disclaimer_message_title">Ansvarsfriskrivning</string>
     <string name="app_disclaimer_message_title">Ansvarsfriskrivning/användarvillkor</string>
     <string name="precise_nautical_miles_format">%s sjömil</string>
@@ -292,7 +291,7 @@
     <string name="coordinate_format_mgrs">MGRS</string>
     <string name="pref_coordinate_format_title">Koordinatformat</string>
     <string name="pref_ruler_calibration_title">Linjalens skala</string>
-    <string name="pref_ruler_calibration_summary">Kalibrering:\n\n- Ange värdet 1.\n\n- Mät vilket värde Trail Sense-linjalen visar för en enhet på en fysisk linjal.\n\n- Ange det uppmätta värdet här.</string>
+    <string name="pref_ruler_calibration_summary">Kalibrering:\n\n- Ange värdet 1.\n\n- Mät vilket värde Topo-linjalen visar för en enhet på en fysisk linjal.\n\n- Ange det uppmätta värdet här.</string>
     <string name="pref_ruler_flip_direction_title">Vänd linjalens riktning</string>
     <string name="true_north">Geografisk nord</string>
     <string name="smoothing_summary">Höga värden kan minska bruset</string>
@@ -361,9 +360,9 @@
     <string name="pref_email_title">Skicka e-post till utvecklaren</string>
     <string name="continue_button">FORTSÄTT</string>
     <string name="error_occurred">Ett fel inträffade</string>
-    <string name="error_occurred_message">Ett fel inträffade i Trail Sense. Skicka e-post till utvecklaren så att problemet kan åtgärdas.</string>
+    <string name="error_occurred_message">Ett fel inträffade i Topo. Skicka e-post till utvecklaren så att problemet kan åtgärdas.</string>
     <string name="tool_user_guide_title">Användarhandbok</string>
-    <string name="tool_user_guide_summary">En guide till hur Trail Sense används</string>
+    <string name="tool_user_guide_summary">En guide till hur Topo används</string>
     <string name="delete_beacon_group_message">%s och alla dess navigeringsmarkörer kommer att tas bort.</string>
     <string name="delete_path_group_message">%s och alla dess spår kommer att tas bort.</string>
     <string name="delete_map_group_message">%s och alla dess kartor kommer att tas bort.</string>
@@ -510,8 +509,7 @@
     <string name="cumulonimbus_forecast">Kan tyda på åskväder inom några minuter.</string>
     <string name="cirrus_desc">Höga, tunna moln som liknar vita hårtofsar.</string>
     <string name="privacy_and_location">Integritet och plats</string>
-    <string name="onboarding_user_guide">Lär dig använda funktionerna i Trail Sense med hjälp av användarhandboken. Den finns på fliken Verktyg.</string>
-    <string name="onboarding_privacy">- Trail Sense respekterar din integritet och platsdata lämnar aldrig enheten\n\n- Trail Sense begär aldrig behörighet att använda internet\n\n- Visa [integritetspolicyn](https://kylecorry.com/Trail-Sense/privacy_policy.html) (öppnas i telefonens webbläsare)\n\n- Vissa funktioner i Trail Sense behöver åtkomst till din plats\n\n- Om du beviljar platsbehörigheten aktiveras följande funktioner:\n\n\t- Navigering till navigeringsmarkörer\n\n\t- Förbättrad prognosnoggrannhet (inte tillgängligt på alla enheter)\n\n\t- Tillbakaspårning\n\n\t- Tider för sol och måne på din aktuella plats (solnedgångsvarningar kan kräva platsåtkomst i bakgrunden)\n\n- Om du inte beviljar platsbehörigheten kan du ange en plats manuellt under Inställningar &gt; Sensorer &gt; GPS-kalibrering i Trail Sense.\n\n- När du har tryckt på Fortsätt blir du ombedd att bevilja platsbehörighet. Om du nekar kan Trail Sense inte komma åt din plats, så du rekommenderas att ange en plats manuellt.</string>
+    <string name="onboarding_user_guide">Lär dig använda funktionerna i Topo med hjälp av användarhandboken. Den finns på fliken Verktyg.</string>
     <plurals name="beacons_imported">
         <item quantity="one">%d navigeringsmarkör importerades</item>
         <item quantity="other">%d navigeringsmarkörer importerades</item>
@@ -650,12 +648,12 @@
     <string name="location_not_mocked">Använder verklig position</string>
     <string name="pref_tiles_enabled_title">Snabbinställningsrutor</string>
     <string name="pref_tiles_battery_log">Batterilogg</string>
-    <string name="pref_tiles_enabled_summary">Kan hindra batterisparappar från att stoppa Trail Sense helt</string>
+    <string name="pref_tiles_enabled_summary">Kan hindra batterisparappar från att stoppa Topo helt</string>
     <string name="pref_dialog_battery_log_summary">Batteriloggen är inaktiverad. Historik och tid tills batteriet är tomt kanske inte är tillgängliga. Du kan aktivera den igen i inställningarna</string>
     <string name="pref_tiles_enabled_battery_log_summary">Loggar batterinivån varje timme för att uppskatta tiden tills batteriet är tomt</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Medan Trail Sense är öppet</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Medan Topo är öppet</string>
     <string name="pref_flashlight_toggle_with_volume_title">Slå på/av med volymknapparna</string>
-    <string name="pref_copy_trail_maps_title">Kopiera kartor till Trail Sense</string>
+    <string name="pref_copy_trail_maps_title">Kopiera kartor till Topo</string>
     <string name="pref_copy_trail_maps_summary">Vid import. När alternativet är av används originalfilen, som då måste finnas kvar på enheten.</string>
     <string name="pref_auto_low_power_summary">När batterinivån är låg</string>
     <string name="pref_auto_low_power_title">Automatiskt energisparläge</string>
@@ -733,7 +731,7 @@
     <string name="no_permission">Behörighet har inte beviljats</string>
     <string name="export_logs">Exportera loggar</string>
     <string name="external_storage">Extern lagring</string>
-    <string name="external_storage_diagnostic_instructions">Systemets filväljare har inte behörighet att komma åt filer på enheten. Det kan hindra Trail Sense från att öppna eller spara filer som du väljer. Aktivera ”Tillåt åtkomst för att hantera alla filer” för systemets filväljare (den kan heta ”Extern lagring”).</string>
+    <string name="external_storage_diagnostic_instructions">Systemets filväljare har inte behörighet att komma åt filer på enheten. Det kan hindra Topo från att öppna eller spara filer som du väljer. Aktivera ”Tillåt åtkomst för att hantera alla filer” för systemets filväljare (den kan heta ”Extern lagring”).</string>
     <string name="battery_usage_restricted">Batterianvändningen är begränsad</string>
     <string name="overridden">Åsidosatt</string>
     <string name="on">På</string>
@@ -746,12 +744,12 @@
     <string name="location_permission">Platsbehörighet</string>
     <string name="activity_recognition">Aktivitetsigenkänning</string>
     <string name="get_gps_signal">Gå ut till en plats med fri sikt mot himlen.</string>
-    <string name="unblock_notification_channel">Tillåt aviseringar för %s från Trail Sense</string>
+    <string name="unblock_notification_channel">Tillåt aviseringar för %s från Topo</string>
     <string name="elevation_override_resolution">Aktivera automatisk kalibrering i inställningarna.</string>
     <string name="location_override_resolution">Aktivera automatisk positionsjustering i inställningarna.</string>
     <string name="location_override_not_set_resolution">Ange en positionsåsidosättning i inställningarna</string>
     <string name="power_saving_mode_resolution">Inaktivera energisparläget</string>
-    <string name="battery_restricted_resolution">Undanta Trail Sense från batterioptimering</string>
+    <string name="battery_restricted_resolution">Undanta Topo från batterioptimering</string>
     <string name="gps_unavailable_resolution">Aktivera plats eller byt platskälla till ”Endast enheten” eller ”Hög noggrannhet”</string>
     <string name="diagnostic_message_template">%1$s: %2$s\n\n### Berörda verktyg\n%3$s\n\n### Lösning\n%4$s</string>
     <string name="autofill">Fyll i automatiskt</string>
@@ -880,7 +878,6 @@
     <string name="tool_temperature_estimation_title">Temperaturuppskattning</string>
     <string name="tool_temperature_estimation_description">Förutsäg temperaturen vid en annan höjd, vindhastighet och luftfuktighet</string>
     <string name="pressure_tendency">Tendens</string>
-    <string name="onboarding_explore">- Utformat för vandring, flerdagarsvandring, camping och geocaching\n\n- Placera navigeringsmarkörer och navigera till dem\n\n- Följ spår\n\n- Följ dina steg tillbaka med tillbakaspårning\n\n- Planera vad du ska packa\n\n- Få en varning innan solen går ner\n\n- Förutsäg vädret\n\n- Använd telefonen som ficklampa\n\n- Och mycket mer!</string>
     <string name="average_speed">Medelhastighet</string>
     <string name="average_pace">Genomsnittstempo</string>
     <string name="pref_pedometer_history_days_title">Steghistorik</string>
@@ -904,7 +901,7 @@
     <string name="pref_enable_analog_title">Analog klocka</string>
     <string name="bearing">Bäring</string>
     <string name="pref_only_navigate_path_points_title">Navigera endast till registrerade punkter</string>
-    <string name="allow_ignore_battery_restrictions_instructions">Noggrannheten kan förbättras om batteribegränsningarna för Trail Sense tas bort.\n\nPå de flesta enheter trycker du på ”%s”, växlar till alla appar och stänger sedan av batterioptimeringen för Trail Sense.\n\nBesök [Don\'t kill my app](https://dontkillmyapp.com/) för anvisningar för din enhet.</string>
+    <string name="allow_ignore_battery_restrictions_instructions">Noggrannheten kan förbättras om batteribegränsningarna för Topo tas bort.\n\nPå de flesta enheter trycker du på ”%s”, växlar till alla appar och stänger sedan av batterioptimeringen för Topo.\n\nBesök [Don\'t kill my app](https://dontkillmyapp.com/) för anvisningar för din enhet.</string>
     <string name="exporting_map">Exporterar karta</string>
     <string name="map_exported">Kartan har exporterats</string>
     <string name="exported">Exporterad</string>
@@ -1031,7 +1028,6 @@
     <string name="astronomy_rise">Uppgång</string>
     <string name="horizon">Horisont</string>
     <string name="offline_maps_summary">Använd foton, PDF-filer och kartfiler offline</string>
-    <string name="photo_map_disclaimer">Ta alltid med en fysisk karta som reserv och kontrollera Trail Senses noggrannhet.\n\nKartfiler ingår inte i Trail Sense utan måste hämtas eller kalibreras från ett foto. Kartor att hämta finns på https://kylecorry.com/Trail-Sense/offline_maps.html</string>
     <string name="reduce_map_resolution_crop_disclaimer">Kartans upplösning minskar även om du beskär den. Använd en fotoredigeringsapp om du behöver beskära kartan med hög upplösning. Det finns planer på att åtgärda detta framöver.</string>
     <string name="crop_map_instructions_long">Dra rutans hörn till kartans hörn för att markera konturen. Beskärningen minskar kartans upplösning.</string>
     <string name="rotation_amount">Rotation: %s</string>
@@ -1426,7 +1422,6 @@
     <string name="planet_neptune">Neptunus</string>
     <string name="load_pdf_tiles">Läs in PDF-kartbilder</string>
     <string name="load_pdf_tiles_summary">PDF-kartor blir skarpare, men prestandan kan påverkas</string>
-    <string name="map_tool_disclaimer">Verktyget innehåller inga inbyggda gatukartor, satellitbilder eller leddata och hämtar inte kartor från internet. Om du vill visa en kartbakgrund måste du importera en egen bild med verktyget Offlinekartor. Använd en särskild kartapp om du behöver direktuppdaterade eller förinlästa gatu-, satellit- eller vandringskartor.</string>
     <string name="open_settings">Öppna inställningarna</string>
     <string name="show_gps_accuracy">Visa GPS-noggrannhet</string>
     <string name="large_location_indicator">Stor positionsmarkör</string>
@@ -1558,7 +1553,7 @@
     <string name="map_file_missing">Filen saknas</string>
     <string name="invalid_trail_map">Ogiltig vandringskarta</string>
     <string name="invalid_trail_map_message">Vandringskartans fil är ogiltig eller saknas. Du kan ta bort kartan och importera en ny.</string>
-    <string name="copy_to_trail_sense">Kopiera till Trail Sense</string>
+    <string name="copy_to_trail_sense">Kopiera till Topo</string>
     <string name="recording_sighting_for_page">Registrerar observation av ”%s”</string>
     <string name="map_error_invalid_map_file">Ogiltig kartfil</string>
     <string name="map_error_access_denied">Åtkomst till kartfilen nekades</string>

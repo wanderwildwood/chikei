@@ -107,11 +107,10 @@
     <string name="celsius">Градусы Цельсия</string>
     <string name="accuracy_distance_format">± %s</string>
     <string name="degree_format">%.0f°</string>
-    <string name="access_background_location_rationale">Trail Sense использует данные о местоположении в фоновом режиме для калибровки давления на уровне моря при мониторинге погоды и для обеспечения более точных предупреждений о заходе солнца. [Просмотреть политику конфиденциальности] (https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="duration_minute_format">%dм</string>
     <string name="duration_hour_format">%dч</string>
     <string name="miles_per_hour_format">%s миль/ч</string>
-    <string name="error_occurred_message">Trail Sense остановился с ошибкой. Свяжитесь с разработчиком для обратной связи.</string>
+    <string name="error_occurred_message">Topo остановился с ошибкой. Свяжитесь с разработчиком для обратной связи.</string>
     <string name="error_occurred">Произошла ошибка</string>
     <string name="pref_sunset_alert_time_title">Оповещать о заходе за</string>
     <string name="pref_center_sun_and_moon_title">Держать Солнце/Луну в центре</string>
@@ -182,7 +181,7 @@
         <item quantity="other">%d ориентиров</item>
     </plurals>
     <string name="tool_user_guide_title">Руководство пользователя</string>
-    <string name="tool_user_guide_summary">Руководство по использованию Trail Sense</string>
+    <string name="tool_user_guide_summary">Руководство по использованию Topo</string>
     <string name="delete_beacon_group_message">%s и все его ориентиры будут удалены.</string>
     <string name="group">Группа</string>
     <string name="no_group">Не в группе</string>
@@ -375,28 +374,7 @@
     <string name="gps_user">Пользователь</string>
     <string name="import_btn">Импорт</string>
     <string name="export">Экспорт</string>
-    <string name="onboarding_privacy">- Trail Sense уважает вашу конфиденциальность, и данные о местоположении никогда не покидают ваше устройство
-\n
-\n- Trail Sense никогда не потребует разрешения в Интернете
-\n
-\n- Просмотрите [Политику конфиденциальности](https://kylecorry.com/Trail-Sense/privacy_policy.html) (откроется в браузере вашего телефона)
-\n
-\n- Некоторые функции Trail Sense требуют доступа к вашему местоположению
-\n
-\n- Предоставление разрешения на местоположение позволит использовать следующие функции:
-\n
-\n- Следование к ориентирам
-\n
-\n- Повышенная точность прогнозов (доступно не на всех устройствах)
-\n
-\n- История маршрута
-\n
-\n- Время солнца и луны для вашего текущего местоположения (для оповещения а заходе может потребоватся фоновое местоположение)
-\n
-\n- Если вы решите не предоставлять разрешение на определение местоположения, вы можете вручную ввести местоположение в меню «Настройки» &gt; «Датчики» &gt; «Калибровка GPS» в Trail Sense.
-\n
-\n- После нажатия кнопки «Продолжить» вам будет предложено предоставить разрешения на местоположение. Отказ от этого разрешения не позволит Trail Sense получить доступ к вашему местоположению, поэтому рекомендуется вводить местоположение вручную.</string>
-    <string name="onboarding_user_guide">Научитесь как использовать функции Trail Sense с помощью руководства пользователя. Доступно в нижней части вкладки Инструменты. \n \nСкоро появятся другие руководства.</string>
+    <string name="onboarding_user_guide">Научитесь как использовать функции Topo с помощью руководства пользователя. Доступно в нижней части вкладки Инструменты. \n \nСкоро появятся другие руководства.</string>
     <string name="privacy_and_location">Конфиденциальность и местоположение</string>
     <string name="cirrocumulus">Перисто-кучевые</string>
     <string name="unit_inches_abbreviation">д</string>
@@ -606,8 +584,8 @@
     <string name="pref_auto_low_power_title">Автоматическое энергосбережение</string>
     <string name="pref_auto_low_power_summary">Когда батарея разряжена</string>
     <string name="pref_flashlight_toggle_with_volume_title">Переключение с помощью кнопок громкости</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Пока Trail Sense открыт</string>
-    <string name="pref_tiles_enabled_summary">Может помешать приложениям для экономии заряда батареи полностью остановить Trail Sense</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Пока Topo открыт</string>
+    <string name="pref_tiles_enabled_summary">Может помешать приложениям для экономии заряда батареи полностью остановить Topo</string>
     <string name="pref_tiles_enabled_title">Системные плитки</string>
     <string name="location_not_mocked">Использование фактического местоположения</string>
     <string name="location_mocked">Использование фиктивного местоположения</string>
@@ -630,12 +608,12 @@
 \n### Разрешение
 \n%4$s</string>
     <string name="gps_unavailable_resolution">Включите определение местоположения или измените источник местоположения на \"Только устройство\" или \"Высокая точность\"</string>
-    <string name="battery_restricted_resolution">Установите Trail Sense как НЕ оптимизированный</string>
+    <string name="battery_restricted_resolution">Установите Topo как НЕ оптимизированный</string>
     <string name="power_saving_mode_resolution">Отключите режим энергосбережения</string>
     <string name="location_override_not_set_resolution">Установите переопределение местоположения в настройках</string>
     <string name="location_override_resolution">Включите автоматическую настройку местоположения в настройках.</string>
     <string name="elevation_override_resolution">Включите автоматическую калибровку в настройках.</string>
-    <string name="unblock_notification_channel">Разблокировать уведомления %s для Trail Sense</string>
+    <string name="unblock_notification_channel">Разблокировать уведомления %s для Topo</string>
     <string name="get_gps_signal">Выйдите на улицу с беспрепятственным видом на небо.</string>
     <string name="activity_recognition">Распознавание активности</string>
     <string name="background_location_permission">Местоположение (разрешить постоянно)</string>
@@ -826,23 +804,6 @@
     <string name="tool_temperature_estimation_title">Оценка температуры</string>
     <string name="humidity_history">История влажности - последняя %s</string>
     <string name="tool_temperature_estimation_description">Предсказать температуру на другой высоте</string>
-    <string name="onboarding_explore">- Предназначен для походов, путешествий, кемпинга и геокэшинга
-\n
-\n- Размечайте ориентиры и ориентируйтесь по ним
-\n
-\n- Следуйте за путями
-\n
-\n- Возвращайтесь по своим шагам с помощью функции истории маршрута
-\n
-\n- Планируйте, что взять с собой
-\n
-\n- Будьте готовы к закату Солнца
-\n
-\n- Предсказывайте погоду
-\n
-\n- Используйте свой телефон в качестве фонарика
-\n
-\n- И многое другое!</string>
     <string name="weather_storm">Буря</string>
     <string name="soon">Скоро</string>
     <string name="explore">Изучить</string>
@@ -877,9 +838,9 @@
     <string name="bearing">Пеленг</string>
     <string name="exporting_map">Экспорт карты</string>
     <string name="map_exported">Карта экспортирована</string>
-    <string name="allow_ignore_battery_restrictions_instructions">Снятие ограничений на использование батареи для Trail Sense может повысить точность.
+    <string name="allow_ignore_battery_restrictions_instructions">Снятие ограничений на использование батареи для Topo может повысить точность.
 \n
-\nНа большинстве устройств нажмите \"%s\", затем переключитесь на все приложения и отключите оптимизацию батареи для Trail Sense.
+\nНа большинстве устройств нажмите \"%s\", затем переключитесь на все приложения и отключите оптимизацию батареи для Topo.
 \n
 \nПосетите [Don\'t kill my app](https://dontkillmyapp.com/) для получения инструкций для конкретного устройства.</string>
     <string name="file">Файл</string>

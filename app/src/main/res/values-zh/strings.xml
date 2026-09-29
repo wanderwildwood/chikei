@@ -68,7 +68,7 @@
     <string name="pref_ruler_calibration_title">刻度尺比例</string>
     <string name="pref_ruler_calibration_summary">"校准方式：
 \n-  设置该值为1
-\n-  用标准刻度尺测量，观察在标准刻度尺上的一个单位相当于 Trail Sense 刻度尺上的多少个单位
+\n-  用标准刻度尺测量，观察在标准刻度尺上的一个单位相当于 Topo 刻度尺上的多少个单位
 \n-  在此处填写测量的值。"</string>
     <string name="pref_compass_sensor_title">指南针</string>
     <string name="sensors">传感器</string>
@@ -124,7 +124,6 @@
     <string name="direction_north">北</string>
     <string name="duration_minute_format">%d 分钟</string>
     <string name="duration_hour_format">%d 小时</string>
-    <string name="access_background_location_rationale">Trail Sense 在后台使用位置信息，即使当应用关闭或未使用时也是如此。后台位置访问用于天气监测器海平面气压校正、backtrack、小组件更新以及提供更精确的日出/日落警报。[查看隐私权条款](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="access_background_location">更新定位设置</string>
     <string name="copied_to_clipboard_toast">已复制到剪贴板</string>
     <string name="tools">工具</string>
@@ -216,9 +215,9 @@
     <string name="no_group">无群组</string>
     <string name="group">群组</string>
     <string name="delete_beacon_group_message">%s 及其所有信标都将被删除。</string>
-    <string name="tool_user_guide_summary">一份如何使用 Trail Sense 的指南</string>
+    <string name="tool_user_guide_summary">一份如何使用 Topo 的指南</string>
     <string name="tool_user_guide_title">使用指南</string>
-    <string name="error_occurred_message">Trail Sense 出现了错误。请给开发者发邮件，以便修复这个问题。</string>
+    <string name="error_occurred_message">Topo 出现了错误。请给开发者发邮件，以便修复这个问题。</string>
     <string name="error_occurred">发生一个错误</string>
     <string name="pref_email_title">给开发者发邮件</string>
     <string name="pref_github_title">GitHub</string>
@@ -361,28 +360,7 @@
     <string name="clouds">云</string>
     <string name="unit_inches_abbreviation">英寸</string>
     <string name="unit_centimeters_abbreviation">厘米</string>
-    <string name="onboarding_privacy">- Trail Sense 尊重你的隐私，位置数据永远不会在未经过允许的情况下，通过任何方式泄露
-\n
-\n- Trail Sense 永远不需要联网权限
-\n
-\n- 查看隐私政策 [隐私政策](https://kylecorry.com/Trail-Sense/privacy_policy.html) (在你的手机浏览器中打开)
-\n
-\n- Trail Sense 的一些功能需要访问你的位置
-\n
-\n- 授予位置权限将允许使用以下特性:
-\n
-\n\t- 导航到信标
-\n
-\n\t- 提高预测精度(需要后台位置，不是所有设备上都有)
-\n
-\n\t- Backtrack(路径回溯) (需要后台位置)
-\n
-\n\t- 当前位置的太阳和月亮时间
-\n
-\n- 如果选择不授予位置权限，可以在 Trail Sense 的设置 &gt; GPS 校准菜单中手动输入一个位置 。
-\n
-\n- 单击“继续”后，系统将提示您授予位置和后台位置权限。拒绝这些权限将阻止 Trail Sense 访问您的位置，所以建议使用手动输入位置。</string>
-    <string name="onboarding_user_guide">通过用户指南学习如何使用 Trail Sense 的功能。可以在“工具”选项卡找到。</string>
+    <string name="onboarding_user_guide">通过用户指南学习如何使用 Topo 的功能。可以在“工具”选项卡找到。</string>
     <string name="privacy_and_location">隐私和位置</string>
     <string name="import_btn">导入</string>
     <string name="export">导出</string>
@@ -515,7 +493,7 @@
     </plurals>
     <string name="pref_backtrack_history_days_title">Backtrack 历史</string>
     <string name="units">单位</string>
-    <string name="pref_tiles_enabled_summary">可能会阻止省电程序彻底终止 Trail Sense</string>
+    <string name="pref_tiles_enabled_summary">可能会阻止省电程序彻底终止 Topo</string>
     <string name="pref_tiles_enabled_title">系统磁贴</string>
     <string name="location_not_mocked">使用实际位置</string>
     <string name="location_mocked">使用模拟位置</string>
@@ -523,7 +501,7 @@
     <string name="privacy">隐私</string>
     <string name="pref_privacy_screenshot_protection_title">防止截屏</string>
     <string name="pref_flashlight_toggle_with_volume_title">用音量键切换</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">当 Trail Sense 开启时</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">当 Topo 开启时</string>
     <string name="unit_yards">码</string>
     <string name="yards_format">%s码</string>
     <string name="find_next_occurrence">查找下一次出现</string>
@@ -609,12 +587,12 @@
 \n### 解决方案
 \n%4$s</string>
     <string name="gps_unavailable_resolution">启用定位功能，或将您的位置源更改为“仅设备”或“高精度”</string>
-    <string name="battery_restricted_resolution">将 Trail Sense 设置为不优化</string>
+    <string name="battery_restricted_resolution">将 Topo 设置为不优化</string>
     <string name="power_saving_mode_resolution">禁用省电模式</string>
     <string name="location_override_not_set_resolution">在设置中设定位置覆盖</string>
     <string name="location_override_resolution">在设置中启用自动调整位置。</string>
     <string name="elevation_override_resolution">在设置中启用自动校准。</string>
-    <string name="unblock_notification_channel">取消屏蔽 Trail Sense 的 %s 通知</string>
+    <string name="unblock_notification_channel">取消屏蔽 Topo 的 %s 通知</string>
     <string name="get_gps_signal">走到无遮挡的天空下。</string>
     <string name="activity_recognition">活动识别</string>
     <string name="background_location_permission">位置（始终允许）</string>
@@ -798,23 +776,6 @@
     <string name="distance_alert">距离提醒</string>
     <string name="remove_distance_alert">删除距离提醒（%s）？</string>
     <string name="distance_alert_distance_reached">你已抵达 %s</string>
-    <string name="onboarding_explore">- 为徒步旅行、背包旅行、露营和地理寻宝而设计
-\n
-\n- 放置信标并导航至它们
-\n
-\n- 跟随路径
-\n
-\n- 记录走过的路，并沿路返回
-\n
-\n- 计划要打包的物品
-\n
-\n- 太阳落山前收到提醒
-\n
-\n- 预测天气
-\n
-\n- 将手机用作多功能手电筒
-\n
-\n-以及更多其它功能！</string>
     <string name="explore">探索</string>
     <string name="off">关闭</string>
     <string name="save">保存</string>
@@ -840,9 +801,9 @@
     <string name="diamond">菱形</string>
     <string name="error">错误</string>
     <string name="warning">警告</string>
-    <string name="allow_ignore_battery_restrictions_instructions">去除对 Trail Sense 的电池限制可能会改善精度。
+    <string name="allow_ignore_battery_restrictions_instructions">去除对 Topo 的电池限制可能会改善精度。
 \n
-\n在大多数设备上，单击“%s”，然后切换到所有应用程序，然后关闭 Trail Sense 的电池优化。
+\n在大多数设备上，单击“%s”，然后切换到所有应用程序，然后关闭 Topo 的电池优化。
 \n
 \n访问 [Don\'t kill my app](https://dontkillmyapp.com/) 了解不同设备操作指南。</string>
     <string name="exporting_map">导出地图</string>
@@ -980,7 +941,6 @@
     <string name="horizon">水平</string>
     <string name="no">否</string>
     <string name="map_file">文件（JPG, PNG, PDF, Mapsforge）</string>
-    <string name="photo_map_disclaimer">始终携带一份纸质地图作为备份并验证 Trail Sense 的精确度。\n\n本应用不含地图，必须单独下载或从照片校准。你可以在 https://kylecorry.com/Trail-Sense/offline_maps.html 找到要下载的地图</string>
     <string name="offline_maps_summary">使用照片作为地图</string>
     <string name="reduce_map_resolution_crop_disclaimer">裁剪地图会降低分辨率。如果你需要以高分辨率裁剪地图，请使用照片编辑器应用。我们计划将来修复此问题。</string>
     <string name="crop_map_instructions_long">将方框的角拖动到地图四角处来绘制轮廓。裁剪会降低地图分辨率。</string>
@@ -1259,7 +1219,7 @@
     <string name="no_pages">无页面</string>
     <string name="field_guide_disclaimer">此工具仅用于教育目的。识别植物、动物或蘑菇时请始终谨慎行事。一些品种可能有危险或受保护。如果您对识别结果不确定，请咨询专家。</string>
     <string name="no_results">无结果</string>
-    <string name="survival_guide_disclaimer">本指南仅提供一般教育性信息。它并非专业培训、医疗建议、诊断或治疗，也不替代急救服务、合格的医疗保健提供方、本地指南或产品/制造商操作说明。在紧急情况下，请尽快联系急救服务，并遵照其指示，不要查阅本指南而延迟寻求帮助。请勿将本指南、Trail Sense 或您的手机作为唯一的安全计划或通讯工具。不同地点和情况下的状况、风险、法律和建议做法不同；行动前请核实信息并运用自己的判断。</string>
+    <string name="survival_guide_disclaimer">本指南仅提供一般教育性信息。它并非专业培训、医疗建议、诊断或治疗，也不替代急救服务、合格的医疗保健提供方、本地指南或产品/制造商操作说明。在紧急情况下，请尽快联系急救服务，并遵照其指示，不要查阅本指南而延迟寻求帮助。请勿将本指南、Topo 或您的手机作为唯一的安全计划或通讯工具。不同地点和情况下的状况、风险、法律和建议做法不同；行动前请核实信息并运用自己的判断。</string>
     <string name="above">上</string>
     <string name="below">下</string>
     <string name="adjustment_per_click">射击调整</string>
@@ -1375,7 +1335,6 @@
     <string name="planet_neptune">海王星</string>
     <string name="load_pdf_tiles">加载 PDF 文件</string>
     <string name="load_pdf_tiles_summary">PDF 地图显示会更清晰，但可能影响性能</string>
-    <string name="map_tool_disclaimer">此工具不包含内置街道地图、卫星图像或步道数据。它不从互联网下载地图。要显示地图背景，必须用“离线地图”工具导入自己的图像。如果您需要实时或预加载的街道、卫星或步道地图，请改用专业的地图应用程序。</string>
     <string name="open_settings">打开设置</string>
     <string name="basemap">基础地图</string>
     <string name="show_gps_accuracy">显示 GPS 精度</string>
@@ -1569,11 +1528,11 @@
     <string name="map_type_trail">路径</string>
     <string name="pref_show_all_bottom_navigation_labels">显示所有底部导航标签</string>
     <string name="brightness">亮度</string>
-    <string name="pref_copy_trail_maps_title">复制地图到 Trail Sense</string>
+    <string name="pref_copy_trail_maps_title">复制地图到 Topo</string>
     <string name="pref_copy_trail_maps_summary">导入时。如关闭，将使用原始文件且必须在设备上保留原始文件。</string>
     <string name="map_external">外部</string>
     <string name="map_file_missing">文件缺失</string>
-    <string name="copy_to_trail_sense">复制到 Trail Sense</string>
+    <string name="copy_to_trail_sense">复制到 Topo</string>
     <string name="widget_icon_compatibility_mode">小组件图标兼容模式</string>
     <string name="widget_icon_compatibility_mode_summary">修复部分设备上缺少小部件图标的问题</string>
     <string name="pref_pedometer_history_days_title">步数历史</string>
@@ -1612,7 +1571,7 @@
     <string name="exporting">导出中</string>
     <string name="export_failed">无法导出</string>
     <string name="external_storage">外部存储</string>
-    <string name="external_storage_diagnostic_instructions">系统文件选择器无权访问设备上的文件。这可能阻止 Trail Sense 打开或保存所选的文件。为系统文件选择器启用“允许管理所有文件的权限”（可能叫“外部存储”）。</string>
+    <string name="external_storage_diagnostic_instructions">系统文件选择器无权访问设备上的文件。这可能阻止 Topo 打开或保存所选的文件。为系统文件选择器启用“允许管理所有文件的权限”（可能叫“外部存储”）。</string>
     <string name="use_legacy_file_picker">使用旧式的文件选择器</string>
     <string name="map_error_invalid_map_file">无效的地图文件</string>
     <string name="map_error_access_denied">地图文件访问被拒绝</string>

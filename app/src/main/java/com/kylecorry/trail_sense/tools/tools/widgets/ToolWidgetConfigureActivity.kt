@@ -22,7 +22,7 @@ class ToolWidgetConfigureActivity : AndromedaActivity() {
     private var appWidgetId: Int = AppWidgetManager.INVALID_APPWIDGET_ID
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setColorTheme(ColorTheme.System, true)
+        setColorTheme(ColorTheme.Light, false)
         enableEdgeToEdge()
 
         super.onCreate(savedInstanceState)

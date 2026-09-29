@@ -30,12 +30,12 @@
     <string name="plugin_disconnect_message">Disconnect %s?</string>
     <!--Permissions-->
     <string name="access_background_location">Update location settings</string>
-    <string name="access_background_location_rationale">Trail Sense uses location data in the background, even when the app is closed or not in use. This background access is used for the weather monitor sea level pressure calibration, backtrack, widget updates, and to provide more accurate sunrise/sunset alerts. [View Privacy Policy](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
+    <string name="access_background_location_rationale">Topo uses your location in the background, even when the app is closed, so a track keeps recording with the screen off. It stays on this phone.</string>
     <!--Disclaimer-->
     <string name="disclaimer_message_title">Disclaimer</string>
     <string name="app_disclaimer_message_title">Disclaimer / terms of service</string>
     <!--    This is a legal statement, not to be translated-->
-    <string name="disclaimer_message_content" translatable="false">Trail Sense is for informational purposes only and the developers make no warranties concerning the accuracy of the information provided by the app, which may further be limited by the quality of your device\'s sensors and the current environmental conditions.\n\nBy using this app, you understand that the developers of Trail Sense cannot and do not assume responsibility for any personal injury, death, property damage, and other dangers associated with activities where you would use Trail Sense.\n\nThe developers of Trail Sense are not responsible for how you use the data provided, and what you do with it is done at your own risk. Please do not rely upon it and always have backup plans and gear.\n\nTrail Sense is available under the MIT License</string>
+    <string name="disclaimer_message_content" translatable="false">Topo is for information only. Its maps, positions and elevations can be wrong or out of date, and your phone\'s sensors limit how accurate they are.\n\nBy using it you accept that its makers cannot take responsibility for injury, death, damage or anything else that happens where you use it. Carry a paper map and a compass, and have backup plans and gear.\n\nTopo is free software under the GNU GPL, version 3. It is built on Trail Sense by Kyle Corry, available under the MIT License.</string>
     <!--Navigation Tab - Unit Formats-->
     <string name="precise_feet_format">%s ft</string>
     <string name="precise_miles_format">%s mi</string>
@@ -247,7 +247,7 @@
     <string name="pref_ruler_calibration_title">Ruler scale</string>
     <string name="pref_ruler_calibration_summary">"Calibration protocol:
 \n-  Set this value to 1.
-\n- Measure the Trail Sense ruler value corresponding to one unit of a physical ruler.
+\n- Measure the Topo ruler value corresponding to one unit of a physical ruler.
 \n- Report the measured value here."</string>
     <string name="pref_ruler_flip_direction_title">Reverse ruler direction</string>
     <!--Settings - Sensors - Compass-->
@@ -418,9 +418,9 @@
     <string name="pref_sea_level_pressure_override" translatable="false">pref_sea_level_pressure_override</string>
     <string name="pref_max_beacon_distance" translatable="false">pref_max_beacon_distance</string>
     <string name="error_occurred">An error occurred</string>
-    <string name="error_occurred_message">Trail Sense ran into an error. Please email the developer to get this issue fixed.</string>
+    <string name="error_occurred_message">Topo ran into an error. Please email the developer to get this issue fixed.</string>
     <string name="tool_user_guide_title">User Guide</string>
-    <string name="tool_user_guide_summary">A how-to guide for using Trail Sense</string>
+    <string name="tool_user_guide_summary">A how-to guide for using Topo</string>
     <string name="delete_beacon_group_message">%s and all its beacons will be deleted.</string>
     <string name="delete_path_group_message">%s and all its paths will be deleted.</string>
     <string name="delete_map_group_message">%s and all its maps will be deleted.</string>
@@ -644,9 +644,9 @@
     <string name="cirrus_desc">High wispy clouds that look like tufts of white hair.</string>
     <string name="privacy_and_location">Privacy and location</string>
     <!--This is in Markdown format-->
-    <string name="onboarding_user_guide">Learn how to use Trail Sense\'s features with the user guide. Available on the Tools tab.</string>
+    <string name="onboarding_user_guide">Learn how to use Topo\'s features with the user guide. Available on the Tools tab.</string>
     <!--This is in Markdown format-->
-    <string name="onboarding_privacy">- Trail Sense respects your privacy and location data never leaves your device\n\n- Trail Sense will never require Internet permission\n\n- View the [privacy policy](https://kylecorry.com/Trail-Sense/privacy_policy.html) (opens in your phone\'s browser)\n\n- Some features of Trail Sense require access to your location\n\n- Granting the location permission will enable the following features:\n\n\t- Navigating to beacons\n\n\t- Improved forecast accuracy (not available on all devices)\n\n\t- Backtrack\n\n\t- Sun and moon times for your current location (sunset alerts may require background location)\n\n- If you choose to not grant the location permission, you can manually enter a location in the Settings &gt; Sensors &gt; GPS calibration menu in Trail Sense.\n\n- After clicking continue, you will be prompted to grant the location permission. Denying this permission will prevent Trail Sense from accessing your location, so a manual location entry is recommended.</string>
+    <string name="onboarding_privacy">- Your location stays on this phone. Topo has no account, no analytics and no ads\n\n- Topo uses the internet only to download maps from the map server you choose, and only when you ask\n\n- Location is used to show you on the map, record your track and navigate to places you have marked\n\n- If you would rather not grant location, you can enter a position by hand in Settings &gt; Sensors &gt; GPS\n\n- After you continue, you will be asked for the location permission</string>
     <string name="export">Export</string>
     <plurals name="beacons_imported">
         <item quantity="one">%d beacon imported</item>
@@ -855,16 +855,16 @@
     <string name="pref_battery_log_enabled" translatable="false">pref_battery_log_enabled</string>
     <string name="pref_tiles_enabled_title">System tiles</string>
     <string name="pref_tiles_battery_log">Battery log</string>
-    <string name="pref_tiles_enabled_summary">May prevent battery saver apps from completely stopping Trail Sense</string>
+    <string name="pref_tiles_enabled_summary">May prevent battery saver apps from completely stopping Topo</string>
     <string name="pref_dialog_battery_log_summary">The battery log is disabled, history and time until empty may be unavailable. You can re-enable this in settings</string>
     <string name="pref_tiles_enabled_battery_log_summary">Logs battery percentage every hour to estimate time until empty</string>
     <string name="pref_flashlight_toggle_with_volume" translatable="false">pref_flashlight_toggle_with_volume</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">While Trail Sense is open</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">While Topo is open</string>
     <string name="pref_flashlight_toggle_with_volume_title">Toggle with volume buttons</string>
     <string name="pref_low_resolution_maps" translatable="false">pref_low_resolution_maps</string>
     <string name="pref_low_resolution_pdf_maps" translatable="false">pref_low_resolution_pdf_maps</string>
     <string name="pref_copy_trail_maps_to_app_storage" translatable="false">pref_copy_trail_maps_to_app_storage</string>
-    <string name="pref_copy_trail_maps_title">Copy maps to Trail Sense</string>
+    <string name="pref_copy_trail_maps_title">Copy maps to Topo</string>
     <string name="pref_copy_trail_maps_summary">On import. When off, the original file is used and must be kept on your device.</string>
     <string name="pref_auto_low_power" translatable="false">pref_auto_low_power</string>
     <string name="pref_auto_low_power_summary">When your battery is low</string>
@@ -974,7 +974,7 @@
     <string name="diagnostics">Diagnostics</string>
     <string name="export_logs">Export logs</string>
     <string name="external_storage">External storage</string>
-    <string name="external_storage_diagnostic_instructions">The system file picker does not have permission to access files on your device. This can prevent Trail Sense from opening or saving files you choose. Enable “Allow access to manage all files” for the system file picker (it might be called "External Storage").</string>
+    <string name="external_storage_diagnostic_instructions">The system file picker does not have permission to access files on your device. This can prevent Topo from opening or saving files you choose. Enable “Allow access to manage all files” for the system file picker (it might be called "External Storage").</string>
     <string name="pref_diagnostics" translatable="false">pref_diagnostics</string>
     <string name="battery_usage_restricted">Battery usage restricted</string>
     <string name="overridden">Overridden</string>
@@ -988,12 +988,12 @@
     <string name="location_permission">Location permission</string>
     <string name="activity_recognition">Activity recognition</string>
     <string name="get_gps_signal">Go outside with an unobstructed view of the sky.</string>
-    <string name="unblock_notification_channel">Unblock %s notification for Trail Sense</string>
+    <string name="unblock_notification_channel">Unblock %s notification for Topo</string>
     <string name="elevation_override_resolution">Enable auto-calibration in settings.</string>
     <string name="location_override_resolution">Enable auto adjust location in settings.</string>
     <string name="location_override_not_set_resolution">Set the location override in settings</string>
     <string name="power_saving_mode_resolution">Disable power saving mode</string>
-    <string name="battery_restricted_resolution">Set Trail Sense as not optimized</string>
+    <string name="battery_restricted_resolution">Set Topo as not optimized</string>
     <string name="gps_unavailable_resolution">Enable location or change your location source to \'Device Only\' or \'High Accuracy\'</string>
     <!--Severity: Title   Affected tools (list of tools)  Resolution (text)-->
     <string name="diagnostic_message_template">%1$s: %2$s\n\n### Affected tools\n%3$s\n\n### Resolution\n%4$s</string>
@@ -1175,7 +1175,7 @@
     <string name="pressure_tendency">Tendency</string>
     <string name="explore">Explore</string>
     <!--This is in Markdown format-->
-    <string name="onboarding_explore">- Designed for hiking, backpacking, camping, and geocaching\n\n- Place beacons and navigate to them\n\n- Follow paths\n\n- Retrace your steps with backtrack\n\n- Plan what to pack\n\n- Be alerted before the sun sets\n\n- Predict the weather\n\n- Use your phone as a flashlight\n\n- And much more!</string>
+    <string name="onboarding_explore">- Topographic maps for the trail: contours, public land, forest roads, trails and lot lines\n\n- Download the areas you need; they work with no signal\n\n- Record your track, mark places, and navigate to them\n\n- Send a track to CalTopo or anywhere else as GPX</string>
     <string name="average_speed">Average speed</string>
     <string name="average_pace">Average pace</string>
     <string name="steps">Steps</string>
@@ -1213,7 +1213,7 @@
     <string name="error">Error</string>
     <string name="warning">Warning</string>
     <!--The OK string is what is seen as a button in the dialog containing this message. Don't kill my app is the name of the website - it is formatted as a Markdown URL.-->
-    <string name="allow_ignore_battery_restrictions_instructions">Removing battery restrictions for Trail Sense may improve accuracy.\n\nOn most devices, click \'%s\', then switch to all apps, and switch off battery optimization for Trail Sense.\n\nVisit [Don\'t kill my app](https://dontkillmyapp.com/) for device specific instructions.</string>
+    <string name="allow_ignore_battery_restrictions_instructions">Removing battery restrictions for Topo may improve accuracy.\n\nOn most devices, click \'%s\', then switch to all apps, and switch off battery optimization for Topo.\n\nVisit [Don\'t kill my app](https://dontkillmyapp.com/) for device specific instructions.</string>
     <string name="exporting_map">Exporting map</string>
     <string name="map_exported">Map exported</string>
     <string name="exported">Exported</string>
@@ -1387,7 +1387,7 @@
     <string name="astronomy_rise">Rise</string>
     <string name="horizon">Horizon</string>
     <string name="offline_maps_summary">Use photos, PDFs, and map files offline</string>
-    <string name="photo_map_disclaimer">Always carry a physical map for backup and verify the accuracy of Trail Sense.\n\nMap files are not included with Trail Sense and must be downloaded or calibrated from a photo. You can find maps to download at https://kylecorry.com/Trail-Sense/offline_maps.html</string>
+    <string name="photo_map_disclaimer">Always carry a paper map for backup, and check what Topo shows against the ground.\n\nPhoto and PDF maps are ones you import yourself, such as a photo of a trailhead board or a scanned map, lined up against two known points.</string>
     <string name="photo_map_disclaimer_shown" translatable="false">photo_map_disclaimer_shown_v2</string>
     <string name="reduce_map_resolution_crop_disclaimer">Cropping the map will still reduce resolution. If you need to crop the map at a high resolution, please use a photo editor app. There are plans to fix this in the future.</string>
     <string name="reduce_map_resolution_crop_disclaimer_shown" translatable="false">reduce_map_resolution_crop_disclaimer_shown</string>
@@ -1652,7 +1652,7 @@
     <string name="overview">Overview</string>
     <string name="references">References</string>
     <string name="crafting">Crafting</string>
-    <string name="survival_guide_disclaimer">This guide provides general educational information only. It is not professional training, medical advice, diagnosis, or treatment, and it does not replace emergency services, qualified healthcare providers, local guidance, or product/manufacturer instructions. In an emergency, contact emergency services as soon as possible, follow their instructions, and do not delay seeking help to consult this guide. Do not rely on this guide, Trail Sense, or your phone as your only safety plan or means of communication. Conditions, risks, laws, and recommended practices vary by location and situation; verify information before acting and use your own judgment.</string>
+    <string name="survival_guide_disclaimer">This guide provides general educational information only. It is not professional training, medical advice, diagnosis, or treatment, and it does not replace emergency services, qualified healthcare providers, local guidance, or product/manufacturer instructions. In an emergency, contact emergency services as soon as possible, follow their instructions, and do not delay seeking help to consult this guide. Do not rely on this guide, Topo, or your phone as your only safety plan or means of communication. Conditions, risks, laws, and recommended practices vary by location and situation; verify information before acting and use your own judgment.</string>
     <string name="field_required">%s (required)</string>
     <string name="reduce_photo_resolution">Reduce photo resolution</string>
     <string name="survival_guide_empty_desc">Search for survival topics like water, medical, food, weather, shelter, or navigation techniques.</string>
@@ -1912,7 +1912,7 @@
     <string name="planet_neptune">Neptune</string>
     <string name="load_pdf_tiles">Load PDF tiles</string>
     <string name="load_pdf_tiles_summary">PDF maps will be sharper, but performance may be impacted</string>
-    <string name="map_tool_disclaimer">This tool does not include built-in street maps, satellite imagery, or trail data. It does not download maps from the internet. To display a map background, you must import your own image using the Offline Maps tool. If you need live or preloaded street, satellite, or trail maps, use a dedicated mapping application instead.</string>
+    <string name="map_tool_disclaimer">Download maps for where you are going in Offline Maps &gt; + &gt; Download region, or import a Mapsforge map, a photo or a PDF of your own. Maps stay on the phone and work with no signal.</string>
     <string name="open_settings">Open settings</string>
     <string name="pref_map_layer_button" translatable="false">pref_map_layer_button</string>
     <string name="pref_offline_map_files" translatable="false">pref_offline_map_files</string>
@@ -2066,7 +2066,7 @@
     <string name="map_file_missing">File missing</string>
     <string name="invalid_trail_map">Invalid trail map</string>
     <string name="invalid_trail_map_message">The trail map file is invalid or missing. You may want to delete this map and import a new one.</string>
-    <string name="copy_to_trail_sense">Copy to Trail Sense</string>
+    <string name="copy_to_trail_sense">Copy to Topo</string>
     <!--%s is the name of the field guide page the sighting is being recorded for-->
     <string name="recording_sighting_for_page">Recording \'%s\' sighting</string>
     <string name="map_error_invalid_map_file">Invalid map file</string>

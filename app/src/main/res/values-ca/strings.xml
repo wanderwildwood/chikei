@@ -18,9 +18,9 @@
     <string name="no_group">Sense grup</string>
     <string name="group">Grup</string>
     <string name="delete_beacon_group_message">%s i totes les fites seran eliminades.</string>
-    <string name="tool_user_guide_summary">Una guia sobre com utilitzar Trail Sense</string>
+    <string name="tool_user_guide_summary">Una guia sobre com utilitzar Topo</string>
     <string name="tool_user_guide_title">Guia d\'usuari</string>
-    <string name="error_occurred_message">Trail Sense s\'ha trobat un error i es tancarà. Si us plau, escrigui un correu al desenvolupar amb els detalls perquè ho pugui solucionar.</string>
+    <string name="error_occurred_message">Topo s\'ha trobat un error i es tancarà. Si us plau, escrigui un correu al desenvolupar amb els detalls perquè ho pugui solucionar.</string>
     <string name="error_occurred">Hi ha hagut un error</string>
     <string name="continue_button">CONTINUAR</string>
     <string name="pref_email_title">Contactar amb el desenvolupador</string>
@@ -86,7 +86,6 @@
         <item quantity="other">%d fites</item>
     </plurals>
     <string name="no_beacons">Cap fita</string>
-    <string name="access_background_location_rationale">Trail Sense utilitza la ubicació en segon plà per a calibrar la pressió a nivell del mar en el monitoratge metereològic i per a proporcionar alertes més acurades sobre postes de sol. [Vegeu la política de privadesa](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="sos">SOS</string>
     <string name="turn_off">Apagar</string>
     <string name="tap_to_turn_off">Toca per apagar</string>

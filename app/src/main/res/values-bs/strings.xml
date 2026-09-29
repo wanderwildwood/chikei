@@ -45,7 +45,6 @@
     <string name="pressure_12_hours">12 sati</string>
     <string name="pressure_4_hours">4 sata</string>
     <string name="pref_pressure_history_title">Istorija pritiska</string>
-    <string name="access_background_location_rationale">Trail Sense koristi podatke o lokaciji u pozadini. Koristi se za kalibraciju pritiska na razini mora u praćenju vremena i za pružanje preciznijih upozorenja o zalasku sunca. [Pogledajte Politiku Privatnosti](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="access_background_location">Ažurirajte postavke lokacije</string>
     <string name="copied_to_clipboard_toast">Kopirano u međuspremnik</string>
     <string name="tools">Alati</string>
@@ -112,9 +111,9 @@
     <string name="pref_auto_low_power_title">Automatska ušteda energije</string>
     <string name="pref_auto_low_power_summary">Kad vam je baterija niska</string>
     <string name="pref_flashlight_toggle_with_volume_title">Prebacivanje sa zvučnim tipkama</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Dok je Trail Sense otvoren</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Dok je Topo otvoren</string>
     <string name="pref_low_power_mode_title">Režim za uštedu energije</string>
-    <string name="pref_tiles_enabled_summary">Može spriječiti aplikacije za uštedu baterije da u potpunosti zaustave Trail Sense</string>
+    <string name="pref_tiles_enabled_summary">Može spriječiti aplikacije za uštedu baterije da u potpunosti zaustave Topo</string>
     <string name="pref_tiles_enabled_title">Sistemske pločice</string>
     <string name="location_not_mocked">Upotreba stvarne lokacije</string>
     <string name="location_mocked">Upotreba lažne lokacije</string>
@@ -249,28 +248,7 @@
         <item quantity="other">Uvezeno %d svjetionika</item>
     </plurals>
     <string name="export">Izvoz</string>
-    <string name="onboarding_privacy">- Trail Sense poštuje vašu privatnost i podaci o lokaciji nikada ne napuštaju vaš uređaj
-\n
-\n- Trail Sense nikada neće trebati dozvolu interneta
-\n
-\n- Pogledajte [Politiku privatnosti] (https://kylecorry.com/Trail-Sense/privacy_policy.html) (otvara se u pregledaču vašeg telefona)
-\n
-\n- Neke funkcije Trail Sense-a zahtijevaju pristup vašoj lokaciji
-\n
-\n- Davanje dozvole za lokaciju omogućit će sljedeće značajke:
-\n
-\n\t- Navigacija do svjetionika
-\n
-\n\t- Poboljšana preciznost predviđanja prognoze (potrebna je lokacija u pozadini, nije dostupno na svim uređajima)
-\n
-\n\t- Izatrag (potrebna je lokacija u pozadini)
-\n
-\n\t- Vrijeme sunca i mjeseca za vašu trenutnu lokaciju
-\n
-\nAko odlučite da ne odobrite dozvolu za lokaciju, možete ručno unijeti lokaciju u izborniku Postavke &gt; GPS kalibracija u Trail Sense-u.
-\n
-\n- Nakon klika na nastavak, od vas će se zatražiti da dodijelite dozvole za lokaciju i lokaciju u pozadini. Odbijanje tih dozvola će spriječit Trail Sense-u da pristupi vašoj lokaciji, pa se preporučuje ručni unos lokacije.</string>
-    <string name="onboarding_user_guide">Naučite kako koristiti funkcije Trail Sensea s korisničkim vodičem. Dostupno na dnu kartice Alati. \n \nUskoro će doći još vodiča.</string>
+    <string name="onboarding_user_guide">Naučite kako koristiti funkcije Topoa s korisničkim vodičem. Dostupno na dnu kartice Alati. \n \nUskoro će doći još vodiča.</string>
     <string name="privacy_and_location">Privatnost i Lokacija</string>
     <string name="metal_detector_disclaimer">Otkriva samo magnetne metale (npr. Željezo)</string>
     <string name="cirrus_desc">Visoki oblaci koji izgledaju kao pramenovi bijele kose.</string>
@@ -357,7 +335,7 @@
     <string name="tool_ruler_title">Linijar</string>
     <string name="pref_ruler_calibration_summary">Protokol kalibracije:
 \n- Postavite ovu vrijednost na 1.
-\n- Izmjerite vrijednost linijara Trail Sense-a koja odgovara jednoj jedinici fizičkog linijara.
+\n- Izmjerite vrijednost linijara Topo-a koja odgovara jednoj jedinici fizičkog linijara.
 \n- Izmjerenu vrijednost prijavite ovdje.</string>
     <string name="precise_inches_format">%s in</string>
     <string name="precise_centimeters_format">%s cm</string>
@@ -415,9 +393,9 @@
     <string name="no_group">Bez grupe</string>
     <string name="group">Grupa</string>
     <string name="delete_beacon_group_message">%s i svi njegovi svjetionici će biti izbrisani.</string>
-    <string name="tool_user_guide_summary">Vodič kako koristiti Trail Sense</string>
+    <string name="tool_user_guide_summary">Vodič kako koristiti Topo</string>
     <string name="tool_user_guide_title">Korisnički Vodič</string>
-    <string name="error_occurred_message">Trail Sense je naišao na grešku. Pošaljite programeru da ispravi ovaj problem.</string>
+    <string name="error_occurred_message">Topo je naišao na grešku. Pošaljite programeru da ispravi ovaj problem.</string>
     <string name="error_occurred">Dogodila se greška</string>
     <string name="pref_email_title">Pošalji mejl programeru</string>
     <string name="pref_github_title">GitHub</string>
@@ -671,7 +649,7 @@
     <string name="open">Otvori</string>
     <string name="no_paths">Nema putanja</string>
     <string name="get_gps_signal">Izađite napolje sa neometanim pogledom na nebo.</string>
-    <string name="unblock_notification_channel">Deblokirajte %s obavještenje za Trail Sense</string>
+    <string name="unblock_notification_channel">Deblokirajte %s obavještenje za Topo</string>
     <string name="weather_no_change">Nema promjene</string>
     <string name="soon">Uskoro</string>
     <string name="since_time">od %s</string>
@@ -717,23 +695,6 @@
     <string name="precipitation_drizzle">Rosa</string>
     <string name="tide_table">Tablica plime i oseke</string>
     <string name="tool_temperature_estimation_description">Predvidite temperaturu na različitoj nadmorskoj visini</string>
-    <string name="onboarding_explore">- Dizajnirana za planinarenje, ruksak, kampiranje i geoprikup
-\n
-\n- Postavite svjetionike i idite do njih
-\n
-\n- Pratite staze
-\n
-\n- Vratite svoje korake unazad
-\n
-\n- Planirajte šta ćete spakovati
-\n
-\n- Budite upozoreni prije zalaska sunca
-\n
-\n- Predvidite vrijeme
-\n
-\n- Koristite svoj telefon kao baterijsku lampu
-\n
-\n- I mnogo više!</string>
     <string name="reset_distance_title">Ponovo namjestite udaljenost\?</string>
     <string name="qr_code_scanner">QR skener koda</string>
     <string name="note">Bilješka</string>
@@ -780,9 +741,9 @@
         <item quantity="other">%d plima</item>
     </plurals>
     <string name="altimeter_cache">Keš visinomjera</string>
-    <string name="allow_ignore_battery_restrictions_instructions">Uklanjanje ograničenja baterije za Trail Sense može poboljšati preciznost.
+    <string name="allow_ignore_battery_restrictions_instructions">Uklanjanje ograničenja baterije za Topo može poboljšati preciznost.
 \n
-\nNa većini uređaja kliknite na \'%s\', zatim se prebacite na sve aplikacije i isključite optimizaciju baterije za Trail Sense.
+\nNa većini uređaja kliknite na \'%s\', zatim se prebacite na sve aplikacije i isključite optimizaciju baterije za Topo.
 \n
 \nPosjetite [Don\'t kill my app](https://dontkillmyapp.com/) za upute za određeni uređaj.</string>
     <string name="map_export_error">Nije moguće izvesti mapu u odabranu datoteku</string>
@@ -806,7 +767,7 @@
     <string name="pref_default_path_style_title">Zadani stil putanje</string>
     <string name="no_resolution">Nema rezolucije</string>
     <string name="grant_permission">Dajte %s dozvolu</string>
-    <string name="battery_restricted_resolution">Podesite Trail Sense na Ne Optimizovanu postavku</string>
+    <string name="battery_restricted_resolution">Podesite Topo na Ne Optimizovanu postavku</string>
     <string name="gps_unavailable_resolution">Omogućite lokaciju ili promijenite izvor lokacije na Samo Uređaj ili Visoka Preciznost</string>
     <string name="lightning_dangerously_close">Munja je opasno blizu</string>
     <string name="sighting_compass">Razgledni kompas</string>

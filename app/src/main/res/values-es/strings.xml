@@ -47,7 +47,7 @@
     <string name="pref_pressure_history_title">Historial de presión</string>
     <string name="pref_monitor_weather_title">Seguimiento meteorológico</string>
     <string name="pref_ruler_calibration_title">Escala de la regla</string>
-    <string name="pref_ruler_calibration_summary">Protocolo de calibración: \n \n- Ajusta el valor a 1. \n \n- Mide el valor de la regla Trail Sense que corresponde a una unidad de una regla física. \n \n- Introduce aquí del valor medido.</string>
+    <string name="pref_ruler_calibration_summary">Protocolo de calibración: \n \n- Ajusta el valor a 1. \n \n- Mide el valor de la regla Topo que corresponde a una unidad de una regla física. \n \n- Introduce aquí del valor medido.</string>
     <string name="pref_num_visible_beacons_title">Balizas cercanas</string>
     <string name="pref_display_multi_beacons_summary">Mostrar balizas más cercanas en la brújula</string>
     <string name="pref_monitor_weather_summary">"En segundo plano"</string>
@@ -122,7 +122,6 @@
     <string name="precise_meters_format">%s m</string>
     <string name="precise_miles_format">%s mill</string>
     <string name="precise_feet_format">%s pies</string>
-    <string name="access_background_location_rationale">Trail Sense usa datos de ubicación en segundo plano incluso cuando la app no se usa o está cerrada. El acceso en segundo plano se usa para la monitorización y calibración de la presión a nivel del mar, actualización de widgets, retroceder, y para proporcionar alertas más precisas sobre las salidas y puestas de sol. [Ver política de privacidad](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="access_background_location">Actualizar ajustes de ubicación</string>
     <string name="dash">-</string>
     <string name="battery_capacity_format">%s mAh</string>
@@ -174,9 +173,9 @@
     <string name="no_group">Sin grupo</string>
     <string name="group">Grupo</string>
     <string name="delete_beacon_group_message">%s y todas sus balizas se eliminarán.</string>
-    <string name="tool_user_guide_summary">Una guía sobre cómo usar Trail Sense</string>
+    <string name="tool_user_guide_summary">Una guía sobre cómo usar Topo</string>
     <string name="tool_user_guide_title">Guía de Usuario</string>
-    <string name="error_occurred_message">Trail Sense ha encontrado un error. Envíe un correo al desarrollador para solucionar este problema.</string>
+    <string name="error_occurred_message">Topo ha encontrado un error. Envíe un correo al desarrollador para solucionar este problema.</string>
     <string name="error_occurred">Ocurrió un error</string>
     <string name="pref_email_title">Email al desarrollador</string>
     <string name="pref_github_title">GitHub</string>
@@ -262,7 +261,6 @@
     <string name="thunder">Trueno</string>
     <string name="pedometer">Podómetro</string>
     <string name="import_btn">Importar</string>
-    <string name="onboarding_privacy">- Trail Sense respeta tu privacidad y los datos de localización nunca salen de tu dispositivo \n \n- Trail Sense nunca requerirá permiso de Internet \n \n- Ver la [política de privacidad](https://kylecorry.com/Trail-Sense/privacy_policy.html) (se abre en el navegador de tu teléfono) \n \n- Algunas funciones de Trail Sense requieren acceso a tu ubicación \n \n- Conceder el permiso de ubicación habilitará las siguientes funciones: \n \n\t- Navegación hacia balizas \n \n\t- Precisión del pronóstico mejorada (no disponible en todos los dispositivos) \n \n\t- Retroceder (retroceder por la ruta) \n \n\t- Horas de sol y luna para tu ubicación actual (las alertas de puesta de sol pueden requerir una ubicación) \n \n- Si decides no conceder el permiso de ubicación, puedes introducir manualmente una ubicación en el menú Configuración &gt; Sensores &gt; Calibración GPS en Trail Sense. \n \n- Tras hacer clic en Continuar, se te pedirá que concedas el permiso de ubicación. Si deniegas este permiso, Trail Sense no podrá acceder a tu ubicación, por lo que se recomienda introducirla manualmente.</string>
     <plurals name="beacons_exported">
         <item quantity="one">%d baliza exportada</item>
         <item quantity="many">%d balizas exportadas</item>
@@ -386,7 +384,7 @@
     <string name="altostratus_desc">Una nube de nivel medio que cubre el cielo. El sol apenas puede verse como una mancha brillante.</string>
     <string name="nimbostratus_desc">Nube de nivel medio de color gris oscuro que cubre el cielo. Si no llueve puede tratarse de una nube estrato.</string>
     <string name="stratocumulus_desc">Nubes bajas que parecen una sábana de bolas de algodón con pequeños huecos. El color va del blanco al gris oscuro.</string>
-    <string name="onboarding_user_guide">Aprende a usar las funciones de Trail Sense con la guía de usuario. Disponible en la pestaña de Herramientas.</string>
+    <string name="onboarding_user_guide">Aprende a usar las funciones de Topo con la guía de usuario. Disponible en la pestaña de Herramientas.</string>
     <string name="export">Exportar</string>
     <plurals name="beacons_imported">
         <item quantity="one">%d baliza importada</item>
@@ -499,7 +497,7 @@
     <string name="pref_map_url_source_title">Mapa para compartir ubicación</string>
     <string name="pint_format">%s pt</string>
     <string name="milliliters">Mililitros</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Mientras Trail Sense está abierto</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Mientras Topo está abierto</string>
     <string name="unit_yards">Yardas</string>
     <string name="ounces_volume_format">%s oz</string>
     <string name="minutes">Minutos</string>
@@ -527,7 +525,7 @@
     <string name="importing">Importando</string>
     <string name="difficulty">Dificultad</string>
     <string name="waypoint">Punto de referencia</string>
-    <string name="pref_tiles_enabled_summary">Puede evitar que las apps de ahorro de energía detengan Trail Sense por completo</string>
+    <string name="pref_tiles_enabled_summary">Puede evitar que las apps de ahorro de energía detengan Topo por completo</string>
     <string name="us_pints">Pinta USA</string>
     <string name="us_quarts">1/4 Galón USA</string>
     <string name="us_ounces_volume">Onza USA</string>
@@ -636,11 +634,11 @@
     <string name="grant_permission">Otorga el permiso %s</string>
     <string name="background_location_permission">Ubicación (Permitir todo el tiempo)</string>
     <string name="activity_recognition">Reconocimiento de actividad</string>
-    <string name="unblock_notification_channel">Desbloquear la notificación %s para Trail Sense</string>
+    <string name="unblock_notification_channel">Desbloquear la notificación %s para Topo</string>
     <string name="elevation_override_resolution">Habilita la calibración automática en la configuración.</string>
     <string name="location_override_not_set_resolution">Establecer la anulación de la ubicación en la configuración</string>
     <string name="power_saving_mode_resolution">Desactivar modo ahorro de energía</string>
-    <string name="battery_restricted_resolution">Establecer Trail Sense como no optimizado</string>
+    <string name="battery_restricted_resolution">Establecer Topo como no optimizado</string>
     <string name="gps_unavailable_resolution">Activa la localización o cambia la fuente de localización a \"Solo dispositivo\" o \"Alta precisión\"</string>
     <string name="diagnostic_message_template">%1$s: %2$s
 \n
@@ -789,7 +787,6 @@
     <string name="temperature_history">Historial de temperatura - últimas %s</string>
     <string name="explore">Explorar</string>
     <string name="file">Archivo</string>
-    <string name="onboarding_explore">- Diseñado para senderismo, backpacking, camping, y geocaching \n \n- Coloca balizas y navega hacia ellas \n \n- Sigue rutas \n \n- Vuelve sobre tus pasos con retroceder \n \n- Planea qué llevar \n \n- Recibe alertas antes de que se ponga el sol \n \n- Predice el tiempo \n \n- Usa el teléfono como linterna \n \n- ¡Y mucho más!</string>
     <string name="camera_capture">Captura</string>
     <string name="error">Error</string>
     <string name="warning">Advertencia</string>
@@ -823,7 +820,7 @@
     <string name="average_speed_backtrack">Velocidad media (Retroceder)</string>
     <string name="navigate_back_onto_path">Navegando al punto más cercano de la ruta</string>
     <string name="average_speed">Velocidad media</string>
-    <string name="allow_ignore_battery_restrictions_instructions">La eliminación de las restricciones de batería para Trail Sense puede mejorar la precisión.\n\nEn la mayoría de los dispositivos, haz clic en \'%s\', luego cambia a todas las aplicaciones y apaga la optimización de la batería para Trail Sense.\n\nVisita [Don\'t kill my app](https://dontkillmyapp.com/) para obtener instrucciones específicas del dispositivo.</string>
+    <string name="allow_ignore_battery_restrictions_instructions">La eliminación de las restricciones de batería para Topo puede mejorar la precisión.\n\nEn la mayoría de los dispositivos, haz clic en \'%s\', luego cambia a todas las aplicaciones y apaga la optimización de la batería para Topo.\n\nVisita [Don\'t kill my app](https://dontkillmyapp.com/) para obtener instrucciones específicas del dispositivo.</string>
     <string name="point">Punto</string>
     <string name="map_export_error">No se puede exportar el mapa al archivo seleccionado</string>
     <string name="point_added">Punto añadido a ruta</string>
@@ -1289,7 +1286,7 @@
     <string name="pref_navigation_lock_screen_when_open_title">Mostrar en pantalla de bloqueo mientras está abierto</string>
     <string name="caliber_format">%s cal</string>
     <string name="grains_format">%s gr</string>
-    <string name="survival_guide_disclaimer">Esta guía proporciona únicamente información educativa general. No constituye formación profesional, consejo médico, diagnóstico ni tratamiento, y no sustituye a los servicios de emergencia, a profesionales sanitarios cualificados, a las guías locales, ni a las instrucciones del fabricante del producto. En caso de emergencia, contacta con los servicios de emergencia lo antes posible, sigue sus instrucciones y no retrases la búsqueda de ayuda para consultar esta guía. No confíes en esta guía, en Trail Sense ni en el teléfono como tu único plan de seguridad o medio de comunicación. Las condiciones, los riesgos, las leyes y las prácticas recomendadas varían según el lugar y la situación; verifica la información antes de actuar y usa tu propio criterio.</string>
+    <string name="survival_guide_disclaimer">Esta guía proporciona únicamente información educativa general. No constituye formación profesional, consejo médico, diagnóstico ni tratamiento, y no sustituye a los servicios de emergencia, a profesionales sanitarios cualificados, a las guías locales, ni a las instrucciones del fabricante del producto. En caso de emergencia, contacta con los servicios de emergencia lo antes posible, sigue sus instrucciones y no retrases la búsqueda de ayuda para consultar esta guía. No confíes en esta guía, en Topo ni en el teléfono como tu único plan de seguridad o medio de comunicación. Las condiciones, los riesgos, las leyes y las prácticas recomendadas varían según el lugar y la situación; verifica la información antes de actuar y usa tu propio criterio.</string>
     <string name="survival_guide_empty_desc">Busca en temas de supervivencia como agua, medicina, alimentos, meteorología, refugios o técnicas de navegación.</string>
     <string name="signal_finder_description">Ver torres de telefonía móvil y señales cercanas.</string>
     <string name="cell_tower_disclaimer">La ubicación de las torres es aproximada a partir de OpenCelliD, Mozilla Location Service, y FCC Antenna Registrations\n\n[OpenCelliD Project](https://opencellid.org/) está bajo licencia [Creative Commons Attribution-ShareAlike 4.0 International].(https://creativecommons.org/licenses/by-sa/4.0/)</string>
@@ -1351,7 +1348,6 @@
     <string name="planet_neptune">Neptuno</string>
     <string name="load_pdf_tiles">Cargar mosaicos PDF</string>
     <string name="load_pdf_tiles_summary">Los mapas PDF serán más nítidos, pero el rendimiento puede verse afectado</string>
-    <string name="map_tool_disclaimer">Esta herramienta no incluye mapas integrados con calles, imágenes de satélite o datos de rutas. Tampoco descarga mapas desde internet. Para mostrar mapas de fondo debes importar tus propias imágenes usando la herramienta Mapas Offline. Si necesitas mapas precargados o en vivo de calles, imágenes de satélite o mapas con rutas, utiliza alguna aplicación dedicada de cartografía.</string>
     <string name="open_settings">Abrir ajustes</string>
     <string name="show_gps_accuracy">Mostrar precisión GPS</string>
     <string name="increase_exposure_at_night">Aumentar exposición por la noche</string>
@@ -1535,7 +1531,6 @@
     <string name="delete_offline_map_group_message">%s y todos sus mapas serán eliminados.</string>
     <string name="clock_source_device">Hora del dispositivo</string>
     <string name="clock_source_gps">Hora GPS</string>
-    <string name="photo_map_disclaimer">Lleva siempre un mapa físico de respaldo y verifica la precisión de Trail Sense.\n\nLos archivos de mapas no están incluidos con Trail Sense y debes descargarlos o calibrarlos a partir de una foto. Puedes encontrar mapas para descargar en https://kylecorry.com/Trail-Sense/offline_maps.html</string>
     <string name="pref_show_all_bottom_navigation_labels">Mostrar todas las etiquetas de la barra inferior</string>
     <string name="include_mapsforge_backups">Incluir mapas de recorridos en copias de seguridad</string>
     <string name="include_mapsforge_backups_summary">Los archivos (.map) de Mapsforge pueden ser grandes</string>
@@ -1548,7 +1543,7 @@
     <string name="map_type_trail">Recorrido</string>
     <string name="manage_maps">Gestionar mapas</string>
     <string name="map_type_photo">Foto</string>
-    <string name="pref_copy_trail_maps_title">Copiar mapas a Trail Sense</string>
+    <string name="pref_copy_trail_maps_title">Copiar mapas a Topo</string>
     <string name="pref_copy_trail_maps_summary">Al importar. Cuando está apagado usa el archivo original que debe estar en tu dispositivo.</string>
     <string name="pref_pedometer_history_days_title">Historial de pasos</string>
     <string name="current_session">Sesión actual</string>
@@ -1563,7 +1558,7 @@
     </plurals>
     <string name="map_external">Externo</string>
     <string name="map_file_missing">Falta el archivo</string>
-    <string name="copy_to_trail_sense">Copiar a Trail Sense</string>
+    <string name="copy_to_trail_sense">Copiar a Topo</string>
     <string name="created">Creado</string>
     <string name="draft">Borrador</string>
     <string name="recording_sighting_for_page">Registrando en avistamienos \'%s\'</string>
@@ -1613,7 +1608,7 @@
     <string name="built_in_pages">Páginas integradas</string>
     <string name="hide_field_guide_page_message">%1$s\n\nPuedes desocultar la página en los ajustes de la Guía de Campo.</string>
     <string name="pref_large_tile_cache_title">Usar caché para mosáicos de mapa grandes</string>
-    <string name="external_storage_diagnostic_instructions">El selector de archivos del sistema no tiene permiso para acceder a los archivos de tu dispositivo. Esto puede impedir que Trail Sense abra o guarde los archivos que elijas. Activa “Permitir acceso para administrar todos los archivos” para el selector de archivos del sistema (podría llamarse Almacenamiento externo).</string>
+    <string name="external_storage_diagnostic_instructions">El selector de archivos del sistema no tiene permiso para acceder a los archivos de tu dispositivo. Esto puede impedir que Topo abra o guarde los archivos que elijas. Activa “Permitir acceso para administrar todos los archivos” para el selector de archivos del sistema (podría llamarse Almacenamiento externo).</string>
     <string name="location_permission">Permiso de ubicación</string>
     <string name="location_required_for_cell_signals">El permiso de ubicación se requiere para ver la señal de las torres de telefonía</string>
     <string name="set_as_default_photo">Establece por defecto</string>

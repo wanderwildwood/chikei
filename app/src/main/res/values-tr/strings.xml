@@ -60,8 +60,7 @@
         <item quantity="other">%d işaret içeri aktarıldı</item>
     </plurals>
     <string name="export">Dışarı aktar</string>
-    <string name="onboarding_privacy">Trail Sense, gizliliğinize saygı duyar ve konum bilginiz asla aygıtınızı terk etmez. \n \n- Trail Sense, asla internet iznine ihtiyaç duymaz. \n \n- [Gizlilik ilkesi](https://kylecorry.com/Trail-Sense/privacy_policy.html)\'ni telefonunuzda görüntüleyin. \n \n- Trail Sense\'in bazı özellikleri konum izninize ihtiyaç duyar. \n \n- Trail Sense\'e konum izni vermek, aşağıdaki özellikleri devreye sokar: \n \n\t- İşaretlere gitmek \n \n\t- İyileştirilmiş hava durumu tahmini hassasiyeti (her aygıtta kullanılabilir değil) \n \n\t- Geri iz sürme \n \n\t- Geçerli konumunuz için gün ve ay vakitleri (gün batımı uyarıları arka planda konum izni gerektirebilir) \n \n- Konum izni vermemeyi seçerseniz, Trail Sense üzerinden Ayarlar &gt; Sensörler &gt; GPS ayarla menüsünden kendiniz konum girebilirsiniz. \n \n- Devam ete tıkladıktan sonra konum iznini vermeniz istenecektir. Bu iznin reddedilmesi Trail Sense\'in konumunuza erişmesini engelleyecektir, bu nedenle konumu kendiniz girmeniz tavsiye edilir.</string>
-    <string name="onboarding_user_guide">Trail Sense\'in özelliklerini nasıl kullanacağını Araçlar sekmesinde yer alan kullanım kılavuzundan öğren. \n \nDaha fazla kılavuz yolda.</string>
+    <string name="onboarding_user_guide">Topo\'in özelliklerini nasıl kullanacağını Araçlar sekmesinde yer alan kullanım kılavuzundan öğren. \n \nDaha fazla kılavuz yolda.</string>
     <string name="cirrus_desc">Beyaz saç tutamlarına benzeyen yüksek ince bulutlar.</string>
     <string name="cumulonimbus_desc">Çok uzun olan alçak kabarık bulutlar. Genellikle bir örs şekline sahiptirler ve karanlıktırlar.</string>
     <string name="stratocumulus_desc">Küçük boşluklara sahip pamuk topları gibi görünen alçak bulutlar. Renk beyazdan koyu griye kadar değişir.</string>
@@ -206,9 +205,9 @@
     <string name="tap_sun_moon_hint">Pozisyon detayları için aya veya güneşe dokunun</string>
     <string name="no_group">Grup yok</string>
     <string name="group">Grup</string>
-    <string name="tool_user_guide_summary">Trail Sense için kullanım kılavuzu</string>
+    <string name="tool_user_guide_summary">Topo için kullanım kılavuzu</string>
     <string name="tool_user_guide_title">Kullanım Kılavuzu</string>
-    <string name="error_occurred_message">Trail Sense bir hatayla karşılaştı. Bu sorunun düzeltilmesi için lütfen geliştiriciye e-posta gönderin.</string>
+    <string name="error_occurred_message">Topo bir hatayla karşılaştı. Bu sorunun düzeltilmesi için lütfen geliştiriciye e-posta gönderin.</string>
     <string name="error_occurred">Bir hata yaşandı</string>
     <string name="continue_button">DEVAM ET</string>
     <string name="pref_email_title">Geliştiriciye e-mail yolla</string>
@@ -278,7 +277,7 @@
     <string name="smoothing_summary">Yüksek değerler paraziti azaltabilir</string>
     <string name="true_north">Gerçek kuzey</string>
     <string name="pref_compass_sensor_title">Pusula</string>
-    <string name="pref_ruler_calibration_summary">Ayarlama yöntemi: \n \n- Bu değeri 1\'e ayarlayın. \n \n- Fiziksel cetvelin bir birimine denk düşen Trail Sense cetvel değerini ölçün. \n \n- Ölçülen değeri buraya yazın.</string>
+    <string name="pref_ruler_calibration_summary">Ayarlama yöntemi: \n \n- Bu değeri 1\'e ayarlayın. \n \n- Fiziksel cetvelin bir birimine denk düşen Topo cetvel değerini ölçün. \n \n- Ölçülen değeri buraya yazın.</string>
     <string name="pref_ruler_calibration_title">Cetvel ölçeği</string>
     <string name="sensors">Sensörler</string>
     <string name="temperature">Isı derecesi</string>
@@ -315,7 +314,6 @@
     <string name="moon_phase">Ayın evresi</string>
     <string name="sunset_alert_channel_title">Gün batımı alarmı</string>
     <string name="sunset_alerts">Gün batımı alarmları</string>
-    <string name="access_background_location_rationale">Trail Sense, hava durumu gözleminde deniz seviyesi basıncını ölçmek ve daha isabetli gün doğumu bilgisi sunmak için arka planda konum bilgisini kullanır. [Gizlilik Politikasına Göz Atın](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="sunset_alert_notification_text">Güneş %s\'de batacak</string>
     <string name="sunset_alert_notification_title">Güneş yakın zamanda batıyor</string>
     <string name="waxing_crescent">Küçülen hilal</string>
@@ -498,14 +496,14 @@
     <string name="pref_backtrack_history_days_title">Geri iz sürme geçmişi</string>
     <string name="roll_pitch_yaw">Boylamsal: %1$s, Yatay: %2$s, Dikey: %3$s</string>
     <string name="sensor_gyroscope">Jiroskop</string>
-    <string name="pref_tiles_enabled_summary">Şarj koruma uygulamalarının Trail Sense\'i durdurmasını önleyebilir</string>
+    <string name="pref_tiles_enabled_summary">Şarj koruma uygulamalarının Topo\'i durdurmasını önleyebilir</string>
     <string name="location_not_mocked">Gerçek konum kullanılıyor</string>
     <string name="location_mocked">Sahte konum kullanılıyor</string>
     <string name="pref_experimental_metal_direction_title">Metal yönünü göster</string>
     <string name="privacy">Gizlilik</string>
     <string name="units">Birimler</string>
     <string name="pref_privacy_screenshot_protection_title">Ekran görüntüsü alınmasını engelle</string>
-    <string name="battery_restricted_resolution">Trail Sense\'i iyileştirilmedi olarak ayarla</string>
+    <string name="battery_restricted_resolution">Topo\'i iyileştirilmedi olarak ayarla</string>
     <string name="ounces_weight_format">%s ons</string>
     <string name="ounces_volume_format">%s ons</string>
     <string name="find_next_occurrence">Sonraki tekrarı bul</string>
@@ -546,7 +544,7 @@
     <string name="location_override_not_set_resolution">Ayarlarda konumu geçersiz kılmayı ayarla</string>
     <string name="location_override_resolution">Ayarlarda konumu otomatik ayarlamayı etkinleştir.</string>
     <string name="elevation_override_resolution">Ayarlarda otomatik kalibrasyonu etkinleştir.</string>
-    <string name="unblock_notification_channel">Trail Sense için %s bildiriminin engellemesini kaldır</string>
+    <string name="unblock_notification_channel">Topo için %s bildiriminin engellemesini kaldır</string>
     <string name="get_gps_signal">Engelsiz bir gökyüzü görünümü olacak şekilde dışarı çıkın.</string>
     <string name="activity_recognition">Etkinlik algılama</string>
     <string name="background_location_permission">Konum (Her zaman izin ver)</string>
@@ -619,7 +617,7 @@
     <string name="pref_auto_low_power_title">Otomatik güç tasarrufu</string>
     <string name="pref_auto_low_power_summary">Piliniz azaldığında</string>
     <string name="pref_flashlight_toggle_with_volume_title">Ses düğmeleri ile aç/kapat</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Trail Sense açıkken</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Topo açıkken</string>
     <string name="action_inventory_clear_confirm">Tüm paketlenen miktarlar silinsin mi\?</string>
     <string name="units_mmhg">mmHg</string>
     <string name="current_format">%s mA</string>
@@ -708,23 +706,6 @@
     <string name="measure">Ölç</string>
     <string name="weather_monitor_disabled_resolution">Hava durumu ayarlarından hava durumunu izlemeyi etkinleştir</string>
     <string name="steps">Adımlar</string>
-    <string name="onboarding_explore">- Yürüyüş, sırt çantasıyla gezme, kamp yapma ve geocaching için tasarlandı
-\n
-\n- İşaretleri yerleştirin ve onlara gidin
-\n
-\n- Yolları takip edin
-\n
-\n- Geri izleme ile adımlarınızı geri takip edin
-\n
-\n- Ne paketleyeceğinizi planlayın
-\n
-\n- Güneş batmadan önce haberdar olun
-\n
-\n- Hava durumunu tahmin edin
-\n
-\n- Telefonunuzu bir el feneri olarak kullanın
-\n
-\n- Ve daha fazlası!</string>
     <string name="average_speed">Ortalama hız</string>
     <string name="distance_alert">Mesafe uyarısı</string>
     <string name="height">Yükseklik</string>
@@ -831,9 +812,9 @@
     <string name="pref_only_navigate_path_points_title">Yalnızca kayıtlı noktalara git</string>
     <string name="warning">Uyarı</string>
     <string name="error">Hata</string>
-    <string name="allow_ignore_battery_restrictions_instructions">Trail Sense için pil kısıtlamalarının kaldırılması doğruluğu artırabilir.
+    <string name="allow_ignore_battery_restrictions_instructions">Topo için pil kısıtlamalarının kaldırılması doğruluğu artırabilir.
 \n
-\nÇoğu aygıtta \'%s\' düğmesine tıklayın, ardından tüm uygulamalara geçin ve Trail Sense için pil iyileştirmesini kapatın.
+\nÇoğu aygıtta \'%s\' düğmesine tıklayın, ardından tüm uygulamalara geçin ve Topo için pil iyileştirmesini kapatın.
 \n
 \nAygıta özel talimatlar için [Uygulamamı sonlandırmayın](https://dontkillmyapp.com/) adresini ziyaret edin.</string>
     <string name="exporting_map">Harita dışa aktarılıyor</string>
@@ -1416,7 +1397,6 @@
     <string name="ungroup_alerts">Gruplandırmayı kaldır</string>
     <string name="contours">Konturlar</string>
     <string name="load_pdf_tiles">PDF döşemelerini yükle</string>
-    <string name="map_tool_disclaimer">Bu araç, işaretlerinizi, yollarınızı ve fotoğraf haritalarınızı görüntüler. Özel bir harita uygulamasının yerini almaz.</string>
     <string name="increase_exposure_at_night">Geceleri maruz kalma süresini artırın</string>
     <string name="show_constellations">Takımyıldızları göster</string>
     <string name="constellation">Takımyıldızı</string>

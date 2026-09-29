@@ -195,7 +195,7 @@
     <string name="start">開始</string>
     <string name="navigation_nearby_category">鄰近</string>
     <string name="tap_sun_moon_hint">輕觸太陽或月亮可知悉詳細位置</string>
-    <string name="error_occurred_message">Trail Sense 遇到錯誤。請向開發人員發送電子郵件以解決此問題。</string>
+    <string name="error_occurred_message">Topo 遇到錯誤。請向開發人員發送電子郵件以解決此問題。</string>
     <string name="error_occurred">發生錯誤</string>
     <string name="pref_open_source_licenses_title">許可證</string>
     <string name="pref_sunset_alert_time_title">日落警報時間</string>
@@ -229,7 +229,7 @@
     <string name="daylight">日光時間</string>
     <string name="tool_thermometer_title">溫度計</string>
     <string name="convert">轉換</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">當 Trail Sense 開啟時</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">當 Topo 開啟時</string>
     <string name="pack_sort_weight_low_to_high">重量（低至高）</string>
     <string name="unit_inches_abbreviation">英寸</string>
     <string name="volume">體積</string>
@@ -306,7 +306,7 @@
     <string name="pref_include_leading_zero_title">若時間數字不足兩位則補 0</string>
     <string name="coordinate_format_utm">通用橫軸墨卡托投影（UTM）</string>
     <string name="pref_show_temperature_in_notification_title">在通知中顯示溫度</string>
-    <string name="tool_user_guide_summary">Trail Sense 使用方法指南</string>
+    <string name="tool_user_guide_summary">Topo 使用方法指南</string>
     <string name="delete_beacon_group_message">%s 及其所有信標將會被刪除。</string>
     <string name="delete_map_group_message">%s 及其所有地圖將會被刪除。</string>
     <string name="tool_bubble_level_summary">判斷表面是否平坦</string>
@@ -315,7 +315,6 @@
     <string name="tool_cliff_height_disclaimer">僅在確保安全的情況下使用此工具，並務必檢查懸崖下方情況，以免受傷。請參閱使用者指南以了解具體操作說明。</string>
     <string name="water_boil_timer_channel_description">水在沸騰了</string>
     <string name="water_boil_timer_done_title">水已煮沸</string>
-    <string name="access_background_location_rationale">Trail Sense 會在背景使用位置資料，即使 app 已關閉或未使用亦然。此背景存取用於天氣監測器的海平面氣壓校準、足跡回溯、小工具更新，以及提供更準確的日出／日落警報。[檢視隱私權政策](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="no_gps_signal">沒有 GPS 訊號</string>
     <string name="navigate_to_nearest_cell_signal">導航至最近的手機訊號</string>
     <string name="tool_quick_action_name">工具：%s</string>
@@ -346,27 +345,6 @@
     <string name="magnetic_field_format_precise">%s uT</string>
     <string name="elevation_override_updated_toast">海拔覆寫已更新</string>
     <string name="audio_error_messsage">嘗試播放音訊時發生錯誤。</string>
-    <string name="onboarding_privacy">- Trail Sense 尊重你的隱私，位置資料永遠不會離開你的裝置
-\n
-\n- Trail Sense 永遠不會要求網路權限
-\n
-\n- 查看[隱私權政策](https://kylecorry.com/Trail-Sense/privacy_policy.html)（在手機瀏覽器中開啟）
-\n
-\n- Trail Sense 的某些功能需要存取你的位置
-\n
-\n- 授予位置權限會啟用以下功能：
-\n
-\n\t- 導航至信標
-\n
-\n\t- 提高預測準確度（並非在所有裝置上都可用）
-\n
-\n\t- 足跡回溯
-\n
-\n\t- 你目前位置的太陽和月亮時間（日落警報可能需要背景位置）
-\n
-\n- 如果你選擇不授予位置權限，你可以在 Trail Sense 的「設定」&gt;「感測器」&gt;「GPS 校正」選單中手動輸入位置。
-\n
-\n- 點選繼續後，系統會提示你授予位置權限。拒絕此權限將阻止 Trail Sense 存取你的位置，因此建議手動輸入位置。</string>
     <string name="backup_disclaimer">將會建立一個包含所有目前資料的備份檔案。它會包括設定、路線、信標、地圖等。
 \n
 \n此文件未加密。不要與你不信任的任何人分享。</string>
@@ -439,7 +417,7 @@
     <string name="notifications_blocked">通知已封鎖</string>
     <string name="sighting_compass">瞄準指南針</string>
     <string name="elevation_override_resolution">在設定中啟用自動校正。</string>
-    <string name="unblock_notification_channel">取消封鎖 Trail Sense 的 %s 通知</string>
+    <string name="unblock_notification_channel">取消封鎖 Topo 的 %s 通知</string>
     <string name="power_saving_mode_resolution">停用省電模式</string>
     <string name="solar_eclipse">日食</string>
     <string name="saving">正在儲存</string>
@@ -521,23 +499,6 @@
     <string name="reduce_map_resolution">降低地圖解像度</string>
     <string name="clinometer_measure_distance_title">目標高度</string>
     <string name="error_banners">錯誤橫幅</string>
-    <string name="onboarding_explore">- 專為遠足、背包旅行、露營和尋寶而設計
-\n
-\n- 放置信標並導航至它們
-\n
-\n- 遵循路線
-\n
-\n- 回溯你的足跡
-\n
-\n- 計劃要打包什麼
-\n
-\n- 在日落之前發出警報
-\n
-\n- 預測天氣
-\n
-\n- 將手機當作手電筒
-\n
-\n- 以及更多！</string>
     <string name="file">檔案</string>
     <string name="camera_unavailable">相機不可用</string>
     <string name="high_pressure">高</string>
@@ -574,7 +535,7 @@
     <string name="gallon_format">%s 加侖</string>
     <string name="kilograms">公斤</string>
     <string name="weight_per_item">每件重量</string>
-    <string name="battery_restricted_resolution">將 Trail Sense 設定為未優化</string>
+    <string name="battery_restricted_resolution">將 Topo 設定為未優化</string>
     <string name="total">全食</string>
     <string name="lunar_eclipses">月食</string>
     <string name="astronomy_alerts">天文警報</string>
@@ -761,7 +722,7 @@
 \n
 \n- 將此值設為 1。
 \n
-\n- 測量 1 單位的物理尺子值對應的 Trail Sense 尺子值。
+\n- 測量 1 單位的物理尺子值對應的 Topo 尺子值。
 \n
 \n- 在此報告測量值。</string>
     <string name="pref_adjust_for_temperature_title">納入溫度作計算</string>
@@ -926,7 +887,7 @@
     <string name="view_in_3d">以３Ｄ檢視</string>
     <string name="locate">定位</string>
     <string name="tool_turn_back">折返</string>
-    <string name="allow_ignore_battery_restrictions_instructions">移除 Trail Sense 的電池限制可能會提高準確度。 \n \n在大多數裝置上，按一下「%s」，然後切換到所有應用程式，並關閉 Trail Sense 的電池優化。 \n \n請瀏覽[不要終止我的應用程式（英文）](https://dontkillmyapp.com/) 以取得特定裝置的說明。</string>
+    <string name="allow_ignore_battery_restrictions_instructions">移除 Topo 的電池限制可能會提高準確度。 \n \n在大多數裝置上，按一下「%s」，然後切換到所有應用程式，並關閉 Topo 的電池優化。 \n \n請瀏覽[不要終止我的應用程式（英文）](https://dontkillmyapp.com/) 以取得特定裝置的說明。</string>
     <string name="weather_clear">天晴</string>
     <string name="step_length_walk">沿直線行走，當你完成後按下停止</string>
     <string name="point_added">點已增加至路線</string>
@@ -945,7 +906,7 @@
     <string name="path_slope_moderate">中等</string>
     <string name="cirrocumulus_desc">高空雲層由小點組成波浪狀，看起來幾乎是扁平的。</string>
     <string name="nimbostratus_desc">中層雲、呈深灰色、覆蓋天空。如果沒有下雨，它可能是層雲。</string>
-    <string name="onboarding_user_guide">請參閱使用者指南，了解如何使用 Trail Sense 的各項功能。使用者指南位於「工具」分頁中。</string>
+    <string name="onboarding_user_guide">請參閱使用者指南，了解如何使用 Topo 的各項功能。使用者指南位於「工具」分頁中。</string>
     <string name="autofill">自動填寫</string>
     <string name="point">點</string>
     <string name="tide_instructions">使用官方潮汐表輸入你行程期間的參考潮汐。</string>
@@ -975,7 +936,7 @@
     <string name="background">背景</string>
     <string name="local_talk">本地交談</string>
     <string name="local_messaging">本地訊息傳送</string>
-    <string name="pref_tiles_enabled_summary">可能會阻止省電應用程式完全停止 Trail Sense</string>
+    <string name="pref_tiles_enabled_summary">可能會阻止省電應用程式完全停止 Topo</string>
     <string name="no_packing_lists">沒有打包列表</string>
     <string name="point_style">點樣式</string>
     <string name="pref_tiles_enabled_battery_log_summary">每小時記錄電池電量百分比以估計耗盡的時間</string>
@@ -1277,7 +1238,7 @@
     <string name="grains">格林</string>
     <string name="cell_tower_disclaimer">訊號塔的位置是根據 OpenCelliD、Mozilla 定位服務和 FCC 天線註冊的資訊估算的。\n\n[OpenCelliD 專案](https://opencellid.org/)使用 [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/) 授權</string>
     <string name="climate_temperature_amount">溫度：%s</string>
-    <string name="survival_guide_disclaimer">本指南僅提供一般教育資訊，它並非專業培訓、醫療建議、診斷或治療，也不能取代緊急服務、合格的醫療服務提供者、在地導覽，或產品／製造商的使用說明。如遇緊急情況，請儘快聯絡緊急服務，並遵循其指示；請勿為查閱本指南而延誤求助。請勿將本指南、Trail Sense 或您的手機視為唯一的安全計畫或通訊方式。不同地點與情況的條件、風險、法律及建議做法可能有所不同；採取行動前請先確認相關資訊，並自行判斷。</string>
+    <string name="survival_guide_disclaimer">本指南僅提供一般教育資訊，它並非專業培訓、醫療建議、診斷或治療，也不能取代緊急服務、合格的醫療服務提供者、在地導覽，或產品／製造商的使用說明。如遇緊急情況，請儘快聯絡緊急服務，並遵循其指示；請勿為查閱本指南而延誤求助。請勿將本指南、Topo 或您的手機視為唯一的安全計畫或通訊方式。不同地點與情況的條件、風險、法律及建議做法可能有所不同；採取行動前請先確認相關資訊，並自行判斷。</string>
     <string name="scope">瞄準鏡</string>
     <string name="muzzle_velocity">槍口速度</string>
     <string name="speed">速度</string>
@@ -1431,7 +1392,6 @@
     <string name="battery_tip_wifi">當你不在 Wi-Fi 網路範圍內或不需要網路時將其關閉。</string>
     <string name="battery_tip_display_timeout">減少螢幕逾時時間，以防止忘記按電源按鈕。關閉螢幕常亮顯示。</string>
     <string name="digital_elevation_model_link">你可以從 %s 下載各種大小的數位海拔模型</string>
-    <string name="map_tool_disclaimer">此工具不包含內建街道地圖、衛星圖片或路線資訊，也不會從網路下載地圖。若要顯示地圖背景，你必須使用離線地圖工具匯入自己的圖片。如果你需要即時或已預先載入的街道、衛星或路線地圖，請改為使用專用地圖應用程式。</string>
     <string name="battery_tip_battery_saver">開啟省電模式來限制某些手機功能。</string>
     <string name="battery_tip_background_apps">限制不需要在背景執行的應用程式的背景活動。</string>
     <string name="battery_tip_other">關閉你的裝置、強制停止應用程式、停用或解除安裝應用程式，或停用自動更新／備份。</string>
@@ -1561,7 +1521,6 @@
     <string name="plugin_disconnect_message">斷開連接 %s？</string>
     <string name="delete_offline_map_group_message">%s 及其所有地圖將被刪除。</string>
     <string name="map_calibration_error_implausible_scale">校準比例看起來不太合理。請檢查地圖點和座標。</string>
-    <string name="photo_map_disclaimer">總是攜帶一份紙質地圖作為備用，並驗證 Trail Sense 的準確度。\n\nTrail Sense 不包含地圖檔案，必須以下載地圖或從照片進行校正。你可以在 https://kylecorry.com/Trail-Sense/offline_maps.html 找到可下載的地圖</string>
     <string name="map_layer_elevation_description">根據數位海拔模型而為海拔著色</string>
     <string name="map_layer_ruggedness_description">根據海拔變化而為地形崎嶇度著色</string>
     <string name="map_layer_hillshade_description">地形陰影以視覺化海拔變化</string>
@@ -1580,10 +1539,10 @@
     </plurals>
     <string name="bubble_level_angles">Ｘ：%1$s\nＹ：%2$s\n角度：%3$s</string>
     <string name="pref_large_tile_cache_title">使用大型地圖圖塊快取</string>
-    <string name="pref_copy_trail_maps_title">複製地圖至 Trail Sense</string>
+    <string name="pref_copy_trail_maps_title">複製地圖至 Topo</string>
     <string name="pref_copy_trail_maps_summary">匯入時。如果關閉，則會使用原始檔案，並且必須將其保留在你的裝置上。</string>
     <string name="external_storage">外部儲存</string>
-    <string name="external_storage_diagnostic_instructions">系統檔案選擇器沒有權限存取你裝置上的檔案。這可能會導致 Trail Sense 無法開啟或儲存你選擇的檔案。請為系統檔案選擇器啟用「允許存取所有檔案」（也可能稱為「外部儲存」）權限。</string>
+    <string name="external_storage_diagnostic_instructions">系統檔案選擇器沒有權限存取你裝置上的檔案。這可能會導致 Topo 無法開啟或儲存你選擇的檔案。請為系統檔案選擇器啟用「允許存取所有檔案」（也可能稱為「外部儲存」）權限。</string>
     <string name="location_permission">位置權限</string>
     <string name="created">已建立</string>
     <string name="average_pace">平均步速</string>
@@ -1615,7 +1574,7 @@
     <string name="map_file_missing">檔案缺失</string>
     <string name="invalid_trail_map">無效的路徑圖</string>
     <string name="invalid_trail_map_message">路徑圖檔案無效或缺失。建議你刪除此地圖並匯入新地圖。</string>
-    <string name="copy_to_trail_sense">複製至 Trail Sense</string>
+    <string name="copy_to_trail_sense">複製至 Topo</string>
     <string name="map_error_invalid_map_file">無效的地圖檔案</string>
     <string name="map_error_access_denied">被拒絕存取地圖檔案</string>
     <string name="map_error_unable_to_copy">無法複製地圖檔案</string>

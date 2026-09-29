@@ -59,7 +59,6 @@
     <string name="precise_kilometers_format">%s km</string>
     <string name="precise_meters_format">%s m</string>
     <string name="precise_nautical_miles_format">%s nm</string>
-    <string name="access_background_location_rationale">Trail Sense käyttää sijaintitietoja taustalla, myös kun sovellus on suljettu. Tätä taustapääsyä käytetään sääseurannassa merenpinnan tason ilmanpaineen kalibrointiin, reitintallennuksen pienoisohjelman päivittämiseen sekä tarkempien auringonnousu- ja auringonlaskuilmoitusten tarjoamiseksi. [Katso tietosuojakäytäntö](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="access_background_location">Päivitä sijainnin asetukset</string>
     <string name="copied_to_clipboard_toast">Kopioitu leikepöydälle</string>
     <string name="tools">Työkalut</string>
@@ -134,7 +133,7 @@
     <string name="smoothing_summary">Korkeat arvot saattavat vähentää kohinaa</string>
     <string name="true_north">Todellinen pohjoinen</string>
     <string name="pref_compass_sensor_title">Kompassi</string>
-    <string name="pref_ruler_calibration_summary">Kalibrointiprotokolla:\n\n- Aseta arvoksi 1.\n\n- Mittaa Trail Sense -viivoittimella mitta, joka vastaa yhtä fyysisen viivoittimen yksikköä.\n\n- Ilmoita mitattu arvo tässä.</string>
+    <string name="pref_ruler_calibration_summary">Kalibrointiprotokolla:\n\n- Aseta arvoksi 1.\n\n- Mittaa Topo -viivoittimella mitta, joka vastaa yhtä fyysisen viivoittimen yksikköä.\n\n- Ilmoita mitattu arvo tässä.</string>
     <string name="pref_ruler_calibration_title">Viivoittimen mittakaava</string>
     <string name="sensors">Anturit</string>
     <string name="temperature">Lämpötila</string>
@@ -214,7 +213,7 @@
     <string name="save">Tallenna</string>
     <string name="low_pressure_system_description">Liitetään huonoon säähän, pilvisiin taivaisiin ja lämpimämpiin lämpötiloihin.</string>
     <string name="line_style">Viivan tyyli</string>
-    <string name="unblock_notification_channel">Kumoa Trail Sensen %s-ilmoitusten esto</string>
+    <string name="unblock_notification_channel">Kumoa Topon %s-ilmoitusten esto</string>
     <string name="map_export_error">Karttaa ei voi viedä valittuun tiedostoon</string>
     <string name="activity_recognition">Toiminnan tunnistus</string>
     <string name="distance">Etäisyys</string>
@@ -235,7 +234,7 @@
     <string name="notification_channel_clock_sync_description">Ilmoitus kellon synkronoinnista GPS-aikaan</string>
     <string name="historic">Historiallinen</string>
     <string name="reset">Nollaa</string>
-    <string name="allow_ignore_battery_restrictions_instructions">Trail Sensen akun rajoitusten poistaminen voi parantaa tarkkuutta.\n\nPaina useimmissa laitteissa %s, vaihda sitten kaikkiin sovelluksiin ja poista Trail Sensen akun optimointi käytöstä.\n\nKatso laitekohtaiset ohjeet osoitteesta [Don\'t kill my app](https://dontkillmyapp.com/).</string>
+    <string name="allow_ignore_battery_restrictions_instructions">Topon akun rajoitusten poistaminen voi parantaa tarkkuutta.\n\nPaina useimmissa laitteissa %s, vaihda sitten kaikkiin sovelluksiin ja poista Topon akun optimointi käytöstä.\n\nKatso laitekohtaiset ohjeet osoitteesta [Don\'t kill my app](https://dontkillmyapp.com/).</string>
     <string name="forecasts_category">Sääennusteet</string>
     <string name="stratocumulus_desc">Kumpukerrospilvet (Stratocumulus) ovat matalalla olevia pilviä, jotka näyttävät pumpulipallopeitolta, jossa on pieniä rakoja. Niiden väri vaihtelee valkoisesta tummanharmaaseen.</string>
     <string name="error_occurred">Tapahtui virhe</string>
@@ -259,7 +258,6 @@
     <string name="path_exported">Polku viety</string>
     <string name="pref_experimental_metal_direction_title">Näytä metallin suunta</string>
     <string name="distance_alert_distance_reached">Olet saavuttanut %s</string>
-    <string name="onboarding_privacy">- Trail Sense kunnioittaa yksityisyyttäsi ja sijaintitietosi eivät koskaan poistu laitteestasi\n\n- Trail Sense ei koskaan tarvitse lupaa Internetin käyttöön\n\n- Katso [tietosuojakäytäntö](https://kylecorry.com/Trail-Sense/privacy_policy.html) (avautuu puhelimesi selaimessa)\n\n- Osa Trail Sensen ominaisuuksista vaativat pääsyn sijaintiisi\n\n- Sijaintiluvan myöntäminen mahdollistaa seuraavat ominaisuudet:\n\n\t- Navigointi tallennetuille majakoille\n\n\t- Parannettu sääennusteen tarkkuus (ei käytettävissä kaikissa laitteissa)\n\n\t- Reitintallennus\n\n\t- Aurinko- ja kuuajat nykyiselle sijainnillesi (auringonlaskuhälytykset saattavat vaatia taustasijainnin)\n\n- Jos et anna sijaintilupaa, voit syöttää manuaalisen sijainnin kohdassa Trail Sensen Asetukset &gt; Anturit &gt; GPS-kalibrointi -valikosta.\n\n- Kun napautat Jatka, sinua pyydetään myöntämään sijaintilupa. Tämän luvan kieltäminen estää Trail Senseä pääsemästä sijaintiisi, joten sijainnin manuaalinen syöttäminen on suositeltavaa.</string>
     <string name="autofill">Automaattinen täyttö</string>
     <string name="weather_cold_front">Kylmä</string>
     <string name="rotation_amount">Kierto: %s</string>
@@ -329,7 +327,7 @@
     <string name="tide_frequency_description">Korkeiden vuorovesien määrä päivässä. Useimmat vuorovedet ovat puolipäiväisiä.</string>
     <string name="height">Korkeus</string>
     <string name="on_map">Kartalla</string>
-    <string name="pref_tiles_enabled_summary">Saattaa estää virransäästösovelluksia pysäyttämästä Trail Senseä kokonaan</string>
+    <string name="pref_tiles_enabled_summary">Saattaa estää virransäästösovelluksia pysäyttämästä Topoä kokonaan</string>
     <string name="no">Ei</string>
     <string name="tide_instructions">Käytä virallista vuorovesitaulukkoa syöttääksesi vertailuvuorovedet matkasi ajalle.</string>
     <string name="saved_to_note">Tallennettu muistiinpanoon</string>
@@ -419,7 +417,7 @@
     <string name="low_power_mode_on_message">Virransäästötila päällä, jotkin ominaisuudet saattavat olla poissa käytöstä.</string>
     <string name="weather_monitoring_disabled">Säänseuranta pois käytöstä</string>
     <string name="season_winter">Talvi</string>
-    <string name="battery_restricted_resolution">Aseta Trail Sensen arvoksi Ei optimointia</string>
+    <string name="battery_restricted_resolution">Aseta Topon arvoksi Ei optimointia</string>
     <string name="dialog_leave">Poistu</string>
     <string name="allow_schedule_exact_alarms">Salli %s asettaa herätyksiä ja muistutuksia</string>
     <string name="max_temp_uncalibrated">Puhelimen maksimilämpötila (kalibroimaton)</string>
@@ -603,7 +601,6 @@
     <string name="unit_kilometers">Kilometriä</string>
     <string name="lunar_eclipse">Kuunpimennys</string>
     <string name="clear_cache">Tyhjennä välimuisti</string>
-    <string name="onboarding_explore">- Suunniteltu vaellukseen, patikointiin, retkeilyyn ja geokätköilyyn \n \n- Aseta majakoita ja navigoi niihin\n \n- Seuraa polkuja\n \n- Palaa takaisin omia jälkiäsi Reitintallennuksen avulla\n \n- Suunnittele mitä pakata \n \n- Saa ilmoitus ennen kuin aurinko laskee\n \n- Ennusta säätä\n \n- Käytä puhelintasi taskulamppuna \n \n- Ja paljon muutakin!</string>
     <string name="map_scale_verbal">Sanallinen</string>
     <string name="pref_privacy_screenshot_protection_title">Estä kuvakaappaukset</string>
     <string name="import_gpx">Tuo GPX</string>
@@ -645,16 +642,16 @@
     <string name="path">Polku</string>
     <string name="location_override_resolution">Ota sijainnin automaattinen säätäminen käyttöön asetuksissa.</string>
     <string name="tool_solar_panel_summary">Asettele aurinkopaneelit optimaalista sähköntuotantoa varten</string>
-    <string name="onboarding_user_guide">Opi käyttämään Trail Sensen ominaisuuksia käyttöoppaan avulla. Saatavilla Työkalut-välilehdellä.</string>
+    <string name="onboarding_user_guide">Opi käyttämään Topon ominaisuuksia käyttöoppaan avulla. Saatavilla Työkalut-välilehdellä.</string>
     <string name="battery_usage_allowed">Akun käyttö sallittu</string>
     <string name="no_packing_lists">Ei pakkauslistoja</string>
     <string name="pref_start_on_boot_title">Aloita laitteen käynnistyessä</string>
     <string name="step_length_walk">Kävele suoraa linjaa ja paina stop kun olet valmis</string>
     <string name="map_calibration_instructions">Valitse kaksi pistettä jotka tunnistat sekä kartalla että todellisessa maailmassa. Napauta pisteiden tarkkaa sijaintia kartalla ja syötä sitten niiden todellisen maailman koordinaatit.\n\nHyvät pisteet ovat kaukana toisistaan ja ne ovat helppo tunnistaa, kuten mm. polun alkupiste, parkkipaikka, kyltti, maamerkki, kartan ruudukon risteyskohta tai polkujen risteyskohta.\n\nJos molemmat pisteet ovat kelpoja, paina Viimeistele kalibrointi -painiketta. Jos sinulla on vain yksi piste tai haluat viimeistellä asian myöhemmin, paina Tallenna luonnos -painiketta.</string>
     <string name="unsaved_changes_message">Tekemiäsi muutoksia ei tallenneta.</string>
-    <string name="tool_user_guide_summary">Ohje Trail Sensen käyttöön</string>
+    <string name="tool_user_guide_summary">Ohje Topon käyttöön</string>
     <string name="lightning">Salama</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Kun Trail Sense on auki</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Kun Topo on auki</string>
     <string name="offline_maps_summary">Käytä valokuvaa karttana</string>
     <string name="no_permission">Lupaa ei myönnetty</string>
     <string name="time_not_set">Aikaa ei ole asetettu</string>
@@ -781,7 +778,7 @@
     <string name="privacy">Yksityisyys</string>
     <string name="battery_power_wireless">Langaton</string>
     <string name="destination">Määränpää</string>
-    <string name="error_occurred_message">Trail Sense törmäsi virheeseen. Lähetä sähköpostia kehittäjälle ongelman korjaamiseksi.</string>
+    <string name="error_occurred_message">Topo törmäsi virheeseen. Lähetä sähköpostia kehittäjälle ongelman korjaamiseksi.</string>
     <string name="pref_tiles_enabled_title">Järjestelmän laatat</string>
     <string name="restore_disclaimer">Tämä toiminto korvaa kaikki nykyiset tietosi. Varmista, että sinulla on varmuuskopio ennen kuin jatkat.\n\nValitse vain varmuuskopiotiedosto, jonka olet luonut sovelluksella %s ja johon luotat.</string>
     <string name="tool_lightning_title">Salamaniskun etäisyys</string>
@@ -1204,7 +1201,7 @@
     <string name="cell_tower_disclaimer">Mastojen sijainnit ovat likiarvioita OpenCelliD:stä, Mozillan Sijaintipalvelusta, ja FCC:n Antennirekisteristä.\n\n[OpenCelliD Project](https://opencellid.org/) on lisensoitu seuraavan lisenssin alaisena: [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/)</string>
     <string name="create_page">Luo sivu</string>
     <string name="field_guide_disclaimer">Tämä työkalu on tarkoitettu vain opetuksellisiin käyttötarkoituksiin. Ole aina varovainen tunnistaessasi kasveja, eläimiä tai sieniä. Jotkut lajit saattavat olla vaarallisia tai suojeltuja. Jos olet epävarma tunnistuksesta, kysy neuvoa ammattilaiselta.</string>
-    <string name="survival_guide_disclaimer">Tämä opas antaa vain yleisluontoista tietomateriaalia. Se ei vastaa ammattimaista opetusta, lääkinnällisiä neuvoja, lääkinnällisiä diagnooseja tai lääkinnällisiä hoitoja, eikä se korvaa hätätilannepalveluita, ammattihoitoa tai -hoitajia, paikallista opastusta tai tuotteen tai valmistajan ohjeita. Ole aina ensimmäisenä yhteydessä hätäkeskukseen hätätilanteissa, seuraa heidän antamiaan ohjeita äläkä viivästytä yhteydenottoa hätäkeskukseen lukeaksesi tätä opasta. Älä pidä tätä opasta, Trail Senseä taikka puhelintasi ainoana turvasuunnitelmanasi tai yhteydenpitovälineenäsi. Olosuhteet, riskit, lait ja suositeltavat käytännöt riippuvat sijainnistasi sekä tilanteestasi; tarkista kaikki tieto ennen sen käyttämistä ja käytä omaa harkintakykyäsi.</string>
+    <string name="survival_guide_disclaimer">Tämä opas antaa vain yleisluontoista tietomateriaalia. Se ei vastaa ammattimaista opetusta, lääkinnällisiä neuvoja, lääkinnällisiä diagnooseja tai lääkinnällisiä hoitoja, eikä se korvaa hätätilannepalveluita, ammattihoitoa tai -hoitajia, paikallista opastusta tai tuotteen tai valmistajan ohjeita. Ole aina ensimmäisenä yhteydessä hätäkeskukseen hätätilanteissa, seuraa heidän antamiaan ohjeita äläkä viivästytä yhteydenottoa hätäkeskukseen lukeaksesi tätä opasta. Älä pidä tätä opasta, Topoä taikka puhelintasi ainoana turvasuunnitelmanasi tai yhteydenpitovälineenäsi. Olosuhteet, riskit, lait ja suositeltavat käytännöt riippuvat sijainnistasi sekä tilanteestasi; tarkista kaikki tieto ennen sen käyttämistä ja käytä omaa harkintakykyäsi.</string>
     <string name="no_results">Ei tuloksia</string>
     <string name="permits">Luvat</string>
     <string name="no_permits">Ei lupia</string>
@@ -1321,7 +1318,6 @@
     <string name="planet_neptune">Neptunus</string>
     <string name="load_pdf_tiles">Lataa PDF-laatat</string>
     <string name="load_pdf_tiles_summary">PDF-kartat ovat terävämpiä, mutta saattavat vaikuttaa suorituskykyyn</string>
-    <string name="map_tool_disclaimer">Tämä työkalu ei sisällä sisäänrakennettuja katukarttoja, satelliittikuvia tai polkudataa, eikä se lataa karttoja internetistä. Näyttääksesi kartan työkalun taustalla, sinun on itse tuotava omat karttakuvasi käyttäen Offline-kartat -työkalua. Jos tarvitset reaaliaikaista tai etukäteen ladattua katu-, satelliitti- tai polkukarttaa, käytä siihen erikseen valmistettua karttasovellusta tämän työkalun sijaan.</string>
     <string name="open_settings">Avaa asetukset</string>
     <string name="basemap">Taustakartta</string>
     <string name="show_gps_accuracy">Näytä GPS-tarkkuus</string>
@@ -1501,7 +1497,6 @@
     <string name="map_calibration_error_same_image_axis">Valitse kaksi pistetta kartalta, jotka eivät ole toistensa päällä tai välittömässä läheisyydessä.</string>
     <string name="map_calibration_error_same_location">Syötä kaksi eri oikean maailman sijaintia.</string>
     <string name="map_calibration_error_implausible_scale">Kalibroinnin skaala vaikuttaa epäuskottavalta. Tarkista molemmat kartat sekä koordinaatit.</string>
-    <string name="photo_map_disclaimer">Kanna mukanasi aina fyysistä karttaa varmuuden vuoksi sekä Trail Sensen tarkkuuden varmistamiseksi.\n\nTrail Sense ei sisällä karttatiedostoja, vaan ne pitää ladata erikseen tai kalibroida kuvasta. Voit etsiä karttoja ladattavaksi osoitteesta https://kylecorry.com/Trail-Sense/offline_maps.html</string>
     <string name="humidity_must_be_between_0_and_100">Kosteuden täytyy olla välillä 0-100</string>
     <string name="target">Kohde</string>
     <string name="not_visible">Ei näkyvissä</string>
@@ -1512,7 +1507,7 @@
     <string name="map_type_photo">Kuva</string>
     <string name="manage_maps">Hallinnoi karttoja</string>
     <string name="brightness">Kirkkaus</string>
-    <string name="pref_copy_trail_maps_title">Kopio karttoja Trail Senseen</string>
+    <string name="pref_copy_trail_maps_title">Kopio karttoja Topoen</string>
     <string name="pref_copy_trail_maps_summary">Tuodessa. Kun tämä on pois päältä, käytettävänä on alkuperäinen tiedosto ja se täytyy pitää laitteellasi.</string>
     <string name="pref_show_all_bottom_navigation_labels">Näytä kaikki alarivin navigaatiomerkinnät</string>
     <string name="include_mapsforge_backups">Sisällytä reittikartat varmuuskopioissa</string>
@@ -1522,7 +1517,7 @@
     <string name="map_type_trail">Reitti</string>
     <string name="map_external">Ulkoinen</string>
     <string name="map_file_missing">Tiedosto puuttuu</string>
-    <string name="copy_to_trail_sense">Kopioi Trail Senseen</string>
+    <string name="copy_to_trail_sense">Kopioi Topoen</string>
     <string name="created">Luotu</string>
     <string name="average_pace">Keskitahti</string>
     <string name="pref_pedometer_history_days_title">Askelhistoria</string>
@@ -1561,7 +1556,7 @@
     <string name="pref_large_tile_cache_title">Käytä suurikokoista karttalaattojen välimuistia</string>
     <string name="export_logs">Vie lokit</string>
     <string name="external_storage">Ulkoinen tallennustila</string>
-    <string name="external_storage_diagnostic_instructions">Järjestelmän tiedostovalitsimella ei ole pääsyä laitteesi tiedostoihin. Tämä voi estää Trail Senseä avaamasta tai tallentamasta valitsemiasi tiedostoja. Salli \"Pääsy kaikkiin tiedostoihin\" järjestelmän tiedostovalitsimelle (sen nimi saattaa olla esim. \"Ulkoinen tallennustila\").</string>
+    <string name="external_storage_diagnostic_instructions">Järjestelmän tiedostovalitsimella ei ole pääsyä laitteesi tiedostoihin. Tämä voi estää Topoä avaamasta tai tallentamasta valitsemiasi tiedostoja. Salli \"Pääsy kaikkiin tiedostoihin\" järjestelmän tiedostovalitsimelle (sen nimi saattaa olla esim. \"Ulkoinen tallennustila\").</string>
     <string name="location_permission">Sijaintiluvat</string>
     <string name="exporting">Vienti</string>
     <string name="export_failed">Vientiä ei voitu suorittaa</string>

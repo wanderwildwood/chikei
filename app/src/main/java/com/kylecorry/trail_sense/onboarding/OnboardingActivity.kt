@@ -33,7 +33,7 @@ class OnboardingActivity : AndromedaActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setColorTheme(ColorTheme.System, true)
+        setColorTheme(ColorTheme.Light, false)
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardingBinding.inflate(layoutInflater)

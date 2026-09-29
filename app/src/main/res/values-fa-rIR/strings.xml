@@ -104,7 +104,7 @@
     <string name="cloud_precipitation_forecast_hour_range" tools:ignore="PluralsCandidate">‹ممکن است نشان دهنده بارش در %1$d تا %2$d ساعت آینده باشد.</string>
     <string name="altocumulus_desc">ابرهای پف کرده سطح متوسط که شبیه توپ های پنبه ای هستند. آنها معمولاً سفید با لکه‌های تیره‌تر در زیر هستند و می‌توانند از هم فاصله داشته باشند یا مانند ورق باشند.</string>
     <string name="pref_low_power_mode_title">حالت ذخیره انرژی</string>
-    <string name="onboarding_user_guide">نحوه استفاده از ویژگی های Trail Sense را با راهنمای کاربر بیاموزید. در پایین تب ابزارها موجود است. \n \nراهنماهای بیشتر به زودی ارائه خواهد شد.</string>
+    <string name="onboarding_user_guide">نحوه استفاده از ویژگی های Topo را با راهنمای کاربر بیاموزید. در پایین تب ابزارها موجود است. \n \nراهنماهای بیشتر به زودی ارائه خواهد شد.</string>
     <string name="cumulus_forecast" tools:ignore="PluralsCandidate">ممکن است آب و هوای مناسب را نشان دهد. اگر بلندتر شد، ممکن است نشان دهنده بارش یا رعد و برق در %d ساعت آینده باشد.</string>
     <string name="gps_stale">کهنه</string>
     <string name="no_tides">بدون جزر و مد</string>
@@ -212,7 +212,7 @@
     <string name="pack_sort_weight_high_to_low">وزن (بالا به پایین)</string>
     <string name="qr_code">کد QR</string>
     <string name="humidity">رطوبت</string>
-    <string name="unblock_notification_channel">رفع انسداد اعلان %s برای Trail Sense</string>
+    <string name="unblock_notification_channel">رفع انسداد اعلان %s برای Topo</string>
     <string name="location_override_resolution">تنظیم خودکار مکان را در تنظیمات فعال کنید.</string>
     <string name="location_override_not_set_resolution">نادیده گرفتن مکان را در تنظیمات تنظیم کنید</string>
     <string name="auto">خودکار</string>
@@ -261,7 +261,7 @@
     <string name="tool_light_meter_title">نورسنج</string>
     <string name="service_update_frequency">هر %s به روز می شود</string>
     <string name="roll_pitch_yaw">رول: %1$s، گام: %2$s، انحراف: %3$s</string>
-    <string name="pref_tiles_enabled_summary">ممکن است برنامه های صرفه جویی باتری مانع از توقف کامل Trail Sense شود</string>
+    <string name="pref_tiles_enabled_summary">ممکن است برنامه های صرفه جویی باتری مانع از توقف کامل Topo شود</string>
     <string name="quart_format">%s qt</string>
     <string name="pref_auto_low_power_title">ذخیره برق خودکار</string>
     <string name="documents">اسناد</string>
@@ -316,7 +316,7 @@
 \n
 \n ### وضوح
 \n %4$s</string>
-    <string name="battery_restricted_resolution">Trail Sense را به عنوان بهینه نشده تنظیم کنید</string>
+    <string name="battery_restricted_resolution">Topo را به عنوان بهینه نشده تنظیم کنید</string>
     <string name="peak_time">اوج</string>
     <string name="take_photo">عکس گرفتن</string>
     <string name="pref_show_nearest_tide_title">نمایش نزدیکترین جزر و مد</string>
@@ -397,7 +397,7 @@
     <string name="miles_per_hour_format">%s متر در ساعت</string>
     <string name="last_duration">آخر %s</string>
     <string name="access_background_location">بروز کردن تنظیمات مکانی</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">در حالی که Trail Sense باز است</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">در حالی که Topo باز است</string>
     <string name="pref_daily_weather_notification_title">اطلاعیه هواشناسی روزانه</string>
     <string name="distance_to">به</string>
     <string name="charging_slow">شارژ آهسته ( %s )</string>
@@ -738,9 +738,9 @@
         <item quantity="other">%d نقطه های راه حذف خواهند شد</item>
     </plurals>
     <string name="pref_center_sun_and_moon_title">خورشید/ماه را در مرکز قرار دهید</string>
-    <string name="error_occurred_message">Trail Sense با خطا مواجه شد. لطفاً برای رفع این مشکل به برنامه‌نویس ایمیل بزنید.</string>
+    <string name="error_occurred_message">Topo با خطا مواجه شد. لطفاً برای رفع این مشکل به برنامه‌نویس ایمیل بزنید.</string>
     <string name="delete_path_group_message">%s و تمام مسیرهای آن حذف خواهند شد.</string>
-    <string name="tool_user_guide_summary">راهنمای نحوه استفاده از Trail Sense</string>
+    <string name="tool_user_guide_summary">راهنمای نحوه استفاده از Topo</string>
     <string name="delete_map_group_message">%s و تمام نقشه های آن حذف خواهند شد.</string>
     <string name="tool_bubble_level_title">سطح حباب</string>
     <string name="tool_bubble_level_summary">مسطح بودن سطوح را مشخص کنید</string>
@@ -749,7 +749,6 @@
     <string name="notification_channel_clock_sync">همگام سازی ساعت</string>
     <string name="pref_backtrack_enabled_summary">سابقه موقعیت مکانی را ثبت کنید</string>
     <string name="delete_tide_prompt">جزر و مد حذف شود؟</string>
-    <string name="access_background_location_rationale">"این برنامه از داده های مکانی در پس زمینه برای کالیبراسیون فشار سطح دریا در پایش آب و هوا و برای ارائه هشدارهای غروب آفتاب دقیق تر استفاده می کند.  [مشاهده سیاست حفظ حریم خصوصی](https://kylecorry.com/Trail-Sense/privacy_policy.html)"</string>
     <string name="tool_cliff_height_disclaimer">از این ابزار فقط زمانی استفاده کنید که ایمن باشد و حتماً آنچه را که در زیر صخره است بررسی کنید تا آسیب نبینید. برای دستورالعمل ها به راهنمای کاربر مراجعه کنید.</string>
     <string name="action_inventory_clear_confirm">همه مقادیر بسته بندی شده پاک شود؟</string>
     <string name="location_input_help">درجات اعشاری (مثلاً 1.00، -2.00)
@@ -766,27 +765,6 @@
 \n
 \n OSGB (مثلاً TG 51409 13177)</string>
     <string name="cloud_fair_forecast_hours" tools:ignore="PluralsCandidate">ممکن است آب و هوای مناسب را برای %d ساعت آینده نشان دهد.</string>
-    <string name="onboarding_privacy">- Trail Sense به حریم خصوصی شما احترام می گذارد و داده های مکان هرگز دستگاه شما را ترک نمی کند
-\n
-\n- Trail Sense هرگز به مجوز اینترنت نیاز نخواهد داشت
-\n
-\n- مشاهده [خط مشی رازداری] (https://kylecorry.com/Trail-Sense/privacy_policy.html) (در مرورگر تلفن شما باز می شود)
-\n
-\n- برخی از ویژگی های Trail Sense نیاز به دسترسی به موقعیت مکانی شما دارند
-\n
-\n- اعطای مجوز مکان ویژگی های زیر را فعال می کند:
-\n
-\n- پیمایش به چراغ ها
-\n
-\n- دقت پیش‌بینی بهبود یافته (در همه دستگاه‌ها موجود نیست)
-\n
-\n- عقبگرد
-\n
-\n- زمان های خورشید و ماه برای مکان فعلی شما (هشدارهای غروب خورشید ممکن است به مکان پس زمینه نیاز داشته باشد)
-\n
-\n- اگر تصمیم به عدم اعطای مجوز مکان دارید، می توانید به صورت دستی یک مکان را در منوی تنظیمات &gt; حسگرها &gt; کالیبراسیون GPS در Trail Sense وارد کنید.
-\n
-\n- پس از کلیک بر روی ادامه، از شما خواسته می شود که مجوز مکان را اعطا کنید. رد کردن این مجوز مانع از دسترسی Trail Sense به مکان شما می شود، بنابراین ورود دستی موقعیت مکانی توصیه می شود.</string>
     <string name="always_on">همیشه روشن</string>
     <string name="battery_usage">مصرف باتری %s</string>
     <string name="low_tide">کم</string>

@@ -105,7 +105,7 @@
     <string name="fahrenheit">Degré Fahrenheit (°F)</string>
     <string name="celsius">Degré Celsius (°C)</string>
     <string name="pref_compass_sensor_title">Boussole</string>
-    <string name="pref_ruler_calibration_summary">Protocole d\'étalonnage :\n\n- Réglez cette valeur sur 1.\n\n- Mesurez la valeur de la règle Trail Sense correspondant à une unité d\'une règle physique.\n\n- Indiquez ici la valeur mesurée.</string>
+    <string name="pref_ruler_calibration_summary">Protocole d\'étalonnage :\n\n- Réglez cette valeur sur 1.\n\n- Mesurez la valeur de la règle Topo correspondant à une unité d\'une règle physique.\n\n- Indiquez ici la valeur mesurée.</string>
     <string name="pref_ruler_calibration_title">Échelle de la règle graduée</string>
     <string name="sensors">Capteurs</string>
     <string name="temperature">Unité de température</string>
@@ -158,9 +158,8 @@
     <string name="calibrate_compass_dialog_content">Faites tourner votre téléphone plusieurs fois en formant un « 8 » ou dans toutes les directions, puis cliquez sur %s lorsque vous avez terminé.</string>
     <string name="pref_adjust_for_temperature_title">Prendre en compte la température</string>
     <string name="coordinate_format_degrees_decimal_minutes">Degrés minutes décimales</string>
-    <string name="access_background_location_rationale">Trail Sense utilise les données de localisation en arrière-plan, même lorsque l\'application est fermée ou n\'est pas utilisée. Cet accès en arrière-plan sert à l\'étalonnage de la pression au niveau de la mer pour la surveillance météorologique, au retracement du parcours, à la mise à jour des widgets et à fournir des alertes plus précises concernant le lever et le coucher du soleil. [Consulter la politique de confidentialité](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="access_background_location">Mettre à jour les paramètres de localisation</string>
-    <string name="error_occurred_message">Trail Sense a rencontré une erreur. Veuillez envoyer un e-mail au développeur pour résoudre ce problème.</string>
+    <string name="error_occurred_message">Topo a rencontré une erreur. Veuillez envoyer un e-mail au développeur pour résoudre ce problème.</string>
     <string name="error_occurred">Une erreur est survenue</string>
     <string name="no_group">Aucun groupe</string>
     <string name="group">Groupe</string>
@@ -176,7 +175,7 @@
     <string name="tap_sun_moon_hint">Appuyer sur les astres pour obtenir des détails sur leur position</string>
     <string name="tool_bubble_level_summary">Déterminer si les surfaces sont planes</string>
     <string name="tool_bubble_level_title">Niveau à bulle</string>
-    <string name="tool_user_guide_summary">Un manuel pour la prise en main de Trail Sense</string>
+    <string name="tool_user_guide_summary">Un manuel pour la prise en main de Topo</string>
     <string name="tool_user_guide_title">Guide d\'utilisation</string>
     <string name="category_natural">Naturel</string>
     <string name="category_safety">Sécurité</string>
@@ -485,8 +484,8 @@
     <string name="pref_experimental_metal_direction_title">Afficher la direction du métal</string>
     <string name="location_not_mocked">Utilise la position réelle</string>
     <string name="pref_tiles_enabled_title">Tuiles système</string>
-    <string name="pref_tiles_enabled_summary">Peut empêcher des applications d’économie de batterie de forcer l’arrêt de Trail Sense</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Pendant que Trail Sense est ouvert</string>
+    <string name="pref_tiles_enabled_summary">Peut empêcher des applications d’économie de batterie de forcer l’arrêt de Topo</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Pendant que Topo est ouvert</string>
     <string name="pref_flashlight_toggle_with_volume_title">Activer avec les boutons de volume</string>
     <string name="pref_auto_low_power_summary">Quand la batterie est faible</string>
     <string name="destination_elevation">Altitude de la destination</string>
@@ -517,7 +516,7 @@
     <string name="elevation_override_resolution">Activer le calibrage automatique dans les paramètres.</string>
     <string name="battery_usage_restricted">Utilisation de la batterie bridée</string>
     <string name="power_saving_mode_resolution">Désactiver l’économiseur de batterie</string>
-    <string name="battery_restricted_resolution">Définir Trail Sense comme non optimisé</string>
+    <string name="battery_restricted_resolution">Définir Topo comme non optimisé</string>
     <string name="delete_path">Effacer chemin \?</string>
     <string name="old">Ancien</string>
     <string name="export_path_error">Erreur d’exportation du chemin</string>
@@ -633,7 +632,7 @@
     <string name="no_paths">Pas de chemins</string>
     <string name="lunar_eclipses">Éclipses lunaires</string>
     <string name="astronomy_alerts">Alertes astronomiques</string>
-    <string name="unblock_notification_channel">Débloquer les notifications %s pour Trail Sense</string>
+    <string name="unblock_notification_channel">Débloquer les notifications %s pour Topo</string>
     <string name="path_exported">Chemins exportés</string>
     <string name="season_spring">Printemps</string>
     <string name="total">Totale</string>
@@ -713,27 +712,6 @@
     <string name="cloud_precipitation_forecast_hour_range">Peut indiquer des précipitations dans les %1$d à %2$d heures à venir.</string>
     <string name="delete_path_group_message">%s et tous ses chemins seront supprimés.</string>
     <string name="cumulonimbus_desc">Nuages bas et gonflés, très élevés. Ils ont généralement une forme d\'enclume et sont sombres.</string>
-    <string name="onboarding_privacy">- Trail Sense respecte votre vie privée et les données de localisation ne quittent jamais votre appareil.
-\n
-\n- Trail Sense ne nécessitera jamais d\'autorisation Internet
-\n
-\n- Consultez la [Politique de confidentialité](https://kylecorry.com/Trail-Sense/privacy_policy.html) (s\'ouvre dans le navigateur de votre téléphone)
-\n
-\n- Certaines fonctions de Trail Sense requièrent l\'accès à votre emplacement
-\n
-\n- Accorder l\'autorisation de localisation permettra d\'activer les fonctions suivantes :
-\n
-\n\t- Navigation vers les repères
-\n
-\n\t- Amélioration de la précision des prévisions (pas disponible sur tous les appareils)
-\n
-\n\t- Retour en arrière
-\n
-\n\t- Heures du soleil et de la lune pour votre position actuelle (les alertes de coucher de soleil peuvent nécessiter une localisation en arrière-plan.)
-\n
-\n- Si vous choisissez de ne pas accorder l\'autorisation de localisation, vous pouvez saisir manuellement un emplacement dans le menu Paramètres &gt; Capteurs &gt; Calibrage GPS de Trail Sense.
-\n
-\n- Après avoir cliqué sur Continuer, vous serez invité à accorder l\'autorisation de localisation. Si vous refusez cette autorisation, Trail Sense ne pourra pas accéder à votre position. Il est donc recommandé de saisir manuellement votre position.</string>
     <string name="tool_light_meter_title">Luminomètre</string>
     <string name="icon">Icône</string>
     <string name="precipitation_snow_grains">Neige en grains</string>
@@ -744,7 +722,7 @@
     <string name="errors">Erreurs</string>
     <string name="cumulus_desc">Des nuages bas et cotonneux qui ressemblent à des boules de coton. Ils sont espacés et généralement blancs avec des zones plus sombres en dessous.</string>
     <string name="cirrus_desc">Nuages élevés et vaporeux qui ressemblent à des touffes de cheveux blancs.</string>
-    <string name="onboarding_user_guide">Découvrez comment utiliser les fonctionnalités de Trail Sense grâce au guide d\'utilisation. Disponible dans l\'onglet « Outils ».</string>
+    <string name="onboarding_user_guide">Découvrez comment utiliser les fonctionnalités de Topo grâce au guide d\'utilisation. Disponible dans l\'onglet « Outils ».</string>
     <string name="hygrometer">Hygromètre</string>
     <string name="magnetometer">Magnétomètre</string>
     <string name="lux_format">%s lx</string>
@@ -800,9 +778,9 @@
     <string name="smoothing">Lissage</string>
     <string name="samples">Exemples</string>
     <string name="historic">Historique</string>
-    <string name="allow_ignore_battery_restrictions_instructions">La suppression des restrictions de batterie pour Trail Sense peut améliorer la précision.
+    <string name="allow_ignore_battery_restrictions_instructions">La suppression des restrictions de batterie pour Topo peut améliorer la précision.
 \n
-\nSur la plupart des appareils, cliquez sur \'%s\', puis passez à toutes les applications, et désactivez l’optimisation de la batterie pour Trail Sense.
+\nSur la plupart des appareils, cliquez sur \'%s\', puis passez à toutes les applications, et désactivez l’optimisation de la batterie pour Topo.
 \n
 \nVisitez [Don’t kill my app] (https://dontkillmyapp.com/) pour obtenir des instructions spécifiques à l’appareil.</string>
     <plurals name="waypoints_deleted">
@@ -837,23 +815,6 @@
     <string name="done">Fait</string>
     <string name="altostratus_forecast">Peut indiquer des précipitations dans les %d prochaines heures.</string>
     <string name="steps">Pas</string>
-    <string name="onboarding_explore">- Prévu pour randonner, camper et le geocaching
-\n
-\n- Placer les repères et aller jusqu\'à eux
-\n
-\n- Suivre les chemins
-\n
-\n- Rebrousser chemin avec backtrack
-\n
-\n- Prévoir quoi emporter
-\n
-\n- Être alerté avant que le Soleil ne se couche
-\n
-\n- Prédire la méteo
-\n
-\n- Utiliser votre téléphone comme lampe
-\n
-\n- Et bien plus encore !</string>
     <string name="distance_alert">Distance d\'alerte</string>
     <string name="current_speed_gps">Vitesse actuelle (GPS)</string>
     <string name="navigate_back_onto_path">Navigation jusqu’au point de cheminement le plus proche</string>
@@ -1261,7 +1222,7 @@
     <string name="shelter">Refuge</string>
     <string name="overview">Aperçu</string>
     <string name="crafting">Artisanat</string>
-    <string name="survival_guide_disclaimer">Ce guide fournit uniquement des informations éducatives d\'ordre général. Il ne constitue ni une formation professionnelle, ni un avis médical, un diagnostic ou un traitement, et ne remplace pas les services d\'urgence, les professionnels de santé qualifiés, les directives locales ou les instructions du fabricant. En cas d\'urgence, contactez les services de secours dans les plus brefs délais, suivez leurs instructions et ne retardez pas l\'appel aux secours pour consulter ce guide. Ne vous fiez pas uniquement à ce guide, à Trail Sense ou à votre téléphone pour assurer votre sécurité ou communiquer. Les conditions, les risques, la réglementation et les pratiques recommandées varient selon le lieu et la situation ; vérifiez les informations avant d\'agir et faites preuve de discernement.</string>
+    <string name="survival_guide_disclaimer">Ce guide fournit uniquement des informations éducatives d\'ordre général. Il ne constitue ni une formation professionnelle, ni un avis médical, un diagnostic ou un traitement, et ne remplace pas les services d\'urgence, les professionnels de santé qualifiés, les directives locales ou les instructions du fabricant. En cas d\'urgence, contactez les services de secours dans les plus brefs délais, suivez leurs instructions et ne retardez pas l\'appel aux secours pour consulter ce guide. Ne vous fiez pas uniquement à ce guide, à Topo ou à votre téléphone pour assurer votre sécurité ou communiquer. Les conditions, les risques, la réglementation et les pratiques recommandées varient selon le lieu et la situation ; vérifiez les informations avant d\'agir et faites preuve de discernement.</string>
     <string name="field_required">%s (obligatoire)</string>
     <string name="reduce_photo_resolution">Réduire la résolution des photos</string>
     <string name="survival_guide_empty_desc">Recherchez des sujets liés à la survie, tels que l\'eau, les soins médicaux, la nourriture, la météo, les abris ou les techniques d\'orientation.</string>
@@ -1430,7 +1391,6 @@
     <string name="show_labels">Afficher les étiquettes</string>
     <string name="load_pdf_tiles">Charger les tuiles PDF</string>
     <string name="load_pdf_tiles_summary">Les cartes PDF seront plus nettes, mais les performances pourraient être affectées.</string>
-    <string name="map_tool_disclaimer">Cet outil ne comprend pas de cartes routières, d\'images satellites ou de données sur les sentiers intégrées. Il ne télécharge pas de cartes depuis Internet. Pour afficher un fond de carte, vous devez importer votre propre image à l\'aide de l\'outil Photo maps. Si vous avez besoin de cartes routières, satellites ou de sentiers en direct ou préchargées, utilisez plutôt une application cartographique dédiée.</string>
     <string name="open_settings">Ouvrir les paramètres</string>
     <string name="show_gps_accuracy">Afficher la précision du GPS</string>
     <string name="increase_exposure_at_night">Augmenter l\'exposition nocturne</string>
@@ -1584,7 +1544,6 @@
     <string name="delete_offline_map_group_message">%s et toutes ses cartes seront supprimées.</string>
     <string name="clock_source_device">Heure de l\'appareil</string>
     <string name="clock_source_gps">Heure GPS</string>
-    <string name="photo_map_disclaimer">Ayez toujours une carte papier à portée de main à titre de secours et vérifiez la précision de Trail Sense.\n\nLes fichiers cartographiques ne sont pas fournis avec Trail Sense et doivent être téléchargés ou calibrés à partir d\'une photo. Vous trouverez des cartes à télécharger sur https://kylecorry.com/Trail-Sense/offline_maps.html</string>
     <string name="pref_show_all_bottom_navigation_labels">Afficher tous les libellés de la barre de navigation inférieure</string>
     <string name="include_mapsforge_backups">Inclure les cartes des sentiers dans les sauvegardes</string>
     <string name="include_mapsforge_backups_summary">Les fichiers Mapsforge (.map) peuvent être volumineux</string>
@@ -1597,11 +1556,11 @@
     <string name="manage_maps">Gérer les cartes</string>
     <string name="map_type_photo">Photo</string>
     <string name="map_type_trail">Sentier</string>
-    <string name="pref_copy_trail_maps_title">Copier des cartes dans Trail Sense</string>
+    <string name="pref_copy_trail_maps_title">Copier des cartes dans Topo</string>
     <string name="pref_copy_trail_maps_summary">Lors de l\'importation. Lorsque cette option est désactivée, le fichier d\'origine est utilisé et doit rester sur votre appareil.</string>
     <string name="map_external">Externe</string>
     <string name="map_file_missing">Fichier manquant</string>
-    <string name="copy_to_trail_sense">Copier dans Trail Sense</string>
+    <string name="copy_to_trail_sense">Copier dans Topo</string>
     <string name="widget_icon_compatibility_mode">Mode de compatibilité des icônes de widgets</string>
     <string name="widget_icon_compatibility_mode_summary">Corrige l\'absence d\'icônes de widgets sur certains appareils</string>
     <string name="pref_pedometer_history_days_title">Historique des étapes</string>
@@ -1646,7 +1605,7 @@
     <string name="exporting">Exportation</string>
     <string name="export_failed">Impossible d\'exporter</string>
     <string name="external_storage">Stockage externe</string>
-    <string name="external_storage_diagnostic_instructions">Le sélecteur de fichiers système ne dispose pas des autorisations nécessaires pour accéder aux fichiers de votre appareil. Cela peut empêcher Trail Sense de s\'ouvrir ou d\'enregistrer les fichiers que vous sélectionnez. Activez l\'option « Autoriser l\'accès pour gérer tous les fichiers » pour le sélecteur de fichiers système (qui peut s\'intituler « Stockage externe »).</string>
+    <string name="external_storage_diagnostic_instructions">Le sélecteur de fichiers système ne dispose pas des autorisations nécessaires pour accéder aux fichiers de votre appareil. Cela peut empêcher Topo de s\'ouvrir ou d\'enregistrer les fichiers que vous sélectionnez. Activez l\'option « Autoriser l\'accès pour gérer tous les fichiers » pour le sélecteur de fichiers système (qui peut s\'intituler « Stockage externe »).</string>
     <string name="use_legacy_file_picker">Utiliser l\'ancien sélecteur de fichiers</string>
     <string name="map_error_invalid_map_file">Fichier de carte non valide</string>
     <string name="map_error_access_denied">L\'accès au fichier de carte a été refusé</string>

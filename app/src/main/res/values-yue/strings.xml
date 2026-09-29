@@ -223,7 +223,7 @@
     <string name="pref_cell_signal_refresh_cache_summary">強制載入最新嘅訊號強度</string>
     <string name="import_map">匯入地圖</string>
     <string name="sensor_gyroscope">陀螺儀</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">開住 Trail Sense 嗰陣時</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">開住 Topo 嗰陣時</string>
     <string name="pref_flashlight_toggle_with_volume_title">用大細聲掣做開關</string>
     <string name="yards_format">%s 碼</string>
     <string name="us_quarts">美制夸脫</string>
@@ -279,9 +279,9 @@
     <string name="pref_compass_sensor_title">羅經</string>
     <string name="pref_auto_declination_summary">根據您目前嘅位置</string>
     <string name="error_occurred">發生錯誤</string>
-    <string name="error_occurred_message">Trail Sense 發生錯誤。請電郵畀開發者，以便修正呢個問題。</string>
+    <string name="error_occurred_message">Topo 發生錯誤。請電郵畀開發者，以便修正呢個問題。</string>
     <string name="tool_user_guide_title">使用指南</string>
-    <string name="tool_user_guide_summary">點用 Trail Sense 嘅說明書</string>
+    <string name="tool_user_guide_summary">點用 Topo 嘅說明書</string>
     <string name="export">匯出</string>
     <string name="time_ago">%s之前</string>
     <string name="none">無</string>
@@ -510,7 +510,7 @@
     <string name="pref_sunset_alert_time_title">日落警示時間</string>
     <string name="background_location_permission">位置 (幾時都允許)</string>
     <string name="activity_recognition">活動辨識</string>
-    <string name="unblock_notification_channel">解除封鎖 Trail Sense 嘅%s通知</string>
+    <string name="unblock_notification_channel">解除封鎖 Topo 嘅%s通知</string>
     <string name="elevation_override_resolution">喺設定入面啟用自動校正。</string>
     <string name="location_override_not_set_resolution">喺設定入面設定位置推翻</string>
     <string name="power_saving_mode_resolution">撤銷維護電池安全</string>
@@ -568,7 +568,7 @@
 \n
 \n### 解救
 \n%4$s</string>
-    <string name="battery_restricted_resolution">將 Trail Sense 設定為未優化</string>
+    <string name="battery_restricted_resolution">將 Topo 設定為未優化</string>
     <string name="precipitation_none">無降水</string>
     <string name="precipitation_drizzle">毛毛雨</string>
     <string name="precipitation_snow">雪</string>
@@ -651,7 +651,6 @@
     <string name="weather_warm_front">暖鋒</string>
     <string name="map_is_not_calibrated">地圖未校正</string>
     <string name="print">列印</string>
-    <string name="access_background_location_rationale">Trail Sense 會喺幕後用到位置資料，喺氣象監測入面用嚟做海平面氣壓校正，同埋挺日落警示更加之準。[查閱私隱政策](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="tide_user_guide_recommendation">使用指南載有提供官方潮汐表嘅網站。</string>
     <string name="kilometers_per_hour_format">時速 %s 公里</string>
     <string name="miles_per_hour_format">時速 %s 英里</string>
@@ -778,27 +777,6 @@
     <string name="reset_calibration">重設校正</string>
     <string name="notifications_channel">通知 (%s)</string>
     <string name="sunset_alert_scheduled">安排好日落之前 %s發出警示</string>
-    <string name="onboarding_privacy">- Trail Sense 尊重您嘅私隱，唔會將位置資料由您部機度外流出去
-\n
-\n- Trail Sense 唔會請求互聯網權限
-\n
-\n- 查閱[私隱政策](https://kylecorry.com/Trail-Sense/privacy_policy.html) (喺您部機嘅瀏覽器開啟)
-\n
-\n- Trail Sense 有啲功能須要存取您嘅位置
-\n
-\n- 畀位置權限會啟用下列功能：
-\n
-\n\t- 定向去地標
-\n
-\n\t- 提昇預測準繩 (唔係部部機都用得)
-\n
-\n\t- 踏雪留蹤
-\n
-\n\t- 您目前位置嘅日月時間 (日落警示可能要幕後位置)
-\n
-\n- 若果您選擇唔畀位置權限，可以喺 Trail Sense 入面嘅「設定 &gt; 感應器 &gt; GPS」校正功能表，自己啪返個位置入去。
-\n
-\n- 撳一下繼續之後，會提示您去畀位置權限。唔畀呢個權限嘅話，Trail Sense 就存取唔到您嘅位置，建議改為人手輸入位置。</string>
     <string name="backtrack_no_permission">踏雪留蹤須要位置權限先至行得</string>
     <string name="lowest_point_elevation">最低點</string>
     <string name="map_scale_verbal">明述</string>
@@ -852,10 +830,10 @@
     <string name="augmented_reality_description">用您個相機鏡頭做視野，一窺就近嘅地標同日月</string>
     <string name="cumulus_forecast" tools:ignore="PluralsCandidate">可能表示天朗氣清。若果變厚，可能表示未來 %d 個鐘會降水或行雷。</string>
     <string name="cumulonimbus_forecast">可能表示跟住幾分鐘會行雷。</string>
-    <string name="onboarding_user_guide">查閱使用指南，了解點樣用 Trail Sense 嘅各種功能。撳開下低嘅架生版面就可以搵到。 \n \n更多指南會陸續推出，敬請期待。</string>
+    <string name="onboarding_user_guide">查閱使用指南，了解點樣用 Topo 嘅各種功能。撳開下低嘅架生版面就可以搵到。 \n \n更多指南會陸續推出，敬請期待。</string>
     <string name="camera_permission_denied">攞唔到相機權限，相機功能冇得用。您可以喺設定入面啟用。</string>
     <string name="backtrack_battery_warning">好密 (唔夠 15 分鐘) 一次可能會好食電</string>
-    <string name="pref_tiles_enabled_summary">或可避免慳電程式將 Trail Sense 收皮</string>
+    <string name="pref_tiles_enabled_summary">或可避免慳電程式將 Topo 收皮</string>
     <string name="strobe_warning_content">閃光燈會一眨一眨亮起閃爍燈光，對部份用家可能觸發危險。</string>
     <string name="cloud_precipitation_forecast_hour_range" tools:ignore="PluralsCandidate">可能表示未來 %1$d 至 %2$d 個鐘會降水。</string>
     <string name="direction">方位</string>
@@ -962,7 +940,7 @@
 \n
 \n- 呢度先設定做 1。
 \n
-\n- 用把尺度下，同一量度單位之下，把尺一格相當於 Trail Sense 把尺咩數值。
+\n- 用把尺度下，同一量度單位之下，把尺一格相當於 Topo 把尺咩數值。
 \n
 \n- 再喺度打返把間尺嘅讀數。</string>
     <string name="pref_forecast_sensitivity_title">預測敏感度</string>

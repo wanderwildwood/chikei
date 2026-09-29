@@ -121,7 +121,6 @@
     <string name="category_medical">Medikua</string>
     <string name="category_clothing">Arropa</string>
     <string name="category_hydration">Hidratazioa</string>
-    <string name="access_background_location_rationale">Trail Sensek kokapen datuak erabiltzen ditu atzekaldean. Eguraldiaren monitorizazioan itsas mailaren presioaren kalibraketa egiteko eta egunsenti abisu zehatzagoak emateko erabiltzen da. [Ikusi pribatutasun politika] (https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="thunder">Trumoia</string>
     <string name="lightning">Tximista</string>
     <string name="tool_clock_title">Erlojua</string>
@@ -321,7 +320,7 @@
     <string name="photo_maps">Argazkien mapak</string>
     <string name="pref_ruler_calibration_summary">Kalibrazio-protokoloa:
 \n- Balore honi 1 ezarri.
-\n- Trail Sense-eren erregelaren balioa neurtu, erregela fisiko baten unitate bati dagokiona.
+\n- Topo-eren erregelaren balioa neurtu, erregela fisiko baten unitate bati dagokiona.
 \n- Neurtutako balioa hemen jarri.</string>
     <string name="charging_fast">Azkar kargatzen (%s)</string>
     <string name="discharging_slow">Mantso deskargatzen (%s)</string>
@@ -353,7 +352,7 @@
     <string name="water_boil_timer_done_content">Zure ura edangarria da</string>
     <string name="one">1</string>
     <string name="pref_show_temperature_in_notification_title">Erakutsi tenperatura jakinarazpenean</string>
-    <string name="error_occurred_message">Trail Sense-ek errore bat aurkitu du. Mesedez, mezu bat bidali garatzaileari arazoari konponbidea aurkitzeko.</string>
+    <string name="error_occurred_message">Topo-ek errore bat aurkitu du. Mesedez, mezu bat bidali garatzaileari arazoari konponbidea aurkitzeko.</string>
     <string name="two">2</string>
     <string name="override_from_gps">Ordezkatu GPSarekin</string>
     <string name="calibrate_compass_dialog_content">Biratu zure mugikorra 8 formako patroi bat irudikatuz edo norabide guztietan behin baino gehiagotan, %s sakatu amaitzean.</string>
@@ -373,7 +372,7 @@
     <string name="pref_elevation_override_sea_level_dialog_title">Sartu presio atmosferikoa</string>
     <string name="pref_elevation_override_sea_level_dialog_msg">Oraingo presio atmosferikoa sartu hPa-etan</string>
     <string name="pref_elevation_override_sea_level_title">Ezaguna den presio atmosferikoa erabiltzen</string>
-    <string name="tool_user_guide_summary">Trail Sense-en gidaliburua</string>
+    <string name="tool_user_guide_summary">Topo-en gidaliburua</string>
     <string name="delete_beacon_group_message">%s eta bere baliza guztiak ezabatuko dira.</string>
     <string name="tap_sun_moon_hint">Sakatu eguzki edo ilargian posizioaren xehetasunetarako</string>
     <string name="action_inventory_clear_confirm">Gordetako kopuru guztiak ezabatu\?</string>

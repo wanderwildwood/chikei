@@ -16,7 +16,6 @@
     <string name="miles_per_hour_format">%s mil/jam</string>
     <string name="duration_minute_format">%d menit</string>
     <string name="copied_to_clipboard_toast">Disalin ke papan-klip</string>
-    <string name="access_background_location_rationale">Trail Sense menggunakan data lokasi di latar belakang untuk kalibrasi tekanan permukaan laut dalam pemantauan cuaca dan untuk memberikan peringatan matahari terbenam yang lebih akurat. [Lihat Kebijakan Privasi](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="duration_hour_format">%d jam</string>
     <string name="degree">%s°</string>
     <string name="gps_timeouts">Batas waktu GPS</string>
@@ -33,7 +32,7 @@
     <string name="precise_temp_f_format">%s °F</string>
     <string name="precise_temp_c_format">%s °C</string>
     <string name="no_data">Tidak ada data</string>
-    <string name="unblock_notification_channel">Buka blokir %s notifikasi untuk Trail Sense</string>
+    <string name="unblock_notification_channel">Buka blokir %s notifikasi untuk Topo</string>
     <string name="elevation_override_resolution">Aktifkan kalibrasi otomatis di pengaturan.</string>
     <string name="location_override_resolution">Aktifkan penyesuaian otomatis lokasi di pengaturan.</string>
     <string name="location_override_not_set_resolution">Atur timpaan lokasi di pengaturan</string>
@@ -224,7 +223,7 @@
     <string name="waning_gibbous">Cembung tua</string>
     <string name="pref_ruler_calibration_summary">Protokol kalibrasi:
 \n- Tetapkan nilai ini ke 1.
-\n- Ukur nilai penggaris Trail Sense yang sesuai dengan satu unit penggaris fisik.
+\n- Ukur nilai penggaris Topo yang sesuai dengan satu unit penggaris fisik.
 \n- Laporkan nilai terukur di sini.</string>
     <string name="true_north">Utara sejati</string>
     <string name="location">Lokasi</string>
@@ -266,7 +265,7 @@
     <string name="sun_nautical">Bahari</string>
     <string name="pref_email_title">Surel pengembang</string>
     <string name="tool_user_guide_title">Panduan pengguna</string>
-    <string name="tool_user_guide_summary">Panduan cara menggunakan Trail Sense</string>
+    <string name="tool_user_guide_summary">Panduan cara menggunakan Topo</string>
     <string name="group">Grup</string>
     <string name="navigation_nearby_category">Di sekitar</string>
     <string name="tool_bubble_level_title">Tingkat gelembung</string>
@@ -284,7 +283,7 @@
     <string name="pref_weather_update_frequency_title">Frekuensi pembaruan cuaca</string>
     <string name="pref_app_version_title">Versi</string>
     <string name="continue_button">LANJUTKAN</string>
-    <string name="error_occurred_message">Trail Sense mengalami kesalahan. Silakan kirim surel ke pengembang untuk memperbaiki masalah ini.</string>
+    <string name="error_occurred_message">Topo mengalami kesalahan. Silakan kirim surel ke pengembang untuk memperbaiki masalah ini.</string>
     <string name="delete_beacon_group_message">%s dan semua suar akan dihapus.</string>
     <string name="pref_max_beacon_distance_title">Jarak mercusuar terdekat</string>
     <string name="pref_display_multi_beacons_summary">Tampilkan suar terdekat di kompas</string>
@@ -527,28 +526,7 @@
     <string name="cumulus_desc">Awan rendah yang terlihat seperti bola kapas. Awan-awan ini berjarak dan biasanya berwarna putih dengan bercak-bercak yang lebih gelap di bawahnya.</string>
     <string name="cumulonimbus_desc">Awan gembung rendah yang sangat tinggi. Awan ini biasanya memiliki bentuk paron dan berwarna gelap.</string>
     <string name="cirrus_desc">Awan tipis tinggi yang terlihat seperti jumbai rambut putih.</string>
-    <string name="onboarding_user_guide">Pelajari cara menggunakan fitur Trail Sense melalui panduan pengguna. Tersedia di tab Alat.</string>
-    <string name="onboarding_privacy">- Trail Sense menghormati privasi Anda dan data lokasi tidak pernah meninggalkan perangkat Anda
-\n
-\n- Trail Sense tidak akan pernah memerlukan izin Internet
-\n
-\n- Lihat [Kebijakan Privasi](https://kylecorry.com/Trail-Sense/privacy_policy.html) (terbuka di browser ponsel Anda)
-\n
-\n- Beberapa fitur Trail Sense memerlukan akses ke lokasi Anda
-\n
-\n- Pemberian izin lokasi akan mengaktifkan fitur-fitur berikut:
-\n
-\n- Menavigasi ke suar
-\n
-\n- Peningkatan akurasi prakiraan (memerlukan lokasi latar belakang, tidak tersedia di semua perangkat)
-\n
-\n- Backtrack (membutuhkan lokasi latar belakang)
-\n
-\n- Waktu matahari dan bulan untuk lokasi Anda saat ini
-\n
-\n- Jika Anda memilih untuk tidak memberikan izin lokasi, Anda dapat memasukkan lokasi secara manual di menu Pengaturan &gt; kalibrasi GPS di Trail Sense.
-\n
-\n- Setelah mengklik lanjutkan, Anda akan diminta untuk memberikan izin lokasi dan lokasi latar belakang. Menolak izin tersebut akan mencegah Trail Sense mengakses lokasi Anda, sehingga entri lokasi manual disarankan.</string>
+    <string name="onboarding_user_guide">Pelajari cara menggunakan fitur Topo melalui panduan pengguna. Tersedia di tab Alat.</string>
     <string name="network_2g">2G</string>
     <string name="right_quick_action">Tindakan cepat kanan</string>
     <string name="left_quick_action">Tindakan cepat kiri</string>
@@ -608,7 +586,7 @@
     <string name="new_text">Baru</string>
     <string name="path_exported">Jalur diekspor</string>
     <string name="sensor_gyroscope">Giroskop</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Ketika Trail Sense terbuka</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Ketika Topo terbuka</string>
     <string name="num_satellites">%d satelit</string>
     <string name="diagnostics">Diagnosis</string>
     <string name="no_permission">Izin tidak diberikan</string>
@@ -658,7 +636,7 @@
     <string name="pref_privacy_screenshot_protection_title">Mencegah tangkapan layar</string>
     <string name="location_mocked">Menggunakan lokasi tiruan</string>
     <string name="pref_flashlight_toggle_with_volume_title">Beralih dengan tombol volume</string>
-    <string name="pref_tiles_enabled_summary">Dapat mencegah aplikasi penghemat baterai menghentikan Trail Sense sepenuhnya</string>
+    <string name="pref_tiles_enabled_summary">Dapat mencegah aplikasi penghemat baterai menghentikan Topo sepenuhnya</string>
     <string name="pref_auto_low_power_title">Penghematan daya otomatis</string>
     <string name="unit_yards">Yard</string>
     <string name="pref_map_url_source_title">Peta pembagian lokasi</string>
@@ -730,7 +708,7 @@
 \n### Resolusi
 \n%4$s</string>
     <string name="activity_recognition">Pengenalan aktivitas</string>
-    <string name="battery_restricted_resolution">Atur Trail Sense agar tidak dioptimalkan</string>
+    <string name="battery_restricted_resolution">Atur Topo agar tidak dioptimalkan</string>
     <string name="lightning_dangerously_close">Petir sangat dekat</string>
     <string name="kwh_per_meter_squared_format">%s kWh / m²</string>
     <string name="weather_exported">Cuaca yang diekspor</string>
@@ -781,9 +759,9 @@
     <string name="permission_alarms_and_reminders">Alarm dan pengingat</string>
     <string name="path_slope">Lereng</string>
     <string name="remove_distance_alert">Hapus peringatan jarak (%s)\?</string>
-    <string name="allow_ignore_battery_restrictions_instructions">Menghapus pembatasan baterai untuk Trail Sense dapat meningkatkan akurasi.
+    <string name="allow_ignore_battery_restrictions_instructions">Menghapus pembatasan baterai untuk Topo dapat meningkatkan akurasi.
 \n
-\nPada sebagian besar perangkat, klik \'%s\', lalu beralih ke semua aplikasi, dan matikan pengoptimalan baterai untuk Trail Sense.
+\nPada sebagian besar perangkat, klik \'%s\', lalu beralih ke semua aplikasi, dan matikan pengoptimalan baterai untuk Topo.
 \n
 \nKunjungi [Don\'t kill my app](https://dontkillmyapp.com/) untuk instruksi perangkat secara spesifik.</string>
     <string name="error">Kesalahan</string>
@@ -795,23 +773,6 @@
     <string name="distance_unset">Jarak tidak disetel</string>
     <string name="pref_tiles_enabled_title">Petak sistem</string>
     <string name="point_style">Gaya titik</string>
-    <string name="onboarding_explore">- Dirancang untuk hiking, backpacking, berkemah, dan geocaching
-\n
-\n- Tempatkan suar dan navigasikan ke suar tersebut
-\n
-\n- Mengikuti jalur
-\n
-\n- Telusuri kembali langkah Anda dengan backtrack
-\n
-\n- Rencanakan apa yang harus dikemas
-\n
-\n- Waspada sebelum matahari terbenam
-\n
-\n- Memprediksi cuaca
-\n
-\n- Gunakan ponsel Anda sebagai senter
-\n
-\n- Dan masih banyak lagi!</string>
     <string name="exporting_map">Mengekspor peta</string>
     <string name="estimate_step_length">Memperkirakan panjang langkah</string>
     <string name="bearing">Bantalan</string>
@@ -1187,7 +1148,7 @@
     <string name="shelter">Tempat berlindung</string>
     <string name="overview">Ikhtisar</string>
     <string name="crafting">Kerajinan</string>
-    <string name="survival_guide_disclaimer">Panduan ini hanya menyediakan informasi edukatif umum. Panduan ini bukan pelatihan profesional, saran medis, diagnosis, atau perawatan, serta tidak menggantikan layanan darurat, tenaga kesehatan yang berkualifikasi, panduan setempat, atau petunjuk produk/produsen. Dalam keadaan darurat, hubungi layanan darurat sesegera mungkin, ikuti petunjuk mereka, dan jangan menunda mencari bantuan untuk berkonsultasi dengan panduan ini. Jangan mengandalkan panduan ini, Trail Sense, atau ponsel Anda sebagai satu-satunya rencana keselamatan atau sarana komunikasi. Kondisi, risiko, hukum, dan praktik yang direkomendasikan berbeda-beda menurut lokasi dan situasi; verifikasi informasi sebelum bertindak dan gunakan pertimbangan Anda sendiri.</string>
+    <string name="survival_guide_disclaimer">Panduan ini hanya menyediakan informasi edukatif umum. Panduan ini bukan pelatihan profesional, saran medis, diagnosis, atau perawatan, serta tidak menggantikan layanan darurat, tenaga kesehatan yang berkualifikasi, panduan setempat, atau petunjuk produk/produsen. Dalam keadaan darurat, hubungi layanan darurat sesegera mungkin, ikuti petunjuk mereka, dan jangan menunda mencari bantuan untuk berkonsultasi dengan panduan ini. Jangan mengandalkan panduan ini, Topo, atau ponsel Anda sebagai satu-satunya rencana keselamatan atau sarana komunikasi. Kondisi, risiko, hukum, dan praktik yang direkomendasikan berbeda-beda menurut lokasi dan situasi; verifikasi informasi sebelum bertindak dan gunakan pertimbangan Anda sendiri.</string>
     <string name="field_required">%s (wajib)</string>
     <string name="reduce_photo_resolution">Kurangi resolusi foto</string>
     <string name="survival_guide_empty_desc">Cari topik bertahan hidup seperti air, medis, makanan, cuaca, tempat berlindung, atau teknik navigasi.</string>
@@ -1398,7 +1359,6 @@
     <string name="planet_neptune">Neptunus</string>
     <string name="load_pdf_tiles">Muat ubin PDF</string>
     <string name="load_pdf_tiles_summary">Peta PDF akan lebih tajam, tetapi performa mungkin terpengaruh</string>
-    <string name="map_tool_disclaimer">Alat ini tidak menyertakan peta jalan bawaan, citra satelit, atau data jalur. Alat ini tidak mengunduh peta dari internet. Untuk menampilkan latar belakang peta, Anda harus mengimpor gambar sendiri menggunakan alat Peta Offline. Jika Anda memerlukan peta jalan, satelit, atau jalur yang langsung tersedia atau telah dimuat sebelumnya, gunakan aplikasi pemetaan khusus.</string>
     <string name="open_settings">Buka pengaturan</string>
     <string name="show_gps_accuracy">Tampilkan akurasi GPS</string>
     <string name="large_location_indicator">Indikator lokasi besar</string>
@@ -1568,11 +1528,11 @@
     <plurals name="clock_device_time_fast">
         <item quantity="other">Jam perangkat lebih cepat %d detik</item>
     </plurals>
-    <string name="pref_copy_trail_maps_title">Salin peta ke Trail Sense</string>
+    <string name="pref_copy_trail_maps_title">Salin peta ke Topo</string>
     <string name="pref_copy_trail_maps_summary">Saat impor. Jika dinonaktifkan, file asli digunakan dan harus tetap disimpan di perangkat Anda.</string>
     <string name="export_logs">Ekspor log</string>
     <string name="external_storage">Penyimpanan eksternal</string>
-    <string name="external_storage_diagnostic_instructions">Pemilih file sistem tidak memiliki izin untuk mengakses file di perangkat Anda. Hal ini dapat mencegah Trail Sense membuka atau menyimpan file yang Anda pilih. Aktifkan “Izinkan akses untuk mengelola semua file” bagi pemilih file sistem (mungkin disebut Penyimpanan Eksternal).</string>
+    <string name="external_storage_diagnostic_instructions">Pemilih file sistem tidak memiliki izin untuk mengakses file di perangkat Anda. Hal ini dapat mencegah Topo membuka atau menyimpan file yang Anda pilih. Aktifkan “Izinkan akses untuk mengelola semua file” bagi pemilih file sistem (mungkin disebut Penyimpanan Eksternal).</string>
     <string name="created">Dibuat</string>
     <string name="average_pace">Kecepatan rata-rata</string>
     <string name="pref_pedometer_history_days_title">Riwayat langkah</string>
@@ -1592,7 +1552,6 @@
     <string name="calibrate_map_point_title">Titik %1$d dari %2$d</string>
     <string name="calibrate_map_point_instructions">Ketuk lokasi ini pada peta, lalu masukkan koordinat sebenarnya di dunia nyata.</string>
     <string name="draft">Draf</string>
-    <string name="photo_map_disclaimer">Selalu bawa peta fisik sebagai cadangan dan verifikasi akurasi Trail Sense.\n\nFile peta tidak disertakan dengan Trail Sense dan harus diunduh atau dikalibrasi dari foto. Anda dapat menemukan peta untuk diunduh di https://kylecorry.com/Trail-Sense/offline_maps.html</string>
     <string name="pref_show_all_bottom_navigation_labels">Tampilkan semua label navigasi bawah</string>
     <string name="use_legacy_file_picker">Gunakan pemilih file lama</string>
     <string name="widget_icon_compatibility_mode">Mode kompatibilitas ikon widget</string>
@@ -1620,7 +1579,7 @@
     <string name="map_file_missing">File tidak ditemukan</string>
     <string name="invalid_trail_map">Peta jalur tidak valid</string>
     <string name="invalid_trail_map_message">File peta jalur tidak valid atau tidak ditemukan. Anda mungkin perlu menghapus peta ini dan mengimpor yang baru.</string>
-    <string name="copy_to_trail_sense">Salin ke Trail Sense</string>
+    <string name="copy_to_trail_sense">Salin ke Topo</string>
     <string name="recording_sighting_for_page">Merekam penampakan \'%s\'</string>
     <string name="map_error_invalid_map_file">File peta tidak valid</string>
     <string name="map_error_access_denied">Akses ke file peta ditolak</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="access_background_location_rationale">டிரெயில் சென்ச் வானிலை கண்காணிப்பில் கடல் மட்ட அழுத்த அளவுத்திருத்தத்திற்கும், மேலும் துல்லியமான சூரிய அச்தமன விழிப்பூட்டல்களையும் வழங்குவதற்கான பின்னணியில் இருப்பிடத் தரவைப் பயன்படுத்துகிறது. [தனியுரிமைக் கொள்கையைப் பார்க்கவும்](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="precise_nautical_miles_format">%s nm</string>
     <string name="elevation_diff_format">%1$s%2$s</string>
     <string name="degree_format">%.0f °</string>
@@ -996,7 +995,6 @@
     <string name="tool_temperature_estimation_title">வெப்பநிலை மதிப்பீடு</string>
     <string name="tool_temperature_estimation_description">வெப்பநிலையை வேறு உயரத்தில் கணிக்கவும்</string>
     <string name="explore">ஆராயுங்கள்</string>
-    <string name="onboarding_explore">- ஐகிங், பேக் பேக்கிங், கேம்பிங் மற்றும் சியோகாச்சிங் ஆகியவற்றிற்காக வடிவமைக்கப்பட்டுள்ளது\n\n - பீக்கான்களை வைத்து அவர்களுக்கு செல்லவும்\n\n - பாதைகளைப் பின்பற்றவும்\n\n - உங்கள் படிகளை பின்னடைவுடன் மீண்டும் மாற்றவும்\n\n - எதைக் கட்ட வேண்டும் என்று திட்டமிடுங்கள்\n\n - சூரியன் மறையும் முன் எச்சரிக்கையாக இருங்கள்\n\n - வானிலை கணிக்கவும்\n\n - உங்கள் தொலைபேசியை ஒளிரும் விளக்காகப் பயன்படுத்தவும்\n\n - மேலும் இன்னும்!</string>
     <string name="remove_distance_alert">தூர எச்சரிக்கையை (%s) அகற்றவா?</string>
     <string name="saved">சேமிக்கப்பட்டது</string>
     <string name="estimate_step_length">ச்ட்ரைட் நீளத்தை மதிப்பிடுங்கள்</string>
@@ -1308,7 +1306,6 @@
     <string name="planet_neptune">நெப்டியூன்</string>
     <string name="load_pdf_tiles">PDF ஓடுகளை ஏற்றவும்</string>
     <string name="load_pdf_tiles_summary">PDF வரைபடங்கள் கூர்மையாக இருக்கும், ஆனால் செயல்திறன் பாதிக்கப்படலாம்</string>
-    <string name="map_tool_disclaimer">இந்த கருவி உங்கள் பீக்கான்கள், பாதைகள் மற்றும் புகைப்பட வரைபடங்களைக் காட்டுகிறது. இது ஒரு பிரத்யேக வரைபட பயன்பாட்டிற்கு மாற்றாக இல்லை.</string>
     <string name="open_settings">திறந்த அமைப்புகள்</string>
     <string name="basemap">அடிப்படை வரைபடம்</string>
     <string name="show_gps_accuracy">சிபிஎச் துல்லியத்தைக் காட்டு</string>

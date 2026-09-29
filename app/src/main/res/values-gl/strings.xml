@@ -7,7 +7,6 @@
     <string name="tools">Ferramentas</string>
     <string name="copied_to_clipboard_toast">Copiado no portapapeis</string>
     <string name="access_background_location">Actualizar a configuración de localización</string>
-    <string name="access_background_location_rationale">Trail Sense usa datos de localización en segundo plano para a calibración da presión do nivel do mar na monitorización meteorolóxica e para proporcionar alertas de solpor máis precisas. [Ver a política de privacidade](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="disclaimer_message_title">Aviso legal</string>
     <string name="app_disclaimer_message_title">Aviso legal / condicións de servizo</string>
     <string name="precise_feet_format">%s pés</string>
@@ -158,7 +157,7 @@
     <string name="temperature">Temperatura</string>
     <string name="sensors">Sensores</string>
     <string name="pref_ruler_calibration_title">Escala da regra</string>
-    <string name="pref_ruler_calibration_summary">Protocolo de calibración:\n\n- Establece este valor en 1.\n\n- Mide o valor da regra Trail Sense correspondente a unha unidade dunha regra física.\n\n- Insire aquí o valor medido.</string>
+    <string name="pref_ruler_calibration_summary">Protocolo de calibración:\n\n- Establece este valor en 1.\n\n- Mide o valor da regra Topo correspondente a unha unidade dunha regra física.\n\n- Insire aquí o valor medido.</string>
     <string name="pref_ruler_flip_direction_title">Inverter a dirección da regra</string>
     <string name="pref_compass_sensor_title">Compás</string>
     <string name="true_north">Norte verdadeiro</string>
@@ -230,9 +229,9 @@
     <string name="pref_email_title">Correo electrónico ao desenvolvedor</string>
     <string name="continue_button">CONTINUAR</string>
     <string name="error_occurred">Produciuse un erro</string>
-    <string name="error_occurred_message">Trail Sense produciu un erro. Envía un correo electrónico ao programador para que solucione este problema.</string>
+    <string name="error_occurred_message">Topo produciu un erro. Envía un correo electrónico ao programador para que solucione este problema.</string>
     <string name="tool_user_guide_title">Guía do usuario</string>
-    <string name="tool_user_guide_summary">Unha guía práctica para usar Trail Sense</string>
+    <string name="tool_user_guide_summary">Unha guía práctica para usar Topo</string>
     <string name="delete_beacon_group_message">Eliminaranse %s e tódalas súas balizas.</string>
     <string name="delete_path_group_message">%s e eliminaranse tódalas súas rutas.</string>
     <string name="delete_map_group_message">Eliminaranse %s e tódolos seus mapas.</string>
@@ -403,8 +402,7 @@
     <string name="cumulonimbus_forecast">Pode indicar unha treboada en poucos minutos.</string>
     <string name="cirrus_desc">Nubes altas e finas que parecen guechos de cabelo branco.</string>
     <string name="privacy_and_location">Privacidade e localización</string>
-    <string name="onboarding_user_guide">Aprende a usar as funcións de Trail Sense coa guía do usuario. Dispoñible na parte inferior da lapela Ferramentas.\n\nPróximamente haberá máis guías.</string>
-    <string name="onboarding_privacy">- Trail Sense respecta a túa privacidade e os datos de localización nunca saen do teu dispositivo\n\n- Trail Sense nunca requirirá permiso de Internet\n\n- Consulta a [política de privacidade](https://kylecorry.com/Trail-Sense/privacy_policy.html) (ábrese no navegador do teu teléfono)\n\n- Algunhas funcións de Trail Sense requiren acceso á túa localización\n\n- Conceder o permiso de localización activará as seguintes funcións:\n\n- Navegar ata balizas\n\n- Mellora da precisión da previsión (non dispoñible en todos os dispositivos)\n\n- Recuar\n\n- Horas do sol e da lúa para a túa localización actual (as alertas do solpor poden requirir localización en segundo plano)\n\n- Se decides non conceder o permiso de localización, podes introducir unha localización manualmente no menú Configuración &gt; Sensores &gt; Calibración GPS en Trail Sense.\n\n- Despois de facer clic en Continuar, solicitaráselle que conceda o permiso de localización. Denegar este permiso impedirá que Trail Sense acceda á túa localización, polo que se recomenda unha entrada manual da localización.</string>
+    <string name="onboarding_user_guide">Aprende a usar as funcións de Topo coa guía do usuario. Dispoñible na parte inferior da lapela Ferramentas.\n\nPróximamente haberá máis guías.</string>
     <string name="export">Exportar</string>
     <plurals name="beacons_imported">
         <item quantity="one">%d baliza importada</item>
@@ -554,10 +552,10 @@
     <string name="location_not_mocked">Usando a localización real</string>
     <string name="pref_tiles_enabled_title">Mosaicos do sistema</string>
     <string name="pref_tiles_battery_log">Rexistro da batería</string>
-    <string name="pref_tiles_enabled_summary">Pode impedir cas aplicacións de aforro de batería deteñan por completo Trail Sense</string>
+    <string name="pref_tiles_enabled_summary">Pode impedir cas aplicacións de aforro de batería deteñan por completo Topo</string>
     <string name="pref_dialog_battery_log_summary">O rexistro da batería está desactivado; pode co historial e o tempo ata que se esgote non estean dispoñibles. Podes voltar activalo na configuración</string>
     <string name="pref_tiles_enabled_battery_log_summary">Rexistra a porcentaxe da batería cada hora para estimar o tempo que tardará en esgotarse</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Mentres Trail Sense estea aberto</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Mentres Topo estea aberto</string>
     <string name="pref_flashlight_toggle_with_volume_title">Alternar cos botóns de volume</string>
     <string name="pref_auto_low_power_summary">Cando a batería estea baixa</string>
     <string name="pref_auto_low_power_title">Aforro automático de enerxía</string>
@@ -662,12 +660,12 @@
     <string name="background_location_permission">Localización (Permitir todo o tempo)</string>
     <string name="activity_recognition">Recoñecemento de actividades</string>
     <string name="get_gps_signal">Saia ao exterior cunha vista despexada do ceo.</string>
-    <string name="unblock_notification_channel">Desbloquear a notificación %s para Trail Sense</string>
+    <string name="unblock_notification_channel">Desbloquear a notificación %s para Topo</string>
     <string name="elevation_override_resolution">Activa a calibración automática na configuración.</string>
     <string name="location_override_resolution">Activa o axuste automático da localización na configuración.</string>
     <string name="location_override_not_set_resolution">Configure a anulación da localización nos axustes</string>
     <string name="power_saving_mode_resolution">Desactivar o modo de aforro de enerxía</string>
-    <string name="battery_restricted_resolution">Establecer Trail Sense como non optimizado</string>
+    <string name="battery_restricted_resolution">Establecer Topo como non optimizado</string>
     <string name="gps_unavailable_resolution">Activa a localización ou troca a fonte da localización a \"Só dispositivo\" ou \"Alta precisión\"</string>
     <string name="diagnostic_message_template">%1$s: %2$s\n\n### Ferramentas afectadas\n%3$s\n\n### Resolución\n%4$s</string>
     <string name="autofill">Autocompletar</string>
@@ -812,7 +810,6 @@
     <string name="tool_temperature_estimation_description">Predicir a temperatura a unha altitude diferente</string>
     <string name="pressure_tendency">Tendencia</string>
     <string name="explore">Explorar</string>
-    <string name="onboarding_explore">- Deseñado para sendeirismo, mochileiro, acampada e xeocaching\n\n- Coloca balizas e navega ata elas\n\n- Segue as rutas\n\n- Revisa os teus pasos con recuar\n\n- Planifica que levar\n\n- Recibe alertas antes do solpor\n\n- Consulta a previsión do tempo\n\n- Usa o teu teléfono como lanterna\n\n- E moito máis!</string>
     <string name="average_speed">Velocidade media</string>
     <string name="steps">Pasos</string>
     <string name="distance_alert">Alerta de distancia</string>
@@ -838,7 +835,7 @@
     <string name="pref_only_navigate_path_points_title">Navegar só a puntos rexistrados</string>
     <string name="error">Erro</string>
     <string name="warning">Aviso</string>
-    <string name="allow_ignore_battery_restrictions_instructions">Eliminar as restricións da batería para Trail Sense pode mellorar a precisión.\n\nNa maioría dos dispositivos, fai clic en \"%s\", despois troca a tódalas aplicacións e desactiva a optimización da batería para Trail Sense.\n\nVisita [Don\'t kill my app](https://dontkillmyapp.com/) para obter instrucións específicas do dispositivo.</string>
+    <string name="allow_ignore_battery_restrictions_instructions">Eliminar as restricións da batería para Topo pode mellorar a precisión.\n\nNa maioría dos dispositivos, fai clic en \"%s\", despois troca a tódalas aplicacións e desactiva a optimización da batería para Topo.\n\nVisita [Don\'t kill my app](https://dontkillmyapp.com/) para obter instrucións específicas do dispositivo.</string>
     <string name="exporting_map">Exportando mapa</string>
     <string name="map_exported">Mapa exportado</string>
     <string name="exported">Exportado</string>
@@ -1323,7 +1320,6 @@
     <string name="planet_neptune">Neptuno</string>
     <string name="load_pdf_tiles">Cargar teselas en PDF</string>
     <string name="load_pdf_tiles_summary">Os mapas en PDF serán máis nítidos, pero o rendemento pode verse afectado</string>
-    <string name="map_tool_disclaimer">Esta ferramenta non inclúe mapas de rúas, imaxes de satélite nin datos de rutas integrados. Non descarga mapas de Internet. Para mostrar un fondo de mapa, debes importar a túa propia imaxe coa ferramenta Photo maps. Se necesitas mapas de rúas, satélites ou rutas en directo ou precargados, usa unha aplicación de mapas específica.</string>
     <string name="open_settings">Abrir configuración</string>
     <string name="show_gps_accuracy">Amosar a precisión do GPS</string>
     <string name="increase_exposure_at_night">Aumentar a exposición pola noite</string>

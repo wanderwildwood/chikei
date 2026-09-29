@@ -103,7 +103,6 @@
     <string name="kilometers_per_hour_format">%s km/h</string>
     <string name="copied_to_clipboard_toast">Skopiowano do schowka</string>
     <string name="tools">Narzędzia</string>
-    <string name="access_background_location_rationale">Trail Sense używa danych lokalizacji w tle, do kalibracji ciśnienia nad poziomem morza podczas monitorowania pogody, oraz aby zapewnić dokładniejsze alerty zachodu słońca. [Wyświetl Politykę prywatności](https://kylecorry.com/Trail-Sense/privacy_policy.html)</string>
     <string name="access_background_location">Zaktualizuj ustawienia lokalizacji</string>
     <string name="third_quarter">Ostatnia kwadra</string>
     <string name="notification_monitoring_weather">Monitorowanie pogody w tle</string>
@@ -125,7 +124,7 @@
     <string name="category_hydration">Nawodnienie</string>
     <string name="navigation_nearby_category">Pobliskie</string>
     <string name="forecasts_category">Prognozy</string>
-    <string name="tool_user_guide_summary">Poradnik korzystania z Trail Sense</string>
+    <string name="tool_user_guide_summary">Poradnik korzystania z Topo</string>
     <string name="pref_monitor_weather_title">Monitoruj pogodę</string>
     <string name="pref_max_beacon_distance_title">Odległość pobliskich punktów nawigacyjnych</string>
     <string name="pref_show_calibrate_on_navigate_dialog_title">Skalibruj przed nawigacją</string>
@@ -337,8 +336,7 @@
     <string name="unavailable">Niedostępna</string>
     <string name="gps_searching">Wyszukiwanie</string>
     <string name="gps_user">Nadpisana</string>
-    <string name="onboarding_privacy">- Trail Sense szanuje prywatność, dane lokalizacji nigdy nie opuszczą urządzenia \n \n- Trail Sense nigdy nie będzie wymagać połączenia z internetem \n \n- Wyświetl [Politykę prywatności](https://kylecorry.com/Trail-Sense/privacy_policy.html) (link otworzy się w przeglądarce internetowej) \n \n- Niektóre funkcje Trail Sense wymagają uprawnień dostępu do lokalizacji \n \n- Przyznanie uprawnień dostępu do lokalizacji włączy następujące funkcje:\n\n\t- Prowadzenie do punktów nawigacyjnych\n\n\t- Poprawi dokładność prognoz (niedostępne na niektórych urządzeniach) \n\n\t- Szlak powrotny\n\n\t- Czasy słońca i księżyca aktualnej lokalizacji (alerty zachodów słońca mogą wymagać uprawnień dostępu do lokalizacji w tle)\n\n- Jeśli zdecydujesz odmówić uprawnień dostępu do lokalizacji, możesz ręcznie wprowadzić lokalizację w menu Ustawienia &gt; Czujniki &gt; Kalibracja GPS. \n \n- Po nacisnięciu \"Kontynuuj\" zostanie wyświetlony komunikat o przyznanie uprawnień dostępu do lokalizacji oraz lokalizacji w tle. Odmowa przyznania uprawnień uniemożliwi Trail Sense dostęp do lokalizacji, dlatego ręczne wprowadzenie lokalizacji jest zalecane.</string>
-    <string name="onboarding_user_guide">Dowiedz się, jak korzystać z funkcji aplikacji Trail Sense, korzystając z Podręcznika Użytkownika. Dostępny w zakładce Narzędzia.</string>
+    <string name="onboarding_user_guide">Dowiedz się, jak korzystać z funkcji aplikacji Topo, korzystając z Podręcznika Użytkownika. Dostępny w zakładce Narzędzia.</string>
     <string name="delete_waypoint_prompt">Usunąć punkt trasy?</string>
     <string name="pref_gps_override_title">Nadpisanie lokalizacji</string>
     <string name="location_override_updated">Zaktualizowano nadpisanie lokalizacji</string>
@@ -479,7 +477,7 @@
     <string name="pref_experimental_metal_direction_title">Pokaż kierunek wykrytego metalu</string>
     <string name="pref_backtrack_history_days_title">Historia Szlaku powrotnego</string>
     <string name="location_mocked">Używanie pozorowanej lokalizacji</string>
-    <string name="pref_tiles_enabled_summary">Może zapobiec zatrzymaniu Trail Sense przez aplikacje oszczędzające baterię</string>
+    <string name="pref_tiles_enabled_summary">Może zapobiec zatrzymaniu Topo przez aplikacje oszczędzające baterię</string>
     <string name="pref_cell_signal_refresh_cache_summary">Wymuś wczytanie aktualnych danych mocy sygnału</string>
     <string name="pref_cell_signal_refresh_cache_title">Odśwież pamięć podręczną sygnału</string>
     <string name="pref_navigation_lock_screen_presence_title">Pokaż na ekranie blokady podczas nawigacji</string>
@@ -497,7 +495,7 @@
     <string name="pref_auto_low_power_title">Automatyczne oszczędzanie energii</string>
     <string name="pref_auto_low_power_summary">Gdy poziom baterii jest niski</string>
     <string name="pref_flashlight_toggle_with_volume_title">Przełącz przyciskami głośności</string>
-    <string name="pref_flashlight_toggle_with_volume_summary">Gdy Trail Sense jest otwarty</string>
+    <string name="pref_flashlight_toggle_with_volume_summary">Gdy Topo jest otwarty</string>
     <string name="time">Czas</string>
     <string name="days_format">%s d</string>
     <string name="hours_format">%s h</string>
@@ -547,8 +545,8 @@
     <string name="packing_lists">Listy rzeczy do spakowania</string>
     <string name="location_override_resolution">Włącz automatyczną korekcję lokalizacji w ustawieniach.</string>
     <string name="gps_unavailable_resolution">Włącz lokalizację lub zmień źródło lokalizacji na \"Tylko urządzenie\" lub \"Wysoka dokładność\"</string>
-    <string name="unblock_notification_channel">Odblokuj powiadomienie %s dla Trail Sense</string>
-    <string name="battery_restricted_resolution">Ustaw Trail Sense jako \"Nieograniczone\"</string>
+    <string name="unblock_notification_channel">Odblokuj powiadomienie %s dla Topo</string>
+    <string name="battery_restricted_resolution">Ustaw Topo jako \"Nieograniczone\"</string>
     <string name="autofill">Automatyczne wypełnianie</string>
     <string name="imperial_pints">Pinty imperialne</string>
     <string name="imperial_quarts">Kwarty imperialne</string>
@@ -888,7 +886,7 @@
     <string name="astronomy_rise">Wschód</string>
     <string name="horizon">Horyzont</string>
     <string name="reduce_map_resolution_crop_disclaimer">Przycięcie mapy zmniejszy rozdzielczość. Aby przyciąć mapę w wysokiej rozdzielczości, użyj aplikacji do edycji zdjęć. Istnieją plany naprawy w przyszłości.</string>
-    <string name="allow_ignore_battery_restrictions_instructions">Ustawienie użycia baterii w tle na \"Nieograniczone\" dla Trail Sense może poprawić dokładność. \n \nKliknij \"%s\", następnie przejdź do wszystkich aplikacji oraz ustaw użycie baterii w tle na \"Nieograniczone\" dla Trail Sense. \n \nOdwiedź stronę [Don\'t kill my app](https://dontkillmyapp.com/), aby uzyskać instrukcje dotyczące konkretnego urządzenia.</string>
+    <string name="allow_ignore_battery_restrictions_instructions">Ustawienie użycia baterii w tle na \"Nieograniczone\" dla Topo może poprawić dokładność. \n \nKliknij \"%s\", następnie przejdź do wszystkich aplikacji oraz ustaw użycie baterii w tle na \"Nieograniczone\" dla Topo. \n \nOdwiedź stronę [Don\'t kill my app](https://dontkillmyapp.com/), aby uzyskać instrukcje dotyczące konkretnego urządzenia.</string>
     <string name="crop_map_instructions_long">Przeciągnij rogi ramki do rogów mapy, aby obrysować. Przycięcie mapy zmniejszy rozdzielczość.</string>
     <string name="i_agree">Zgadzam się</string>
     <string name="battery_settings_limit_accuracy">Ograniczenie użycia baterii może zmniejszyć dokładność</string>
@@ -1333,7 +1331,6 @@
     <string name="climate_warm_summer_description">Planuj na wyższe temperatury podczas lata.</string>
     <string name="climate_cold_summer_description">Planuj na niższe temperatury podczas lata.</string>
     <string name="climate_very_cold_winter_description">Planuj na ekstremalnie niskie temperatury podczas zimy.</string>
-    <string name="map_tool_disclaimer">Narzędzie nie zawiera wbudowanych map, obrazów satelitarnych czy danych szlaków. Nie pobiera map z internetu. Aby wyświetlić podkład mapy, importuj własny obraz używając narzędzia Mapy offline. Jeżeli potrzebujesz podglądu na żywo lub wstępnie załadowanych map, obrazów satelitarnych, czy danych szlaków użyj dedykowanej aplikacji.</string>
     <string name="open_settings">Otwórz ustawienia</string>
     <string name="show_gps_accuracy">Pokaż dokładność GPS</string>
     <string name="large_location_indicator">Zwiększ rozmiar wskaźnika lokalizacji</string>
@@ -1455,7 +1452,6 @@
     <string name="active_all_year">Aktywne cały rok</string>
     <string name="biting_flies_mosquitoes">Owady kłujące/Komary</string>
     <string name="ecology">Ekologia</string>
-    <string name="onboarding_explore">- Zaprojektowany z myślą o wspinaczce, podróżach, biwakowaniu oraz geocachingu\n\n- Twórz oraz prowadź do punktów nawigacyjnych\n\n- Podążaj ścieżkami\n\n- Wracaj własnymi śladami ze szlakiem powrotnym \n\n- Planuj co zapakować\n\n- Otrzymuj powiadomienia zanim zajdzie słońce\n\n- Przewiduj pogodę\n\n- Używaj telefonu jako latarki\n\n- Oraz o wiele więcej!</string>
     <string name="grassland">Stepowe</string>
     <string name="tundra">Tundrowe</string>
     <string name="human_interaction">Interakcja człowieka</string>
@@ -1529,7 +1525,6 @@
     <string name="no_offline_maps">Brak map offline</string>
     <string name="unsupported_offline_map_file">Nieprawidłowy plik mapy</string>
     <string name="map_type_photo">Zdjęcie</string>
-    <string name="photo_map_disclaimer">Zawsze noś przy sobie mapę fizyczną jako zapasowe narzędzie oraz weryfikuj dokładność Trail Sense.\n\nTrail sense nie zawiera plików map, które należy pobrać oddzielnie lub zaimportować ze zdjęcia. Możesz pobrać pliki map z https://kylecorry.com/Trail-Sense/offline_maps.html</string>
     <string name="include_mapsforge_backups">Załącz mapy szlaków w kopii zapasowej</string>
     <string name="include_mapsforge_backups_summary">Pliki Mapsforge (.map), mogą mieć duży rozmiar</string>
     <string name="trail_maps">Mapy szlaków</string>
@@ -1537,11 +1532,11 @@
     <string name="map_type_trail">Szlak</string>
     <string name="pref_show_all_bottom_navigation_labels">Pokaż wszystkie etykiety na pasku nawigacji</string>
     <string name="brightness">Jasność</string>
-    <string name="pref_copy_trail_maps_title">Kopiuj mapy do Trail Sense</string>
+    <string name="pref_copy_trail_maps_title">Kopiuj mapy do Topo</string>
     <string name="pref_copy_trail_maps_summary">Podczas importowania. Gdy wyłączone, używany jest oryginalny plik, który musi znajdować się na urządzeniu.</string>
     <string name="map_external">Zewnętrzna</string>
     <string name="map_file_missing">Brak pliku</string>
-    <string name="copy_to_trail_sense">Kopiuj do Trail Sense</string>
+    <string name="copy_to_trail_sense">Kopiuj do Topo</string>
     <string name="pref_pedometer_history_days_title">Historia kroków</string>
     <string name="current_session">Aktualna sesja</string>
     <string name="history">Historia</string>
