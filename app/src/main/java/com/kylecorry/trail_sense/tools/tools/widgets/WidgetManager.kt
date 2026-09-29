@@ -1,5 +1,7 @@
 package com.kylecorry.trail_sense.tools.tools.widgets
 
+import com.kylecorry.andromeda.core.tryOrLog
+
 import android.content.Context
 import com.kylecorry.andromeda.core.system.Package
 import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
@@ -10,11 +12,15 @@ class WidgetManager {
         tools.filter { it.widgets.any() }.forEach {
             val isAvailable = it.isAvailable(context)
             it.widgets.forEach { widget ->
-                Package.setComponentEnabled(
-                    context,
-                    widget.widgetClass.name,
-                    isAvailable && widget.canPlaceOnHomeScreen && widget.isEnabled(context)
-                )
+                // Topo leaves some registered tools' widgets out of the manifest (the
+                // pedometer's); asking for a component that isn't there throws, so skip it.
+                tryOrLog {
+                    Package.setComponentEnabled(
+                        context,
+                        widget.widgetClass.name,
+                        isAvailable && widget.canPlaceOnHomeScreen && widget.isEnabled(context)
+                    )
+                }
             }
         }
     }

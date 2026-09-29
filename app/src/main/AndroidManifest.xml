@@ -149,12 +149,6 @@
 
         <activity android:name="com.kylecorry.trail_sense.onboarding.OnboardingActivity" />
 
-        <activity
-            android:name=".tools.flashlight.widgets.FlashlightWidgetActivityWorkaround"
-            android:excludeFromRecents="true"
-            android:noHistory="true"
-            android:theme="@style/Theme.Transparent"
-            tools:ignore="DiscouragedApi" />
 
         <activity
             android:name="com.kylecorry.trail_sense.tools.tools.widgets.ToolWidgetConfigureActivity"
@@ -220,40 +214,10 @@
             </intent-filter>
         </service>
 
-        <service
-            android:name=".tools.weather.tiles.WeatherMonitorTile"
-            android:exported="true"
-            android:icon="@drawable/cloud"
-            android:label="@string/weather_monitor"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-            <meta-data
-                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
-                android:value="true" />
-            <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE" />
-            </intent-filter>
-        </service>
 
-        <service
-            android:name=".tools.pedometer.tiles.PedometerTile"
-            android:exported="true"
-            android:icon="@drawable/steps"
-            android:label="@string/pedometer"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-            <meta-data
-                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
-                android:value="true" />
-            <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE" />
-            </intent-filter>
-        </service>
 
         <receiver
             android:name="com.kylecorry.trail_sense.tools.clock.infrastructure.NextMinuteBroadcastReceiver"
-            android:enabled="true"
-            android:exported="false" />
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.flashlight.widgets.FlashlightWidgetReceiver"
             android:enabled="true"
             android:exported="false" />
         <receiver
@@ -338,70 +302,10 @@
         </receiver>
 
         <!-- Widgets -->
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.astronomy.widgets.AppWidgetMoon"
-            android:exported="false"
-            android:label="@string/moon">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_moon_info" />
-        </receiver>
 
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.astronomy.widgets.AppWidgetSun"
-            android:exported="false"
-            android:label="@string/sun">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_sun_info" />
-        </receiver>
 
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.weather.widgets.AppWidgetWeather"
-            android:exported="false"
-            android:label="@string/weather">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_weather_info" />
-        </receiver>
-
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.tides.widgets.AppWidgetTides"
-            android:exported="false"
-            android:label="@string/tides">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_tides_info" />
-        </receiver>
-
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.pedometer.widgets.AppWidgetPedometer"
-            android:exported="false"
-            android:label="@string/pedometer">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_pedometer_info" />
-        </receiver>
 
         <receiver
             android:name="com.kylecorry.trail_sense.tools.paths.widgets.AppWidgetBacktrack"
@@ -415,17 +319,6 @@
                 android:resource="@xml/app_widget_backtrack_info" />
         </receiver>
 
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.weather.widgets.AppWidgetPressure"
-            android:exported="false"
-            android:label="@string/pressure">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_pressure_info" />
-        </receiver>
 
         <receiver
             android:name="com.kylecorry.trail_sense.tools.sensors.widgets.AppWidgetLocation"
@@ -452,53 +345,9 @@
                 android:resource="@xml/app_widget_elevation_info" />
         </receiver>
 
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.flashlight.widgets.AppWidgetFlashlight"
-            android:exported="false"
-            android:label="@string/flashlight_title">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_flashlight_info" />
-        </receiver>
 
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.astronomy.widgets.AppWidgetSunAndMoonChart"
-            android:exported="false"
-            android:label="@string/sun_moon_chart">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_sun_and_moon_chart_info" />
-        </receiver>
 
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.weather.widgets.AppWidgetPressureChart"
-            android:exported="false"
-            android:label="@string/pressure_chart">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_pressure_chart_info" />
-        </receiver>
 
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.tides.widgets.AppWidgetTideChart"
-            android:exported="false"
-            android:label="@string/tide_chart">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_tide_chart_info" />
-        </receiver>
 
         <receiver
             android:name="com.kylecorry.trail_sense.tools.beacons.widgets.AppWidgetNearbyBeacons"
