@@ -47,7 +47,7 @@ class ViewTrailMapFragment : TrailSenseReactiveFragment(R.layout.fragment_offlin
         val map = useOfflineMap(mapId, refreshKey)
 
         useEffect(mapView) {
-            mapView.backgroundColorOverride = Color.rgb(127, 127, 127)
+            mapView.backgroundColorOverride = Color.WHITE
         }
 
         useEffect(zoomInButton, zoomOutButton, mapView) {

@@ -8,6 +8,7 @@ import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.shared.CustomUiUtils
 import com.kylecorry.trail_sense.shared.FormatService
 import com.kylecorry.trail_sense.shared.UserPreferences
+import com.kylecorry.andromeda.core.sensors.Quality
 import com.kylecorry.trail_sense.shared.colors.AppColor
 import com.kylecorry.trail_sense.shared.sensors.CustomGPS
 import com.kylecorry.trail_sense.shared.sensors.gps.InactiveGPS
@@ -28,19 +29,19 @@ class GpsStatusBadgeProvider(private val gps: ISatelliteGPS, private val context
     @ColorInt
     private fun getColor(): Int {
         if (gps is OverrideGPS) {
-            return AppColor.Green.color
+            return CustomUiUtils.getQualityColor(Quality.Good)
         }
 
         if (gps is InactiveGPS || !GPS.isAvailable(context)) {
-            return AppColor.Red.color
+            return CustomUiUtils.getQualityColor(Quality.Poor)
         }
 
         if (Duration.between(gps.eventTime, Instant.now()) > Duration.ofMinutes(2)) {
-            return AppColor.Yellow.color
+            return CustomUiUtils.getQualityColor(Quality.Moderate)
         }
 
         if (!gps.hasValidReading || (gps is CustomGPS && gps.isTimedOut)) {
-            return AppColor.Yellow.color
+            return CustomUiUtils.getQualityColor(Quality.Moderate)
         }
 
         return CustomUiUtils.getQualityColor(gps.quality)

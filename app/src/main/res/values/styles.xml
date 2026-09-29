@@ -2,6 +2,24 @@
 
     <!--This is used for all Android versions-->
     <style name="BaseAppTheme" parent="Theme.Material3Expressive.DayNight.NoActionBar">
+        <!-- Mudita Mindful Design's typeface, applied through the whole Material type scale -->
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.Topo.DisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.Topo.DisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.Topo.DisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.Topo.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Topo.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Topo.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Topo.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.Topo.TitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.Topo.TitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.Topo.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.Topo.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.Topo.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.Topo.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.Topo.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.Topo.LabelSmall</item>
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorAccent">?attr/colorPrimary</item>
@@ -91,6 +109,67 @@
 
     <!--Override this for other Android versions-->
     <style name="AppTheme" parent="BaseAppTheme" />
+
+    <style name="TextAppearance.Topo.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
+    <style name="TextAppearance.Topo.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+    </style>
 
     <style name="Theme.Transparent" parent="android:Theme">
         <item name="android:windowIsTranslucent">true</item>

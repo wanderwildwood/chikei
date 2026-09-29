@@ -40,7 +40,7 @@ class MapToolWidgetView : ChartToolWidgetViewBase() {
             val size = Resources.dp(context, 400f).toInt()
             val cornerRadius = Resources.dp(context, 8f)
             val mapView = MapView(context)
-            mapView.backgroundColorOverride = Color.rgb(127, 127, 127)
+            mapView.backgroundColorOverride = Color.WHITE
             mapView.clipPath = Path().apply {
                 if (drawAsCircle) {
                     addCircle(size / 2f, size / 2f, size / 2f, Path.Direction.CW)

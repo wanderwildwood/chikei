@@ -182,7 +182,7 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
         }
 
         useEffect(mapView) {
-            mapView.setBackgroundColor(Color.rgb(127, 127, 127))
+            mapView.setBackgroundColor(Color.WHITE)
         }
 
         useBackgroundEffect(mapView, manager.key, attributionView) {
