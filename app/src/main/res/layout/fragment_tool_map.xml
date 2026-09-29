@@ -48,6 +48,20 @@
         app:layout_constraintEnd_toEndOf="@id/map"
         app:layout_constraintTop_toTopOf="@id/map" />
 
+    <!-- Topo: things to do where you are standing: mark it, or record the track from it -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/here_btn"
+        style="@style/Widget.App.MapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.86"
+        android:clickable="true"
+        android:contentDescription="@string/here_actions"
+        android:focusable="true"
+        app:icon="@drawable/ic_location"
+        app:layout_constraintBottom_toTopOf="@+id/time_btn"
+        app:layout_constraintStart_toStartOf="@+id/zoom_in_btn" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/time_btn"
         style="@style/Widget.App.MapButton"

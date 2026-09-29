@@ -105,6 +105,10 @@
     <!--Navigation Tab - Beacon List - Sharesheet-->
     <string name="share_action_send">Send</string>
     <string name="share_path">Share GPX</string>
+    <string name="here_actions">Here</string>
+    <string name="mark_here">Mark here</string>
+    <string name="record_track">Record track</string>
+    <string name="stop_recording">Stop recording</string>
     <string name="pref_region_pack_url" translatable="false">pref_region_pack_url</string>
     <string name="download_region">Download region</string>
     <string name="download">Download</string>

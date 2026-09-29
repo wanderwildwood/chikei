@@ -1,5 +1,11 @@
 package com.kylecorry.trail_sense.tools.map.ui
 
+import com.kylecorry.trail_sense.tools.tools.infrastructure.getFeatureState
+import com.kylecorry.trail_sense.shared.FeatureState
+import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
+import com.kylecorry.trail_sense.tools.paths.ui.commands.ToggleBacktrackCommand
+import com.kylecorry.trail_sense.tools.paths.PathsToolRegistration
+import androidx.navigation.fragment.findNavController
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -65,6 +71,7 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
         val zoomInButton = useView<MaterialButton>(R.id.zoom_in_btn)
         val zoomOutButton = useView<MaterialButton>(R.id.zoom_out_btn)
         val timeButton = useView<MaterialButton>(R.id.time_btn)
+        val hereButton = useView<MaterialButton>(R.id.here_btn)
         val menuButton = useView<MaterialButton>(R.id.menu_btn)
         val navigationSheetView = useView<NavigationSheetView>(R.id.navigation_sheet)
         val mapDistanceSheetView = useView<MapDistanceSheet>(R.id.distance_sheet)
@@ -109,6 +116,10 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
 
         // This ref is used by listeners to avoid constantly re-registering
         val navigationRef = useRef(navigation)
+
+        useEffect(hereButton) {
+            hereButton.setOnClickListener { showHereActions(it, navigationRef.current.location) }
+        }
         useEffect(navigation) {
             navigationRef.current = navigation
         }
@@ -616,5 +627,31 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
         Compass(2),
         Free(3),
         Trace(4)
+    }
+
+    private fun showHereActions(anchor: View, location: Coordinate) {
+        inBackground {
+            val backtrack = Tools.getService(requireContext(), PathsToolRegistration.SERVICE_BACKTRACK)
+            val isRecording = backtrack?.getFeatureState() == FeatureState.On
+            onMain {
+                Pickers.menu(
+                    anchor,
+                    listOf(
+                        getString(R.string.mark_here),
+                        getString(if (isRecording) R.string.stop_recording else R.string.record_track)
+                    )
+                ) {
+                    when (it) {
+                        0 -> findNavController().navigateWithAnimation(
+                            R.id.placeBeaconFragment,
+                            Bundle().apply { putParcelable("initial_location", GeoUri(location)) }
+                        )
+
+                        1 -> ToggleBacktrackCommand(this@MapFragment).execute()
+                    }
+                    true
+                }
+            }
+        }
     }
 }
