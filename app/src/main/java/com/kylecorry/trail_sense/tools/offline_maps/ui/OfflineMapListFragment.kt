@@ -376,7 +376,7 @@ class OfflineMapListFragment : BoundFragment<FragmentOfflineMapListBinding>() {
             when (menuItem.itemId) {
                 R.id.action_download_region -> {
                     inBackground {
-                        if (DownloadRegionPackCommand(requireContext(), mapService).execute()) {
+                        if (DownloadRegionPackCommand(requireContext(), mapService, sensors.lastKnownLocation).execute()) {
                             manager.refresh()
                         }
                     }

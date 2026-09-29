@@ -116,6 +116,11 @@
     <string name="region_pack_ready">%1$s is ready</string>
     <string name="region_pack_failed">Download failed</string>
     <string name="region_packs">Region packs</string>
+    <string name="region_packs_ready">%1$d regions are ready</string>
+    <string name="downloading_region_of">Downloading %1$s (%2$d of %3$d)</string>
+    <string name="region_pack_have">✓ have it</string>
+    <string name="region_pack_update">update</string>
+    <string name="region_pack_here">here</string>
     <string name="maps">Maps</string>
     <!--Navigation Tab - Create beacon-->
     <string name="name">Name</string>

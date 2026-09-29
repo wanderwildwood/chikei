@@ -13,6 +13,7 @@ import com.kylecorry.trail_sense.tools.offline_maps.domain.trail_maps.TrailMap
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import org.mapsforge.core.model.BoundingBox
 import org.mapsforge.core.model.Tile
 import org.mapsforge.map.android.graphics.AndroidGraphicFactory
 import org.mapsforge.map.datastore.MapDataStore
@@ -50,7 +51,11 @@ class MapsforgeTileRenderer(
             return null
         }
 
-        val hasTransparentAreas = !holder.dataStore.supportsFullTile(tile)
+        // A tile is only partly transparent if no map covers that part. Region packs meet edge
+        // to edge, so a tile on the seam between two is covered by the pair even though neither
+        // covers it alone; asking each map separately left the seam's private land transparent.
+        val hasTransparentAreas = !holder.dataStore.supportsFullTile(tile) &&
+                !isCoveredTogether(holder.bounds, tile.boundingBox)
 
         val job = RendererJob(
             tile,
@@ -128,6 +133,7 @@ class MapsforgeTileRenderer(
         return MapsforgeRendererHolder(
             newRenderer,
             newMapDataStore,
+            mapFiles.map { it.boundingBox() },
             newTileCache,
             newRenderThemeFuture
         )
@@ -149,9 +155,29 @@ class MapsforgeTileRenderer(
         return theme
     }
 
+    private fun isCoveredTogether(bounds: List<BoundingBox>, tile: BoundingBox): Boolean {
+        if (bounds.size < 2) {
+            return false
+        }
+        val steps = 4
+        val dLat = (tile.maxLatitude - tile.minLatitude) / steps
+        val dLon = (tile.maxLongitude - tile.minLongitude) / steps
+        for (i in 0..steps) {
+            for (j in 0..steps) {
+                val lat = tile.minLatitude + dLat * i
+                val lon = tile.minLongitude + dLon * j
+                if (bounds.none { it.contains(lat, lon) }) {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+
     private class MapsforgeRendererHolder(
         val renderer: MapsforgeRenderer,
         val dataStore: MapDataStore,
+        val bounds: List<BoundingBox>,
         private val tileCache: TileCache,
         val renderThemeFuture: RenderThemeFuture,
     ) {

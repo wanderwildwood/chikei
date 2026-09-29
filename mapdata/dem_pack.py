@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Pack the region's 3DEP elevation into the zip the app imports under Settings > Altimeter.
 
-    dem_pack.py <workdir>
+    dem_pack.py <srcdir> [<outdir> [<west> <south> <east> <north>]]
 
-Writes <workdir>/<name>-dem.zip: an index.json plus lossless PNG tiles in the app's 16-bit
+Reads <srcdir>/dem.tif and writes <outdir>/<name>-dem.zip (name = outdir's name), cut to the
+cell when one is given: an index.json plus lossless PNG tiles in the app's 16-bit
 layout, elevation in metres = (green << 8 | red) / A - B. Row 0 is the north edge.
 """
 import io
@@ -14,6 +15,7 @@ import zipfile
 
 import numpy as np
 import rasterio
+from rasterio.windows import from_bounds
 from PIL import Image
 
 A = 10.0   # decimetres: finer than the data is honest about, coarse enough to fit 16 bits
@@ -22,11 +24,17 @@ TILE = 1620
 
 
 def main():
-    work = sys.argv[1]
+    src_dir = sys.argv[1]
+    work = sys.argv[2] if len(sys.argv) > 2 else src_dir
     name = os.path.basename(os.path.normpath(work))
-    with rasterio.open(os.path.join(work, "dem.tif")) as src:
-        z = src.read(1).astype(np.float64)
-        t = src.transform
+    os.makedirs(work, exist_ok=True)
+    with rasterio.open(os.path.join(src_dir, "dem.tif")) as src:
+        window = None
+        if len(sys.argv) == 7:
+            window = from_bounds(*(float(v) for v in sys.argv[3:7]), transform=src.transform)
+            window = window.round_offsets().round_lengths()
+        z = src.read(1, window=window).astype(np.float64)
+        t = src.window_transform(window) if window is not None else src.transform
         nodata = src.nodata
     bad = ~np.isfinite(z) | (z < -1000)
     if nodata is not None:

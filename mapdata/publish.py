@@ -3,7 +3,8 @@
 
     publish.py <site_dir> <workdir> [<workdir> ...]    (name each with NAME=<display name>)
 
-Each <workdir> holds <id>.map and optionally <id>-dem.zip, where <id> is the directory name.
+Each <workdir> holds <id>.map and optionally <id>-dem.zip, where <id> is the directory name,
+and, for a quad cell from build_cells.py, cell.json with its name and bounds [W, S, E, N].
 A display name can be given as  path/to/linville-falls="Linville Falls".  Serve <site_dir> with any
 static file server, e.g. `tailscale serve --https=443 <site_dir>` or `python3 -m http.server`.
 """
@@ -46,9 +47,14 @@ def main():
         if not os.path.exists(map_file):
             raise SystemExit(f"{map_file}: not built")
         dem_file = os.path.join(work, f"{pid}-dem.zip")
+        cell = {}
+        cell_json = os.path.join(work, "cell.json")
+        if os.path.exists(cell_json):
+            cell = json.load(open(cell_json))
         packs[pid] = {
             "id": pid,
-            "name": name or pid.replace("-", " ").title(),
+            "name": name or cell.get("name") or pid.replace("-", " ").title(),
+            "bounds": cell.get("bounds"),
             "updated": datetime.date.today().isoformat(),
             "map": entry(site, pid, map_file),
             "elevation": entry(site, pid, dem_file) if os.path.exists(dem_file) else None,

@@ -116,6 +116,41 @@ class DigitalElevationModelLoader {
         emit(1f)
     }.flowOn(Dispatchers.IO)
 
+    /**
+     * Adds one region's model alongside whatever is already loaded, replacing only an earlier
+     * copy of the same [key]. Region packs cover the country one quadrangle at a time, so
+     * neighbouring cells have to accumulate rather than each replacing the last.
+     */
+    suspend fun add(source: Uri, key: String) = onIO {
+        val files = DependencyRegistry.get<FileSubsystem>()
+        val database = DependencyRegistry.get<AppDatabase>().digitalElevationModelDao()
+        val prefs = DependencyRegistry.get<UserPreferences>()
+        val folder = "dem/$key"
+
+        DEMRepo.lock.withLock {
+            val dir = files.getDirectory(folder, create = true)
+            dir.deleteRecursively()
+            files.stream(source)?.use {
+                ZipUtils.unzip(it, files.getDirectory(folder, create = true), MAX_ZIP_FILE_COUNT)
+            } ?: throw IllegalArgumentException("Unable to read the elevation model")
+
+            val indexFile = files.get("$folder/index.json")
+            if (!indexFile.exists()) {
+                files.getDirectory(folder).deleteRecursively()
+                throw IllegalArgumentException("The provided zip file does not contain a valid DEM index.json file.")
+            }
+            val tiles = getTilesFromIndex(indexFile.readText(), directory = folder)
+            database.getAll()
+                .filter { it.filename.startsWith("$folder/") }
+                .forEach { database.delete(it) }
+            database.upsert(tiles)
+            indexFile.delete()
+            prefs.altimeter.isDigitalElevationModelLoaded = true
+        }
+
+        DEM.invalidateCache()
+    }
+
     suspend fun clear() = onIO {
         val prefs = DependencyRegistry.get<UserPreferences>()
         val files = DependencyRegistry.get<FileSubsystem>()
@@ -133,7 +168,8 @@ class DigitalElevationModelLoader {
 
         fun getTilesFromIndex(
             indexText: String,
-            isCompressed: Boolean = false
+            isCompressed: Boolean = false,
+            directory: String = "dem"
         ): List<DigitalElevationModelEntity> {
             val parsed = if (isCompressed) {
                 JsonConvert.fromJson<CompressedDigitalElevationModelIndex>(indexText)
@@ -148,7 +184,7 @@ class DigitalElevationModelLoader {
                     parsed.resolution_arc_seconds,
                     parsed.compression_method,
                     parsed.version ?: "",
-                    "dem/${it.filename}",
+                    "$directory/${it.filename}",
                     it.width,
                     it.height,
                     it.a,

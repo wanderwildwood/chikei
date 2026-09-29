@@ -4,7 +4,9 @@
     fetch.py <west> <south> <east> <north> <workdir>
 
 - Forest Service surface ownership parcels, system roads and trails (USFS EDW services)
-- OpenStreetMap for the same box (Overpass)
+- North Carolina parcel boundaries (NC OneMap), geometry only
+- the USGS 7.5-minute quadrangles covering the box: the cells packs are cut into
+- OpenStreetMap for the same box, cut from Geofabrik's state extracts (needs osmosis)
 - USGS 3DEP 1/3 arc-second elevation, as one GeoTIFF
 
 Nothing here needs a key. Everything lands in <workdir>; re-running skips what is there.
@@ -19,16 +21,22 @@ import urllib.request
 UA = "chikei-mapdata/0.1 (+https://github.com/wanderwildwood)"
 EDW = "https://apps.fs.usda.gov/arcx/rest/services/EDW"
 LAYERS = {
-    "ownership": "EDW_SurfaceOwnership_01/MapServer/0",
-    "roads": "EDW_RoadBasic_01/MapServer/0",
-    "trails": "EDW_TrailNFSPublish_01/MapServer/0",
+    "ownership": f"{EDW}/EDW_SurfaceOwnership_01/MapServer/0",
+    "roads": f"{EDW}/EDW_RoadBasic_01/MapServer/0",
+    "trails": f"{EDW}/EDW_TrailNFSPublish_01/MapServer/0",
+    "parcels": "https://services.nconemap.gov/secure/rest/services/NC1Map_Parcels/FeatureServer/1",
+    "quads": "https://carto.nationalmap.gov/arcgis/rest/services/map_indices/MapServer/10",
 }
+PAGE = {"parcels": 5000}
 # Only the fields the build reads. SurfaceOwnership also carries the names of the people
 # land was bought from; they are never requested, so they never reach the pack.
 FIELDS = {
     "ownership": "ownerclassification,nfslandunitname",
     "roads": "id,name,oper_maint_level,route_status",
     "trails": "trail_name,trail_no,trail_type,national_trail_designation",
+    # Parcels carry owners' names, addresses and values. Only the outline is taken.
+    "parcels": "objectid",
+    "quads": "CELL_NAME,STATE_ALPHA",
 }
 
 
@@ -51,24 +59,52 @@ def fetch_layer(name, path, bbox, out):
         q = urllib.parse.urlencode({
             "geometry": ",".join(map(str, bbox)), "geometryType": "esriGeometryEnvelope",
             "inSR": 4326, "spatialRel": "esriSpatialRelIntersects", "outFields": FIELDS[name],
-            "outSR": 4326, "f": "geojson", "resultOffset": offset, "resultRecordCount": 1000,
+            "outSR": 4326, "f": "geojson", "resultOffset": offset, "resultRecordCount": PAGE.get(name, 1000),
         })
-        page = json.loads(get(f"{EDW}/{path}/query?{q}"))
+        page = json.loads(get(f"{path}/query?{q}"))
         if "error" in page:
             raise SystemExit(f"{name}: {page['error']}")
         feats += page["features"]
         print(f"   {name}: {len(feats)}")
-        if not page.get("exceededTransferLimit") and len(page["features"]) < 1000:
+        if not page.get("exceededTransferLimit") and len(page["features"]) < PAGE.get(name, 1000):
             break
         offset += len(page["features"])
     json.dump({"type": "FeatureCollection", "features": feats}, open(out, "w"))
 
 
-def fetch_osm(bbox, out):
+# Geofabrik's daily state extracts, named as on download.geofabrik.de
+STATE_EXTRACTS = {
+    "NC": "north-carolina", "TN": "tennessee", "VA": "virginia", "GA": "georgia", "SC": "south-carolina",
+}
+
+
+def fetch_osm(bbox, out, work):
+    """OpenStreetMap for the box, as PBF: the states' Geofabrik extracts, cut down with osmosis.
+    Overpass times out on an area this size."""
+    import subprocess
+    osmosis = os.environ.get("OSMOSIS", "osmosis")
+    quads = json.load(open(os.path.join(work, "quads.geojson")))["features"]
+    states = sorted({st for q in quads for st in (q["properties"].get("STATE_ALPHA") or "").split(",") if st})
+    cache = os.environ.get("OSM_EXTRACT_CACHE", os.path.join(os.path.dirname(os.path.abspath(work)), "osm-extracts"))
+    os.makedirs(cache, exist_ok=True)
     w, s, e, n = bbox
-    q = f"[out:xml][timeout:600][maxsize:1073741824];(nwr({s},{w},{n},{e}););(._;>;);out meta;"
-    body = urllib.parse.urlencode({"data": q}).encode()
-    open(out, "wb").write(get("https://overpass-api.de/api/interpreter", data=body))
+    cmd = [osmosis, "-q"]
+    for i, st in enumerate(states):
+        if st not in STATE_EXTRACTS:
+            raise SystemExit(f"osm: no Geofabrik extract known for {st}")
+        pbf = os.path.join(cache, f"{STATE_EXTRACTS[st]}-latest.osm.pbf")
+        if not os.path.exists(pbf):
+            print(f"   downloading {STATE_EXTRACTS[st]} extract")
+            url = f"https://download.geofabrik.de/north-america/us/{STATE_EXTRACTS[st]}-latest.osm.pbf"
+            subprocess.run(["curl", "-sSfL", "-A", UA, "-o", pbf + ".part", url], check=True)
+            os.replace(pbf + ".part", pbf)
+        cmd += ["--rb", pbf, "--bounding-box", f"left={w}", f"right={e}", f"bottom={s}", f"top={n}",
+                "completeWays=yes"]
+        if i > 0:
+            cmd += ["--merge"]
+    cmd += ["--wb", out]
+    subprocess.run(cmd, check=True)
+    print(f"   osm: {', '.join(states)}, {os.path.getsize(out) / 1e6:.1f} MB")
 
 
 def fetch_dem(bbox, out):
@@ -119,7 +155,7 @@ def main():
     work = sys.argv[5]
     os.makedirs(work, exist_ok=True)
     jobs = [(f"{n}.geojson", lambda o, n=n, p=p: fetch_layer(n, p, bbox, o)) for n, p in LAYERS.items()]
-    jobs += [("osm.osm", lambda o: fetch_osm(bbox, o)), ("dem.tif", lambda o: fetch_dem(bbox, o))]
+    jobs += [("osm.osm.pbf", lambda o: fetch_osm(bbox, o, work)), ("dem.tif", lambda o: fetch_dem(bbox, o))]
     for fname, job in jobs:
         out = os.path.join(work, fname)
         if os.path.exists(out) and os.path.getsize(out) > 0:

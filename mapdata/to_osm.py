@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """Turn the fetched layers into OSM XML the Mapsforge writer can merge with the OSM extract.
 
-    to_osm.py <workdir>
+    to_osm.py <srcdir> [<outdir> [<west> <south> <east> <north>]]
 
-Writes <workdir>/extra.osm holding:
-- USFS land:     closed ways / multipolygons tagged  ownership=usfs, name=<forest>
+Reads what fetch.py left in <srcdir>. Writes <outdir>/extra.osm (default <srcdir>), clipped
+to the given cell when one is given, holding:
+- USFS land:     closed ways / multipolygons tagged  ownership=usfs, name=<forest> (fill),
+                 and its outline as ways tagged  ownership_edge=usfs
 - USFS roads:    ways tagged  fs_road=<maintenance level 1-5>, ref="FS <id>", name
 - USFS trails:   ways tagged  fs_trail=yes, name, national=<yes|no>
+- lot lines:     ways tagged  parcel=line   (North Carolina county parcels; outlines only)
 - contours:      ways tagged  contour=elevation, ele=<feet>, contour_ext=elevation_{major,minor}
 
 Every new object gets a negative id, so nothing collides with real OSM ids.
@@ -19,11 +22,13 @@ from xml.sax.saxutils import quoteattr
 
 import numpy as np
 import rasterio
-from shapely.geometry import shape, LineString, MultiPolygon
-from shapely.ops import unary_union
+from shapely.geometry import shape, box, LineString, MultiLineString, MultiPolygon
+from shapely.ops import linemerge, unary_union
+from rasterio.windows import from_bounds
 import contourpy
 
 MINOR_FT, MAJOR_FT = 40, 200
+CLIP_MARGIN = 0.003  # ~300 m
 SIMPLIFY_DEG = 0.00003  # ~3 m; the panel cannot show finer and it keeps the file small
 
 
@@ -84,38 +89,88 @@ class Writer:
 
 
 def lines_of(geom):
+    """Every LineString in geom; clipping can hand back points and collections too."""
+    if geom.is_empty:
+        return []
     if geom.geom_type == "LineString":
         return [geom]
-    if geom.geom_type == "MultiLineString":
-        return list(geom.geoms)
+    if geom.geom_type in ("MultiLineString", "GeometryCollection"):
+        return [g for part in geom.geoms for g in lines_of(part)]
     return []
 
 
 def main():
-    work = sys.argv[1]
-    w = Writer(os.path.join(work, "extra.osm.part"))
+    if len(sys.argv) not in (2, 3, 7):
+        raise SystemExit(__doc__)
+    src = sys.argv[1]
+    out = sys.argv[2] if len(sys.argv) > 2 else src
+    # A cell build clips everything to the cell, plus a margin so lines run on past its
+    # edge; the Mapsforge writer then cuts cleanly at the cell boundary itself.
+    clip = cell = None
+    if len(sys.argv) == 7:
+        cw, cs, ce, cn = (float(v) for v in sys.argv[3:7])
+        clip = box(cw - CLIP_MARGIN, cs - CLIP_MARGIN, ce + CLIP_MARGIN, cn + CLIP_MARGIN)
+        cell = box(cw, cs, ce, cn)
+    os.makedirs(out, exist_ok=True)
+    w = Writer(os.path.join(out, "extra.osm.part"))
+
+    def clipped(geom):
+        return geom if clip is None else geom.intersection(clip)
+
+    def features(name):
+        path = os.path.join(src, f"{name}.geojson")
+        if not os.path.exists(path):
+            return []
+        feats = json.load(open(path))["features"]
+        if clip is None:
+            return feats
+        return [f for f in feats if f.get("geometry") and shape(f["geometry"]).intersects(clip)]
 
     # --- ownership: union parcels per forest, so the pack holds outlines not a parcel quilt
-    feats = json.load(open(os.path.join(work, "ownership.geojson")))["features"]
-    usfs = [f for f in feats if f["properties"].get("ownerclassification") == "USDA FOREST SERVICE"]
+    usfs = [f for f in features("ownership") if f["properties"].get("ownerclassification") == "USDA FOREST SERVICE"]
     forests = {}
     for f in usfs:
         forests.setdefault(f["properties"].get("nfslandunitname") or "National Forest", []).append(
             shape(f["geometry"]).buffer(0))
     for name, parts in forests.items():
         # close the hairline gaps between neighbouring parcels before dissolving
-        u = unary_union(parts).buffer(0.00002).buffer(-0.00002)
-        w.multipolygon(u, {"ownership": "usfs", "name": name})
+        whole = unary_union(parts).buffer(0.00002).buffer(-0.00002)
+        # The tint is cut exactly at the cell edge, so neighbouring cells meet without
+        # overlapping. The boundary is drawn from the forest's real outline, as lines, so the
+        # cut itself never shows up as a boundary.
+        area = whole if cell is None else whole.intersection(cell)
+        if not area.is_empty:
+            w.multipolygon(area, {"ownership": "usfs", "name": name})
+        edge = whole.boundary if clip is None else whole.boundary.intersection(clip)
+        for g in lines_of(edge):
+            g = g.simplify(SIMPLIFY_DEG)
+            if g.length > 0:
+                w.way(g.coords, {"ownership_edge": "usfs"})
         print(f"   ownership: {name}: {len(parts)} parcels")
+
+    # --- county parcels: every lot line once. Neighbouring lots share an edge, so the
+    # boundaries are merged into one set of lines rather than drawn per parcel.
+    parcels = [shape(f["geometry"]).buffer(0) for f in features("parcels")]
+    if parcels:
+        edges = unary_union([p.boundary for p in parcels if not p.is_empty])
+        n = 0
+        pieces = lines_of(clipped(edges))
+        merged = linemerge(MultiLineString(pieces)) if pieces else None
+        for g in lines_of(merged) if merged is not None else []:
+            g = g.simplify(SIMPLIFY_DEG)
+            if g.length > 0:
+                w.way(g.coords, {"parcel": "line"})
+                n += 1
+        print(f"   parcels: {len(parcels)} lots, {n} lines")
 
     # --- Forest Service roads
     n = 0
-    for f in json.load(open(os.path.join(work, "roads.geojson")))["features"]:
+    for f in features("roads"):
         p = f["properties"]
         if (p.get("route_status") or "").startswith("DE"):  # decommissioned
             continue
         ml = (p.get("oper_maint_level") or "")[:1]
-        for g in lines_of(shape(f["geometry"]).simplify(SIMPLIFY_DEG)):
+        for g in lines_of(clipped(shape(f["geometry"])).simplify(SIMPLIFY_DEG)):
             w.way(g.coords, {"fs_road": ml or "yes", "ref": f"FS {p['id']}" if p.get("id") else None,
                              "name": (p.get("name") or "").title()})
             n += 1
@@ -123,22 +178,25 @@ def main():
 
     # --- Forest Service trails
     n = 0
-    for f in json.load(open(os.path.join(work, "trails.geojson")))["features"]:
+    for f in features("trails"):
         p = f["properties"]
-        for g in lines_of(shape(f["geometry"]).simplify(SIMPLIFY_DEG)):
+        for g in lines_of(clipped(shape(f["geometry"])).simplify(SIMPLIFY_DEG)):
             w.way(g.coords, {"fs_trail": "yes", "name": (p.get("trail_name") or "").title(),
                              "ref": p.get("trail_no"),
                              "national": "yes" if p.get("national_trail_designation") not in (None, 0, "0") else None})
             n += 1
     print(f"   trails: {n} ways")
 
-    # --- contours
-    with rasterio.open(os.path.join(work, "dem.tif")) as src:
-        z = src.read(1).astype(np.float64) * 3.28084
-        z[z < -1000] = np.nan
-        t = src.transform
-        lon = t.c + t.a * (np.arange(src.width) + 0.5)
-        lat = t.f + t.e * (np.arange(src.height) + 0.5)
+    # --- contours, from only the part of the DEM the cell needs
+    with rasterio.open(os.path.join(src, "dem.tif")) as ds:
+        window = None
+        if clip is not None:
+            window = from_bounds(*clip.bounds, transform=ds.transform).round_offsets().round_lengths()
+        z = ds.read(1, window=window).astype(np.float64) * 3.28084
+        t = ds.window_transform(window) if window is not None else ds.transform
+    z[z < -1000] = np.nan
+    lon = t.c + t.a * (np.arange(z.shape[1]) + 0.5)
+    lat = t.f + t.e * (np.arange(z.shape[0]) + 0.5)
     gen = contourpy.contour_generator(lon, lat, z, name="serial", line_type=contourpy.LineType.Separate)
     lo = int(np.nanmin(z) // MINOR_FT * MINOR_FT) + MINOR_FT
     hi = int(np.nanmax(z) // MINOR_FT * MINOR_FT)
@@ -158,7 +216,7 @@ def main():
     print(f"   contours: {n} ways, {lo}-{hi} ft")
 
     w.close()
-    os.replace(os.path.join(work, "extra.osm.part"), os.path.join(work, "extra.osm"))
+    os.replace(os.path.join(out, "extra.osm.part"), os.path.join(out, "extra.osm"))
 
 
 if __name__ == "__main__":

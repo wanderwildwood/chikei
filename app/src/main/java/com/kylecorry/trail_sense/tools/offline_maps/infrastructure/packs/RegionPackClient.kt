@@ -24,6 +24,8 @@ class RegionPack(
     val id: String,
     val name: String,
     val updated: String?,
+    /** [west, south, east, north]; a quadrangle's corners */
+    val bounds: List<Double>?,
     val map: RegionPackFile,
     val elevation: RegionPackFile?
 ) : ProguardIgnore {

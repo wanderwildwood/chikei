@@ -45,6 +45,11 @@
         <line stroke="#555555" stroke-width="1.0" scale="none" />
     </rule>
 
+    <!-- Lot lines on private land: the quietest line on the sheet -->
+    <rule e="way" k="parcel" v="line" zoom-min="14">
+        <line stroke="#8C8C8C" stroke-width="0.5" scale="none" />
+    </rule>
+
     <!-- ================ WATER LINES ================ -->
 
     <rule e="way" k="waterway" v="river" zoom-min="8">
@@ -57,7 +62,8 @@
     <!-- ================ BOUNDARIES ================ -->
 
     <!-- Forest Service land edge: long dash, dot -->
-    <rule e="way" k="ownership" v="usfs" zoom-min="10">
+    <!-- Drawn from the forest's own outline (ownership_edge), never from a pack's cut edge -->
+    <rule e="way" k="ownership_edge" v="usfs" zoom-min="10">
         <line stroke="#444444" stroke-width="1.3" stroke-dasharray="9,4,2,4" stroke-linecap="butt" scale="none" />
     </rule>
     <rule e="way" k="boundary" v="administrative" zoom-min="0">

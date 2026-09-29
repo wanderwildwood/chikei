@@ -1,6 +1,7 @@
     <!-- chikei: tags written by to_osm.py, appended to Mapsforge's default tag-mapping -->
     <ways>
         <osm-tag key="ownership" value="usfs" zoom-appear="8"/>
+        <osm-tag key="ownership_edge" value="usfs" zoom-appear="10"/>
 
         <osm-tag key="fs_road" value="1" zoom-appear="12"/>
         <osm-tag key="fs_road" value="2" zoom-appear="11"/>
@@ -11,6 +12,8 @@
 
         <osm-tag key="fs_trail" value="yes" zoom-appear="12"/>
         <osm-tag key="national" value="yes" renderable="false"/>
+
+        <osm-tag key="parcel" value="line" zoom-appear="14"/>
 
         <osm-tag key="contour" value="elevation" renderable="false"/>
         <osm-tag key="contour_ext" value="elevation_major" zoom-appear="11"/>
