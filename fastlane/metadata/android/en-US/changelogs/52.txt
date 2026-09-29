@@ -1,8 +1,0 @@
-- Weight converter
-- Volume converter
-- Time converter
-- Temperature converter
-- Temperature estimation at elevation (experimental)
-- Map share URL format setting
-- Pinch to zoom radar compass
-- Bug fixes

@@ -1,2 +1,0 @@
-- Show while locked and navigating (navigation settings)
-- Bug fixes

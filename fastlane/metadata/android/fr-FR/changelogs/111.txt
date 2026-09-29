@@ -1,1 +1,0 @@
-Correction d'un plantage lors de l'ouverture des outils sur certains appareils

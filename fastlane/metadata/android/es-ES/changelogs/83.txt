@@ -1,7 +1,0 @@
-Balizas
-- Añadir iconos
-- Añadir más opciones de ordenación
-
-Miscelánea
-- Añadir animación de calibración de brújula
-- Corrección de errores

@@ -1,2 +1,0 @@
-- Mostrar mientras está bloqueado y Navegas (ajustes de Navegar)
-- Correcciones de errores

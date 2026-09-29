@@ -1,6 +1,0 @@
-Clouds
-- Identify clouds using your camera or a photo
-- Replace cloud list with a cloud log (last 48 hours)
-
-Misc
-- Bug fixes

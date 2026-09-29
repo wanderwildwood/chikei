@@ -1,2 +1,0 @@
-- Zeige die Geschwindigkeit in dem Navigationstab
-- Zeige die ungefähre Zeit zwischen

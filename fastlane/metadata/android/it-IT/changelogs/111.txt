@@ -1,1 +1,0 @@
-Risolto il problema di arresto anomalo all'apertura degli strumenti su alcuni dispositivi

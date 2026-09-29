@@ -1,1 +1,0 @@
-Fix crash when opening tools on some devices

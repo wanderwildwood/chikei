@@ -1,8 +1,0 @@
-Průvodce pro přežití
-- Přidáno vyhledávání
-- Úprava obsahu pro praktičnost
-
-Průvodce terénem
-- Aktualizováno několik průvodců s vlastními obálkami
-- Přidána kategorie počasí
-- Přidán troudnatec kopytovitý, čaga a mraky

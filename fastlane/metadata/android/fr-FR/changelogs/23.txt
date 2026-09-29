@@ -1,3 +1,0 @@
-- Outil d'inventaire
-- Outil de mesure de la profondeur de l'eau
-- Autres pages du guide d'utilisation

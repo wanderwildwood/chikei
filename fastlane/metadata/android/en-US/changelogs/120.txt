@@ -1,6 +1,0 @@
-Astronomy
-- See moon phases, eclipses, and meteor showers on the calendar
-
-Tools
-- Choose which tools appear on the bottom bar
-- Long press the bottom bar to show quick actions

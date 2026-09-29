@@ -1,6 +1,0 @@
-Paths
-- Add more line styles
-- Navigate to closest piece of path
-
-Other
-- Bug fixes
