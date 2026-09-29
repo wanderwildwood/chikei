@@ -5,7 +5,7 @@ import com.kylecorry.trail_sense.shared.data.Identifiable
 
 enum class AppColor(override val id: Long, @ColorInt override val color: Int) : IAppColor {
     Red(0, -1092784), // #ef5350
-    Orange(1, -37632), // #FF6D00
+    Orange(1, -16777216), // #000000 on Topo: the accent is black
     Yellow(2, -2240980), // #DDCE2C
     Green(3, -8271996), // #81c784
     Blue(4, -6239489), // #a0caff

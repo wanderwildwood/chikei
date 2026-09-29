@@ -109,11 +109,12 @@ object CustomUiUtils {
 
     @ColorInt
     fun getQualityColor(quality: Quality): Int {
+        // Greys that darken as quality drops; the badge text says which it is.
         return when (quality) {
-            Quality.Poor -> AppColor.Red.color
-            Quality.Unknown -> AppColor.Gray.color
-            Quality.Moderate -> AppColor.Yellow.color
-            Quality.Good -> AppColor.Green.color
+            Quality.Poor -> 0xFFA8A8A8.toInt()
+            Quality.Unknown -> 0xFFE0E0E0.toInt()
+            Quality.Moderate -> 0xFFCCCCCC.toInt()
+            Quality.Good -> 0xFFE8E8E8.toInt()
         }
     }
 
