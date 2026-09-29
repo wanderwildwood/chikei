@@ -107,6 +107,7 @@
     <string name="share_path">Share GPX</string>
     <string name="pref_region_pack_url" translatable="false">pref_region_pack_url</string>
     <string name="download_region">Download region</string>
+    <string name="download">Download</string>
     <string name="downloading_region">Downloading %1$s</string>
     <string name="region_pack_server">Map server</string>
     <string name="region_pack_server_description">The address of the region pack server, e.g. https://maps.example.ts.net</string>
@@ -121,6 +122,8 @@
     <string name="region_pack_have">✓ have it</string>
     <string name="region_pack_update">update</string>
     <string name="region_pack_here">here</string>
+    <string name="region_picker_hint">Tap squares to choose them. ✓ is already on the phone.</string>
+    <string name="download_regions_button">Download %1$d (%2$s)</string>
     <string name="maps">Maps</string>
     <!--Navigation Tab - Create beacon-->
     <string name="name">Name</string>

@@ -54,6 +54,11 @@
         android:name="com.kylecorry.trail_sense.tools.map.ui.MapSettingsFragment"
         android:label="MapSettingsFragment" />
     <fragment
+        android:id="@+id/regionPickerFragment"
+        android:name="com.kylecorry.trail_sense.tools.offline_maps.ui.RegionPickerFragment"
+        android:label="RegionPickerFragment"
+        tools:layout="@layout/fragment_region_picker" />
+    <fragment
         android:id="@+id/offlineMapViewFragment"
         android:name="com.kylecorry.trail_sense.tools.offline_maps.ui.trail_maps.ViewTrailMapFragment"
         android:label="OfflineMapViewFragment"

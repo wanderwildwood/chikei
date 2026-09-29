@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.kylecorry.trail_sense.shared.views.Toolbar
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:flattenButtons="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:showSubtitle="true"
+        app:subtitle="@string/region_picker_hint"
+        app:title="@string/download_region" />
+
+    <com.kylecorry.trail_sense.tools.map.ui.MapView
+        android:id="@+id/map"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/download_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/zoom_in_btn"
+        style="@style/Widget.App.MapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.86"
+        app:icon="@drawable/ic_add"
+        app:layout_constraintBottom_toTopOf="@+id/zoom_out_btn"
+        app:layout_constraintStart_toStartOf="@+id/zoom_out_btn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/zoom_out_btn"
+        style="@style/Widget.App.MapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:alpha="0.86"
+        app:icon="@drawable/ic_zoom_out"
+        app:layout_constraintBottom_toBottomOf="@id/map"
+        app:layout_constraintEnd_toEndOf="@id/map" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/download_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:enabled="false"
+        android:text="@string/download"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
