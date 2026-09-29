@@ -162,14 +162,6 @@
         <service
             android:name=".tools.flashlight.infrastructure.FlashlightService"
             android:exported="false" />
-        <service
-            android:name=".tools.waterpurification.infrastructure.WaterPurificationTimerService"
-            android:exported="false"
-            android:foregroundServiceType="specialUse">
-            <property
-                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="timer" />
-        </service>
 
         <service
             android:name="com.kylecorry.trail_sense.tools.paths.infrastructure.services.BacktrackService"
@@ -193,11 +185,6 @@
             android:exported="false"
             android:foregroundServiceType="health" />
 
-        <service
-            android:name=".tools.whitenoise.infrastructure.WhiteNoiseService"
-            android:enabled="true"
-            android:exported="false"
-            android:foregroundServiceType="mediaPlayback" />
 
         <!--Tiles-->
         <service
@@ -217,23 +204,11 @@
 
 
         <receiver
-            android:name="com.kylecorry.trail_sense.tools.clock.infrastructure.NextMinuteBroadcastReceiver"
-            android:enabled="true"
-            android:exported="false" />
-        <receiver
             android:name="com.kylecorry.trail_sense.tools.paths.infrastructure.receivers.StopBacktrackReceiver"
             android:enabled="true"
             android:exported="false" />
         <receiver
             android:name=".tools.pedometer.infrastructure.StopPedometerReceiver"
-            android:enabled="true"
-            android:exported="false" />
-        <receiver
-            android:name=".tools.waterpurification.infrastructure.WaterPurificationCancelReceiver"
-            android:enabled="true"
-            android:exported="false" />
-        <receiver
-            android:name=".tools.whitenoise.infrastructure.WhiteNoiseOffReceiver"
             android:enabled="true"
             android:exported="false" />
         <receiver
@@ -259,10 +234,6 @@
             android:exported="false" />
         <receiver
             android:name="com.kylecorry.trail_sense.tools.astronomy.infrastructure.receivers.SunriseAlarmReceiver"
-            android:enabled="true"
-            android:exported="false" />
-        <receiver
-            android:name="com.kylecorry.trail_sense.tools.turn_back.infrastructure.receivers.TurnBackAlarmReceiver"
             android:enabled="true"
             android:exported="false" />
         <receiver

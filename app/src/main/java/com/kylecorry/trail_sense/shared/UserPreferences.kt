@@ -22,11 +22,8 @@ import com.kylecorry.trail_sense.main.CustomBottomNavigationView
 import com.kylecorry.trail_sense.settings.backup.BackupPreferences
 import com.kylecorry.trail_sense.settings.infrastructure.AltimeterPreferences
 import com.kylecorry.trail_sense.tools.augmented_reality.infrastructure.AugmentedRealityPreferences
-import com.kylecorry.trail_sense.tools.level.infrastructure.BubbleLevelPreferences
 import com.kylecorry.trail_sense.settings.infrastructure.CameraPreferences
 import com.kylecorry.trail_sense.settings.infrastructure.CellSignalPreferences
-import com.kylecorry.trail_sense.tools.clinometer.infrastructure.ClinometerPreferences
-import com.kylecorry.trail_sense.tools.clock.infrastructure.ClockPreferences
 import com.kylecorry.trail_sense.settings.infrastructure.CompassPreferences
 import com.kylecorry.trail_sense.settings.infrastructure.ErrorPreferences
 import com.kylecorry.trail_sense.settings.infrastructure.GPSPreferences
@@ -43,7 +40,6 @@ import com.kylecorry.trail_sense.shared.alerts.NotificationSubsystem
 import com.kylecorry.trail_sense.shared.preferences.PreferencesSubsystem
 import com.kylecorry.trail_sense.shared.sharing.MapSite
 import com.kylecorry.trail_sense.tools.astronomy.infrastructure.AstronomyPreferences
-import com.kylecorry.trail_sense.tools.ballistics.infrastructure.BallisticsPreferences
 import com.kylecorry.trail_sense.tools.beacons.infrastructure.BeaconPreferences
 import com.kylecorry.trail_sense.tools.climate.infrastructure.ClimatePreferenceRepo
 import com.kylecorry.trail_sense.tools.field_guide.infrastructure.FieldGuidePreferences
@@ -51,11 +47,8 @@ import com.kylecorry.trail_sense.tools.map.infrastructure.MapPreferences
 import com.kylecorry.trail_sense.tools.navigation.infrastructure.NavigationPreferences
 import com.kylecorry.trail_sense.tools.offline_maps.infrastructure.photo_maps.PhotoMapPreferences
 import com.kylecorry.trail_sense.tools.paths.infrastructure.PathsPreferences
-import com.kylecorry.trail_sense.tools.ruler.infrastructure.RulerPreferences
 import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
 import com.kylecorry.trail_sense.tools.tools.ui.sort.ToolSortType
-import com.kylecorry.trail_sense.tools.turn_back.infrastructure.TurnBackPreferences
-import com.kylecorry.trail_sense.tools.waterpurification.infrastructure.WaterBoilTimerPreferences
 import com.kylecorry.trail_sense.tools.weather.infrastructure.WeatherPreferences
 import java.time.Duration
 
@@ -70,7 +63,6 @@ class UserPreferences(ctx: Context) : IDeclinationPreferences {
     val map by lazy { MapPreferences(context) }
     val weather by lazy { WeatherPreferences(context) }
     val astronomy by lazy { AstronomyPreferences(context) }
-    val ruler by lazy { RulerPreferences(context) }
     val flashlight by lazy { FlashlightPreferenceRepo(context) }
     val cellSignal by lazy { CellSignalPreferences(context) }
     val metalDetector by lazy { MetalDetectorPreferences(context) }
@@ -78,21 +70,15 @@ class UserPreferences(ctx: Context) : IDeclinationPreferences {
     val tides by lazy { TidePreferences(context) }
     val power by lazy { PowerPreferences(context) }
     val packs by lazy { PackPreferences(context) }
-    val clinometer by lazy { ClinometerPreferences(context) }
     val errors by lazy { ErrorPreferences(context) }
     val pedometer by lazy { PedometerPreferences(context) }
     val thermometer by lazy { ThermometerPreferences(context) }
     val compass by lazy { CompassPreferences(context) }
-    val clock by lazy { ClockPreferences(context) }
     val camera by lazy { CameraPreferences(context) }
     val altimeter by lazy { AltimeterPreferences(context) }
     val augmentedReality by lazy { AugmentedRealityPreferences(context) }
     val backup by lazy { BackupPreferences(context) }
-    val ballistics by lazy { BallisticsPreferences(context) }
     val climate by lazy { ClimatePreferenceRepo(context) }
-    val waterBoilTimer by lazy { WaterBoilTimerPreferences(context) }
-    val turnBack by lazy { TurnBackPreferences(context) }
-    val bubbleLevel by lazy { BubbleLevelPreferences(context) }
     val fieldGuide by lazy { FieldGuidePreferences(context) }
     val gps by lazy { GPSPreferences(context) }
     val paths by lazy { PathsPreferences(context) }

@@ -144,18 +144,8 @@ class PreferenceMigrator private constructor() {
                 prefs.remove("odometer_distance")
                 prefs.remove("last_odometer_location")
             },
-            PreferenceMigration(7, 8) { context, _ ->
-                val prefs = UserPreferences(context).ruler
-                val currentScale = prefs.rulerScale
-                if (currentScale == 1f || currentScale == 0f) {
-                    return@PreferenceMigration
-                }
-
-                val dpi = Screen.dpi(context)
-                val ydpi = Screen.ydpi(context)
-                val adjustedDpi = dpi / currentScale
-                prefs.rulerScale = ydpi / adjustedDpi
-            },
+            // 7 -> 8 rescaled the ruler tool, which Topo does not have
+            PreferenceMigration(7, 8) { _, _ -> },
             PreferenceMigration(8, 9) { context, prefs ->
                 val userPrefs = UserPreferences(context)
                 prefs.getString("pref_backtrack_frequency")?.toLongOrNull()?.let {
