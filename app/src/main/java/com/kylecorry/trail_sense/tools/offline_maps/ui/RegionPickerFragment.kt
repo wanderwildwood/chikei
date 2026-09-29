@@ -75,9 +75,13 @@ class RegionPickerFragment : BoundFragment<FragmentRegionPickerBinding>() {
         )
         map.setLayers(layers)
 
-        binding.zoomInBtn.setOnClickListener { map.zoom(2f) }
-        binding.zoomOutBtn.setOnClickListener { map.zoom(0.5f) }
+        binding.zoomInBtn.setOnClickListener { userZoomed = true; map.zoom(2f) }
+        binding.zoomOutBtn.setOnClickListener { userZoomed = true; map.zoom(0.5f) }
         map.setOnSingleTapListener { toggleAt(it) }
+        map.setOnScaleChangeListener {
+            val show = showLabels()
+            if (show != labelsShown) redraw()
+        }
         binding.downloadBtn.setOnClickListener { download() }
 
         inBackground {
@@ -90,12 +94,22 @@ class RegionPickerFragment : BoundFragment<FragmentRegionPickerBinding>() {
             packs = loaded.second
             onMain {
                 redraw()
+                // Open on the squares around you, not on everything the server has: only those
+                // within 25 km, or the nearest one if none is.
                 val here = sensors.lastKnownLocation
-                val nearby = packs.mapNotNull { boundsOf(it) }
-                    .sortedBy { here.distanceTo(it.center) }
-                    .take(9)
+                val byDistance = packs.mapNotNull { boundsOf(it) }.sortedBy { here.distanceTo(it.center) }
+                val nearby = byDistance.filter { here.distanceTo(it.center) < 25_000f }.take(9)
+                    .ifEmpty { byDistance.take(1) }
                 if (nearby.isNotEmpty()) {
-                    map.doOnLayout { map.fitIntoView(CoordinateBounds.from(nearby.flatMap { it.corners }), 1.05f) }
+                    val area = CoordinateBounds.from(nearby.flatMap { it.corners })
+                    map.doOnLayout { map.fitIntoView(area, 1.05f) }
+                    // The view can still change size after this (the keyboard from the server
+                    // address closing, say); fit again until the user zooms by hand.
+                    map.addOnLayoutChangeListener { _, _, top, _, bottom, _, oldTop, _, oldBottom ->
+                        if (!userZoomed && bottom - top != oldBottom - oldTop) {
+                            map.post { map.fitIntoView(area, 1.05f) }
+                        }
+                    }
                 }
             }
         }
@@ -121,7 +135,19 @@ class RegionPickerFragment : BoundFragment<FragmentRegionPickerBinding>() {
         redraw()
     }
 
+    private var labelsShown = true
+    private var userZoomed = false
+
+    /** Names only where a square is wide enough to hold one; zoomed out they pile up. */
+    private fun showLabels(): Boolean {
+        val b = packs.firstNotNullOfOrNull { boundsOf(it) } ?: return true
+        val widthMeters = Coordinate(b.center.latitude, b.west).distanceTo(Coordinate(b.center.latitude, b.east))
+        val metersPerPixel = binding.map.resolutionPixels
+        return metersPerPixel <= 0f || widthMeters / metersPerPixel >= 110f
+    }
+
     private fun redraw() {
+        labelsShown = showLabels()
         val features = mutableListOf<GeoJsonFeature>()
         var id = 1L
         for (pack in packs) {
@@ -143,6 +169,7 @@ class RegionPickerFragment : BoundFragment<FragmentRegionPickerBinding>() {
                     opacity = 255
                 )
             )
+            if (!labelsShown) continue
             val mark = when {
                 isInstalled && source.isOutdated(pack) -> " ↻"
                 isInstalled -> " ✓"
