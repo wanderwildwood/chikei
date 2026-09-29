@@ -1,4 +1,5 @@
 import java.time.LocalDate
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -20,6 +21,24 @@ android {
         versionName = "0.1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["clearPackageData"] = "true"
+    }
+    // A real keystore in signing/ signs every build type when it is present, so the very
+    // first install is already release-signed and a later update can never hit
+    // INSTALL_FAILED_UPDATE_INCOMPATIBLE. It is gitignored, and there is no fallback: a fresh
+    // clone builds an unsigned release APK, which will not install anywhere.
+    val signingPropertiesFile = rootProject.file("signing/signing.properties")
+    val realSigningConfig = if (signingPropertiesFile.isFile) {
+        val signingProperties = Properties().apply {
+            signingPropertiesFile.inputStream().use(::load)
+        }
+        signingConfigs.create("real") {
+            storeFile = rootProject.file("signing/signing.keystore")
+            storePassword = signingProperties.getProperty("STORE_PASSWORD")
+            keyAlias = signingProperties.getProperty("KEY_ALIAS")
+            keyPassword = signingProperties.getProperty("KEY_PASSWORD")
+        }
+    } else {
+        null
     }
     signingConfigs {
         create("nightly") {
@@ -52,8 +71,14 @@ android {
         // ------- RELEASES -------
         // F-Droid
         getByName("release") {
+            realSigningConfig?.let { signingConfig = it }
             isMinifyEnabled = true
             isShrinkResources = true
+            // AGP stamps the git revision into META-INF. The build box works from an rsync with
+            // no .git, so the same version built in two places would differ. Off.
+            vcsInfo {
+                include = false
+            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -72,6 +97,7 @@ android {
         // ------- DEVELOPMENT -------
         // Local debug
         getByName("debug") {
+            realSigningConfig?.let { signingConfig = it }
             testProguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
