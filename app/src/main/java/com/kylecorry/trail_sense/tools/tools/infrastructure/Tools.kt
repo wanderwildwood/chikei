@@ -67,55 +67,18 @@ import com.kylecorry.trail_sense.tools.whitenoise.WhiteNoiseToolRegistration
 object Tools {
 
     private val hooks = Hooks()
+    // Topo registers only the trail tools and what they depend on (paths use the pedometer;
+    // sensor calibration lives in the sensors tool). The rest of Trail Sense's tools are still
+    // in the tree but not registered, so none of their services, workers or alerts run.
     private val registry = listOf(
-        FlashlightToolRegistration,
-        WhistleToolRegistration,
-        RulerToolRegistration,
-        PedometerToolRegistration,
-        CliffHeightToolRegistration,
-        NavigationToolRegistration,
-        BeaconsToolRegistration,
-        OfflineMapsToolRegistration,
-        PathsToolRegistration,
-        TriangulateLocationToolRegistration,
-        ClinometerToolRegistration,
-        BubbleLevelToolRegistration,
-        ClockToolRegistration,
-        AstronomyToolRegistration,
-        WaterBoilTimerToolRegistration,
-        TidesToolRegistration,
-        BatteryToolRegistration,
-        SolarPanelAlignerToolRegistration,
-        LightMeterToolRegistration,
-        WeatherToolRegistration,
-        ClimateToolRegistration,
-        TemperatureEstimateToolRegistration,
-        CloudsToolRegistration,
-        LightningStrikeDistanceToolRegistration,
-        AugmentedRealityToolRegistration,
-        ConvertToolRegistration,
-        PackingListsToolRegistration,
-        MetalDetectorToolRegistration,
-        WhiteNoiseToolRegistration,
-        NotesToolRegistration,
-        QRCodeScannerToolRegistration,
-        SensorsToolRegistration,
-        DiagnosticsToolRegistration,
-        SettingsToolRegistration,
-        UserGuideToolRegistration,
-        ExperimentationToolRegistration,
-        MirrorCameraToolRegistration,
-        TurnBackToolRegistration,
-        LocalMessagingToolRegistration,
-        LocalTalkToolRegistration,
-        SurvivalGuideToolRegistration,
-        FieldGuideToolRegistration,
-        SignalFinderToolRegistration,
-        BallisticsToolRegistration,
-        PermitsToolRegistration,
-        DeclinationToolRegistration,
         MapToolRegistration,
-        MagnifierToolRegistration
+        PathsToolRegistration,
+        BeaconsToolRegistration,
+        NavigationToolRegistration,
+        OfflineMapsToolRegistration,
+        SettingsToolRegistration,
+        PedometerToolRegistration,
+        SensorsToolRegistration
     )
     private val bus = EventBus<Bundle>()
 
