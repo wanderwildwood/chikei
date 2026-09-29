@@ -12,6 +12,12 @@ sets out to show.
 Built for the [Mudita Kompakt](https://mudita.com/products/kompakt/), whose 4.3" panel has
 sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.
 
+## Screenshots
+
+| | | | |
+|---|---|---|---|
+| ![Linville Gorge on the map](screenshots/01-map.png) | ![Choosing regions to download](screenshots/02-regions.png) | ![Mark here, or record the track](screenshots/03-here.png) | ![A recorded track](screenshots/04-track.png) |
+
 ## What it shows
 
 - **Contours** every 40 ft, labelled every 200, from the USGS 3DEP 10 m elevation model
