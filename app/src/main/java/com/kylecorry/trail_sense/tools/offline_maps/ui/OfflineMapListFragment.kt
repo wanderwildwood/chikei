@@ -58,6 +58,7 @@ import com.kylecorry.trail_sense.tools.offline_maps.ui.commands.ToggleVisibility
 import com.kylecorry.trail_sense.tools.offline_maps.ui.commands.create.CreateBlankMapCommand
 import com.kylecorry.trail_sense.tools.offline_maps.ui.commands.create.CreateMapFromCameraCommand
 import com.kylecorry.trail_sense.tools.offline_maps.ui.commands.create.CreateMapFromFileCommand
+import com.kylecorry.trail_sense.tools.offline_maps.ui.commands.DownloadRegionPackCommand
 import com.kylecorry.trail_sense.tools.offline_maps.ui.commands.create.CreateMapFromUriCommand
 import com.kylecorry.trail_sense.tools.offline_maps.ui.commands.create.ICreateMapCommand
 import com.kylecorry.trail_sense.tools.offline_maps.ui.mappers.IMapMapper
@@ -373,6 +374,14 @@ class OfflineMapListFragment : BoundFragment<FragmentOfflineMapListBinding>() {
         binding.addMenu.hideOnMenuOptionSelected = true
         binding.addMenu.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
+                R.id.action_download_region -> {
+                    inBackground {
+                        if (DownloadRegionPackCommand(requireContext(), mapService).execute()) {
+                            manager.refresh()
+                        }
+                    }
+                }
+
                 R.id.action_import_map_file -> {
                     createMap(
                         CreateMapFromFileCommand(

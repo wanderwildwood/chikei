@@ -5,6 +5,10 @@
         android:icon="@drawable/ic_map_group"
         android:title="@string/group" />
     <item
+        android:id="@+id/action_download_region"
+        android:icon="@drawable/ic_file"
+        android:title="@string/download_region" />
+    <item
         android:id="@+id/action_import_map_file"
         android:icon="@drawable/ic_file"
         android:title="@string/map_file" />

@@ -4,6 +4,20 @@
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"
+        app:title="@string/region_packs">
+
+        <EditTextPreference
+            app:iconSpaceReserved="false"
+            app:key="@string/pref_region_pack_url"
+            app:singleLineTitle="false"
+            app:title="@string/region_pack_server"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false"
         app:title="@string/photo_maps">
 
         <SwitchPreferenceCompat

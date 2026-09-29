@@ -105,6 +105,17 @@
     <!--Navigation Tab - Beacon List - Sharesheet-->
     <string name="share_action_send">Send</string>
     <string name="share_path">Share GPX</string>
+    <string name="pref_region_pack_url" translatable="false">pref_region_pack_url</string>
+    <string name="download_region">Download region</string>
+    <string name="downloading_region">Downloading %1$s</string>
+    <string name="region_pack_server">Map server</string>
+    <string name="region_pack_server_description">The address of the region pack server, e.g. https://maps.example.ts.net</string>
+    <string name="region_pack_unreachable">Can\'t reach the map server</string>
+    <string name="region_pack_unreachable_message">Nothing answered at %1$s. Check the address in Settings &gt; Offline Maps, and that you are connected.</string>
+    <string name="region_pack_none">The map server has no regions yet</string>
+    <string name="region_pack_ready">%1$s is ready</string>
+    <string name="region_pack_failed">Download failed</string>
+    <string name="region_packs">Region packs</string>
     <string name="maps">Maps</string>
     <!--Navigation Tab - Create beacon-->
     <string name="name">Name</string>
