@@ -362,6 +362,7 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                                     getString(R.string.land_national_forest)
                                 }
 
+                                is PointInfo.Land.Owned -> land.owner
                                 PointInfo.Land.NotForest -> getString(R.string.land_not_national_forest)
                                 PointInfo.Land.Unknown -> null
                             }

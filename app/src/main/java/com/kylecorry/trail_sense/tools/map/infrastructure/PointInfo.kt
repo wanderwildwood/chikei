@@ -26,7 +26,10 @@ object PointInfo {
         /** Inside a Forest Service outline; [name] is the forest's, e.g. Pisgah National Forest. */
         data class Public(val name: String) : Land
 
-        /** Covered by a region pack but outside every Forest Service outline. */
+        /** A county lot; [owner] is the owner of record, as the county publishes it. */
+        data class Owned(val owner: String) : Land
+
+        /** Covered by a region pack but outside every Forest Service outline and county lot. */
         data object NotForest : Land
 
         /** No region pack covers the point, so there is nothing to say. */
@@ -47,6 +50,9 @@ object PointInfo {
             .filter { it.bounds?.contains(location) == true }
         val point = LatLong(location.latitude, location.longitude)
         var covered = false
+        // A national forest outline wins over a lot in any pack, so a lot is only kept until
+        // every pack has been asked
+        var lot: String? = null
         for (map in maps) {
             val file = MapsforgeAdapter.open(map.mapFile.path) ?: continue
             try {
@@ -56,15 +62,23 @@ object PointInfo {
                     continue
                 }
                 covered = true
-                val name = tryOrDefault(null) { publicLandAt(file, point) }
+                val name = tryOrDefault(null) { areaAt(file, point, "ownership", "usfs") }
                 if (name != null) {
                     return@onIO Land.Public(name)
+                }
+                val owner = tryOrDefault(null) { areaAt(file, point, "parcel", "lot") }
+                if (!owner.isNullOrBlank()) {
+                    lot = lot ?: owner
                 }
             } finally {
                 file.close()
             }
         }
-        if (covered) Land.NotForest else Land.Unknown
+        when {
+            lot != null -> Land.Owned(lot)
+            covered -> Land.NotForest
+            else -> Land.Unknown
+        }
     }
 
     suspend fun ground(location: Coordinate): Ground? {
@@ -88,15 +102,21 @@ object PointInfo {
         return Ground(slope, Bearing.from(facing))
     }
 
-    private fun publicLandAt(file: org.mapsforge.map.reader.MapFile, point: LatLong): String? {
+    /** The name of the area tagged [key]=[value] that holds [point], or null if none does. */
+    private fun areaAt(
+        file: org.mapsforge.map.reader.MapFile,
+        point: LatLong,
+        key: String,
+        value: String
+    ): String? {
         val x = MercatorProjection.longitudeToTileX(point.longitude, LOOKUP_ZOOM)
         val y = MercatorProjection.latitudeToTileY(point.latitude, LOOKUP_ZOOM)
         val result = file.readMapData(Tile(x, y, LOOKUP_ZOOM, 256)) ?: return null
         for (way in result.ways) {
-            if (way.tags.none { it.key == "ownership" && it.value == "usfs" }) {
+            if (way.tags.none { it.key == key && it.value == value }) {
                 continue
             }
-            // Outer and inner rings together, even-odd: a hole of private land stays private
+            // Outer and inner rings together, even-odd: a hole in an area stays outside it
             var inside = false
             for (ring in way.latLongs) {
                 if (contains(ring, point)) {

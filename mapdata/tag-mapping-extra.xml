@@ -14,6 +14,7 @@
         <osm-tag key="national" value="yes" renderable="false"/>
 
         <osm-tag key="parcel" value="line" zoom-appear="14"/>
+        <osm-tag key="parcel" value="lot" zoom-appear="14"/>
 
         <osm-tag key="contour" value="elevation" renderable="false"/>
         <osm-tag key="contour_ext" value="elevation_major" zoom-appear="11"/>

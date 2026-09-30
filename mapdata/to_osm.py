@@ -9,7 +9,9 @@ to the given cell when one is given, holding:
                  and its outline as ways tagged  ownership_edge=usfs
 - USFS roads:    ways tagged  fs_road=<maintenance level 1-5>, ref="FS <id>", name
 - USFS trails:   ways tagged  fs_trail=yes, name, national=<yes|no>
-- lot lines:     ways tagged  parcel=line   (North Carolina county parcels; outlines only)
+- lot lines:     ways tagged  parcel=line   (North Carolina county parcels)
+- lots:          closed ways tagged  parcel=lot, name=<owner of record>; not drawn, read by
+                 the app to say whose land a point is on
 - contours:      ways tagged  contour=elevation, ele=<feet>, contour_ext=elevation_{major,minor}
 
 Every new object gets a negative id, so nothing collides with real OSM ids.
@@ -150,7 +152,17 @@ def main():
 
     # --- county parcels: every lot line once. Neighbouring lots share an edge, so the
     # boundaries are merged into one set of lines rather than drawn per parcel.
-    parcels = [shape(f["geometry"]).buffer(0) for f in features("parcels")]
+    lots = [(shape(f["geometry"]).buffer(0), (f["properties"].get("ownname") or "").strip())
+            for f in features("parcels")]
+    parcels = [p for p, _ in lots]
+    # each lot once more as an area carrying its owner of record, only for those in the cell
+    n_lots = 0
+    for p, owner in lots:
+        if owner and not p.is_empty and (clip is None or p.intersects(clip)):
+            w.multipolygon(p, {"parcel": "lot", "name": owner})
+            n_lots += 1
+    if lots:
+        print(f"   lots with owners: {n_lots}")
     if parcels:
         edges = unary_union([p.boundary for p in parcels if not p.is_empty])
         n = 0

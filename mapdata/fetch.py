@@ -4,7 +4,7 @@
     fetch.py <west> <south> <east> <north> <workdir>
 
 - Forest Service surface ownership parcels, system roads and trails (USFS EDW services)
-- North Carolina parcel boundaries (NC OneMap), geometry only
+- North Carolina parcel boundaries (NC OneMap), with the owner of record
 - the USGS 7.5-minute quadrangles covering the box: the cells packs are cut into
 - OpenStreetMap for the same box, cut from Geofabrik's state extracts (needs osmosis)
 - USGS 3DEP 1/3 arc-second elevation, as one GeoTIFF
@@ -34,8 +34,10 @@ FIELDS = {
     "ownership": "ownerclassification,nfslandunitname",
     "roads": "id,name,oper_maint_level,route_status",
     "trails": "trail_name,trail_no,trail_type,national_trail_designation",
-    # Parcels carry owners' names, addresses and values. Only the outline is taken.
-    "parcels": "objectid",
+    # Parcels carry owners' names, addresses and values. The outline and the owner of record
+    # are taken, to say whose land a point is on, as the county's own map does; never the
+    # mailing address or the values.
+    "parcels": "objectid,ownname",
     "quads": "CELL_NAME,STATE_ALPHA",
 }
 

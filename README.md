@@ -33,8 +33,9 @@ sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.
   Tap the squares you need; each comes with its own elevation, and neighbours join without
   a seam.
 - **Here**, on the map: mark where you are standing, or start and stop recording your track.
-- **Hold a finger on the map** to see whose land it is (the national forest by name, or not
-  national forest), how steep the ground is and which way it faces, and its UTM coordinate.
+- **Hold a finger on the map** to see whose land it is (the national forest by name, or the
+  owner of record where the county publishes one), how steep the ground is and which way it
+  faces, and its UTM coordinate.
 - **Track detail** sets how closely a recording follows you: a point a minute, or every 30,
   10 or 5 seconds.
 - **Share GPX** hands a recorded track to CalTopo, or to anything else that takes GPX.
@@ -90,7 +91,8 @@ They need Python 3 with numpy, shapely, rasterio and contourpy, and
 [osmosis](https://github.com/openstreetmap/osmosis) with the
 [Mapsforge map writer](https://github.com/mapsforge/mapsforge) plugin. The data comes from
 OpenStreetMap (via Geofabrik's extracts), the USDA Forest Service, the USGS, and NC OneMap.
-Of the county parcels only the outlines are fetched: never owners, addresses or values.
+Of the county parcels the outlines and the owner of record are fetched, as the county's own
+map shows them: never addresses or values.
 
 ## Credit
 
