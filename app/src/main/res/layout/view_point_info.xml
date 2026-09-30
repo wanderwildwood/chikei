@@ -17,6 +17,15 @@
         android:visibility="gone" />
 
     <TextView
+        android:id="@+id/point_land_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/point_ground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

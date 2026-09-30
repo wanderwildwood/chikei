@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.map.infrastructure
 
+import android.content.Context
 import com.kylecorry.andromeda.core.tryOrDefault
 import com.kylecorry.luna.concurrency.onIO
 import com.kylecorry.sol.units.Bearing
@@ -8,6 +9,8 @@ import com.kylecorry.sol.units.Distance
 import com.kylecorry.trail_sense.main.getAppService
 import com.kylecorry.trail_sense.shared.dem.DEM
 import com.kylecorry.trail_sense.tools.offline_maps.domain.OfflineMapService
+import com.kylecorry.trail_sense.tools.offline_maps.domain.trail_maps.TrailMap
+import com.kylecorry.trail_sense.tools.offline_maps.infrastructure.packs.LandFiles
 import com.kylecorry.trail_sense.tools.offline_maps.infrastructure.trail_maps.mapsforge.MapsforgeAdapter
 import org.mapsforge.core.model.LatLong
 import org.mapsforge.core.util.MercatorProjection
@@ -18,19 +21,26 @@ import kotlin.math.hypot
 
 /**
  * What the ground is at a point, from what is already on the phone: whose land it is (from the
- * region packs' Forest Service outlines) and the lie of it (from the elevation model).
+ * region packs' land files, or an older pack's own map) and the lie of it (from the elevation
+ * model).
  */
 object PointInfo {
 
     sealed interface Land {
-        /** Inside a Forest Service outline; [name] is the forest's, e.g. Pisgah National Forest. */
+        /**
+         * A region pack's land file covers the point; [areas] are those holding it, and may be
+         * none. What they mean is put into words by [LandWords].
+         */
+        data class Recorded(val areas: List<LandIndex.Area>) : Land
+
+        /** An older pack, without a land file: inside a Forest Service outline, by name. */
         data class Public(val name: String) : Land
 
-        /** A county lot; [owner] is the owner of record, as the county publishes it. */
+        /** An older pack: a county lot; [owner] is the owner of record. */
         data class Owned(val owner: String) : Land
 
-        /** Covered by a region pack but outside every Forest Service outline and county lot. */
-        data object NotForest : Land
+        /** An older pack covers the point, but nothing in it says whose land it is. */
+        data object NoRecord : Land
 
         /** No region pack covers the point, so there is nothing to say. */
         data object Unknown : Land
@@ -45,9 +55,25 @@ object PointInfo {
     // mapdata/build_cells.py writes its sources into each pack's header comment
     private const val PACK_SOURCE = "USDA Forest Service"
 
-    suspend fun land(location: Coordinate): Land = onIO {
+    suspend fun land(context: Context, location: Coordinate): Land = onIO {
         val maps = getAppService<OfflineMapService>().getRenderableTrailMaps(null)
             .filter { it.bounds?.contains(location) == true }
+        // A land file counts only while its region's map is still on the phone
+        val names = maps.map { it.name }.toSet()
+        val files = LandFiles(context)
+        val index = LandIndex()
+        val recorded = tryOrDefault(null) {
+            val entries = files.all().filter { it.name in names && it.contains(location.latitude, location.longitude) }
+            if (entries.isEmpty()) null else index.at(location.latitude, location.longitude, entries)
+        }
+        if (recorded != null) {
+            return@onIO Land.Recorded(recorded)
+        }
+        legacyLand(maps, location)
+    }
+
+    /** What a pack from before land files (v0.1.4 and earlier) can say, from its map's tags. */
+    private suspend fun legacyLand(maps: List<TrailMap>, location: Coordinate): Land {
         val point = LatLong(location.latitude, location.longitude)
         var covered = false
         // A national forest outline wins over a lot in any pack, so a lot is only kept until
@@ -64,7 +90,7 @@ object PointInfo {
                 covered = true
                 val name = tryOrDefault(null) { areaAt(file, point, "ownership", "usfs") }
                 if (name != null) {
-                    return@onIO Land.Public(name)
+                    return Land.Public(name)
                 }
                 val owner = tryOrDefault(null) { areaAt(file, point, "parcel", "lot") }
                 if (!owner.isNullOrBlank()) {
@@ -74,9 +100,9 @@ object PointInfo {
                 file.close()
             }
         }
-        when {
+        return when {
             lot != null -> Land.Owned(lot)
-            covered -> Land.NotForest
+            covered -> Land.NoRecord
             else -> Land.Unknown
         }
     }

@@ -10,12 +10,18 @@ to the given cell when one is given, holding:
 - USFS roads:    ways tagged  fs_road=<maintenance level 1-5>, ref="FS <id>", name
 - USFS trails:   ways tagged  fs_trail=yes, name, national=<yes|no>
 - lot lines:     ways tagged  parcel=line   (North Carolina county parcels)
-- lots:          closed ways tagged  parcel=lot, name=<owner of record>; not drawn, read by
-                 the app to say whose land a point is on
-- contours:      ways tagged  contour=elevation, ele=<feet>, contour_ext=elevation_{major,minor}
+- other public land (from land_pack.areas: federal, state and local land other than the
+                 national forests):  land=public, name=<area> (the tint), and its outline as
+                 land_edge=public
+- tribal land:   land=tribal, name=<area>, and its outline as land_edge=tribal (no tint)
+- contours:      ways tagged  contour=elevation, contour_ext=elevation_{major,minor}, name=<level>
 
 Every new object gets a negative id, so nothing collides with real OSM ids.
-Contours are in feet, 40 ft apart, with every 200 ft a major (labelled) line, like a USGS quad.
+Contours are in the region's units (fetch.py records them): 40 ft apart with every 200 ft
+labelled, like a USGS quad, or 20 m apart with every 100 m labelled.
+
+Who owns what is written in full to the pack's land file by land_pack.py; the map only carries
+what is drawn.
 """
 import json
 import os
@@ -29,7 +35,10 @@ from shapely.ops import linemerge, unary_union
 from rasterio.windows import from_bounds
 import contourpy
 
-MINOR_FT, MAJOR_FT = 40, 200
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import land_pack  # noqa: E402
+
+UNITS = {"feet": (3.28084, 40, 200), "metres": (1.0, 20, 100)}  # factor from metres, minor, major
 CLIP_MARGIN = 0.003  # ~300 m
 SIMPLIFY_DEG = 0.00003  # ~3 m; the panel cannot show finer and it keeps the file small
 
@@ -150,19 +159,31 @@ def main():
                 w.way(g.coords, {"ownership_edge": "usfs"})
         print(f"   ownership: {name}: {len(parts)} parcels")
 
+    # --- other public land and tribal land, from the same areas as the land file. The tint is
+    # cut at the cell edge like the forests'; the outline is drawn from the area's own edge.
+    region = land_pack.region(src)
+    whole_box = clip if clip is not None else box(-180, -90, 180, 90)
+    n = 0
+    for g, fields in land_pack.areas(src, whole_box, region.get("sources", [])):
+        if fields.get("kind") != "fee" or fields.get("owner") == "USDA Forest Service":
+            continue
+        kind = {"federal": "public", "state": "public", "local": "public", "joint": "public",
+                "tribal": "tribal"}.get(fields.get("owner_type"))
+        if kind is None:
+            continue
+        inner = g if cell is None else g.intersection(cell)
+        if not inner.is_empty:
+            w.multipolygon(inner, {"land": kind, "name": fields.get("name")})
+        for e in lines_of(g.boundary):
+            e = e.simplify(SIMPLIFY_DEG)
+            if e.length > 0:
+                w.way(e.coords, {"land_edge": kind})
+        n += 1
+    print(f"   public and tribal land: {n} areas")
+
     # --- county parcels: every lot line once. Neighbouring lots share an edge, so the
     # boundaries are merged into one set of lines rather than drawn per parcel.
-    lots = [(shape(f["geometry"]).buffer(0), (f["properties"].get("ownname") or "").strip())
-            for f in features("parcels")]
-    parcels = [p for p, _ in lots]
-    # each lot once more as an area carrying its owner of record, only for those in the cell
-    n_lots = 0
-    for p, owner in lots:
-        if owner and not p.is_empty and (clip is None or p.intersects(clip)):
-            w.multipolygon(p, {"parcel": "lot", "name": owner})
-            n_lots += 1
-    if lots:
-        print(f"   lots with owners: {n_lots}")
+    parcels = [shape(f["geometry"]).buffer(0) for f in features("parcels")]
     if parcels:
         edges = unary_union([p.boundary for p in parcels if not p.is_empty])
         n = 0
@@ -204,17 +225,18 @@ def main():
         window = None
         if clip is not None:
             window = from_bounds(*clip.bounds, transform=ds.transform).round_offsets().round_lengths()
-        z = ds.read(1, window=window).astype(np.float64) * 3.28084
+        factor, minor, major = UNITS[region.get("units", "feet")]
+        z = ds.read(1, window=window).astype(np.float64) * factor
         t = ds.window_transform(window) if window is not None else ds.transform
-    z[z < -1000] = np.nan
+    z[z < -1000 * factor] = np.nan
     lon = t.c + t.a * (np.arange(z.shape[1]) + 0.5)
     lat = t.f + t.e * (np.arange(z.shape[0]) + 0.5)
     gen = contourpy.contour_generator(lon, lat, z, name="serial", line_type=contourpy.LineType.Separate)
-    lo = int(np.nanmin(z) // MINOR_FT * MINOR_FT) + MINOR_FT
-    hi = int(np.nanmax(z) // MINOR_FT * MINOR_FT)
+    lo = int(np.nanmin(z) // minor * minor) + minor
+    hi = int(np.nanmax(z) // minor * minor)
     n = 0
-    for level in range(lo, hi + 1, MINOR_FT):
-        kind = "elevation_major" if level % MAJOR_FT == 0 else "elevation_minor"
+    for level in range(lo, hi + 1, minor):
+        kind = "elevation_major" if level % major == 0 else "elevation_minor"
         for seg in gen.lines(level):
             if len(seg) < 3:
                 continue
@@ -225,7 +247,7 @@ def main():
             w.way(simp.coords, {"contour": "elevation", "contour_ext": kind,
                                 "name": str(level) if kind == "elevation_major" else None})
             n += 1
-    print(f"   contours: {n} ways, {lo}-{hi} ft")
+    print(f"   contours: {n} ways, {lo}-{hi} {region.get('units', 'feet')}")
 
     w.close()
     os.replace(os.path.join(out, "extra.osm.part"), os.path.join(out, "extra.osm"))

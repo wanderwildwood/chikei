@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Topo: a paper topo sheet for a sixteen-grey panel. Black line-art on white; the only fill
-  that carries meaning is the light grey tint on public (Forest Service) land.
-  Region packs built by mapdata/ add ownership=usfs, fs_road, fs_trail and contour_ext.
-  Plain OSM maps render too; they just have no ownership or contours.
+  that carries meaning is the light grey tint on public land: national forests, and any other
+  federal, state or local land a pack records. Tribal land is outlined, not tinted: it is not
+  public land. Region packs built by mapdata/ add ownership=usfs, land=public|tribal,
+  fs_road, fs_trail and contour_ext. Plain OSM maps render too, with their parks' boundaries,
+  but no ownership or contours.
 -->
 <rendertheme
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -22,6 +24,9 @@
 
     <!-- Public land: the tint -->
     <rule e="way" k="ownership" v="usfs" zoom-min="8">
+        <area fill="#E4E4E4" />
+    </rule>
+    <rule e="way" k="land" v="public" zoom-min="8">
         <area fill="#E4E4E4" />
     </rule>
 
@@ -65,6 +70,21 @@
     <!-- Drawn from the forest's own outline (ownership_edge), never from a pack's cut edge -->
     <rule e="way" k="ownership_edge" v="usfs" zoom-min="10">
         <line stroke="#444444" stroke-width="1.3" stroke-dasharray="9,4,2,4" stroke-linecap="butt" scale="none" />
+    </rule>
+    <!-- Other public land's edge: the same line as the forests' -->
+    <rule e="way" k="land_edge" v="public" zoom-min="10">
+        <line stroke="#444444" stroke-width="1.3" stroke-dasharray="9,4,2,4" stroke-linecap="butt" scale="none" />
+    </rule>
+    <!-- Tribal land's edge: long dash, two dots -->
+    <rule e="way" k="land_edge" v="tribal" zoom-min="10">
+        <line stroke="#333333" stroke-width="1.3" stroke-dasharray="9,3,2,3,2,3" stroke-linecap="butt" scale="none" />
+    </rule>
+    <!-- A national park or protected area as OpenStreetMap maps it, where no pack says more -->
+    <rule e="way" k="boundary" v="national_park" zoom-min="9">
+        <line stroke="#555555" stroke-width="1.0" stroke-dasharray="6,3" stroke-linecap="butt" scale="none" />
+    </rule>
+    <rule e="way" k="boundary|leisure" v="protected_area|nature_reserve" zoom-min="12">
+        <line stroke="#888888" stroke-width="0.7" stroke-dasharray="4,3" stroke-linecap="butt" scale="none" />
     </rule>
     <rule e="way" k="boundary" v="administrative" zoom-min="0">
         <rule e="way" k="admin_level" v="2|4">
@@ -138,6 +158,12 @@
     </rule>
     <rule e="way" k="highway" v="path|footway|bridleway" zoom-min="15">
         <pathText fill="#000000" font-size="10" font-style="italic" k="name" priority="10"
+            stroke="#FFFFFF" stroke-width="2.0" />
+    </rule>
+
+    <!-- Public and tribal land's names, quietly -->
+    <rule e="way" k="land" v="public|tribal" zoom-min="11">
+        <caption fill="#333333" font-size="12" font-style="italic" k="name" priority="4"
             stroke="#FFFFFF" stroke-width="2.0" />
     </rule>
 

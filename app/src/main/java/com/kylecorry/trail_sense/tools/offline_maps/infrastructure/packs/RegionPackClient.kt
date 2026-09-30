@@ -15,6 +15,7 @@ import java.security.MessageDigest
  *     <base>/packs.json
  *     <base>/<id>/<id>.map          Mapsforge map: OSM, public land, forest roads, contours
  *     <base>/<id>/<id>-dem.zip      elevation, in the altimeter's DEM import format
+ *     <base>/<id>/<id>-land.json.gz whose land each part of it is (optional; see land_pack.py)
  */
 class RegionPackIndex(
     val packs: List<RegionPack>
@@ -27,10 +28,11 @@ class RegionPack(
     /** [west, south, east, north]; a quadrangle's corners */
     val bounds: List<Double>?,
     val map: RegionPackFile,
-    val elevation: RegionPackFile?
+    val elevation: RegionPackFile?,
+    val land: RegionPackFile? = null
 ) : ProguardIgnore {
     val bytes: Long
-        get() = map.bytes + (elevation?.bytes ?: 0)
+        get() = map.bytes + (elevation?.bytes ?: 0) + (land?.bytes ?: 0)
 }
 
 class RegionPackFile(

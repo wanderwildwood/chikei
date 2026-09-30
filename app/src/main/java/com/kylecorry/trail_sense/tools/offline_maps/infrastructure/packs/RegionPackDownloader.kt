@@ -48,6 +48,7 @@ class RegionPackDownloader(
         val dir = File(context.cacheDir, "region_packs").apply { mkdirs() }
         val mapFile = File(dir, "${pack.id}.map")
         val demFile = File(dir, "${pack.id}-dem.zip")
+        val landFile = File(dir, "${pack.id}-land.json.gz")
         val title = if (total == 1) {
             context.getString(R.string.downloading_region, pack.name)
         } else {
@@ -66,6 +67,12 @@ class RegionPackDownloader(
                         setProgress((pack.map.bytes + it * elevation.bytes) / size)
                     }
                 }
+                pack.land?.let { land ->
+                    val before = pack.map.bytes + (pack.elevation?.bytes ?: 0)
+                    client.download(land, landFile) {
+                        setProgress((before + it * land.bytes) / size)
+                    }
+                }
             }
 
             Alerts.withLoading(context, context.getString(R.string.loading)) {
@@ -76,6 +83,9 @@ class RegionPackDownloader(
                 old.forEach { mapService.delete(it) }
                 if (pack.elevation != null) {
                     DigitalElevationModelLoader().add(Uri.fromFile(demFile), pack.id)
+                }
+                if (pack.land != null) {
+                    LandFiles(context).install(pack, landFile)
                 }
             }
             source.markInstalled(pack)
@@ -95,6 +105,7 @@ class RegionPackDownloader(
             onIO {
                 mapFile.delete()
                 demFile.delete()
+                landFile.delete()
             }
         }
     }

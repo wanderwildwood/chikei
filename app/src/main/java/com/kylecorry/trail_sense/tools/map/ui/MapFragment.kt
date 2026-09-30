@@ -60,6 +60,7 @@ import com.kylecorry.trail_sense.shared.views.DateTimeSliderSheet
 import com.kylecorry.trail_sense.shared.views.SensorStatusBadgeView
 import com.kylecorry.trail_sense.tools.beacons.domain.BeaconOwner
 import com.kylecorry.trail_sense.tools.map.MapToolRegistration
+import com.kylecorry.trail_sense.tools.map.infrastructure.LandWords
 import com.kylecorry.trail_sense.tools.map.infrastructure.PointInfo
 import com.kylecorry.trail_sense.tools.navigation.infrastructure.NavigationScreenLock
 import com.kylecorry.trail_sense.tools.navigation.infrastructure.Navigator
@@ -351,21 +352,17 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                 inBackground {
                     val selectedElevation = DEM.getElevation(location).elevation
                     val formattedLocation = formatter.formatLocation(location)
-                    val land = PointInfo.land(location)
+                    val landWords = LandWords(requireContext()).describe(PointInfo.land(requireContext(), location))
                     val ground = PointInfo.ground(location)
 
                     onMain {
                         val pointView = layoutInflater.inflate(R.layout.view_point_info, null) as LinearLayout
                         pointView.findViewById<TextView>(R.id.point_land).apply {
-                            text = when (land) {
-                                is PointInfo.Land.Public -> land.name.ifBlank {
-                                    getString(R.string.land_national_forest)
-                                }
-
-                                is PointInfo.Land.Owned -> land.owner
-                                PointInfo.Land.NotForest -> getString(R.string.land_not_national_forest)
-                                PointInfo.Land.Unknown -> null
-                            }
+                            text = landWords.title
+                            isVisible = text != null
+                        }
+                        pointView.findViewById<TextView>(R.id.point_land_detail).apply {
+                            text = landWords.lines.joinToString("\n").ifBlank { null }
                             isVisible = text != null
                         }
                         pointView.findViewById<TextView>(R.id.point_ground).apply {

@@ -109,7 +109,7 @@
     <string name="about_privacy">Your location, tracks and marks stay on this phone. It reaches the network only to download maps from the map server you set, and only when you ask.</string>
     <string name="about_after">After Trail Sense by Kyle Corry, whose sensors, paths, beacons and map drawing this carries, under the MIT License.</string>
     <string name="about_licence">GNU General Public License v3 only</string>
-    <string name="about_bundled">Lato, SIL Open Font License 1.1. Map data from OpenStreetMap contributors (ODbL), the USDA Forest Service, the USGS and NC OneMap.</string>
+    <string name="about_bundled">Lato, SIL Open Font License 1.1. Map data from OpenStreetMap contributors (ODbL) and the public records each region is built from: in the US, the USDA Forest Service, USGS PAD-US and 3DEP, the Census Bureau and county parcels; elsewhere, Protected Planet (WDPA) and Copernicus DEM.</string>
     <string name="about_source" translatable="false">github.com/wanderwildwood/chikei</string>
     <!-- The donation link label, beside a drawing of a llama. A verb and an object, so the reader knows what pressing it does -->
     <string name="about_feed_the_llamas">feed the llamas</string>
@@ -1996,7 +1996,14 @@
     <string name="default_widget_theme">Default widget theme</string>
     <string name="cancel_navigation_question">Cancel navigation?</string>
     <string name="land_national_forest">National forest</string>
-    <string name="land_not_national_forest">Not national forest</string>
+    <string name="land_no_record">No ownership record</string>
+    <string name="land_owner_not_listed">Owner not listed</string>
+    <string name="land_owner_not_recorded">Owner not recorded</string>
+    <string name="land_tribal">Tribal land</string>
+    <string name="land_owner_managed_by">%1$s, managed by %2$s</string>
+    <string name="land_access_restricted">Restricted access</string>
+    <string name="land_access_closed">Closed to the public</string>
+    <string name="land_easement">Conservation easement</string>
     <string name="ground_flat">Flat ground</string>
     <string name="ground_slope">%1$s slope, facing %2$s</string>
     <string name="elevation_value">Elevation: %s</string>

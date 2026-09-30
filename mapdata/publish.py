@@ -3,7 +3,7 @@
 
     publish.py <site_dir> <workdir> [<workdir> ...]    (name each with NAME=<display name>)
 
-Each <workdir> holds <id>.map and optionally <id>-dem.zip, where <id> is the directory name,
+Each <workdir> holds <id>.map and optionally <id>-dem.zip and <id>-land.json.gz, where <id> is the directory name,
 and, for a quad cell from build_cells.py, cell.json with its name and bounds [W, S, E, N].
 A display name can be given as  path/to/linville-falls="Linville Falls".  Serve <site_dir> with any
 static file server, e.g. `tailscale serve --https=443 <site_dir>` or `python3 -m http.server`.
@@ -47,18 +47,27 @@ def main():
         if not os.path.exists(map_file):
             raise SystemExit(f"{map_file}: not built")
         dem_file = os.path.join(work, f"{pid}-dem.zip")
+        land_file = os.path.join(work, f"{pid}-land.json.gz")
         cell = {}
         cell_json = os.path.join(work, "cell.json")
         if os.path.exists(cell_json):
             cell = json.load(open(cell_json))
-        packs[pid] = {
+        new = {
             "id": pid,
             "name": name or cell.get("name") or pid.replace("-", " ").title(),
             "bounds": cell.get("bounds"),
-            "updated": datetime.date.today().isoformat(),
             "map": entry(site, pid, map_file),
             "elevation": entry(site, pid, dem_file) if os.path.exists(dem_file) else None,
+            "land": entry(site, pid, land_file) if os.path.exists(land_file) else None,
+            "attribution": cell.get("attribution"),
         }
+        # The app offers a pack again when "updated" changes, so it changes exactly when a file
+        # does: to the minute, since a pack can be rebuilt twice in a day
+        old = packs.get(pid, {})
+        same = all((old.get(k) or {}).get("sha256") == (new[k] or {}).get("sha256") for k in ("map", "elevation", "land"))
+        new["updated"] = old.get("updated") if same and old.get("updated") else \
+            datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%MZ")
+        packs[pid] = new
         print(f"{pid}: {packs[pid]['name']}")
 
     tmp = index_path + ".part"
