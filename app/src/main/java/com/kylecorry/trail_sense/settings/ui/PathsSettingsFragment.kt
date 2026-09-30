@@ -17,6 +17,7 @@ import com.kylecorry.trail_sense.shared.preferences.setupDistanceSetting
 import com.kylecorry.trail_sense.shared.preferences.setupNotificationSetting
 import com.kylecorry.trail_sense.shared.sensors.gps.GPSPowerMode
 import com.kylecorry.trail_sense.tools.paths.PathsToolRegistration
+import com.kylecorry.trail_sense.tools.paths.domain.TrackDetail
 import com.kylecorry.trail_sense.tools.paths.infrastructure.BacktrackScheduler
 import com.kylecorry.trail_sense.tools.paths.infrastructure.services.BacktrackService
 import com.kylecorry.trail_sense.tools.paths.ui.commands.ChangeBacktrackFrequencyCommand
@@ -102,13 +103,11 @@ class PathsSettingsFragment : AndromedaPreferenceFragment() {
         }
 
         val prefBacktrackInterval = preference(R.string.pref_backtrack_interval)
-        prefBacktrackInterval?.summary =
-            formatService.formatDuration(prefs.paths.backtrackRecordFrequency, includeSeconds = true)
+        prefBacktrackInterval?.summary = trackDetailSummary(prefs.paths.backtrackRecordFrequency)
 
         prefBacktrackInterval?.setOnPreferenceClickListener {
             ChangeBacktrackFrequencyCommand(requireContext(), lifecycleScope) {
-                prefBacktrackInterval.summary =
-                    formatService.formatDuration(it, includeSeconds = true)
+                prefBacktrackInterval.summary = trackDetailSummary(it)
             }.execute()
             true
         }
@@ -174,4 +173,8 @@ class PathsSettingsFragment : AndromedaPreferenceFragment() {
         )
     }
 
+    private fun trackDetailSummary(interval: Duration): String {
+        return TrackDetail.of(interval)?.let { getString(it.label) }
+            ?: formatService.formatDuration(interval, includeSeconds = true)
+    }
 }

@@ -17,7 +17,7 @@
             app:iconSpaceReserved="false"
             app:key="@string/pref_backtrack_interval"
             app:singleLineTitle="false"
-            app:title="@string/pref_backtrack_frequency_title" />
+            app:title="@string/track_detail" />
 
         <Preference
             app:iconSpaceReserved="false"

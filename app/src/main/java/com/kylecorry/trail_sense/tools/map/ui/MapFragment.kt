@@ -4,6 +4,8 @@ import com.kylecorry.trail_sense.tools.tools.infrastructure.getFeatureState
 import com.kylecorry.trail_sense.shared.FeatureState
 import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
 import com.kylecorry.trail_sense.tools.paths.ui.commands.ToggleBacktrackCommand
+import com.kylecorry.trail_sense.tools.paths.ui.commands.ChangeBacktrackFrequencyCommand
+import androidx.lifecycle.lifecycleScope
 import com.kylecorry.trail_sense.tools.paths.PathsToolRegistration
 import androidx.navigation.fragment.findNavController
 import android.graphics.Color
@@ -11,6 +13,7 @@ import android.os.Bundle
 import android.view.View
 import com.kylecorry.trail_sense.shared.sensors.gps.ISatelliteGPS
 import com.kylecorry.trail_sense.shared.views.LocationDataPointView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
@@ -36,6 +39,7 @@ import com.kylecorry.trail_sense.shared.DistanceUtils.toRelativeDistance
 import com.kylecorry.trail_sense.shared.FormatService
 import com.kylecorry.trail_sense.shared.UserPreferences
 import com.kylecorry.trail_sense.shared.dem.DEM
+import com.kylecorry.trail_sense.shared.domain.BuiltInCoordinateFormat
 import com.kylecorry.trail_sense.shared.extensions.TrailSenseReactiveFragment
 import com.kylecorry.trail_sense.shared.extensions.useCoordinatePreference
 import com.kylecorry.trail_sense.shared.extensions.useDestroyEffect
@@ -56,6 +60,7 @@ import com.kylecorry.trail_sense.shared.views.DateTimeSliderSheet
 import com.kylecorry.trail_sense.shared.views.SensorStatusBadgeView
 import com.kylecorry.trail_sense.tools.beacons.domain.BeaconOwner
 import com.kylecorry.trail_sense.tools.map.MapToolRegistration
+import com.kylecorry.trail_sense.tools.map.infrastructure.PointInfo
 import com.kylecorry.trail_sense.tools.navigation.infrastructure.NavigationScreenLock
 import com.kylecorry.trail_sense.tools.navigation.infrastructure.Navigator
 import com.kylecorry.trail_sense.tools.navigation.ui.NavigationSheetView
@@ -346,11 +351,54 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                 inBackground {
                     val selectedElevation = DEM.getElevation(location).elevation
                     val formattedLocation = formatter.formatLocation(location)
+                    val land = PointInfo.land(location)
+                    val ground = PointInfo.ground(location)
 
                     onMain {
+                        val pointView = layoutInflater.inflate(R.layout.view_point_info, null) as LinearLayout
+                        pointView.findViewById<TextView>(R.id.point_land).apply {
+                            text = when (land) {
+                                is PointInfo.Land.Public -> land.name.ifBlank {
+                                    getString(R.string.land_national_forest)
+                                }
+
+                                PointInfo.Land.NotForest -> getString(R.string.land_not_national_forest)
+                                PointInfo.Land.Unknown -> null
+                            }
+                            isVisible = text != null
+                        }
+                        pointView.findViewById<TextView>(R.id.point_ground).apply {
+                            text = ground?.let {
+                                val aspect = it.aspect
+                                if (aspect == null) {
+                                    getString(R.string.ground_flat)
+                                } else {
+                                    getString(
+                                        R.string.ground_slope,
+                                        formatter.formatDegrees(it.slope),
+                                        formatter.formatDirection(aspect.direction)
+                                    )
+                                }
+                            }
+                            isVisible = text != null
+                        }
+                        // The title is in the chosen format; the second line gives the other
+                        // one a map is read by, so a spot can be read out either way
+                        pointView.findViewById<TextView>(R.id.point_coordinate).apply {
+                            val other = if (prefs.navigation.coordinateFormat == BuiltInCoordinateFormat.UTM) {
+                                BuiltInCoordinateFormat.DecimalDegrees
+                            } else {
+                                BuiltInCoordinateFormat.UTM
+                            }
+                            text = formatter.formatLocation(location, other, fallbackToDD = false)
+                                .takeIf { it != "?" }
+                            isVisible = text != null
+                        }
+
                         // Build the data point row using the shared LocationDataPointView
                         val currentNavigation = navigationRef.current
                         val infoView = LocationDataPointView(requireContext(), null)
+                        pointView.addView(infoView)
                         infoView.setDistance(
                             Distance.meters(currentNavigation.location.distanceTo(location))
                                 .convertTo(prefs.baseDistanceUnits)
@@ -393,7 +441,7 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                                 R.string.elevation_value,
                                 formatter.formatElevation(Distance.meters(selectedElevation))
                             ),
-                            customView = infoView
+                            customView = pointView
                         ) {
                             manager.setSelectedLocation(null)
                         }
@@ -638,7 +686,8 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                     anchor,
                     listOf(
                         getString(R.string.mark_here),
-                        getString(if (isRecording) R.string.stop_recording else R.string.record_track)
+                        getString(if (isRecording) R.string.stop_recording else R.string.record_track),
+                        getString(R.string.track_detail)
                     )
                 ) {
                     when (it) {
@@ -648,6 +697,7 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                         )
 
                         1 -> ToggleBacktrackCommand(this@MapFragment).execute()
+                        2 -> ChangeBacktrackFrequencyCommand(requireContext(), lifecycleScope) {}.execute()
                     }
                     true
                 }

@@ -6,6 +6,7 @@ import com.kylecorry.andromeda.preferences.StringEnumPreference
 import com.kylecorry.andromeda.sense.location.GPSPowerUsage
 import com.kylecorry.sol.units.Distance
 import com.kylecorry.trail_sense.R
+import com.kylecorry.trail_sense.tools.paths.domain.TrackDetail
 import com.kylecorry.trail_sense.settings.infrastructure.GPSPreferences
 import com.kylecorry.trail_sense.shared.preferences.PreferencesSubsystem
 import com.kylecorry.trail_sense.shared.sensors.gps.GPSPowerMode
@@ -46,7 +47,7 @@ class PathsPreferences(private val context: Context) {
 
     var backtrackRecordFrequency: Duration
         get() = cache.getDuration(context.getString(R.string.pref_backtrack_frequency))
-            ?: Duration.ofMinutes(1)
+            ?: TrackDetail.DEFAULT.interval
         set(value) {
             cache.putDuration(context.getString(R.string.pref_backtrack_frequency), value)
         }

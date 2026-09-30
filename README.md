@@ -33,6 +33,10 @@ sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.
   Tap the squares you need; each comes with its own elevation, and neighbours join without
   a seam.
 - **Here**, on the map: mark where you are standing, or start and stop recording your track.
+- **Hold a finger on the map** to see whose land it is (the national forest by name, or not
+  national forest), how steep the ground is and which way it faces, and its UTM coordinate.
+- **Track detail** sets how closely a recording follows you: a point a minute, or every 30,
+  10 or 5 seconds.
 - **Share GPX** hands a recorded track to CalTopo, or to anything else that takes GPX.
 - Navigate to a marked place, with distance, bearing and elevation.
 
