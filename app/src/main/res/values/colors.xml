@@ -30,16 +30,16 @@
     <color name="md_theme_secondary">#000000</color>
     <color name="md_theme_onSecondary">#FFFFFF</color>
     <!--Quick actions (unchecked)-->
-    <color name="md_theme_secondaryContainer">#E0E0E0</color>
+    <color name="md_theme_secondaryContainer">#FFFFFF</color>
     <color name="md_theme_onSecondaryContainer">#000000</color>
     <!--Unused?-->
     <color name="md_theme_tertiary">#000000</color>
     <color name="md_theme_onTertiary">#FFFFFF</color>
-    <color name="md_theme_tertiaryContainer">#E0E0E0</color>
+    <color name="md_theme_tertiaryContainer">#FFFFFF</color>
     <color name="md_theme_onTertiaryContainer">#000000</color>
     <color name="md_theme_error">#000000</color>
     <color name="md_theme_onError">#FFFFFF</color>
-    <color name="md_theme_errorContainer">#E0E0E0</color>
+    <color name="md_theme_errorContainer">#FFFFFF</color>
     <color name="md_theme_onErrorContainer">#000000</color>
     <!--Background-->
     <color name="md_theme_background">#FFFFFF</color>
@@ -48,32 +48,32 @@
     <color name="md_theme_surface">#FFFFFF</color>
     <color name="md_theme_onSurface">#000000</color>
     <!--Icon buttons use on surface variant-->
-    <color name="md_theme_surfaceVariant">#EEEEEE</color>
+    <color name="md_theme_surfaceVariant">#FFFFFF</color>
     <color name="md_theme_onSurfaceVariant">#000000</color>
     <color name="md_theme_outline">#000000</color>
-    <color name="md_theme_outlineVariant">#888888</color>
+    <color name="md_theme_outlineVariant">#000000</color>
     <color name="md_theme_scrim">#000000</color>
     <color name="md_theme_inverseSurface">#000000</color>
     <color name="md_theme_inverseOnSurface">#FFFFFF</color>
     <color name="md_theme_inversePrimary">#FFFFFF</color>
-    <color name="md_theme_primaryFixed">#E0E0E0</color>
+    <color name="md_theme_primaryFixed">#FFFFFF</color>
     <color name="md_theme_onPrimaryFixed">#000000</color>
-    <color name="md_theme_primaryFixedDim">#CCCCCC</color>
+    <color name="md_theme_primaryFixedDim">#FFFFFF</color>
     <color name="md_theme_onPrimaryFixedVariant">#000000</color>
-    <color name="md_theme_secondaryFixed">#E0E0E0</color>
+    <color name="md_theme_secondaryFixed">#FFFFFF</color>
     <color name="md_theme_onSecondaryFixed">#000000</color>
-    <color name="md_theme_secondaryFixedDim">#CCCCCC</color>
+    <color name="md_theme_secondaryFixedDim">#FFFFFF</color>
     <color name="md_theme_onSecondaryFixedVariant">#000000</color>
-    <color name="md_theme_tertiaryFixed">#E0E0E0</color>
+    <color name="md_theme_tertiaryFixed">#FFFFFF</color>
     <color name="md_theme_onTertiaryFixed">#000000</color>
-    <color name="md_theme_tertiaryFixedDim">#CCCCCC</color>
+    <color name="md_theme_tertiaryFixedDim">#FFFFFF</color>
     <color name="md_theme_onTertiaryFixedVariant">#000000</color>
-    <color name="md_theme_surfaceDim">#E0E0E0</color>
+    <color name="md_theme_surfaceDim">#FFFFFF</color>
     <color name="md_theme_surfaceBright">#FFFFFF</color>
     <color name="md_theme_surfaceContainerLowest">#FFFFFF</color>
     <color name="md_theme_surfaceContainerLow">#FFFFFF</color>
     <!--Bottom navigation-->
     <color name="md_theme_surfaceContainer">#FFFFFF</color>
-    <color name="md_theme_surfaceContainerHigh">#F0F0F0</color>
-    <color name="md_theme_surfaceContainerHighest">#E8E8E8</color>
+    <color name="md_theme_surfaceContainerHigh">#FFFFFF</color>
+    <color name="md_theme_surfaceContainerHighest">#FFFFFF</color>
 </resources>

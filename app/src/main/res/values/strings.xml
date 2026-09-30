@@ -104,6 +104,17 @@
     </plurals>
     <!--Navigation Tab - Beacon List - Sharesheet-->
     <string name="share_action_send">Send</string>
+    <string name="about">About</string>
+    <string name="about_title">Topo %1$s</string>
+    <string name="about_privacy">Your location, tracks and marks stay on this phone. It reaches the network only to download maps from the map server you set, and only when you ask.</string>
+    <string name="about_after">After Trail Sense by Kyle Corry, whose sensors, paths, beacons and map drawing this carries, under the MIT License.</string>
+    <string name="about_licence">GNU General Public License v3 only</string>
+    <string name="about_bundled">Lato, SIL Open Font License 1.1. Map data from OpenStreetMap contributors (ODbL), the USDA Forest Service, the USGS and NC OneMap.</string>
+    <string name="about_source" translatable="false">github.com/wanderwildwood/chikei</string>
+    <!-- The donation link label, beside a drawing of a llama. A verb and an object, so the reader knows what pressing it does -->
+    <string name="about_feed_the_llamas">feed the llamas</string>
+    <string name="about_close">Close</string>
+    <string name="about_no_browser">There is no browser on this phone to open that with.</string>
     <string name="share_path">Share GPX</string>
     <string name="here_actions">Here</string>
     <string name="mark_here">Mark here</string>

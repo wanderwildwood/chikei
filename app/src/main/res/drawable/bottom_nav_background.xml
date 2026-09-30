@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- MMD's navigation bar: white, a 2dp rule along its top edge, no elevation. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item><shape><solid android:color="#FFFFFF" /></shape></item>
+    <item android:gravity="top" android:height="2dp"><shape><solid android:color="#000000" /></shape></item>
+</layer-list>

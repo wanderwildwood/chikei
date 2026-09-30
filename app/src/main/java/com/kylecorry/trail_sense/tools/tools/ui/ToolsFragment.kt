@@ -1,5 +1,11 @@
 package com.kylecorry.trail_sense.tools.tools.ui
 
+import android.view.View
+import com.kylecorry.trail_sense.BuildConfig
+import com.kylecorry.andromeda.alerts.Alerts
+import android.net.Uri
+import android.content.Intent
+import android.content.ActivityNotFoundException
 import android.app.PendingIntent
 import android.graphics.drawable.Icon
 import android.os.Parcelable
@@ -104,6 +110,8 @@ class ToolsFragment : BoundFragment<FragmentToolsBinding>() {
             binding.settingsBtn.setOnClickListener {
                 findNavController().navigate(R.id.action_settings)
             }
+
+            binding.aboutBtn.setOnClickListener { showAbout() }
 
             binding.toolSearchbox.setOnSearchListener {
                 updateTools()
@@ -364,4 +372,28 @@ class ToolsFragment : BoundFragment<FragmentToolsBinding>() {
         )
     }
 
+
+    private fun showAbout() {
+        val context = requireContext()
+        val view = layoutInflater.inflate(R.layout.dialog_about, null)
+        fun open(url: String) {
+            try {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+            } catch (e: ActivityNotFoundException) {
+                Alerts.toast(context, getString(R.string.about_no_browser))
+            }
+        }
+        view.findViewById<View>(R.id.about_site).setOnClickListener { open("https://wanderthe.dev") }
+        // The short square.link form: the site's own donate button leads there, so a regenerated
+        // checkout follows it and the app does not break.
+        view.findViewById<View>(R.id.about_llama).setOnClickListener { open("https://square.link/u/AGu8oT10") }
+        Alerts.dialog(
+            context,
+            getString(R.string.about_title, BuildConfig.VERSION_NAME),
+            null,
+            view,
+            getString(R.string.about_close),
+            null
+        )
+    }
 }

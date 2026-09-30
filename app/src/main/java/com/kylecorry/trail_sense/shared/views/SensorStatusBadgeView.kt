@@ -54,6 +54,10 @@ class SensorStatusBadgeView(
 
         gpsBadge = findViewById(R.id.gps_status)
         compassBadge = findViewById(R.id.compass_status)
+        listOf(gpsBadge, compassBadge).forEach {
+            it.setBackgroundResource(R.drawable.eink_tile)
+            it.backgroundTintList = null
+        }
 
         if (!SensorService(context).hasCompass()) {
             compassBadge.visibility = GONE
@@ -98,11 +102,11 @@ class SensorStatusBadgeView(
     private fun updateBadges() {
         gpsStatusBadgeProvider?.getBadge()?.let {
             gpsBadge.setStatusText(it.name)
-            gpsBadge.setBackgroundTint(it.color)
+            // Topo: an outlined badge; its words say the quality, so its fill need not
         }
         compassStatusBadgeProvider?.getBadge()?.let {
             compassBadge.setStatusText(it.name)
-            compassBadge.setBackgroundTint(it.color)
+
         }
     }
 }

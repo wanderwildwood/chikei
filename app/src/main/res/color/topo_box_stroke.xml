@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A text field's edge is black in every state; MMD has no grey. Material only reads the
+     unfocused colour from a list that has states, so each state is spelled out. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#000000" android:state_focused="true" />
+    <item android:color="#000000" android:state_hovered="true" />
+    <item android:color="#000000" android:state_enabled="false" />
+    <item android:color="#000000" />
+</selector>

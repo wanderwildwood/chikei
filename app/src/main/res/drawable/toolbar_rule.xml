@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- MMD's top bar: a 3dp rule beneath it. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item><shape><solid android:color="#FFFFFF" /></shape></item>
+    <item android:gravity="bottom" android:height="3dp"><shape><solid android:color="#000000" /></shape></item>
+</layer-list>

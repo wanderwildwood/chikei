@@ -38,9 +38,9 @@ class ToolButtonToolListItemRenderer : ToolListItemRenderer {
         binding.icon.isVisible = false
 
         // Background
-        binding.root.setBackgroundResource(R.drawable.rounded_rectangle)
-        binding.root.backgroundTintList = ColorStateList.valueOf(backgroundColor)
-        binding.root.elevation = 2f
+        binding.root.setBackgroundResource(R.drawable.eink_tile)
+        binding.root.backgroundTintList = null
+        binding.root.elevation = 0f
 
         // Text
         binding.title.setTextColor(contentColor)
