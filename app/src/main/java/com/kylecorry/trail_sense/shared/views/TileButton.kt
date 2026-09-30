@@ -55,7 +55,8 @@ class TileButton(context: Context, attrs: AttributeSet?) : ConstraintLayout(cont
             contentColor = getMaterialColor(com.google.android.material.R.attr.colorOnSecondaryContainer)
         }
 
-        icon.backgroundTintList = ColorStateList.valueOf(backgroundColor)
+        // Off, the tile is MMD's own: white inside its black edge. On, it fills black.
+        icon.backgroundTintList = if (on) ColorStateList.valueOf(backgroundColor) else null
         icon.imageTintList = ColorStateList.valueOf(contentColor)
         textView.setTextColor(contentColor)
     }

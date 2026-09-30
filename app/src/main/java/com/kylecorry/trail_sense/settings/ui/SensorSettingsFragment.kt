@@ -30,6 +30,8 @@ class SensorSettingsFragment : AndromedaPreferenceFragment() {
 
         preference(R.string.pref_barometer_calibration)?.isVisible =
             Sensors.hasBarometer(requireContext())
+        // The thermometer fed the weather tools, which Topo does not carry
+        preference(R.string.pref_temperature_settings)?.isVisible = false
     }
 
 }

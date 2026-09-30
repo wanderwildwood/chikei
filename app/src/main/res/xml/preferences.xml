@@ -5,17 +5,11 @@
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"
         app:title="@string/general">
-
-        <Preference
-            app:icon="@drawable/ic_theme"
-            app:key="@string/pref_theme_settings"
-            app:title="@string/pref_theme_title" />
         <Preference
             app:icon="@drawable/ruler"
             app:key="@string/pref_unit_settings"
             app:title="@string/units" />
         <Preference
-            android:summary="@string/sensor_summary"
             app:icon="@drawable/ic_sensors"
             app:key="@string/pref_sensor_settings"
             app:title="@string/sensors" />
@@ -39,6 +33,17 @@
             app:icon="@drawable/ic_alert"
             app:key="@string/pref_error_settings"
             app:title="@string/errors" />
+        <Preference
+            android:key="@string/pref_diagnostics"
+            android:title="@string/diagnostics"
+            app:iconSpaceReserved="false"
+            app:singleLineTitle="false" />
+
+        <Preference
+            android:key="@string/pref_open_source_licenses"
+            android:title="@string/pref_open_source_licenses_title"
+            app:iconSpaceReserved="false"
+            app:singleLineTitle="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -52,52 +57,6 @@
             app:key="@string/pref_tool_settings_header_key"
             app:singleLineTitle="false"
             app:title="@string/tools" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/pref_category_about"
-        app:iconSpaceReserved="false"
-        app:singleLineTitle="false">
-
-        <Preference
-            android:key="@string/pref_diagnostics"
-            android:title="@string/diagnostics"
-            app:iconSpaceReserved="false"
-            app:singleLineTitle="false" />
-
-        <Preference
-            android:key="@string/pref_app_version"
-            android:title="@string/pref_app_version_title"
-            app:iconSpaceReserved="false"
-            app:singleLineTitle="false" />
-
-        <Preference
-            android:summary="@string/privacy_policy_url"
-            android:title="@string/pref_privacy_policy_title"
-            app:iconSpaceReserved="false"
-            app:key="@string/pref_privacy_policy"
-            app:singleLineTitle="false" />
-
-        <Preference
-            android:summary="@string/email"
-            android:title="@string/pref_email_title"
-            app:iconSpaceReserved="false"
-            app:key="@string/pref_email"
-            app:singleLineTitle="false" />
-
-        <Preference
-            android:summary="https://github.com/kylecorry31/Trail-Sense"
-            android:title="@string/pref_github_title"
-            app:iconSpaceReserved="false"
-            app:key="@string/pref_github"
-            app:singleLineTitle="false" />
-
-        <Preference
-            android:key="@string/pref_open_source_licenses"
-            android:title="@string/pref_open_source_licenses_title"
-            app:iconSpaceReserved="false"
-            app:singleLineTitle="false" />
 
     </PreferenceCategory>
 

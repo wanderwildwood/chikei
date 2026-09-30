@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A bottom sheet in the house manner: white, a 2dp rim along its top and a 12dp corner at
+     each top end. The rim's sides and bottom sit just off the screen. A layer's offsets, unlike
+     an inset, lend the sheet no padding, so its own 16dp stays. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:left="-2dp" android:right="-2dp" android:bottom="-2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+            <stroke android:width="2dp" android:color="#000000" />
+            <corners android:topLeftRadius="12dp" android:topRightRadius="12dp" />
+        </shape>
+    </item>
+</layer-list>

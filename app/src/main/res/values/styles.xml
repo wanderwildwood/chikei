@@ -190,12 +190,18 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <!-- A bottom sheet like the house dialog: no dimmed backdrop, no slide, a black rim -->
     <style name="AppBottomSheetDialogTheme" parent="ThemeOverlay.Material3.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppBottomSheetModalStyle</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
     </style>
 
     <style name="AppBottomSheetModalStyle" parent="Widget.Material3.BottomSheet.Modal">
         <item name="android:padding">16dp</item>
+        <item name="android:background">@drawable/eink_sheet_background</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:elevation">0dp</item>
     </style>
 
     <style name="AlertDialogTheme" parent="ThemeOverlay.Material3.Dialog.Alert">
@@ -229,6 +235,12 @@
 
     <style name="AppThemePreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
         <item name="switchPreferenceCompatStyle">@style/SwitchPreferenceStyle</item>
+        <item name="preferenceFragmentCompatStyle">@style/Topo.PreferenceFragment</item>
+    </style>
+
+    <!-- A settings screen gets the house top bar; see SettingsChrome -->
+    <style name="Topo.PreferenceFragment" parent="@style/PreferenceFragment.Material">
+        <item name="android:layout">@layout/preference_fragment_topo</item>
     </style>
 
     <style name="SwitchPreferenceStyle" parent="@style/Preference.SwitchPreferenceCompat.Material">

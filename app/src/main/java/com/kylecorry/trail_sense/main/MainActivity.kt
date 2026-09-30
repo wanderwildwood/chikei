@@ -45,6 +45,7 @@ import com.kylecorry.trail_sense.onboarding.OnboardingActivity
 import com.kylecorry.trail_sense.receivers.RestartServicesCommand
 import com.kylecorry.trail_sense.shared.CustomUiUtils.isDarkThemeOn
 import com.kylecorry.trail_sense.shared.UserPreferences
+import com.kylecorry.trail_sense.settings.ui.SettingsChrome
 import com.kylecorry.trail_sense.shared.commands.ComposedCommand
 import com.kylecorry.trail_sense.shared.extensions.findNavController
 import com.kylecorry.trail_sense.shared.navigation.NavigationUtils.setupWithNavController
@@ -111,6 +112,7 @@ class MainActivity : AndromedaActivity() {
                     || (isDarkThemeOn() && userPrefs.theme == UserPreferences.Theme.SystemBlack)
 
         enableEdgeToEdge()
+        SettingsChrome.attach(this)
         super.onCreate(savedInstanceState)
 
         if (cache.getBoolean(getString(R.string.pref_onboarding_completed)) != true) {

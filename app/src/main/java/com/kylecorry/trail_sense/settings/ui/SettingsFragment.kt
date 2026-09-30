@@ -22,7 +22,6 @@ class SettingsFragment : AndromedaPreferenceFragment() {
     private val navigationMap = mapOf(
         R.string.pref_unit_settings to R.id.action_settings_to_unit_settings,
         R.string.pref_privacy_settings to R.id.action_settings_to_privacy_settings,
-        R.string.pref_theme_settings to R.id.action_settings_to_theme_settings,
         R.string.pref_experimental_settings to R.id.action_settings_to_experimental_settings,
         R.string.pref_plugins_settings to R.id.action_settings_to_plugins_settings,
         R.string.pref_error_settings to R.id.action_settings_to_error_settings,
@@ -45,41 +44,17 @@ class SettingsFragment : AndromedaPreferenceFragment() {
             navigateOnClick(preference(nav.key), nav.value)
         }
 
-        onClick(preference(R.string.pref_github)) {
-            val i = Intents.url(it.summary.toString())
-            startActivity(i)
-        }
-
-        onClick(preference(R.string.pref_privacy_policy)) {
-            val i = Intents.url(it.summary.toString())
-            startActivity(i)
-        }
-
-        onClick(preference(R.string.pref_email)) {
-            val intent = Intents.email(it.summary.toString(), getString(R.string.app_name))
-            startActivity(Intent.createChooser(intent, it.title.toString()))
-        }
-
-        val version = Package.getVersionName(requireContext())
-        preference(R.string.pref_app_version)?.summary = version
-        setIconColor(preferenceScreen, Resources.androidTextColorSecondary(requireContext()))
-
         // Populate tool settings
         val toolCategoryPreference =
             findPreference<PreferenceCategory>(getString(R.string.pref_tool_category_holder_key))
         val tools = Tools.getTools(requireContext())
         val sortedTools = AlphabeticalToolSort().sort(tools)
-        val primaryColor = Resources.androidTextColorPrimary(requireContext())
         for (tool in sortedTools.first().tools) {
             if (tool.settingsNavAction == null) {
                 continue
             }
             val preference = Preference(requireContext())
             preference.title = tool.name
-            preference.setIcon(tool.icon)
-            preference.icon?.let {
-                Colors.setImageColor(it, primaryColor)
-            }
             preference.setOnPreferenceClickListener {
                 findNavController().navigateWithAnimation(tool.settingsNavAction)
                 true

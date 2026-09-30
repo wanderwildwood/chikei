@@ -18,8 +18,15 @@ import rasterio
 from rasterio.windows import from_bounds
 from PIL import Image
 
-A = 10.0   # decimetres: finer than the data is honest about, coarse enough to fit 16 bits
 B = 100.0  # offset so ground a little below sea level still encodes
+
+
+def scale(highest):
+    """Steps per metre. Decimetres are finer than the data is honest about and fit 16 bits up
+    to 6,453 m; a pack with higher ground (the Himalaya, the Karakoram, the high Andes) is
+    written in half metres instead, good to 13,000 m. The app reads the scale from each
+    tile's own entry in index.json, so packs of either kind sit side by side."""
+    return 10.0 if (highest + B) * 10.0 <= 65535 else 5.0
 TILE = 1620
 
 
@@ -40,6 +47,7 @@ def main():
     if nodata is not None:
         bad |= z == nodata
     z[bad] = 0.0
+    A = scale(float(z.max()))
     v = np.clip(np.round((z + B) * A), 0, 65535).astype(np.uint32)
 
     h, w = v.shape

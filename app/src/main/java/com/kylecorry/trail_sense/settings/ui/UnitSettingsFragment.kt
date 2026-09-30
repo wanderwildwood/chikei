@@ -10,6 +10,10 @@ class UnitSettingsFragment : AndromedaPreferenceFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.units_preferences, rootKey)
         preference(R.string.pref_pressure_units)?.isVisible = Sensors.hasBarometer(requireContext())
+        // Temperature served the weather tools and weight the packing lists, neither of which
+        // Topo carries
+        preference(R.string.pref_temperature_units)?.isVisible = false
+        preference(R.string.pref_weight_units)?.isVisible = false
     }
 
 }

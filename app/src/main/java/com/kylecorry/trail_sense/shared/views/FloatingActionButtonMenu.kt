@@ -73,6 +73,9 @@ class FloatingActionButtonMenu(context: Context, attrs: AttributeSet?) : FrameLa
 
     fun setOverlay(overlay: View) {
         this.overlay?.setOnClickListener(null)
+        // The layer stays to catch a tap outside the menu, but draws nothing: a wash over the
+        // screen is a full repaint of dithered grey on E Ink (STYLE.md: no dimmed backdrop)
+        overlay.background = null
         overlay.isVisible = isVisible
         this.overlay = overlay
         this.overlay?.setOnClickListener {
