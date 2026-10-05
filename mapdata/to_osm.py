@@ -14,11 +14,18 @@ to the given cell when one is given, holding:
                  national forests):  land=public, name=<area> (the tint), and its outline as
                  land_edge=public
 - tribal land:   land=tribal, name=<area>, and its outline as land_edge=tribal (no tint)
-- contours:      ways tagged  contour=elevation, contour_ext=elevation_{major,minor}, name=<level>
+- contours:      ways tagged  contour=elevation, contour_ext=elevation_{major,minor,fine},
+                 contour_index=yes on the index lines, and name=<level> on those
 
 Every new object gets a negative id, so nothing collides with real OSM ids.
-Contours are in the region's units (fetch.py records them): 40 ft apart with every 200 ft
-labelled, like a USGS quad, or 20 m apart with every 100 m labelled.
+Contours are in the region's units (fetch.py records them). In feet they are 20 ft apart:
+every 40 ft is elevation_minor and every 200 ft elevation_major, which is what the map draws
+when zoomed out (and all an older app knows); the 20 ft between are elevation_fine, drawn only
+close in, where every 100 ft is the index line, as on a 20 ft USGS quad. In metres the same
+steps are 10, 20, 100 and 50 m.
+
+They come from dem_fine.tif (3DEP 1/9", mostly lidar) when fetch.py got it, smoothed a little
+so a 20 ft line follows the ground rather than every rock and root; otherwise from dem.tif.
 
 Who owns what is written in full to the pack's land file by land_pack.py; the map only carries
 what is drawn.
@@ -38,9 +45,12 @@ import contourpy
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import land_pack  # noqa: E402
 
-UNITS = {"feet": (3.28084, 40, 200), "metres": (1.0, 20, 100)}  # factor from metres, minor, major
+# factor from metres, then the fine, minor, index and major intervals in those units
+UNITS = {"feet": (3.28084, 20, 40, 100, 200), "metres": (1.0, 10, 20, 50, 100)}
+SMOOTH_M = 6.0  # Gaussian sigma for the fine DEM; lidar's roughness is finer than a 20 ft line
 CLIP_MARGIN = 0.003  # ~300 m
 SIMPLIFY_DEG = 0.00003  # ~3 m; the panel cannot show finer and it keeps the file small
+CONTOUR_SIMPLIFY_DEG = 0.000012  # ~1.2 m, a pixel when zoomed all the way in
 
 
 class Writer:
@@ -97,6 +107,22 @@ class Writer:
     def close(self):
         self.f.write("</osm>\n")
         self.f.close()
+
+
+def smoothed(z, sigma_px):
+    """Gaussian blur that leaves holes as holes: blur the data and its mask, then divide."""
+    r = int(3 * sigma_px)
+    k = np.exp(-0.5 * (np.arange(-r, r + 1) / sigma_px) ** 2)
+    k /= k.sum()
+    ok = np.isfinite(z)
+    num, den = np.where(ok, z, 0.0), ok.astype(np.float64)
+    for axis in (0, 1):
+        num = np.apply_along_axis(np.convolve, axis, num, k, mode="same")
+        den = np.apply_along_axis(np.convolve, axis, den, k, mode="same")
+    with np.errstate(invalid="ignore", divide="ignore"):
+        out = num / den
+    out[~ok] = np.nan
+    return out
 
 
 def lines_of(geom):
@@ -221,33 +247,40 @@ def main():
     print(f"   trails: {n} ways")
 
     # --- contours, from only the part of the DEM the cell needs
-    with rasterio.open(os.path.join(src, "dem.tif")) as ds:
+    fine_dem = os.path.join(src, "dem_fine.tif")
+    dem_path = fine_dem if os.path.exists(fine_dem) else os.path.join(src, "dem.tif")
+    with rasterio.open(dem_path) as ds:
         window = None
         if clip is not None:
             window = from_bounds(*clip.bounds, transform=ds.transform).round_offsets().round_lengths()
-        factor, minor, major = UNITS[region.get("units", "feet")]
+        factor, fine, minor, index, major = UNITS[region.get("units", "feet")]
         z = ds.read(1, window=window).astype(np.float64) * factor
         t = ds.window_transform(window) if window is not None else ds.transform
     z[z < -1000 * factor] = np.nan
+    if dem_path == fine_dem:
+        z = smoothed(z, SMOOTH_M / (abs(t.e) * 111_320))
     lon = t.c + t.a * (np.arange(z.shape[1]) + 0.5)
     lat = t.f + t.e * (np.arange(z.shape[0]) + 0.5)
     gen = contourpy.contour_generator(lon, lat, z, name="serial", line_type=contourpy.LineType.Separate)
-    lo = int(np.nanmin(z) // minor * minor) + minor
-    hi = int(np.nanmax(z) // minor * minor)
+    lo = int(np.nanmin(z) // fine * fine) + fine
+    hi = int(np.nanmax(z) // fine * fine)
     n = 0
-    for level in range(lo, hi + 1, minor):
-        kind = "elevation_major" if level % major == 0 else "elevation_minor"
+    for level in range(lo, hi + 1, fine):
+        kind = ("elevation_major" if level % major == 0 else
+                "elevation_minor" if level % minor == 0 else "elevation_fine")
+        is_index = level % index == 0
         for seg in gen.lines(level):
             if len(seg) < 3:
                 continue
-            simp = LineString(seg).simplify(SIMPLIFY_DEG)
+            simp = LineString(seg).simplify(CONTOUR_SIMPLIFY_DEG)
             if simp.length < 0.0005:  # < ~50 m: noise rings on flat ground
                 continue
             # Mapsforge keeps a way's name but not arbitrary numeric tags, so the label rides on name.
             w.way(simp.coords, {"contour": "elevation", "contour_ext": kind,
-                                "name": str(level) if kind == "elevation_major" else None})
+                                "contour_index": "yes" if is_index else None,
+                                "name": str(level) if is_index or kind == "elevation_major" else None})
             n += 1
-    print(f"   contours: {n} ways, {lo}-{hi} {region.get('units', 'feet')}")
+    print(f"   contours: {n} ways from {os.path.basename(dem_path)}, {lo}-{hi} {region.get('units', 'feet')}")
 
     w.close()
     os.replace(os.path.join(out, "extra.osm.part"), os.path.join(out, "extra.osm"))

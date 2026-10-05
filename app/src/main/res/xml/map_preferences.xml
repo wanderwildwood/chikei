@@ -33,8 +33,8 @@
         <SwitchPreferenceCompat
             android:summary="@string/pref_high_detail_mode_summary"
             android:title="@string/pref_high_detail_mode_title"
-            app:defaultValue="false"
-            app:iconSpaceReserved="false"
+            app:defaultValue="true"
+            app:iconSpaceReserved="true"
             app:key="@string/pref_map_high_detail_mode"
             app:singleLineTitle="false" />
 

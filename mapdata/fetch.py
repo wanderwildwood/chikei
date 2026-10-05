@@ -20,6 +20,8 @@ world ones:
   grid      1/8-degree squares instead, for anywhere without quadrangles                world
   osm       OpenStreetMap, cut from Geofabrik's regional extracts                         both
   dem       elevation: USGS 3DEP 10 m in the US, Copernicus GLO-30 elsewhere             both
+  dem_fine  3DEP at 1/9 arc-second (~3 m, lidar where the service has it), which only
+            the contours are drawn from; the pack's elevation stays at 10 m               US
 
 Everything is free to fetch and needs no key. WDPA's terms allow personal and
 non-commercial use; a server offering packs built with it to the public should read them
@@ -55,7 +57,7 @@ PARCELS = [
 # reservations, Hawaiian home lands, joint-use areas
 TIGER_LAYERS = [36, 38, 40, 42, 52]
 
-US_SOURCES = ["usfs", "padus", "tribal", "parcels", "quads", "osm", "dem"]
+US_SOURCES = ["usfs", "padus", "tribal", "parcels", "quads", "osm", "dem", "dem_fine"]
 WORLD_SOURCES = ["wdpa", "grid", "osm", "dem"]
 
 
@@ -292,6 +294,10 @@ def fetch_dem(bbox, work, us):
     once(work, "dem.tif", lambda o: (dem_3dep if us else dem_copernicus)(bbox, o))
 
 
+def fetch_dem_fine(bbox, work):
+    once(work, "dem_fine.tif", lambda o: dem_3dep(bbox, o, per_degree=32400))
+
+
 def write_mosaic(tiles, out):
     import rasterio
     from rasterio.merge import merge
@@ -307,17 +313,18 @@ def write_mosaic(tiles, out):
     print(f"   dem: {mosaic.shape[2]}x{mosaic.shape[1]}")
 
 
-def dem_3dep(bbox, out):
-    """3DEP at ~10 m. The service refuses big images, so ask in tiles and stitch them."""
+def dem_3dep(bbox, out, per_degree=10800):
+    """3DEP at ~10 m (1/3 arc-second), or finer with per_degree=32400 (1/9"). The service
+    refuses big images, so ask in tiles of ~1620 px and stitch them."""
     w, s, e, n = bbox
-    step = 0.15  # degrees; ~1620 px at 1/3 arc-second, well inside what the service renders
+    step = 1620 / per_degree  # degrees; well inside what the service renders
     tiles = []
     lat = s
     while lat < n - 1e-9:
         lon = w
         while lon < e - 1e-9:
             tb = (lon, lat, min(lon + step, e), min(lat + step, n))
-            px_w, px_h = round((tb[2] - tb[0]) * 10800), round((tb[3] - tb[1]) * 10800)
+            px_w, px_h = round((tb[2] - tb[0]) * per_degree), round((tb[3] - tb[1]) * per_degree)
             q = urllib.parse.urlencode({
                 "bbox": ",".join(f"{v:.6f}" for v in tb), "bboxSR": 4326, "imageSR": 4326,
                 "size": f"{px_w},{px_h}", "format": "tiff", "pixelType": "F32",
@@ -426,6 +433,7 @@ def main():
         "grid": lambda: fetch_grid(bbox, work),
         "osm": lambda: fetch_osm(bbox, work),
         "dem": lambda: fetch_dem(bbox, work, us),
+        "dem_fine": lambda: fetch_dem_fine(bbox, work),
     }
     for name in sources:
         if name not in runners:

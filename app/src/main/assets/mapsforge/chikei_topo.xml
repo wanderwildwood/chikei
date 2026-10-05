@@ -43,16 +43,74 @@
 
     <!-- ================ CONTOURS ================ -->
 
-    <rule e="way" k="contour_ext" v="elevation_minor" zoom-min="13">
-        <line stroke="#A0A0A0" stroke-width="0.5" scale="none" />
-    </rule>
-    <rule e="way" k="contour_ext" v="elevation_major" zoom-min="11">
+    <!-- Lines are scale="none" (see the trails), so each step in closer gets its own, heavier
+      and darker line here; one hairline for every zoom read as a grey wash close in.
+      Out to z15: 40 ft lines with every 200 ft the index. From z16: every 20 ft, with every
+      100 ft the index (contour_index). Packs from before 20 ft lines carry no contour_index;
+      their 200 ft lines stay the index there. -->
+    <rule e="way" k="contour_ext" v="elevation_major" zoom-min="11" zoom-max="12">
         <line stroke="#555555" stroke-width="1.0" scale="none" />
     </rule>
+    <rule e="way" k="contour_ext" v="elevation_minor" zoom-min="13" zoom-max="14">
+        <line stroke="#8C8C8C" stroke-width="0.6" scale="none" />
+    </rule>
+    <rule e="way" k="contour_ext" v="elevation_major" zoom-min="13" zoom-max="14">
+        <line stroke="#4A4A4A" stroke-width="1.1" scale="none" />
+    </rule>
+    <rule e="way" k="contour_ext" v="elevation_minor" zoom-min="15" zoom-max="15">
+        <line stroke="#707070" stroke-width="0.8" scale="none" />
+    </rule>
+    <rule e="way" k="contour_ext" v="elevation_major" zoom-min="15" zoom-max="15">
+        <line stroke="#3C3C3C" stroke-width="1.4" scale="none" />
+    </rule>
+    <rule e="way" k="contour_ext" v="*" zoom-min="16" zoom-max="16">
+        <rule e="way" k="contour_index" v="~">
+            <rule e="way" k="contour_ext" v="elevation_minor|elevation_fine">
+                <line stroke="#6A6A6A" stroke-width="0.8" scale="none" />
+            </rule>
+        </rule>
+    </rule>
+    <rule e="way" k="contour_ext" v="*" zoom-min="17">
+        <rule e="way" k="contour_index" v="~">
+            <rule e="way" k="contour_ext" v="elevation_minor|elevation_fine">
+                <line stroke="#5A5A5A" stroke-width="1.1" scale="none" />
+            </rule>
+        </rule>
+    </rule>
+    <rule e="way" k="contour_ext" v="*" zoom-min="16" zoom-max="16">
+        <rule e="way" k="contour_index" v="yes">
+            <line stroke="#333333" stroke-width="1.5" scale="none" />
+        </rule>
+        <rule e="way" k="contour_index" v="~">
+            <rule e="way" k="contour_ext" v="elevation_major">
+                <line stroke="#333333" stroke-width="1.5" scale="none" />
+            </rule>
+        </rule>
+    </rule>
+    <rule e="way" k="contour_ext" v="*" zoom-min="17">
+        <rule e="way" k="contour_index" v="yes">
+            <line stroke="#262626" stroke-width="2.0" scale="none" />
+        </rule>
+        <rule e="way" k="contour_index" v="~">
+            <rule e="way" k="contour_ext" v="elevation_major">
+                <line stroke="#262626" stroke-width="2.0" scale="none" />
+            </rule>
+        </rule>
+    </rule>
 
-    <!-- Lot lines on private land: the quietest line on the sheet -->
-    <rule e="way" k="parcel" v="line" zoom-min="14">
-        <line stroke="#8C8C8C" stroke-width="0.5" scale="none" />
+    <!-- Lot lines on private land. Close in they would read as one more contour, so from z15
+      each runs in a white casing that breaks the contours it crosses: a line laid on the
+      sheet, not a line of the ground. -->
+    <rule e="way" k="parcel" v="line" zoom-min="14" zoom-max="14">
+        <line stroke="#707070" stroke-width="0.8" scale="none" />
+    </rule>
+    <rule e="way" k="parcel" v="line" zoom-min="15" zoom-max="16">
+        <line stroke="#FFFFFF" stroke-width="3.2" scale="none" />
+        <line stroke="#3A3A3A" stroke-width="1.2" scale="none" />
+    </rule>
+    <rule e="way" k="parcel" v="line" zoom-min="17">
+        <line stroke="#FFFFFF" stroke-width="4.4" scale="none" />
+        <line stroke="#222222" stroke-width="1.7" scale="none" />
     </rule>
 
     <!-- ================ WATER LINES ================ -->
@@ -60,24 +118,36 @@
     <rule e="way" k="waterway" v="river" zoom-min="8">
         <line stroke="#333333" stroke-width="1.4" scale="none" />
     </rule>
-    <rule e="way" k="waterway" v="stream|canal|drain" zoom-min="12">
+    <rule e="way" k="waterway" v="stream|canal|drain" zoom-min="12" zoom-max="15">
         <line stroke="#555555" stroke-width="0.6" stroke-dasharray="5,2" stroke-linecap="butt" scale="none" />
+    </rule>
+    <rule e="way" k="waterway" v="stream|canal|drain" zoom-min="16">
+        <line stroke="#333333" stroke-width="1.1" stroke-dasharray="8,3" stroke-linecap="butt" scale="none" />
     </rule>
 
     <!-- ================ BOUNDARIES ================ -->
 
     <!-- Forest Service land edge: long dash, dot -->
     <!-- Drawn from the forest's own outline (ownership_edge), never from a pack's cut edge -->
-    <rule e="way" k="ownership_edge" v="usfs" zoom-min="10">
+    <rule e="way" k="ownership_edge" v="usfs" zoom-min="10" zoom-max="15">
         <line stroke="#444444" stroke-width="1.3" stroke-dasharray="9,4,2,4" stroke-linecap="butt" scale="none" />
+    </rule>
+    <rule e="way" k="ownership_edge" v="usfs" zoom-min="16">
+        <line stroke="#222222" stroke-width="2.0" stroke-dasharray="13,5,3,5" stroke-linecap="butt" scale="none" />
     </rule>
     <!-- Other public land's edge: the same line as the forests' -->
-    <rule e="way" k="land_edge" v="public" zoom-min="10">
+    <rule e="way" k="land_edge" v="public" zoom-min="10" zoom-max="15">
         <line stroke="#444444" stroke-width="1.3" stroke-dasharray="9,4,2,4" stroke-linecap="butt" scale="none" />
     </rule>
+    <rule e="way" k="land_edge" v="public" zoom-min="16">
+        <line stroke="#222222" stroke-width="2.0" stroke-dasharray="13,5,3,5" stroke-linecap="butt" scale="none" />
+    </rule>
     <!-- Tribal land's edge: long dash, two dots -->
-    <rule e="way" k="land_edge" v="tribal" zoom-min="10">
+    <rule e="way" k="land_edge" v="tribal" zoom-min="10" zoom-max="15">
         <line stroke="#333333" stroke-width="1.3" stroke-dasharray="9,3,2,3,2,3" stroke-linecap="butt" scale="none" />
+    </rule>
+    <rule e="way" k="land_edge" v="tribal" zoom-min="16">
+        <line stroke="#222222" stroke-width="2.0" stroke-dasharray="13,4,3,4,3,4" stroke-linecap="butt" scale="none" />
     </rule>
     <!-- A national park or protected area as OpenStreetMap maps it, where no pack says more -->
     <rule e="way" k="boundary" v="national_park" zoom-min="9">
@@ -132,8 +202,18 @@
 
     <!-- ================ LABELS ================ -->
 
-    <rule e="way" k="contour_ext" v="elevation_major" zoom-min="13">
-        <pathText fill="#444444" font-size="9" k="name" priority="1" stroke="#FFFFFF" stroke-width="2.0" />
+    <rule e="way" k="contour_ext" v="elevation_major" zoom-min="13" zoom-max="15">
+        <pathText fill="#333333" font-size="9" k="name" priority="1" stroke="#FFFFFF" stroke-width="2.0" />
+    </rule>
+    <rule e="way" k="contour_ext" v="*" zoom-min="16">
+        <rule e="way" k="contour_index" v="yes">
+            <pathText fill="#222222" font-size="10" k="name" priority="1" stroke="#FFFFFF" stroke-width="2.0" />
+        </rule>
+        <rule e="way" k="contour_index" v="~">
+            <rule e="way" k="contour_ext" v="elevation_major">
+                <pathText fill="#222222" font-size="10" k="name" priority="1" stroke="#FFFFFF" stroke-width="2.0" />
+            </rule>
+        </rule>
     </rule>
 
     <rule e="way" k="waterway" v="river" zoom-min="12">

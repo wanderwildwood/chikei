@@ -20,8 +20,10 @@ sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.
 
 ## What it shows
 
-- **Contours** from the region's elevation model, in feet in the US (every 40, labelled every
-  200, like a USGS quad) and in metres elsewhere (every 20, labelled every 100)
+- **Contours** from the region's elevation model. In the US they come from 3DEP's lidar where
+  it has it, in feet: every 40 with every 200 labelled when zoomed out, and every 20 with every
+  100 labelled close in, like a 20 ft USGS quad. Elsewhere they are in metres (every 20 and
+  100, then every 10 and 50)
 - **Public land** as a light grey tint with its boundary: national forests, BLM land, national
   and state parks, wildlife areas, state trust land and local parks. Private land stays white;
   tribal land is outlined but not tinted, since it is not public land

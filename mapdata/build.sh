@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build a region pack: one Mapsforge .map holding OSM, Forest Service land/roads/trails and
-# 40 ft contours. Run fetch.py first.
+# 20 ft contours. Run fetch.py first.
 #
 #   build.sh <workdir> <west> <south> <east> <north>
 #

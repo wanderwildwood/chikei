@@ -28,9 +28,11 @@ class MapPreferences(context: Context) : PreferenceRepo(context) {
         false
     )
 
+    // On by default: tiles drawn at the panel's own pixels rather than enlarged from
+    // density-independent ones, which on e-ink blurred every line into grey
     val highDetailMode by BooleanPreference(
         cache,
         context.getString(R.string.pref_map_high_detail_mode),
-        false
+        true
     )
 }

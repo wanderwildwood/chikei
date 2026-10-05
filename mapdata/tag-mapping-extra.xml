@@ -22,4 +22,6 @@
         <osm-tag key="contour" value="elevation" renderable="false"/>
         <osm-tag key="contour_ext" value="elevation_major" zoom-appear="11"/>
         <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="13"/>
+        <osm-tag key="contour_ext" value="elevation_fine" zoom-appear="15"/>
+        <osm-tag key="contour_index" value="yes" renderable="false"/>
     </ways>
