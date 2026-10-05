@@ -25,6 +25,7 @@ import com.kylecorry.trail_sense.shared.text.nlp.processors.SequentialProcessor
 import com.kylecorry.trail_sense.shared.text.nlp.tokenizers.PostProcessedTokenizer
 import com.kylecorry.trail_sense.shared.text.nlp.tokenizers.SimpleWordTokenizer
 import com.kylecorry.trail_sense.shared.text.search.TextMatchStrategy
+import com.kylecorry.trail_sense.shared.views.SelectionMenu
 import com.kylecorry.trail_sense.shared.views.TrailSenseTextView
 import com.kylecorry.trail_sense.shared.views.Views
 
@@ -304,6 +305,9 @@ object TextUtils {
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
             it.setTextIsSelectable(true)
+            // The guides are where a word is most often wanted in Define; the Kompakt's bar
+            // drops everything past its first two items, so SelectionMenu gives them a ⋮.
+            SelectionMenu.fold(it, context.getString(R.string.selection_share))
         }
     }
 

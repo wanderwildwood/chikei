@@ -1171,6 +1171,8 @@
     <string name="result_deleted">Result deleted</string>
     <string name="undo">Undo</string>
     <string name="share_ellipsis">Share…</string>
+    <!-- Share, in the ⋮ of the menu over selected text: Android has no public string for it -->
+    <string name="selection_share">Share</string>
     <string name="night">Night</string>
     <string name="qr_text_too_long">Text is too long, QR code was truncated</string>
     <string name="pref_flashlight_should_timeout" translatable="false">pref_flashlight_should_timeout</string>

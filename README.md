@@ -49,6 +49,8 @@ sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.
   10 or 5 seconds.
 - **Share GPX** hands a recorded track to CalTopo, or to anything else that takes GPX.
 - Navigate to a marked place, with distance, bearing and elevation.
+- **User guides** (hold a finger on a tool): their text can be selected and a word sent to a
+  dictionary app such as Define, which waits behind a ⋮ on the selection bar.
 
 ## What it needs
 
