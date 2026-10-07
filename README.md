@@ -47,6 +47,8 @@ sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.
   how steep the ground is, which way it faces, and its UTM coordinate.
 - **Track detail** sets how closely a recording follows you: a point a minute, or every 30,
   10 or 5 seconds.
+- **Call for help from here**: with Field Kit installed, the last item under Here opens Field
+  Kit's "Calling for help" page with your position on it, ready to read out or send.
 - **Share GPX** hands a recorded track to CalTopo, or to anything else that takes GPX.
 - Navigate to a marked place, with distance, bearing and elevation.
 - **User guides** (hold a finger on a tool): their text can be selected and a word sent to a

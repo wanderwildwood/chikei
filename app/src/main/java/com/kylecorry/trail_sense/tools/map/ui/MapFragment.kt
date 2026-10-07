@@ -60,6 +60,7 @@ import com.kylecorry.trail_sense.shared.views.DateTimeSliderSheet
 import com.kylecorry.trail_sense.shared.views.SensorStatusBadgeView
 import com.kylecorry.trail_sense.tools.beacons.domain.BeaconOwner
 import com.kylecorry.trail_sense.tools.map.MapToolRegistration
+import com.kylecorry.trail_sense.tools.map.infrastructure.FieldKit
 import com.kylecorry.trail_sense.tools.map.infrastructure.LandWords
 import com.kylecorry.trail_sense.tools.map.infrastructure.PointInfo
 import com.kylecorry.trail_sense.tools.navigation.infrastructure.NavigationScreenLock
@@ -680,12 +681,15 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
             val backtrack = Tools.getService(requireContext(), PathsToolRegistration.SERVICE_BACKTRACK)
             val isRecording = backtrack?.getFeatureState() == FeatureState.On
             onMain {
+                // Field Kit's help page, last and only when Field Kit is on the phone.
+                val help = FieldKit.installed(requireContext())
                 Pickers.menu(
                     anchor,
-                    listOf(
+                    listOfNotNull(
                         getString(R.string.mark_here),
                         getString(if (isRecording) R.string.stop_recording else R.string.record_track),
-                        getString(R.string.track_detail)
+                        getString(R.string.track_detail),
+                        if (help) getString(R.string.call_for_help_here) else null
                     )
                 ) {
                     when (it) {
@@ -696,6 +700,7 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
 
                         1 -> ToggleBacktrackCommand(this@MapFragment).execute()
                         2 -> ChangeBacktrackFrequencyCommand(requireContext(), lifecycleScope) {}.execute()
+                        3 -> FieldKit.open(requireContext(), location)
                     }
                     true
                 }

@@ -118,6 +118,8 @@
     <string name="share_path">Share GPX</string>
     <string name="here_actions">Here</string>
     <string name="mark_here">Mark here</string>
+    <!-- Opens Field Kit's "Calling for help" page with the position; shown only when Field Kit is installed -->
+    <string name="call_for_help_here">Call for help from here</string>
     <string name="record_track">Record track</string>
     <string name="stop_recording">Stop recording</string>
     <string name="pref_region_pack_url" translatable="false">pref_region_pack_url</string>

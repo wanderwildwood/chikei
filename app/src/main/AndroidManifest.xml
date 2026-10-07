@@ -78,6 +78,8 @@
             <action android:name="android.intent.action.PROCESS_TEXT" />
             <data android:mimeType="text/plain" />
         </intent>
+        <!-- Field Kit, for "Call for help from here" on the map -->
+        <package android:name="com.wanderwildwood.zatsuno" />
     </queries>
 
     <!--Permissions-->
