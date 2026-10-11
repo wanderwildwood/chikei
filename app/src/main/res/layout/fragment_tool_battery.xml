@@ -119,6 +119,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/low_power_mode_switch" />
+        app:layout_constraintTop_toBottomOf="@+id/low_power_mode_switch"
+        android:scrollbars="none" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

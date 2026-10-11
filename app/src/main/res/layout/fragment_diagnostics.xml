@@ -26,7 +26,8 @@
         app:layout_constraintBottom_toTopOf="@id/download_logs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/diagnostics_title" />
+        app:layout_constraintTop_toBottomOf="@id/diagnostics_title"
+        android:scrollbars="none" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/download_logs"

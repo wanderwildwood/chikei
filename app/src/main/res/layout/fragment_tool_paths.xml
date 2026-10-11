@@ -36,7 +36,8 @@
         app:layout_constraintBottom_toTopOf="@+id/backtrack_play_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchbox" />
+        app:layout_constraintTop_toBottomOf="@id/searchbox"
+        android:scrollbars="none" />
 
     <TextView
         android:id="@+id/waypoints_empty_text"

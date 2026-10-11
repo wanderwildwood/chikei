@@ -69,7 +69,8 @@
         android:layout_height="0dp"
         android:nestedScrollingEnabled="true"
         app:layout_constraintHeight_max="350dp"
-        app:layout_constraintTop_toBottomOf="@id/tabs">
+        app:layout_constraintTop_toBottomOf="@id/tabs"
+        android:scrollbars="none">
 
         <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/widgets"

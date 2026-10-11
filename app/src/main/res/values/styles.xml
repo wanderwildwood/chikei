@@ -2,6 +2,9 @@
 
     <!--This is used for all Android versions-->
     <style name="BaseAppTheme" parent="Theme.Material3Expressive.DayNight.NoActionBar">
+        <!-- No scrollbars: a list moves a page to a swipe, and nothing else needs one. -->
+        <item name="android:scrollbarThumbVertical">@android:color/transparent</item>
+        <item name="android:scrollbarThumbHorizontal">@android:color/transparent</item>
         <!-- Mudita Mindful Design's typeface, applied through the whole Material type scale -->
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>

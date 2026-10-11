@@ -56,7 +56,8 @@
         app:layout_constraintBottom_toTopOf="@id/tide_disclaimer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chart" />
+        app:layout_constraintTop_toBottomOf="@id/chart"
+        android:scrollbars="none" />
 
     <TextView
         android:id="@+id/tide_disclaimer"
