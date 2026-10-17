@@ -53,7 +53,9 @@ object DEM {
     suspend fun getElevation(location: Coordinate): DEMElevation = onDefault {
         cache.getOrPut(location) {
             val allSources = getSources()
-            val source = allSources.firstOrNull { it.contains(location) }
+            // The last that holds it: sources are ordered so a region pack's model beats the
+            // Terrain Tiles (see getSources).
+            val source = allSources.lastOrNull { it.contains(location) }
                 ?: return@getOrPut DEMElevation(0f, null)
             val hasWaterMask = cachedHasWaterMask
             val neighbors = getNeighborSources(source, allSources)
@@ -275,7 +277,9 @@ object DEM {
 
             val tiles = if (isExternal) {
                 val database = DependencyRegistry.get<AppDatabase>().digitalElevationModelDao()
-                database.getAll()
+                // Terrain Tiles first, so a grid read lets a region pack's finer model write over
+                // them and a point read (lastOrNull) prefers the pack.
+                database.getAll().sortedBy { if (it.version == TERRAIN_TILES_VERSION) 0 else 1 }
             } else {
                 BuiltInDem.getTiles()
             }
@@ -333,6 +337,12 @@ object DEM {
         }
     }
 
+    /** Whether an imported or fetched model (not the coarse built-in one) has elevation in [bounds]. */
+    suspend fun covers(bounds: CoordinateBounds): Boolean {
+        if (!isExternalModel()) return false
+        return getSources().any { it.bounds.intersects(bounds) }
+    }
+
     fun invalidateCache() {
         cache = GeospatialCache(Distance.meters(CACHE_DISTANCE), size = CACHE_SIZE)
         pixelCache = MemoryLRUCache(1)
@@ -359,6 +369,7 @@ object DEM {
         return "${minLatitude}_${maxLatitude}_${minLongitude}_${maxLongitude}_$resolution"
     }
 
+    private const val TERRAIN_TILES_VERSION = "terrain-tiles"
     private const val BASE_RESOLUTION = 1 / 240.0
     const val IMAGE_MIN_ZOOM_LEVEL = 10
     const val IMAGE_MAX_ZOOM_LEVEL = 19

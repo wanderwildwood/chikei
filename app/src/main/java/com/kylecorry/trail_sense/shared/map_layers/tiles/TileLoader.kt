@@ -115,7 +115,9 @@ class TileLoader(
             ImageTile(
                 key = key,
                 tile = tile,
-                shouldFadeIn = !isWidget,
+                // No fade: on E Ink each step of a fade is a full redraw of the panel, so a
+                // tile appears once, whole.
+                shouldFadeIn = false,
                 owner = owner,
                 loadFunction = {
                     loadTile(source, context, tile, params)

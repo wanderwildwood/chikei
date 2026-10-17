@@ -16,9 +16,21 @@ sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.
 
 | | | | |
 |---|---|---|---|
-| ![Linville Gorge on the map](screenshots/01-map.png) | ![Choosing regions to download](screenshots/02-regions.png) | ![Mark here, or record the track](screenshots/03-here.png) | ![A recorded track](screenshots/04-track.png) |
+| ![USGS topo of Yosemite Valley, with no setup](screenshots/01-usgs.png) | ![OpenTopoMap around Chamonix](screenshots/02-opentopomap.png) | ![Save this area, with its size](screenshots/03-save-area.png) | ![Contour lines with no signal](screenshots/04-contours.png) |
 
 ## What it shows
+
+The map works as soon as it is installed, with nothing to set up:
+
+- **USGS topo** from The National Map in the United States: the familiar quadrangle, with
+  contours, trails, forest roads and names.
+- **OpenTopoMap** everywhere else: a topo map drawn from OpenStreetMap, with contours and hill
+  shading.
+- **Contour lines anywhere**, drawn on the phone from open elevation data (the Terrain Tiles),
+  over a faint hill shade, wherever neither map has a tile, or there is no signal. The same
+  elevation feeds the elevation readout and a track's elevation profile.
+
+Region packs from a server of your own, if you run one, draw over all of this and show more:
 
 - **Contours** from the region's elevation model. In the US they come from 3DEP's lidar where
   it has it, in feet: every 40 with every 200 labelled when zoomed out, and every 20 with every
@@ -34,6 +46,17 @@ sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.
 
 ## What it does
 
+- **Save this area**, in the map's menu, keeps what is on the screen for use with no signal:
+  the USGS topo map (in the US) and the elevation for contour lines (anywhere). It shows the
+  size first; an area over 200 MB is refused, with a note to zoom in. Saved areas are listed,
+  with their sizes, under Settings > Map > Saved areas, where a second tap deletes one.
+  OpenTopoMap's tiles are never saved, since its rules forbid downloading for offline use;
+  what you looked at recently may still show from the phone's cache.
+- **With no signal** the map shows, in order: your region packs, saved areas' topo maps,
+  saved areas' contour lines, then whatever tiles are still in the cache.
+- **Settings > Map > Map** picks the map: Automatic (USGS in the US, OpenTopoMap elsewhere),
+  USGS only, OpenTopoMap only, or **My region packs only**, which keeps the map off the network
+  altogether.
 - **Download region** shows the regions on the server as squares on a map: USGS 7.5-minute
   quadrangles in the US, and elsewhere 1/8-degree squares named after the largest place in
   each.
@@ -57,10 +80,13 @@ sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.
 ## What it needs
 
 - **Location**, to put you on the map and record tracks. It stays on the phone.
-- **Internet**, only to download regions from the map server you set, and only when you ask.
-- **A map server.** Regions are plain files built by the scripts in [`mapdata/`](mapdata)
-  from public data and served by anything that serves files: `tailscale serve`, nginx, a
-  folder on a web host. There is no central server; you point Topo at yours.
+- **Internet**, only to fetch map tiles and elevation, while the map is open or when you save
+  an area, and to download region packs from a server you set, when you ask. See
+  [PRIVACY.md](PRIVACY.md).
+- **A map server of your own: optional.** Region packs add public land, lot lines and forest
+  roads offline. They are plain files built by the scripts in [`mapdata/`](mapdata) from public
+  data and served by anything that serves files: `tailscale serve`, nginx, a folder on a web
+  host. Offline Maps > + > Download region asks for the server's address.
 
 ## What it does not do
 
@@ -153,6 +179,23 @@ whose land each part of the cell is (see `mapdata/land_pack.py`). The app knows 
 any one country's agencies; it says what the land file says.
 
 ## Credit
+
+Maps with no setup: **USGS The National Map** (public domain; "Map services and data available
+from U.S. Geological Survey, National Geospatial Program"). **OpenTopoMap** (CC-BY-SA): map data
+© OpenStreetMap contributors, SRTM; map style © OpenTopoMap. **Terrain Tiles** by Mapzen, on the
+[AWS Registry of Open Data](https://registry.opendata.aws/terrain-tiles/), with their sources
+credited as [their documentation](https://github.com/tilezen/joerd/blob/master/docs/attribution.md)
+asks: 3DEP (formerly NED), GMTED2010 and SRTM courtesy of the U.S. Geological Survey; ETOPO1,
+U.S. National Oceanic and Atmospheric Administration; EU-DEM, produced using Copernicus data and
+information funded by the European Union; ArcticDEM, created from DigitalGlobe, Inc. imagery and
+funded under National Science Foundation awards 1043681, 1559691 and 1542736; © Commonwealth of
+Australia (Geoscience Australia) 2017; Canada, contains information licensed under the Open
+Government Licence – Canada; Mexico, INEGI, Continental relief, 2016; New Zealand, Crown
+copyright Land Information New Zealand and the New Zealand Government; Norway, © Kartverket;
+United Kingdom, © Environment Agency copyright and/or database right 2015; Austria, © offene
+Daten Österreichs – Digitales Geländemodell (DGM) Österreich. The outline of the US that picks
+between USGS and OpenTopoMap is from [Natural Earth](https://www.naturalearthdata.com/) (public
+domain).
 
 After [Trail Sense](https://github.com/kylecorry31/Trail-Sense) by Kyle Corry, which this
 is: its sensors, paths, beacons, navigation and Mapsforge rendering are Trail Sense's, cut

@@ -1,6 +1,7 @@
 package com.kylecorry.trail_sense.tools.map.ui
 
 import android.os.Bundle
+import androidx.navigation.fragment.findNavController
 import com.kylecorry.andromeda.fragments.AndromedaPreferenceFragment
 import com.kylecorry.andromeda.fragments.show
 import com.kylecorry.trail_sense.R
@@ -21,6 +22,10 @@ class MapSettingsFragment : AndromedaPreferenceFragment() {
                 MapToolRegistration.MAP_ID
             )
             layerSheet?.show(this)
+        }
+
+        onClick(preference(R.string.pref_saved_areas)) {
+            findNavController().navigate(R.id.savedAreasFragment)
         }
     }
 

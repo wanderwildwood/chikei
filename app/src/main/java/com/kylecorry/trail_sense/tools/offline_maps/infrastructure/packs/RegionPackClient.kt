@@ -102,6 +102,8 @@ class RegionPackClient(baseUrl: String) {
         connection.connectTimeout = 15_000
         connection.readTimeout = 30_000
         connection.instanceFollowRedirects = true
+        // Packs are kept as maps once imported; the map tiles' HTTP cache is no place for them.
+        connection.useCaches = false
         val code = connection.responseCode
         if (code !in 200..299) {
             connection.disconnect()

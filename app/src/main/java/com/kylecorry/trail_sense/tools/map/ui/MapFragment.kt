@@ -10,6 +10,17 @@ import com.kylecorry.trail_sense.tools.paths.PathsToolRegistration
 import androidx.navigation.fragment.findNavController
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import com.kylecorry.andromeda.alerts.Alerts
+import com.kylecorry.andromeda.pickers.CoroutinePickers
+import com.kylecorry.trail_sense.tools.map.sources.SavedArea
+import com.kylecorry.trail_sense.tools.map.sources.SavedAreas
+import com.kylecorry.trail_sense.tools.map.sources.TopoCredits
+import com.kylecorry.trail_sense.tools.map.sources.TopoMapSource
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import android.view.View
 import com.kylecorry.trail_sense.shared.sensors.gps.ISatelliteGPS
 import com.kylecorry.trail_sense.shared.views.LocationDataPointView
@@ -192,7 +203,10 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
             mapView.setBackgroundColor(Color.WHITE)
         }
 
-        useBackgroundEffect(mapView, manager.key, attributionView) {
+        // The corner credits what is drawn: USGS, OpenTopoMap or the Terrain Tiles change as the map moves.
+        val credits = useFlow(TopoCredits.changes, state = BackgroundMinimumState.Resumed)
+        useBackgroundEffect(mapView, manager.key, attributionView, credits) {
+            TopoCredits.viewBounds = mapView.mapBounds
             val attribution = mapView.getAttribution(context)
             onMain {
                 attributionView.text = attribution
@@ -460,11 +474,14 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
 
         // Menu
         useClickCallback(menuButton, startDistanceMeasurement) {
-            val actions = listOf(
+            // Save this area only when the map comes from the network at all.
+            val canSave = TopoMapSource.get(requireContext()) != TopoMapSource.PacksOnly
+            val actions = listOfNotNull(
                 MapAction.Measure to getString(R.string.measure),
                 MapAction.CreatePath to getString(R.string.create_path),
                 MapAction.AdjustLayers to getString(R.string.layers),
-                MapAction.Trace to getString(R.string.trace)
+                MapAction.Trace to getString(R.string.trace),
+                if (canSave) MapAction.SaveArea to getString(R.string.save_this_area) else null
             )
 
             Pickers.menu(
@@ -479,6 +496,7 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
 
                     MapAction.AdjustLayers -> adjustLayers()
                     MapAction.Trace -> setLockMode(MapLockMode.Trace)
+                    MapAction.SaveArea -> saveArea(mapView)
                 }
                 true
             }
@@ -674,6 +692,77 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
         Compass(2),
         Free(3),
         Trace(4)
+    }
+
+    /**
+     * Saves what is on the screen for use with no signal: the USGS topo map where it is the US,
+     * and elevation for contour lines anywhere. The size is shown first, with a name to change.
+     */
+    private fun saveArea(mapView: MapView) {
+        val context = requireContext()
+        val bounds = mapView.mapBounds
+        val formatter = FormatService.getInstance(context)
+        inBackground {
+            val plan = SavedAreas.plan(context, bounds)
+            val estimate = formatter.formatFileSize(plan.estimatedBytes)
+            if (plan.estimatedBytes > SavedAreas.MAX_BYTES) {
+                onMain {
+                    Alerts.dialog(
+                        context,
+                        getString(R.string.save_this_area),
+                        getString(R.string.save_area_too_big, estimate),
+                        cancelText = null
+                    )
+                }
+                return@inBackground
+            }
+            val holds = getString(
+                if (plan.mapTiles.isNotEmpty()) R.string.save_area_holds_map else R.string.save_area_holds_contours
+            )
+            val defaultName = getString(
+                R.string.saved_area_default_name,
+                DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).format(LocalDate.now())
+            )
+            val name = onMain {
+                CoroutinePickers.text(
+                    context,
+                    getString(R.string.save_this_area),
+                    getString(R.string.save_area_message, estimate, holds),
+                    default = defaultName,
+                    hint = getString(R.string.name)
+                )
+            }?.trim()?.ifBlank { defaultName } ?: return@inBackground
+
+            var area: SavedArea? = null
+            Alerts.withProgress(context, getString(R.string.saving_area)) { setProgressOnMain ->
+                val main = Handler(Looper.getMainLooper())
+                var lastPercent = -1
+                area = SavedAreas.save(context, name, plan) { fraction ->
+                    // Whole percents only: each step is a redraw of the panel.
+                    val percent = (fraction * 100).toInt()
+                    if (percent != lastPercent) {
+                        lastPercent = percent
+                        main.post { setProgressOnMain(fraction) }
+                    }
+                }
+            }
+            onMain {
+                val saved = area
+                if (saved == null) {
+                    Alerts.dialog(
+                        context,
+                        getString(R.string.area_not_saved),
+                        getString(R.string.area_not_saved_message),
+                        cancelText = null
+                    )
+                } else {
+                    Alerts.toast(
+                        context,
+                        getString(R.string.area_saved, saved.name, formatter.formatFileSize(saved.bytes))
+                    )
+                }
+            }
+        }
     }
 
     private fun showHereActions(anchor: View, location: Coordinate) {

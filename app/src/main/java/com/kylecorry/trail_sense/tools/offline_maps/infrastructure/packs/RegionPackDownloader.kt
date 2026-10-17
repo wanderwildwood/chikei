@@ -9,6 +9,7 @@ import com.kylecorry.luna.concurrency.onIO
 import com.kylecorry.luna.concurrency.onMain
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.shared.dem.DigitalElevationModelLoader
+import com.kylecorry.trail_sense.tools.map.sources.TerrainTiles
 import com.kylecorry.trail_sense.tools.offline_maps.domain.CreateOfflineMapRequest
 import com.kylecorry.trail_sense.tools.offline_maps.domain.OfflineMapService
 import com.kylecorry.trail_sense.tools.offline_maps.infrastructure.persistence.MapRepo
@@ -83,6 +84,8 @@ class RegionPackDownloader(
                 old.forEach { mapService.delete(it) }
                 if (pack.elevation != null) {
                     DigitalElevationModelLoader().add(Uri.fromFile(demFile), pack.id)
+                    // The pack's own elevation now covers its area; terrain need not be fetched there.
+                    TerrainTiles.invalidate()
                 }
                 if (pack.land != null) {
                     LandFiles(context).install(pack, landFile)

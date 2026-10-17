@@ -146,9 +146,74 @@ class DigitalElevationModelLoader {
             database.upsert(tiles)
             indexFile.delete()
             prefs.altimeter.isDigitalElevationModelLoaded = true
+            recordVersion()
         }
 
         DEM.invalidateCache()
+    }
+
+    /**
+     * Adds tiles already written under [folder] (the Terrain Tiles Topo fetches or saves),
+     * replacing any rows for the same files.
+     */
+    suspend fun addTiles(folder: String, tiles: List<DigitalElevationModelEntity>) = onIO {
+        val database = DependencyRegistry.get<AppDatabase>().digitalElevationModelDao()
+        val prefs = DependencyRegistry.get<UserPreferences>()
+        DEMRepo.lock.withLock {
+            val paths = tiles.map { it.filename }.toSet()
+            database.getAll()
+                .filter { it.filename.startsWith("$folder/") && it.filename in paths }
+                .forEach { database.delete(it) }
+            database.upsert(tiles)
+            prefs.altimeter.isDigitalElevationModelLoaded = true
+            recordVersion()
+        }
+        DEM.invalidateCache()
+    }
+
+    /** Removes these tiles (paths relative to the app's files) and their files. */
+    suspend fun removeFiles(paths: List<String>) = onIO {
+        val files = DependencyRegistry.get<FileSubsystem>()
+        val database = DependencyRegistry.get<AppDatabase>().digitalElevationModelDao()
+        DEMRepo.lock.withLock {
+            val set = paths.toSet()
+            database.getAll().filter { it.filename in set }.forEach { database.delete(it) }
+            paths.forEach { files.get(it).delete() }
+            recordVersion()
+        }
+        DEM.invalidateCache()
+    }
+
+    /** Removes every tile under [folder], and the folder. */
+    suspend fun removeFolder(folder: String) = onIO {
+        val files = DependencyRegistry.get<FileSubsystem>()
+        val database = DependencyRegistry.get<AppDatabase>().digitalElevationModelDao()
+        DEMRepo.lock.withLock {
+            database.getAll().filter { it.filename.startsWith("$folder/") }.forEach { database.delete(it) }
+            files.getDirectory(folder).deleteRecursively()
+            recordVersion()
+        }
+        DEM.invalidateCache()
+    }
+
+    /**
+     * DEMRepo.clean() wipes every model when dem/version.txt disagrees with the table, which is
+     * upstream's guard against a restored backup. Models added piece by piece (region packs,
+     * Terrain Tiles) carry different versions, so the file is kept equal to what the table
+     * reports after every change; without this, a pack's elevation was wiped on next use.
+     * Call while holding DEMRepo.lock.
+     */
+    private suspend fun recordVersion() {
+        val files = DependencyRegistry.get<FileSubsystem>()
+        val database = DependencyRegistry.get<AppDatabase>().digitalElevationModelDao()
+        val prefs = DependencyRegistry.get<UserPreferences>()
+        val version = database.getVersion()
+        if (version == null) {
+            files.get("dem/version.txt").delete()
+            prefs.altimeter.isDigitalElevationModelLoaded = false
+        } else {
+            files.get("dem/version.txt", create = true).writeText(version)
+        }
     }
 
     suspend fun clear() = onIO {

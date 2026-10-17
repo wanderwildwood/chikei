@@ -206,6 +206,18 @@
         <item>stone</item>
     </string-array>
 
+    <string-array name="topo_map_source_entries">
+        <item>@string/map_source_automatic</item>
+        <item>@string/map_source_usgs</item>
+        <item>@string/map_source_opentopomap</item>
+        <item>@string/map_source_packs</item>
+    </string-array>
+    <string-array name="topo_map_source_values" translatable="false">
+        <item>automatic</item>
+        <item>usgs</item>
+        <item>opentopomap</item>
+        <item>packs</item>
+    </string-array>
     <string-array name="compass_update_frequency_entries">
         <item>@string/compass_update_frequency_normal</item>
         <item>@string/compass_update_frequency_fast</item>

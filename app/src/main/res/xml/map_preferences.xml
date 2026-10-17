@@ -6,6 +6,23 @@
         app:singleLineTitle="false"
         app:title="@string/maps">
 
+        <ListPreference
+            app:defaultValue="automatic"
+            app:entries="@array/topo_map_source_entries"
+            app:entryValues="@array/topo_map_source_values"
+            app:iconSpaceReserved="false"
+            app:key="@string/pref_topo_map_source"
+            app:singleLineTitle="false"
+            app:title="@string/map_source"
+            app:useSimpleSummaryProvider="true" />
+
+        <Preference
+            android:summary="@string/saved_areas_summary"
+            app:iconSpaceReserved="false"
+            app:key="@string/pref_saved_areas"
+            app:singleLineTitle="false"
+            app:title="@string/saved_areas" />
+
         <SwitchPreferenceCompat
             android:title="@string/pref_navigation_lock_screen_when_open_title"
             app:defaultValue="false"

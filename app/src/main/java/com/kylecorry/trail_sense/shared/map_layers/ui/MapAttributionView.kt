@@ -6,7 +6,8 @@ import com.kylecorry.andromeda.alerts.Alerts
 import com.kylecorry.trail_sense.R
 
 fun TextView.setupMapAttribution() {
-    maxLines = 1
+    // Two lines, so a licence that asks to be seen (OpenTopoMap's) is never cut off.
+    maxLines = 2
     ellipsize = TextUtils.TruncateAt.END
     linksClickable = false
     setOnClickListener {

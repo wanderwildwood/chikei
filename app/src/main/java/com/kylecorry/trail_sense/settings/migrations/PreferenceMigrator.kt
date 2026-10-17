@@ -30,6 +30,7 @@ import com.kylecorry.trail_sense.shared.sensors.providers.CompassProvider
 import com.kylecorry.trail_sense.tools.astronomy.infrastructure.AstronomyDailyWorker
 import com.kylecorry.trail_sense.tools.beacons.map_layers.BeaconGeoJsonSource
 import com.kylecorry.trail_sense.tools.map.MapToolRegistration
+import com.kylecorry.trail_sense.tools.map.sources.TopoBaseTileSource
 import com.kylecorry.trail_sense.tools.map.map_layers.BaseMapTileSource
 import com.kylecorry.trail_sense.tools.map.map_layers.MyLocationGeoJsonSource
 import com.kylecorry.trail_sense.tools.navigation.NavigationToolRegistration
@@ -95,7 +96,7 @@ class PreferenceMigrator private constructor() {
         internal const val LEGACY_LAST_HORIZONTAL_ACCURACY = "last_horizontal_accuracy"
         internal const val LEGACY_LAST_VERTICAL_ACCURACY = "last_vertical_accuracy"
 
-        internal const val version = 39
+        internal const val version = 40
         internal val migrations = listOf(
             PreferenceMigration(0, 1) { _, prefs ->
                 if (prefs.contains("pref_enable_experimental")) {
@@ -609,6 +610,17 @@ class PreferenceMigrator private constructor() {
                         MyLocationGeoJsonSource.SOURCE_ID
                     )
                 )
+            },
+            PreferenceMigration(39, 40) { _, _ ->
+                // The topo map with no setup, beneath everything (packs draw over it).
+                val repo = getAppService<MapLayerPreferenceRepo>()
+                val layers = repo.getActiveLayerIds(MapToolRegistration.MAP_ID)
+                if (!layers.contains(TopoBaseTileSource.SOURCE_ID)) {
+                    repo.setActiveLayerIds(
+                        MapToolRegistration.MAP_ID,
+                        listOf(TopoBaseTileSource.SOURCE_ID) + layers
+                    )
+                }
             }
         )
 

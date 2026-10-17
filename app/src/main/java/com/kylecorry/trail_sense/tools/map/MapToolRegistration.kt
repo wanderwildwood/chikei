@@ -11,6 +11,7 @@ import com.kylecorry.trail_sense.shared.dem.map_layers.HillshadeMapTileSource
 import com.kylecorry.trail_sense.shared.dem.map_layers.RuggednessMapTileSource
 import com.kylecorry.trail_sense.shared.dem.map_layers.SlopeMapTileSource
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.DefaultMapLayerDefinitions
+import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerAttribution
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerDefinition
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerPreference
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerPreferenceType
@@ -19,6 +20,9 @@ import com.kylecorry.trail_sense.tools.map.map_layers.BaseMapTileSource
 import com.kylecorry.trail_sense.tools.map.map_layers.MyElevationLayer
 import com.kylecorry.trail_sense.tools.map.map_layers.MyLocationGeoJsonSource
 import com.kylecorry.trail_sense.tools.map.map_layers.ScaleBarLayer
+import com.kylecorry.trail_sense.tools.map.sources.TopoBaseTileSource
+import com.kylecorry.trail_sense.tools.map.sources.TopoCredits
+import com.kylecorry.trail_sense.tools.map.sources.TopoMapSource
 import com.kylecorry.trail_sense.tools.map.widgets.AppWidgetMap
 import com.kylecorry.trail_sense.tools.map.widgets.MapToolWidgetView
 import com.kylecorry.trail_sense.tools.navigation.map_layers.CompassOverlayLayer
@@ -63,6 +67,28 @@ object MapToolRegistration : ToolRegistration {
                 )
             ),
             mapLayers = listOf(
+                MapLayerDefinition(
+                    TopoBaseTileSource.SOURCE_ID,
+                    context.getString(R.string.topo_map),
+                    layerType = MapLayerType.Tile,
+                    description = context.getString(R.string.map_layer_topo_base_description),
+                    preferences = listOf(
+                        MapLayerPreference(
+                            id = "saved_areas",
+                            title = context.getString(R.string.saved_areas),
+                            type = MapLayerPreferenceType.Label,
+                            navActionOnClick = R.id.savedAreasFragment
+                        )
+                    ),
+                    tileSource = ::TopoBaseTileSource,
+                    attributionLoader = { ctx ->
+                        val off = TopoMapSource.get(ctx) == TopoMapSource.PacksOnly
+                        if (off) TopoCredits.clear()
+                        TopoCredits.text(ctx, if (off) emptySet() else TopoCredits.shown())?.let {
+                            MapLayerAttribution(it, alwaysShow = true)
+                        }
+                    }
+                ),
                 MapLayerDefinition(
                     BaseMapTileSource.SOURCE_ID,
                     context.getString(R.string.basemap),

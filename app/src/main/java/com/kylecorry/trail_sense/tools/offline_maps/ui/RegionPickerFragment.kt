@@ -28,6 +28,7 @@ import com.kylecorry.andromeda.geojson.GeoJsonFeature
 import com.kylecorry.andromeda.geojson.GeoJsonFeatureCollection
 import com.kylecorry.trail_sense.shared.sensors.SensorSubsystem
 import com.kylecorry.trail_sense.tools.map.map_layers.MyLocationGeoJsonSource
+import com.kylecorry.trail_sense.tools.map.sources.TopoBaseTileSource
 import com.kylecorry.trail_sense.tools.offline_maps.domain.OfflineMapService
 import com.kylecorry.trail_sense.tools.offline_maps.infrastructure.packs.RegionPack
 import com.kylecorry.trail_sense.tools.offline_maps.infrastructure.packs.RegionPackClient
@@ -69,6 +70,7 @@ class RegionPickerFragment : BoundFragment<FragmentRegionPickerBinding>() {
 
         val factory = LayerFactory()
         val layers = listOfNotNull(
+            Tools.getMapLayerDefinition(requireContext(), TopoBaseTileSource.SOURCE_ID)?.let { factory.createLayer(it) },
             Tools.getMapLayerDefinition(requireContext(), TrailMapsTileSource.SOURCE_ID)?.let { factory.createLayer(it) },
             gridLayer,
             Tools.getMapLayerDefinition(requireContext(), MyLocationGeoJsonSource.SOURCE_ID)?.let { factory.createLayer(it) }

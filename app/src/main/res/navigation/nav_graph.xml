@@ -11,6 +11,7 @@
     <fragment android:id="@+id/action_weather" android:name="com.kylecorry.trail_sense.tools.weather.ui.WeatherFragment" android:label="activity_weather" tools:layout="@layout/activity_weather" />
     <fragment android:id="@+id/mapFragment" android:name="com.kylecorry.trail_sense.tools.map.ui.MapFragment" android:label="MapFragment" />
     <fragment android:id="@+id/mapSettingsFragment" android:name="com.kylecorry.trail_sense.tools.map.ui.MapSettingsFragment" android:label="MapSettingsFragment" />
+    <fragment android:id="@+id/savedAreasFragment" android:name="com.kylecorry.trail_sense.tools.map.ui.SavedAreasFragment" android:label="SavedAreasFragment" tools:layout="@layout/fragment_saved_areas" />
     <fragment android:id="@+id/regionPickerFragment" android:name="com.kylecorry.trail_sense.tools.offline_maps.ui.RegionPickerFragment" android:label="RegionPickerFragment" tools:layout="@layout/fragment_region_picker" />
     <fragment android:id="@+id/offlineMapViewFragment" android:name="com.kylecorry.trail_sense.tools.offline_maps.ui.trail_maps.ViewTrailMapFragment" android:label="OfflineMapViewFragment" tools:layout="@layout/fragment_offline_map_view">
         <argument android:name="offline_map_file_id" app:argType="long" />
