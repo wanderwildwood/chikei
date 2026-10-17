@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Every settings screen: the house top bar (64dp, a 3dp rule beneath) over the list.
+<!-- Every settings screen: the house top bar (64dp, a thin rule beneath) over the list.
      SettingsChrome fills in the title. The list container's id is the one
      PreferenceFragmentCompat looks for. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

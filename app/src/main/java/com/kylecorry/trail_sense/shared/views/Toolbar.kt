@@ -60,22 +60,22 @@ class Toolbar(context: Context, attrs: AttributeSet?) : FrameLayout(context, att
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        val actionSpace = maxOf(
-            getActionSpace(leftButton),
-            getActionSpace(rightButton)
-        )
-        if (textContainer.paddingStart != actionSpace ||
-            textContainer.paddingEnd != actionSpace
-        ) {
+        // The title starts where TopAppBarMMD starts it: after the way back when there is one,
+        // otherwise 16dp in (12dp here plus the bar's own 4dp), and stops short of the action.
+        val start = getActionSpace(leftButton).takeIf { it > 0 } ?: titleInset
+        val end = getActionSpace(rightButton)
+        if (textContainer.paddingStart != start || textContainer.paddingEnd != end) {
             textContainer.setPaddingRelative(
-                actionSpace,
+                start,
                 textContainer.paddingTop,
-                actionSpace,
+                end,
                 textContainer.paddingBottom
             )
             super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         }
     }
+
+    private val titleInset = (12 * resources.displayMetrics.density).toInt()
 
     private fun getActionSpace(button: View): Int {
         if (!button.isVisible) {

@@ -5,13 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/toolbar_rule"
-    android:padding="16dp">
+    android:minHeight="65dp"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp"
+    android:paddingBottom="1dp">
+
+    <!-- TopAppBarMMD, as the house's Compose apps draw it: 64dp, the title at the start in
+         titleLarge (24sp Lato, never bold), the way back before it, actions after it, and the
+         rule beneath. -->
 
     <LinearLayout
         android:id="@+id/toolbar_text_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,23 +30,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="8dp"
-            android:gravity="center"
-            android:textAlignment="center"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="1"
+            android:textAlignment="viewStart"
             android:textColor="?android:attr/textColorPrimary"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textSize="24sp"
             tools:text="Title" />
 
         <TextView
             android:id="@+id/toolbar_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:drawablePadding="8dp"
-            android:gravity="center"
-            android:textAlignment="center"
+            android:gravity="start"
+            android:textAlignment="viewStart"
             android:textColor="?android:attr/textColorSecondary"
-            android:textSize="12sp"
+            android:textSize="14sp"
             tools:text="Subtitle" />
     </LinearLayout>
 
