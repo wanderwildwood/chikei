@@ -9,6 +9,7 @@ import androidx.activity.addCallback
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import com.google.android.material.tabs.TabLayout
+import com.kylecorry.trail_sense.shared.views.StoneTabLayout
 import com.kylecorry.andromeda.alerts.Alerts
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.databinding.ViewQuickActionSheetBinding
@@ -41,6 +42,7 @@ class QuickActionSheet @JvmOverloads constructor(
             binding.tabs.newTab().also { it.text = context.getString(R.string.quick_actions) })
         binding.tabs.addTab(
             binding.tabs.newTab().also { it.text = context.getString(R.string.widgets) })
+        StoneTabLayout.apply(binding.tabs)
 
         binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
