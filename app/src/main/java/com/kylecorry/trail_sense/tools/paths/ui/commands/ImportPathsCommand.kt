@@ -14,6 +14,7 @@ import com.kylecorry.andromeda.pickers.CoroutinePickers
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.shared.UserPreferences
 import com.kylecorry.trail_sense.shared.io.ImportService
+import com.kylecorry.trail_sense.tools.beacons.infrastructure.export.BeaconGpxImporter
 import com.kylecorry.trail_sense.tools.paths.domain.FullPath
 import com.kylecorry.trail_sense.tools.paths.domain.IPathService
 import com.kylecorry.trail_sense.tools.paths.domain.Path
@@ -42,6 +43,17 @@ class ImportPathsCommand(
             // Get the tracks and routes from the GPX
             paths.addAll(getTracks(gpx))
             paths.addAll(getRoutes(gpx))
+
+            // A file of waypoints alone, such as one opened from Files, becomes beacons.
+            if (paths.isEmpty()) {
+                val count = if (gpx.waypoints.isEmpty()) 0 else onIO { BeaconGpxImporter(context).import(gpx) }
+                if (count > 0) {
+                    Alerts.toast(context, context.resources.getQuantityString(R.plurals.beacons_imported, count, count))
+                } else {
+                    Alerts.toast(context, context.getString(R.string.gpx_nothing_to_import))
+                }
+                return@inBackground
+            }
 
             // Let the user select the paths to import
             val selectedPathIndices = CoroutinePickers.items(

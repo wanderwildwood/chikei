@@ -1,9 +1,11 @@
 package com.kylecorry.trail_sense.tools.paths.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.BundleCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.kylecorry.andromeda.alerts.Alerts
@@ -23,6 +25,7 @@ import com.kylecorry.trail_sense.shared.UserPreferences
 import com.kylecorry.trail_sense.shared.grouping.lists.GroupListManager
 import com.kylecorry.trail_sense.shared.grouping.lists.bind
 import com.kylecorry.trail_sense.shared.io.IOFactory
+import com.kylecorry.trail_sense.shared.io.OpenedGpx
 import com.kylecorry.trail_sense.shared.sensors.SensorSubsystem
 import com.kylecorry.trail_sense.tools.paths.PathsToolRegistration
 import com.kylecorry.trail_sense.tools.paths.domain.IPath
@@ -106,6 +109,15 @@ class PathsFragment : BoundFragment<FragmentToolPathsBinding>() {
         }
 
         sort = prefs.navigation.pathSort
+
+        // A GPX file opened from another app: offered for import once, not again on rotation.
+        arguments?.let { args ->
+            BundleCompat.getParcelable(args, PathsToolRegistration.ARG_OPENED_GPX, Uri::class.java)?.let { uri ->
+                args.remove(PathsToolRegistration.ARG_OPENED_GPX)
+                ImportPathsCommand(requireContext(), this, OpenedGpx(requireContext(), uri), pathService, prefs.navigation)
+                    .execute(null)
+            }
+        }
 
         // TODO: See if it is possible to get notified of changes without loading all paths
         observeFlow(pathService.getPaths()) {

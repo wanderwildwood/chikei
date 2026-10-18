@@ -73,6 +73,8 @@ Region packs from a server of your own, if you run one, draw over all of this an
 - **Call for help from here**: with Field Kit installed, the last item under Here opens Field
   Kit's "Calling for help" page with your position on it, ready to read out or send.
 - **Share GPX** hands a recorded track to CalTopo, or to anything else that takes GPX.
+- **Open a GPX file** from [Files](https://github.com/wanderwildwood/tana) or an attachment,
+  and Topo offers its paths to import; a file of waypoints alone becomes beacons.
 - Navigate to a marked place, with distance, bearing and elevation.
 - **User guides** (hold a finger on a tool): their text can be selected and a word sent to a
   dictionary app such as Define, which waits behind a ⋮ on the selection bar.

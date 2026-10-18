@@ -1140,6 +1140,8 @@
     <string name="shortest">Shortest</string>
     <string name="closest">Closest</string>
     <string name="importing">Importing</string>
+    <!-- A GPX file opened from another app holds no paths and no waypoints -->
+    <string name="gpx_nothing_to_import">There are no paths or waypoints in that file.</string>
     <string name="points">Points</string>
     <string name="duration">Duration</string>
     <string name="elevation">Elevation</string>

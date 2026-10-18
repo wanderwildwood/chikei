@@ -1,9 +1,12 @@
 package com.kylecorry.trail_sense.tools.paths
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import com.kylecorry.andromeda.core.cache.DependencyRegistry
 import com.kylecorry.andromeda.notify.Notify
 import com.kylecorry.trail_sense.R
+import com.kylecorry.trail_sense.shared.extensions.findNavController
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.DefaultMapLayerDefinitions
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerDefinition
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerPreference
@@ -23,6 +26,7 @@ import com.kylecorry.trail_sense.tools.tools.infrastructure.Tool
 import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolAction
 import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolBroadcast
 import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolCategory
+import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolIntentHandler
 import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolNotificationChannel
 import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolNotificationChannelGroup
 import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolQuickAction
@@ -33,6 +37,17 @@ import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
 import com.kylecorry.trail_sense.tools.tools.infrastructure.diagnostics.ToolDiagnosticFactory
 
 object PathsToolRegistration : ToolRegistration {
+
+    /** A .gpx opened from another app, such as Files: shown on Paths, which offers to import it. */
+    private val openGpxIntentHandler = ToolIntentHandler { activity, intent ->
+        if (intent.action != Intent.ACTION_VIEW) return@ToolIntentHandler false
+        val uri = intent.data ?: return@ToolIntentHandler false
+        val isGpx = intent.type == GPX_MIME || uri.lastPathSegment?.lowercase()?.endsWith(".gpx") == true
+        if (!isGpx) return@ToolIntentHandler false
+        activity.findNavController()?.navigate(R.id.fragmentBacktrack, Bundle().apply { putParcelable(ARG_OPENED_GPX, uri) })
+        true
+    }
+
     override fun getTool(context: Context): Tool {
         return Tool(
             Tools.PATHS,
@@ -52,6 +67,7 @@ object PathsToolRegistration : ToolRegistration {
             additionalNavigationIds = listOf(
                 R.id.pathDetailsFragment
             ),
+            intentHandlers = listOf(openGpxIntentHandler),
             tiles = listOf(
                 "com.kylecorry.trail_sense.tools.paths.tiles.BacktrackTile"
             ),
@@ -175,4 +191,8 @@ object PathsToolRegistration : ToolRegistration {
 
     const val WIDGET_BACKTRACK = "paths-widget-backtrack"
     const val NOTIFICATION_CHANNEL_GROUP_PATHS = "paths"
+
+    /** The address of a GPX file opened from another app, handed to Paths to import. */
+    const val ARG_OPENED_GPX = "opened_gpx"
+    const val GPX_MIME = "application/gpx+xml"
 }
