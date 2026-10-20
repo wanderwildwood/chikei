@@ -106,10 +106,10 @@
     <string name="share_action_send">Send</string>
     <string name="about">About</string>
     <string name="about_title">Topo %1$s</string>
-    <string name="about_privacy">Your location, tracks and marks stay on this phone. The network is used only to fetch map tiles and elevation, while the map is open or when you save an area; edible plants for the area on screen, while the Forage layer is on; and region packs from a server you set, when you ask.</string>
+    <string name="about_privacy">Your location, tracks and marks stay on this phone. The network is used only to fetch map tiles and elevation, while the map is open or when you save an area; fruit and nut trees for the area on screen, rounded to about 100 m, while the Forage layer is on (from overpass-api.de, or Private.coffee\'s public Overpass server only when that one is busy); and region packs from a server you set, when you ask.</string>
     <string name="about_after">After Trail Sense by Kyle Corry, whose sensors, paths, beacons and map drawing this carries, under the MIT License.</string>
     <string name="about_licence">GNU General Public License v3 only</string>
-    <string name="about_bundled">Lato, SIL Open Font License 1.1. Maps: USGS The National Map (public domain); OpenTopoMap (CC-BY-SA), from OpenStreetMap contributors (ODbL) and SRTM; Terrain Tiles by Mapzen on the AWS Registry of Open Data, from USGS 3DEP, SRTM and GMTED2010, NOAA ETOPO1, Copernicus EU-DEM (funded by the European Union), ArcticDEM (DigitalGlobe imagery, NSF awards 1043681, 1559691 and 1542736), Geoscience Australia, Canada (Open Government Licence – Canada), INEGI, LINZ, Kartverket, the Environment Agency (UK) and data.gv.at; the US outline from Natural Earth. Forage: OpenStreetMap contributors (ODbL), through the Overpass API; edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL). Region packs carry OpenStreetMap and the public records each region is built from: in the US, the USDA Forest Service, USGS PAD-US and 3DEP, the Census Bureau and county parcels; elsewhere, Protected Planet (WDPA) and Copernicus DEM.</string>
+    <string name="about_bundled">Lato, SIL Open Font License 1.1. Maps: USGS The National Map (public domain); OpenTopoMap (CC-BY-SA), from OpenStreetMap contributors (ODbL) and SRTM; Terrain Tiles by Mapzen on the AWS Registry of Open Data, from USGS 3DEP, SRTM and GMTED2010, NOAA ETOPO1, Copernicus EU-DEM (funded by the European Union), ArcticDEM (DigitalGlobe imagery, NSF awards 1043681, 1559691 and 1542736), Geoscience Australia, Canada (Open Government Licence – Canada), INEGI, LINZ, Kartverket, the Environment Agency (UK) and data.gv.at; the US outline from Natural Earth. Forage: OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy); edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL). Region packs carry OpenStreetMap and the public records each region is built from: in the US, the USDA Forest Service, USGS PAD-US and 3DEP, the Census Bureau and county parcels; elsewhere, Protected Planet (WDPA) and Copernicus DEM.</string>
     <string name="about_source" translatable="false">github.com/wanderwildwood/chikei</string>
     <!-- The donation link label, beside a drawing of a llama. A verb and an object, so the reader knows what pressing it does -->
     <string name="about_feed_the_llamas">feed the llamas</string>
@@ -136,7 +136,7 @@
     <string name="save_area_message">About %1$s: %2$s for what is on the screen, to use with no signal.</string>
     <string name="save_area_holds_map">the topo map and contour lines</string>
     <string name="save_area_holds_contours">contour lines</string>
-    <string name="save_area_holds_forage">%s, and the edible plants on the Forage layer,</string>
+    <string name="save_area_holds_forage">%s, and the fruit and nut trees on the Forage layer,</string>
     <string name="save_area_too_big">This area is too big to save at once: about %s. Zoom in and save a smaller area.</string>
     <string name="saving_area">Saving area</string>
     <string name="area_saved">Saved %1$s (%2$s)</string>
@@ -147,13 +147,13 @@
     <string name="credit_terrain" translatable="false">Terrain Tiles: Mapzen/AWS</string>
     <!-- Forage -->
     <string name="forage">Forage</string>
-    <string name="map_layer_forage_description">Fruit and nut trees and other edible plants, from OpenStreetMap and Falling Fruit, fetched for what is on the screen while this layer is on. Mushrooms are never shown.</string>
-    <string name="map_layer_forage_description_osm">Fruit and nut trees and other edible plants, from OpenStreetMap, fetched for what is on the screen while this layer is on. Mushrooms are never shown.</string>
+    <string name="map_layer_forage_description">Fruit and nut trees and shrubs, from OpenStreetMap and Falling Fruit, fetched for what is on the screen while this layer is on. Mushrooms are never shown.</string>
+    <string name="map_layer_forage_description_osm">Fruit and nut trees and shrubs, from OpenStreetMap, fetched for what is on the screen while this layer is on. Mushrooms are never shown.</string>
     <string name="forage_attribution" translatable="false">OpenStreetMap contributors, Falling Fruit</string>
     <string name="forage_attribution_osm" translatable="false">OpenStreetMap contributors</string>
-    <string name="forage_attribution_long">Trees from OpenStreetMap contributors (ODbL), through the Overpass API. Edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL).</string>
-    <string name="forage_attribution_long_osm">Trees from OpenStreetMap contributors (ODbL), through the Overpass API.</string>
-    <string name="forage_zoom_in">Zoom in to see edible plants</string>
+    <string name="forage_attribution_long">Trees from OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy). Edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL).</string>
+    <string name="forage_attribution_long_osm">Trees from OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy).</string>
+    <string name="forage_zoom_in">Zoom in to see fruit and nut trees</string>
     <string name="forage_check">Check before you pick: some spots are on private land or gone.</string>
     <string name="forage_credit_falling_fruit">Edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL).</string>
     <string name="forage_credit_osm">From OpenStreetMap (openstreetmap.org), © OpenStreetMap contributors, under the ODbL.</string>
@@ -173,7 +173,12 @@
     <string name="forage_access_permissive">Open by the owner\'s leave</string>
     <string name="forage_access_customers">For customers</string>
     <string name="forage_access_other">Access: %s</string>
-    <!-- The plants Forage looks for in OpenStreetMap, and their common names in the same order -->
+    <!-- The one list of plants Forage shows, from OpenStreetMap and Falling Fruit alike, with their
+         common names in the same order: plants grown or foraged for their fruit, berries or nuts,
+         and nothing else. Street and shade trees whose fruit is an afterthought are left off
+         (ginkgo, hackberry, kousa dogwood, the ornamental hawthorns), as are maples, oaks,
+         lindens, herbs and greens. Hawthorn is here only as the two kinds grown for their fruit;
+         pines only as the pinyons and stone pines whose seeds are sold as pine nuts. -->
     <string-array name="forage_taxa" translatable="false">
         <item>Malus</item>
         <item>Pyrus</item>
@@ -225,15 +230,19 @@
         <item>Ziziphus jujuba</item>
         <item>Elaeagnus umbellata</item>
         <item>Hippophae rhamnoides</item>
-        <item>Crataegus</item>
+        <item>Crataegus pinnatifida</item>
+        <item>Crataegus azarolus</item>
         <item>Aronia</item>
         <item>Cornus mas</item>
-        <item>Cornus kousa</item>
         <item>Pinus pinea</item>
         <item>Pinus edulis</item>
         <item>Pinus monophylla</item>
-        <item>Ginkgo biloba</item>
-        <item>Celtis</item>
+        <item>Pinus cembroides</item>
+        <item>Pinus quadrifolia</item>
+        <item>Pinus koraiensis</item>
+        <item>Pinus sibirica</item>
+        <item>Pinus cembra</item>
+        <item>Pinus gerardiana</item>
         <item>Arbutus unedo</item>
         <item>Phoenix dactylifera</item>
         <item>Carica papaya</item>
@@ -300,15 +309,19 @@
         <item>Jujube</item>
         <item>Autumn olive</item>
         <item>Sea buckthorn</item>
-        <item>Hawthorn</item>
+        <item>Chinese haw</item>
+        <item>Azarole</item>
         <item>Chokeberry</item>
         <item>Cornelian cherry</item>
-        <item>Kousa dogwood</item>
         <item>Stone pine</item>
         <item>Pinyon pine</item>
         <item>Single-leaf pinyon</item>
-        <item>Ginkgo</item>
-        <item>Hackberry</item>
+        <item>Mexican pinyon</item>
+        <item>Parry pinyon</item>
+        <item>Korean pine</item>
+        <item>Siberian pine</item>
+        <item>Swiss stone pine</item>
+        <item>Chilgoza pine</item>
         <item>Strawberry tree</item>
         <item>Date palm</item>
         <item>Papaya</item>

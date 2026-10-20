@@ -19,6 +19,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.IOException
 import java.net.HttpURLConnection
+import java.net.SocketTimeoutException
 import java.net.URL
 import java.net.URLEncoder
 
@@ -49,12 +50,12 @@ object Forage {
     private const val MAX_SAVED_CELLS = 64
     const val MAX_SHOWN = 500
 
-    private const val OVERPASS_URL = "https://overpass-api.de/api/interpreter"
     private const val FF_URL = "https://fallingfruit.org/api/0.3"
 
     private const val KIND_OSM = "osm"
     private const val KIND_FF = "ff"
-    private const val KIND_FF_CLUSTERS = "ffc"
+    // Counts from 0.2.0 included maples and oaks and cannot be sorted afterwards; new name, new counts
+    private const val KIND_FF_CLUSTERS = "ffc2"
 
     /** Set when Falling Fruit refuses the key; it is then left out until the app restarts. */
     @Volatile
@@ -107,7 +108,11 @@ object Forage {
         }
     }
 
-    private val overpass = Backoff("Overpass")
+    private val overpassServers = OverpassServers()
+    private val overpassBackoffs = mapOf(
+        overpassServers.main to Backoff("Overpass"),
+        overpassServers.backup to Backoff("Overpass backup")
+    )
     private val fallingFruit = Backoff("Falling Fruit")
 
     private fun cache(context: Context): ForageCache {
@@ -153,7 +158,8 @@ object Forage {
                 }
             }
             if (stale && fetch) request(context, Wanted(box, zoom))
-            val spots = ForageMerge.merge(osm, ff)
+            val taxa = taxa(context)
+            val spots = ForageMerge.merge(osm.filter { taxa.allows(it) }, ff.filter { taxa.allows(it) })
                 .filter { box.contains(it.lat, it.lng) }
                 .take(MAX_SHOWN)
             shown = spots.associateBy { it.id }
@@ -235,7 +241,7 @@ object Forage {
     suspend fun keepArea(context: Context, box: ForageBox): Boolean = withContext(Dispatchers.IO) {
         val cells = ForageGrid.cells(box, SPOT_ZOOM, MAX_SAVED_CELLS) ?: return@withContext false
         fetchLock.withLock {
-            overpass.ok()
+            overpassBackoffs.values.forEach { it.ok() }
             fallingFruit.ok()
             var kept = fetchOsm(context, cells, kept = true)
             if (hasFallingFruit) kept = fetchFallingFruit(context, cells, kept = true) || kept
@@ -244,11 +250,19 @@ object Forage {
     }
 
     private suspend fun fetchOsm(context: Context, cells: List<ForageCell>, kept: Boolean): Boolean {
-        if (!overpass.ready()) return false
+        if (overpassBackoffs.values.none { it.ready() }) return false
         val box = ForageGrid.requestBox(cells) ?: return false
         val query = OverpassForage.query(box, taxa(context).genera)
         debug("Overpass: ${cells.size} squares in one request")
-        val reply = send(overpass, OVERPASS_URL, post = "data=" + URLEncoder.encode(query, "UTF-8")) ?: return false
+        val post = "data=" + URLEncoder.encode(query, "UTF-8")
+        val reply = overpassServers.ask { server ->
+            val timeout = if (server == overpassServers.main) {
+                OverpassServers.MAIN_READ_TIMEOUT_MILLIS
+            } else {
+                OverpassServers.BACKUP_READ_TIMEOUT_MILLIS
+            }
+            exchange(overpassBackoffs.getValue(server), server, post = post, readTimeout = timeout)
+        } ?: return false
         val spots = OverpassForage.parse(reply, taxa(context)) ?: return false
         store(context, KIND_OSM, cells, spots, kept)
         return true
@@ -333,7 +347,10 @@ object Forage {
         } catch (_: Exception) {
             null
         }?.let { list ->
-            if (System.currentTimeMillis() - list.fetched < ForageCache.TTL_MILLIS) {
+            // A list made by an older rule (0.2.0's took maples) is asked for again at once
+            if (list.rule == FallingFruitForage.RULE &&
+                System.currentTimeMillis() - list.fetched < ForageCache.TTL_MILLIS
+            ) {
                 list.types.associateBy { it.id }.also { ffTypes = it }
             } else {
                 null
@@ -342,12 +359,14 @@ object Forage {
         if (saved != null) return saved
         debug("Falling Fruit: types")
         val reply = send(fallingFruit, "$FF_URL/types", key = true)
-        val types = reply?.let { FallingFruitForage.parseTypes(it) }?.let { FallingFruitForage.keep(it) }
+        val taxa = taxa(context)
+        val types = reply?.let { FallingFruitForage.parseTypes(it) }?.let { FallingFruitForage.keep(it, taxa) }
         if (types.isNullOrEmpty()) {
-            // An old list still beats none
+            // An old list still beats none, once what is not on today's list is taken out of it
             return try {
                 com.kylecorry.andromeda.json.JsonConvert.fromJson<FallingFruitForage.KeptList>(file.readText())
-                    ?.types?.associateBy { it.id }
+                    ?.types?.filter { FallingFruitForage.isAllowed(it, taxa) }
+                    ?.associateBy { it.id }?.ifEmpty { null }
             } catch (_: Exception) {
                 null
             }
@@ -355,7 +374,7 @@ object Forage {
         file.parentFile?.mkdirs()
         val part = File(file.parentFile, file.name + ".part")
         part.writeText(com.kylecorry.andromeda.json.JsonConvert.toJson(
-            FallingFruitForage.KeptList(System.currentTimeMillis(), types)
+            FallingFruitForage.KeptList(System.currentTimeMillis(), types, FallingFruitForage.RULE)
         ))
         part.renameTo(file)
         return types.associateBy { it.id }.also { ffTypes = it }
@@ -389,11 +408,24 @@ object Forage {
      * 403 from Falling Fruit means the key no longer works, and the source is dropped.
      */
     private fun send(backoff: Backoff, url: String, post: String? = null, key: Boolean = false): String? {
-        if (!backoff.ready()) return null
+        val reply = exchange(backoff, url, post, key)
+        return if (reply.outcome == OverpassServers.Outcome.OK) reply.body else null
+    }
+
+    /** One request, saying how it went, for a caller that tries another server after a failure. */
+    private fun exchange(
+        backoff: Backoff,
+        url: String,
+        post: String? = null,
+        key: Boolean = false,
+        readTimeout: Int = 45_000
+    ): OverpassServers.Reply {
+        if (!backoff.ready()) return OverpassServers.Reply(OverpassServers.Outcome.SKIPPED)
         val connection = URL(url).openConnection() as HttpURLConnection
+        var connected = false
         try {
             connection.connectTimeout = 15_000
-            connection.readTimeout = 45_000
+            connection.readTimeout = readTimeout
             connection.useCaches = false
             connection.setRequestProperty("User-Agent", WebTiles.USER_AGENT)
             connection.setRequestProperty("Accept", "application/json")
@@ -404,28 +436,36 @@ object Forage {
                 connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
                 connection.outputStream.use { it.write(post.toByteArray()) }
             }
+            connection.connect()
+            connected = true
             val code = connection.responseCode
             debug("${backoff.name}: HTTP $code")
             return when {
-                code in 200..299 -> connection.inputStream.use { it.readBytes() }.toString(Charsets.UTF_8)
-                    .also { backoff.ok() }
+                code in 200..299 -> OverpassServers.Reply(
+                    OverpassServers.Outcome.OK,
+                    connection.inputStream.use { it.readBytes() }.toString(Charsets.UTF_8)
+                ).also { backoff.ok() }
                 key && (code == 401 || code == 403) -> {
                     fallingFruitRefused = true
-                    null
+                    OverpassServers.Reply(OverpassServers.Outcome.REJECTED)
                 }
                 code == 429 || code >= 500 -> {
                     backoff.busy()
-                    null
+                    OverpassServers.Reply(OverpassServers.Outcome.BUSY)
                 }
                 else -> {
                     // A request the server will not take; asking again soon would not help
                     backoff.busy()
-                    null
+                    OverpassServers.Reply(OverpassServers.Outcome.REJECTED)
                 }
             }
-        } catch (_: IOException) {
+        } catch (e: IOException) {
             backoff.offline()
-            return null
+            debug("${backoff.name}: ${e.javaClass.simpleName}")
+            return OverpassServers.Reply(
+                if (connected && e is SocketTimeoutException) OverpassServers.Outcome.TIMEOUT
+                else OverpassServers.Outcome.OFFLINE
+            )
         } finally {
             connection.disconnect()
         }

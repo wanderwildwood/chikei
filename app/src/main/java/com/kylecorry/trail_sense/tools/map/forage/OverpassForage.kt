@@ -4,8 +4,8 @@ import com.kylecorry.andromeda.json.JsonConvert
 import com.kylecorry.trail_sense.shared.ProguardIgnore
 
 /**
- * Edible trees and shrubs from OpenStreetMap, through the Overpass API: what Overpass is asked,
- * and what is made of its answer. Only trees and shrubs mapped one by one are asked for, never
+ * Fruit and nut trees and shrubs from OpenStreetMap, through the Overpass API: what Overpass is
+ * asked, and what is made of its answer. Only trees and shrubs mapped one by one are asked for, never
  * orchards drawn as areas, which are mostly farms.
  */
 object OverpassForage {
@@ -43,7 +43,7 @@ object OverpassForage {
         val tags: Map<String, String>?
     ) : ProguardIgnore
 
-    /** The edible spots in an Overpass answer; anything not on [taxa] is dropped. */
+    /** The spots in an Overpass answer; anything not on [taxa] is dropped. */
     fun parse(json: String, taxa: ForageTaxa): List<ForageSpot>? {
         val answer = try {
             JsonConvert.fromJson<Answer>(json)
@@ -61,9 +61,7 @@ object OverpassForage {
         val tags = element.tags.orEmpty()
         val scientific = tags["species"] ?: tags["taxon"] ?: tags["genus"]
         if (Fungi.isFungus(scientific)) return null
-        val entry = taxa.match(tags["species"]) ?: taxa.match(tags["taxon"])
-            ?: taxa.match(tags["genus"]) ?: taxa.matchProduce(tags["produce"])
-            ?: return null
+        val entry = taxa.matchTags(tags) ?: return null
         val name = tags["species:en"] ?: tags["taxon:en"] ?: entry.name
         if (Fungi.soundsLikeFungus(name)) return null
         return ForageSpot(

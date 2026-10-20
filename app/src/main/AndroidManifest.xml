@@ -91,20 +91,21 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
 
     <!--Force remove this permission from androidx-->
     <uses-permission
         android:name="android.permission.ACCESS_NETWORK_STATE"
+        tools:node="remove" />
+
+    <!--The torch library asks for this; Topo has no torch, and Android's torch needs no permission-->
+    <uses-permission
+        android:name="android.permission.FLASHLIGHT"
         tools:node="remove" />
 
     <application
@@ -197,16 +198,6 @@
             android:foregroundServiceType="location" />
 
         <service
-            android:name=".tools.weather.infrastructure.WeatherMonitorService"
-            android:enabled="true"
-            android:exported="false"
-            android:foregroundServiceType="location|specialUse">
-            <property
-                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="barometer" />
-        </service>
-
-        <service
             android:name=".tools.pedometer.infrastructure.StepCounterService"
             android:enabled="true"
             android:exported="false"
@@ -245,14 +236,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.BATTERY_LOW" />
                 <action android:name="android.intent.action.BATTERY_OKAY" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name=".receivers.ExactAlarmPermissionChangedReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
             </intent-filter>
         </receiver>
         <receiver

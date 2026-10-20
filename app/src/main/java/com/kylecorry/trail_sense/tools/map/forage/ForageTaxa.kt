@@ -1,7 +1,8 @@
 package com.kylecorry.trail_sense.tools.map.forage
 
 /**
- * The edible plants Forage looks for in OpenStreetMap, by scientific name. An entry is a genus
+ * The fruit and nut plants Forage shows, by scientific name: the one allow-list both sources go
+ * through, asked of Overpass by genus and laid over Falling Fruit's types. An entry is a genus
  * ("Malus") or a species ("Prunus avium"); a species entry is for a genus with plants not worth
  * the picking among its edible ones, such as the flowering cherries. [names] are the common
  * names, in the same order, shown when a tree says only what it is in Latin.
@@ -50,6 +51,25 @@ class ForageTaxa(scientific: List<String>, names: List<String>) {
             candidates.firstOrNull { !Fungi.isFungus(it.scientific) }?.let { return it }
         }
         return null
+    }
+
+    /** The entry for an OSM tree by its tags: species, then taxon, genus and produce. */
+    fun matchTags(tags: Map<String, String>): Entry? =
+        match(tags["species"]) ?: match(tags["taxon"]) ?: match(tags["genus"])
+            ?: matchProduce(tags["produce"])
+
+    /**
+     * Whether a spot already kept on the phone is still one to show. Spots fetched before the list
+     * was narrowed to fruit and nut plants (0.2.0 kept maples and oaks from Falling Fruit) are
+     * dropped here rather than waiting a month to be fetched again; saved areas keep the rest.
+     */
+    fun allows(spot: ForageSpot): Boolean = when (spot.source) {
+        ForageSources.OSM -> (spot.tags?.let { matchTags(it) } ?: match(spot.scientific)) != null
+        else -> if (spot.scientific.isNullOrBlank()) {
+            spot.name?.split(',')?.any { matchProduce(it) != null } == true
+        } else {
+            match(spot.scientific) != null
+        }
     }
 
     companion object {

@@ -10,7 +10,9 @@ class FallingFruitForageTest {
 
     // A made-up type list in Falling Fruit's shape: three kingdoms, an apple under plants, two
     // fungi filed under Fungi and two not filed at all, an animal, a freegan find, a tree only
-    // bees want and a type with only a common name.
+    // bees want, a type with only a common name, and the forager trees Topo leaves off: a maple,
+    // an oak, a white pine, and a bare "Prunus" called plum, beside a pinyon and a pawpaw known
+    // only by its common name.
     private val typesJson = """
         [
           {"id": 1, "parent_id": null, "taxonomic_rank": 1, "scientific_names": ["Plantae"], "common_names": {"en": ["Plant"]}, "categories": ["forager"]},
@@ -25,18 +27,76 @@ class FallingFruitForageTest {
           {"id": 30, "parent_id": 3, "taxonomic_rank": 8, "scientific_names": ["Fakea clam"], "common_names": {"en": ["Clam"]}, "categories": ["forager"]},
           {"id": 40, "parent_id": null, "taxonomic_rank": null, "scientific_names": [], "common_names": {"en": ["Free fridge"]}, "categories": ["forager", "freegan"]},
           {"id": 50, "parent_id": null, "taxonomic_rank": 6, "scientific_names": ["Salix"], "common_names": {"en": ["Willow"]}, "categories": ["honeybee"]},
-          {"id": 60, "parent_id": null, "taxonomic_rank": null, "scientific_names": [], "common_names": {"en": ["Monkey fruit"]}, "categories": ["forager"]}
+          {"id": 60, "parent_id": null, "taxonomic_rank": null, "scientific_names": [], "common_names": {"en": ["Monkey fruit"]}, "categories": ["forager"]},
+          {"id": 70, "parent_id": 1, "taxonomic_rank": 8, "scientific_names": ["Acer saccharum"], "common_names": {"en": ["Sugar maple"]}, "categories": ["forager"]},
+          {"id": 71, "parent_id": 1, "taxonomic_rank": 6, "scientific_names": ["Quercus"], "common_names": {"en": ["Oak"]}, "categories": ["forager"]},
+          {"id": 72, "parent_id": 1, "taxonomic_rank": 8, "scientific_names": ["Pinus strobus"], "common_names": {"en": ["White pine"]}, "categories": ["forager"]},
+          {"id": 73, "parent_id": 1, "taxonomic_rank": 8, "scientific_names": ["Pinus edulis"], "common_names": {"en": ["Pinyon"]}, "categories": ["forager"]},
+          {"id": 74, "parent_id": 1, "taxonomic_rank": 6, "scientific_names": ["Prunus"], "common_names": {"en": ["Plum"]}, "categories": ["forager"]},
+          {"id": 75, "parent_id": 1, "taxonomic_rank": 8, "scientific_names": ["Prunus serrulata", "Prunus domestica"], "common_names": {"en": ["Odd plum"]}, "categories": ["forager"]},
+          {"id": 76, "parent_id": null, "taxonomic_rank": null, "scientific_names": [], "common_names": {"en": ["Pawpaw"]}, "categories": ["forager"]}
         ]
     """.trimIndent()
 
+    private val taxa = ForageTaxa(
+        listOf("Malus", "Pinus edulis", "Prunus domestica", "Asimina triloba", "Fakeus", "Morchella"),
+        listOf("Apple", "Pinyon pine", "Plum", "Pawpaw", "Fake cap", "Morel")
+    )
+
     private fun kept(): Map<Int, FallingFruitForage.Kept> =
-        FallingFruitForage.keep(FallingFruitForage.parseTypes(typesJson)!!).associateBy { it.id }
+        FallingFruitForage.keep(FallingFruitForage.parseTypes(typesJson)!!, taxa).associateBy { it.id }
 
     @Test
-    fun keepsForagersPlantsOnly() {
-        assertEquals(setOf(1, 10, 11, 60), kept().keys)
+    fun keepsFruitAndNutForagersOnly() {
+        assertEquals(setOf(10, 11, 73, 75, 76), kept().keys)
         assertEquals("Orchard apple", kept()[11]?.name)
         assertEquals("Malus domestica", kept()[11]?.scientific)
+    }
+
+    @Test
+    fun mapleOakAndPineAreDropped() {
+        val ids = kept().keys
+        assertFalse(70 in ids) // a maple
+        assertFalse(71 in ids) // the oaks
+        assertFalse(72 in ids) // a pine not grown for its nuts
+        assertTrue(73 in ids) // a pinyon is
+        assertFalse(74 in ids) // a bare genus with flowering cherries in it
+        assertFalse(1 in ids) // the plant kingdom itself
+        assertFalse(60 in ids) // a common name not on the list
+    }
+
+    @Test
+    fun typesMapToTheNameOnTheList() {
+        // The scientific name kept is the one on the list, not merely the first
+        assertEquals("Prunus domestica", kept()[75]?.scientific)
+        assertEquals("Pinus edulis", kept()[73]?.scientific)
+        // A type with no scientific name is kept by its common name, and shown by it
+        assertNull(kept()[76]?.scientific)
+        assertEquals("Pawpaw", kept()[76]?.name)
+    }
+
+    @Test
+    fun olderListsAreSortedAgain() {
+        assertTrue(FallingFruitForage.isAllowed(FallingFruitForage.Kept(11, "Apple", "Malus domestica"), taxa))
+        assertFalse(FallingFruitForage.isAllowed(FallingFruitForage.Kept(70, "Sugar maple", "Acer saccharum"), taxa))
+        assertTrue(FallingFruitForage.isAllowed(FallingFruitForage.Kept(76, "Pawpaw", null), taxa))
+        assertFalse(FallingFruitForage.isAllowed(FallingFruitForage.Kept(60, "Monkey fruit", null), taxa))
+    }
+
+    @Test
+    fun keptSpotsAreFilteredByTheList() {
+        fun ff(scientific: String?, name: String?) =
+            ForageSpot("ff:1", ForageSources.FALLING_FRUIT, 0.0, 0.0, name, scientific)
+        assertTrue(taxa.allows(ff("Malus domestica", "Apple")))
+        assertFalse(taxa.allows(ff("Acer platanoides", "Norway maple")))
+        assertFalse(taxa.allows(ff("Quercus rubra", "Red oak")))
+        assertTrue(taxa.allows(ff(null, "Pawpaw")))
+        val maple = ForageSpot("osm:n1", ForageSources.OSM, 0.0, 0.0, "Maple", "Acer",
+            tags = mapOf("genus" to "Acer"))
+        val plum = ForageSpot("osm:n2", ForageSources.OSM, 0.0, 0.0, "Plum", "Prunus",
+            tags = mapOf("genus" to "Prunus", "produce" to "plums"))
+        assertFalse(taxa.allows(maple))
+        assertTrue(taxa.allows(plum))
     }
 
     @Test

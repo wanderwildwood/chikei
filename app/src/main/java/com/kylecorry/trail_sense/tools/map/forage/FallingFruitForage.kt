@@ -6,9 +6,11 @@ import com.kylecorry.trail_sense.shared.ProguardIgnore
 /**
  * Falling Fruit (fallingfruit.org), the open map of edible plants: which of its types Topo
  * shows, and what is made of its answers. Falling Fruit lists more than plants (shellfish,
- * water fountains, free fridges, dumpsters) and plenty of trees only bees want, so a type is
- * shown only if Falling Fruit marks it for foragers, and never if it is a fungus, an animal or a
- * "freegan" find.
+ * water fountains, free fridges, dumpsters) and plenty of trees only bees want, and it counts
+ * maples, oaks and pines as forager types too, which crowd a city's map. So a type is shown only
+ * if Falling Fruit marks it for foragers and it is on Topo's list of fruit and nut plants
+ * ([ForageTaxa], the same list OpenStreetMap is asked for), and never if it is a fungus, an
+ * animal or a "freegan" find.
  */
 object FallingFruitForage {
 
@@ -28,7 +30,16 @@ object FallingFruitForage {
     /** A type Topo shows, as kept on the phone. */
     class Kept(val id: Int, val name: String?, val scientific: String?) : ProguardIgnore
 
-    class KeptList(val fetched: Long, val types: List<Kept>) : ProguardIgnore
+    /** [rule] is the [RULE] the list was made by; lists from 0.2.0 have none (0). */
+    class KeptList(val fetched: Long, val types: List<Kept>, val rule: Int = 0) : ProguardIgnore
+
+    /** Raised whenever [keep] changes what it lets through, so lists kept on phones are redone. */
+    const val RULE = 1
+
+    /** Whether a type kept by an older rule is still on [taxa]. */
+    fun isAllowed(kept: Kept, taxa: ForageTaxa): Boolean =
+        if (kept.scientific.isNullOrBlank()) taxa.matchProduce(kept.name) != null
+        else taxa.match(kept.scientific) != null
 
     private const val RANK_KINGDOM = 1
 
@@ -46,7 +57,7 @@ object FallingFruitForage {
     fun parseTypes(json: String): List<Type>? = array<Types>(json)?.items
 
     /** The types worth showing, by the rules above. */
-    fun keep(types: List<Type>): List<Kept> {
+    fun keep(types: List<Type>, taxa: ForageTaxa): List<Kept> {
         val byId = types.filter { it.id != null }.associateBy { it.id!! }
 
         fun ancestors(type: Type): Sequence<Type> = generateSequence(type) { t ->
@@ -72,11 +83,19 @@ object FallingFruitForage {
             if (ancestors(type).any { Fungi.isFungus(it.scientific_names?.firstOrNull()) }) {
                 return@mapNotNull null
             }
-            val scientific = type.scientific_names?.firstOrNull()
-            val genus = ForageTaxa.genusOf(scientific)?.lowercase()
-            if (genus != null && genus in fungalGenera) return@mapNotNull null
+            val names = type.scientific_names.orEmpty().filter { it.isNotBlank() }
             val name = type.common_names?.get("en")?.firstOrNull()
             if (Fungi.soundsLikeFungus(name)) return@mapNotNull null
+            // On the list by any of its scientific names; by its common name only if it has none,
+            // so a bare "Prunus" called "Plum" (flowering cherries and all) stays off
+            val scientific = if (names.isEmpty()) {
+                if (taxa.matchProduce(name) == null) return@mapNotNull null
+                null
+            } else {
+                names.firstOrNull { taxa.match(it) != null } ?: return@mapNotNull null
+            }
+            val genus = ForageTaxa.genusOf(scientific)?.lowercase()
+            if (genus != null && genus in fungalGenera) return@mapNotNull null
             Kept(id, name?.trim(), scientific?.trim())
         }
     }
