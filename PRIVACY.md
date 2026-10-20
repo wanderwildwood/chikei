@@ -6,7 +6,7 @@ file through Android's share sheet, for instance).
 
 ## When it uses the network
 
-Only for maps, and only while you are using them:
+Only for maps and the Forage layer, and only while you are using them:
 
 - **Map tiles and elevation, while the map is open.** The map fetches the tiles for what is on
   the screen: USGS topo from The National Map (`basemap.nationalmap.gov`) in the US,
@@ -16,6 +16,13 @@ Only for maps, and only while you are using them:
   fetches anything.
 - **When you save an area.** "Save this area" downloads the USGS tiles (US only) and the
   elevation for what is on the screen, once, after showing you the size.
+- **Edible plants, while the Forage layer is on.** The layer is off until you add it. While it
+  is on, Topo asks for the edible plants in the part of the map on the screen, once the map
+  has been still for a moment: from OpenStreetMap through the Overpass API
+  (`overpass-api.de`), and, in builds with a Falling Fruit key, from Falling Fruit
+  (`fallingfruit.org`). All either is told is the corners of the map squares on the screen,
+  rounded to about 100 m, plus, when you open a Falling Fruit spot, that spot's number.
+  What comes back is kept on the phone for a month, so the same place is not asked for again.
 - **When you download region packs** from a server you set yourself, and only when you ask.
 
 Each request says it comes from Topo, with a link to this repository, as the map services ask.
@@ -32,3 +39,5 @@ maps at all.
   as each server says.
 - Saved areas, until you delete them under Settings > Map > Saved areas.
 - Elevation fetched while looking at the map, up to about 150 tiles; the oldest go first.
+- Edible plants the Forage layer fetched, for a month before they are asked for again, and
+  thrown out after four months unseen; those kept with a saved area stay.

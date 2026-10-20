@@ -17,10 +17,18 @@ android {
         applicationId = "com.wanderwildwood.chikei"
         minSdk = 24
         targetSdk = 37
-        versionCode = 14
-        versionName = "0.1.13"
+        versionCode = 15
+        versionName = "0.2.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["clearPackageData"] = "true"
+        // Falling Fruit's API key for the Forage layer, from the gitignored signing/ folder. With
+        // no file, or anything there that is not six to sixteen letters and digits, the build has
+        // no key and Forage shows OpenStreetMap only.
+        val fallingFruitKey = rootProject.file("signing/fallingfruit.key")
+            .takeIf { it.isFile }?.readText()?.trim()
+            ?.takeIf { it.matches(Regex("[A-Za-z0-9]{6,16}")) && it != "ABCD1234" }
+            ?: ""
+        buildConfigField("String", "FALLING_FRUIT_KEY", "\"$fallingFruitKey\"")
     }
     // A real keystore in signing/ signs every build type when it is present, so the very
     // first install is already release-signed and a later update can never hit

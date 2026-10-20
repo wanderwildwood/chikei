@@ -75,6 +75,16 @@ Region packs from a server of your own, if you run one, draw over all of this an
 - **Share GPX** hands a recorded track to CalTopo, or to anything else that takes GPX.
 - **Open a GPX file** from [Files](https://github.com/wanderwildwood/tana) or an attachment,
   and Topo offers its paths to import; a file of waypoints alone becomes beacons.
+- **Forage**, a layer added from the map's Layers > Additional layers, shows fruit and nut
+  trees and other edible plants nearby: trees and shrubs from OpenStreetMap whose species is on
+  a list of edible plants, and, in builds with a Falling Fruit key, the spots on
+  [Falling Fruit](https://fallingfruit.org), the open map of edible plants. Tap one for its
+  name, season and access notes where they are known, and where the record comes from. Where
+  the two sources hold the same tree it shows once, with Falling Fruit's notes. Zoomed out,
+  Falling Fruit's counts stand in for the spots. What it fetched is kept for a month, so the
+  layer works with no signal where you have already looked, and Save this area keeps the
+  area's spots too. Mushrooms are never shown: Topo does not say what is safe to eat. Check
+  before you pick: some spots are on private land or gone.
 - Navigate to a marked place, with distance, bearing and elevation.
 - **User guides** (hold a finger on a tool): their text can be selected and a word sent to a
   dictionary app such as Define, which waits behind a ⋮ on the selection bar.
@@ -83,8 +93,8 @@ Region packs from a server of your own, if you run one, draw over all of this an
 
 - **Location**, to put you on the map and record tracks. It stays on the phone.
 - **Internet**, only to fetch map tiles and elevation, while the map is open or when you save
-  an area, and to download region packs from a server you set, when you ask. See
-  [PRIVACY.md](PRIVACY.md).
+  an area; edible plants for the area on screen, while the Forage layer is on; and region
+  packs from a server you set, when you ask. See [PRIVACY.md](PRIVACY.md).
 - **A map server of your own: optional.** Region packs add public land, lot lines and forest
   roads offline. They are plain files built by the scripts in [`mapdata/`](mapdata) from public
   data and served by anything that serves files: `tailscale serve`, nginx, a folder on a web
@@ -198,6 +208,11 @@ United Kingdom, © Environment Agency copyright and/or database right 2015; Aust
 Daten Österreichs – Digitales Geländemodell (DGM) Österreich. The outline of the US that picks
 between USGS and OpenTopoMap is from [Natural Earth](https://www.naturalearthdata.com/) (public
 domain).
+
+Forage: trees from © OpenStreetMap contributors (ODbL), through the
+[Overpass API](https://overpass-api.de/). Edible plant locations from
+[Falling Fruit](https://fallingfruit.org) and its sources, under each dataset's licence (mostly
+ODbL).
 
 After [Trail Sense](https://github.com/kylecorry31/Trail-Sense) by Kyle Corry, which this
 is: its sensors, paths, beacons, navigation and Mapsforge rendering are Trail Sense's, cut

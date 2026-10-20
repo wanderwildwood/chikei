@@ -16,6 +16,8 @@ import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerDefi
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerPreference
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerPreferenceType
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerType
+import com.kylecorry.trail_sense.tools.map.forage.Forage
+import com.kylecorry.trail_sense.tools.map.forage.ForageGeoJsonSource
 import com.kylecorry.trail_sense.tools.map.map_layers.BaseMapTileSource
 import com.kylecorry.trail_sense.tools.map.map_layers.MyElevationLayer
 import com.kylecorry.trail_sense.tools.map.map_layers.MyLocationGeoJsonSource
@@ -54,7 +56,8 @@ object MapToolRegistration : ToolRegistration {
                 ToolBroadcast(
                     BROADCAST_GEOJSON_FEATURE_SELECTION_CHANGED,
                     "GeoJSON feature selection changed"
-                )
+                ),
+                ToolBroadcast(Forage.BROADCAST_UPDATED, "Forage spots fetched")
             ),
             widgets = listOf(
                 ToolWidget(
@@ -303,6 +306,28 @@ object MapToolRegistration : ToolRegistration {
                     ),
                     geoJsonSource = ::ContourGeoJsonSource,
                     minZoomLevel = 13
+                ),
+                // Edible plants: added from the layer list, off until then
+                MapLayerDefinition(
+                    Forage.LAYER_ID,
+                    context.getString(R.string.forage),
+                    description = context.getString(
+                        if (Forage.hasFallingFruit) R.string.map_layer_forage_description
+                        else R.string.map_layer_forage_description_osm
+                    ),
+                    attribution = MapLayerAttribution(
+                        context.getString(
+                            if (Forage.hasFallingFruit) R.string.forage_attribution
+                            else R.string.forage_attribution_osm
+                        ),
+                        context.getString(
+                            if (Forage.hasFallingFruit) R.string.forage_attribution_long
+                            else R.string.forage_attribution_long_osm
+                        ),
+                        alwaysShow = true
+                    ),
+                    geoJsonSource = ::ForageGeoJsonSource,
+                    refreshBroadcasts = listOf(Forage.BROADCAST_UPDATED)
                 ),
                 MapLayerDefinition(
                     MyLocationGeoJsonSource.SOURCE_ID,

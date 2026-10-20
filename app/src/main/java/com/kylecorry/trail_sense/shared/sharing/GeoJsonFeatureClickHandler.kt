@@ -14,6 +14,8 @@ import com.kylecorry.trail_sense.shared.extensions.getName
 import com.kylecorry.trail_sense.tools.beacons.domain.BeaconOwner
 import com.kylecorry.trail_sense.tools.beacons.map_layers.BeaconGeoJsonSource
 import com.kylecorry.trail_sense.tools.map.MapToolRegistration
+import com.kylecorry.trail_sense.tools.map.forage.Forage
+import com.kylecorry.trail_sense.tools.map.forage.ForageSheet
 import com.kylecorry.trail_sense.tools.navigation.infrastructure.Navigator
 import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
 
@@ -24,6 +26,12 @@ object GeoJsonFeatureClickHandler {
         feature: GeoJsonFeature
     ) {
         val layerId = feature.getLayerId()
+
+        // A Forage spot opens its own sheet, which carries Navigate too
+        if (layerId == Forage.LAYER_ID) {
+            feature.id?.toString()?.let { ForageSheet.show(fragment, it) }
+            return
+        }
 
         val bundle = Bundle().apply {
             putString(MapToolRegistration.BROADCAST_PARAM_GEOJSON_FEATURE_ID, feature.id?.toString())

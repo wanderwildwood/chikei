@@ -106,10 +106,10 @@
     <string name="share_action_send">Send</string>
     <string name="about">About</string>
     <string name="about_title">Topo %1$s</string>
-    <string name="about_privacy">Your location, tracks and marks stay on this phone. The network is used only to fetch map tiles and elevation, while the map is open or when you save an area, and to download region packs from a server you set, when you ask.</string>
+    <string name="about_privacy">Your location, tracks and marks stay on this phone. The network is used only to fetch map tiles and elevation, while the map is open or when you save an area; edible plants for the area on screen, while the Forage layer is on; and region packs from a server you set, when you ask.</string>
     <string name="about_after">After Trail Sense by Kyle Corry, whose sensors, paths, beacons and map drawing this carries, under the MIT License.</string>
     <string name="about_licence">GNU General Public License v3 only</string>
-    <string name="about_bundled">Lato, SIL Open Font License 1.1. Maps: USGS The National Map (public domain); OpenTopoMap (CC-BY-SA), from OpenStreetMap contributors (ODbL) and SRTM; Terrain Tiles by Mapzen on the AWS Registry of Open Data, from USGS 3DEP, SRTM and GMTED2010, NOAA ETOPO1, Copernicus EU-DEM (funded by the European Union), ArcticDEM (DigitalGlobe imagery, NSF awards 1043681, 1559691 and 1542736), Geoscience Australia, Canada (Open Government Licence – Canada), INEGI, LINZ, Kartverket, the Environment Agency (UK) and data.gv.at; the US outline from Natural Earth. Region packs carry OpenStreetMap and the public records each region is built from: in the US, the USDA Forest Service, USGS PAD-US and 3DEP, the Census Bureau and county parcels; elsewhere, Protected Planet (WDPA) and Copernicus DEM.</string>
+    <string name="about_bundled">Lato, SIL Open Font License 1.1. Maps: USGS The National Map (public domain); OpenTopoMap (CC-BY-SA), from OpenStreetMap contributors (ODbL) and SRTM; Terrain Tiles by Mapzen on the AWS Registry of Open Data, from USGS 3DEP, SRTM and GMTED2010, NOAA ETOPO1, Copernicus EU-DEM (funded by the European Union), ArcticDEM (DigitalGlobe imagery, NSF awards 1043681, 1559691 and 1542736), Geoscience Australia, Canada (Open Government Licence – Canada), INEGI, LINZ, Kartverket, the Environment Agency (UK) and data.gv.at; the US outline from Natural Earth. Forage: OpenStreetMap contributors (ODbL), through the Overpass API; edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL). Region packs carry OpenStreetMap and the public records each region is built from: in the US, the USDA Forest Service, USGS PAD-US and 3DEP, the Census Bureau and county parcels; elsewhere, Protected Planet (WDPA) and Copernicus DEM.</string>
     <string name="about_source" translatable="false">github.com/wanderwildwood/chikei</string>
     <!-- The donation link label, beside a drawing of a llama. A verb and an object, so the reader knows what pressing it does -->
     <string name="about_feed_the_llamas">feed the llamas</string>
@@ -136,6 +136,7 @@
     <string name="save_area_message">About %1$s: %2$s for what is on the screen, to use with no signal.</string>
     <string name="save_area_holds_map">the topo map and contour lines</string>
     <string name="save_area_holds_contours">contour lines</string>
+    <string name="save_area_holds_forage">%s, and the edible plants on the Forage layer,</string>
     <string name="save_area_too_big">This area is too big to save at once: about %s. Zoom in and save a smaller area.</string>
     <string name="saving_area">Saving area</string>
     <string name="area_saved">Saved %1$s (%2$s)</string>
@@ -144,6 +145,185 @@
     <string name="credit_usgs" translatable="false">USGS The National Map</string>
     <string name="credit_opentopomap" translatable="false">OpenStreetMap contributors, SRTM | © OpenTopoMap (CC-BY-SA)</string>
     <string name="credit_terrain" translatable="false">Terrain Tiles: Mapzen/AWS</string>
+    <!-- Forage -->
+    <string name="forage">Forage</string>
+    <string name="map_layer_forage_description">Fruit and nut trees and other edible plants, from OpenStreetMap and Falling Fruit, fetched for what is on the screen while this layer is on. Mushrooms are never shown.</string>
+    <string name="map_layer_forage_description_osm">Fruit and nut trees and other edible plants, from OpenStreetMap, fetched for what is on the screen while this layer is on. Mushrooms are never shown.</string>
+    <string name="forage_attribution" translatable="false">OpenStreetMap contributors, Falling Fruit</string>
+    <string name="forage_attribution_osm" translatable="false">OpenStreetMap contributors</string>
+    <string name="forage_attribution_long">Trees from OpenStreetMap contributors (ODbL), through the Overpass API. Edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL).</string>
+    <string name="forage_attribution_long_osm">Trees from OpenStreetMap contributors (ODbL), through the Overpass API.</string>
+    <string name="forage_zoom_in">Zoom in to see edible plants</string>
+    <string name="forage_check">Check before you pick: some spots are on private land or gone.</string>
+    <string name="forage_credit_falling_fruit">Edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL).</string>
+    <string name="forage_credit_osm">From OpenStreetMap (openstreetmap.org), © OpenStreetMap contributors, under the ODbL.</string>
+    <string name="forage_source_osm">OpenStreetMap node %s</string>
+    <string name="forage_source_dataset">Source: %1$s. Licence: %2$s</string>
+    <string name="forage_source_dataset_no_licence">Source: %s</string>
+    <string name="forage_source_falling_fruit_users">Added to Falling Fruit by its users.</string>
+    <string name="forage_details_offline">More about this spot needs a connection.</string>
+    <string name="forage_season">In season: %1$s to %2$s</string>
+    <string name="forage_season_one">In season: %s</string>
+    <string name="forage_unverified">Unverified: someone thought this entry may be wrong.</string>
+    <string name="forage_access_owner">On the land of whoever added it</string>
+    <string name="forage_access_permission">Added with the owner\'s permission</string>
+    <string name="forage_access_public">On public land</string>
+    <string name="forage_access_overhanging">On private land, hanging over public land</string>
+    <string name="forage_access_private">On private land</string>
+    <string name="forage_access_permissive">Open by the owner\'s leave</string>
+    <string name="forage_access_customers">For customers</string>
+    <string name="forage_access_other">Access: %s</string>
+    <!-- The plants Forage looks for in OpenStreetMap, and their common names in the same order -->
+    <string-array name="forage_taxa" translatable="false">
+        <item>Malus</item>
+        <item>Pyrus</item>
+        <item>Cydonia oblonga</item>
+        <item>Mespilus germanica</item>
+        <item>Prunus avium</item>
+        <item>Prunus cerasus</item>
+        <item>Prunus domestica</item>
+        <item>Prunus salicina</item>
+        <item>Prunus cerasifera</item>
+        <item>Prunus spinosa</item>
+        <item>Prunus insititia</item>
+        <item>Prunus americana</item>
+        <item>Prunus maritima</item>
+        <item>Prunus serotina</item>
+        <item>Prunus virginiana</item>
+        <item>Prunus persica</item>
+        <item>Prunus armeniaca</item>
+        <item>Prunus dulcis</item>
+        <item>Morus</item>
+        <item>Juglans</item>
+        <item>Carya illinoinensis</item>
+        <item>Carya</item>
+        <item>Castanea</item>
+        <item>Corylus</item>
+        <item>Diospyros</item>
+        <item>Asimina triloba</item>
+        <item>Amelanchier</item>
+        <item>Sambucus nigra</item>
+        <item>Sambucus canadensis</item>
+        <item>Sambucus cerulea</item>
+        <item>Rubus</item>
+        <item>Vaccinium</item>
+        <item>Gaylussacia</item>
+        <item>Ribes</item>
+        <item>Fragaria</item>
+        <item>Citrus</item>
+        <item>Olea europaea</item>
+        <item>Ficus carica</item>
+        <item>Vitis</item>
+        <item>Actinidia</item>
+        <item>Eriobotrya japonica</item>
+        <item>Punica granatum</item>
+        <item>Acca sellowiana</item>
+        <item>Feijoa sellowiana</item>
+        <item>Psidium</item>
+        <item>Mangifera indica</item>
+        <item>Persea americana</item>
+        <item>Ziziphus jujuba</item>
+        <item>Elaeagnus umbellata</item>
+        <item>Hippophae rhamnoides</item>
+        <item>Crataegus</item>
+        <item>Aronia</item>
+        <item>Cornus mas</item>
+        <item>Cornus kousa</item>
+        <item>Pinus pinea</item>
+        <item>Pinus edulis</item>
+        <item>Pinus monophylla</item>
+        <item>Ginkgo biloba</item>
+        <item>Celtis</item>
+        <item>Arbutus unedo</item>
+        <item>Phoenix dactylifera</item>
+        <item>Carica papaya</item>
+        <item>Annona</item>
+        <item>Musa</item>
+        <item>Artocarpus</item>
+        <item>Litchi chinensis</item>
+        <item>Macadamia</item>
+        <item>Pistacia vera</item>
+        <item>Ceratonia siliqua</item>
+        <item>Opuntia</item>
+        <item>Lonicera caerulea</item>
+        <item>Shepherdia argentea</item>
+        <item>Sorbus domestica</item>
+    </string-array>
+    <string-array name="forage_taxa_names">
+        <item>Apple</item>
+        <item>Pear</item>
+        <item>Quince</item>
+        <item>Medlar</item>
+        <item>Sweet cherry</item>
+        <item>Sour cherry</item>
+        <item>Plum</item>
+        <item>Japanese plum</item>
+        <item>Cherry plum</item>
+        <item>Sloe</item>
+        <item>Damson</item>
+        <item>American plum</item>
+        <item>Beach plum</item>
+        <item>Black cherry</item>
+        <item>Chokecherry</item>
+        <item>Peach</item>
+        <item>Apricot</item>
+        <item>Almond</item>
+        <item>Mulberry</item>
+        <item>Walnut</item>
+        <item>Pecan</item>
+        <item>Hickory</item>
+        <item>Chestnut</item>
+        <item>Hazelnut</item>
+        <item>Persimmon</item>
+        <item>Pawpaw</item>
+        <item>Serviceberry</item>
+        <item>Elderberry</item>
+        <item>American elderberry</item>
+        <item>Blue elderberry</item>
+        <item>Bramble</item>
+        <item>Blueberry</item>
+        <item>Huckleberry</item>
+        <item>Currant</item>
+        <item>Strawberry</item>
+        <item>Citrus</item>
+        <item>Olive</item>
+        <item>Fig</item>
+        <item>Grape</item>
+        <item>Kiwi</item>
+        <item>Loquat</item>
+        <item>Pomegranate</item>
+        <item>Feijoa</item>
+        <item>Feijoa</item>
+        <item>Guava</item>
+        <item>Mango</item>
+        <item>Avocado</item>
+        <item>Jujube</item>
+        <item>Autumn olive</item>
+        <item>Sea buckthorn</item>
+        <item>Hawthorn</item>
+        <item>Chokeberry</item>
+        <item>Cornelian cherry</item>
+        <item>Kousa dogwood</item>
+        <item>Stone pine</item>
+        <item>Pinyon pine</item>
+        <item>Single-leaf pinyon</item>
+        <item>Ginkgo</item>
+        <item>Hackberry</item>
+        <item>Strawberry tree</item>
+        <item>Date palm</item>
+        <item>Papaya</item>
+        <item>Custard apple</item>
+        <item>Banana</item>
+        <item>Jackfruit</item>
+        <item>Lychee</item>
+        <item>Macadamia</item>
+        <item>Pistachio</item>
+        <item>Carob</item>
+        <item>Prickly pear</item>
+        <item>Haskap</item>
+        <item>Buffaloberry</item>
+        <item>Service tree</item>
+    </string-array>
     <string name="about_close">Close</string>
     <string name="about_no_browser">There is no browser on this phone to open that with.</string>
     <string name="share_path">Share GPX</string>
