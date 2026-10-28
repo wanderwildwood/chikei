@@ -18,6 +18,9 @@ import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerPref
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerType
 import com.kylecorry.trail_sense.tools.map.forage.Forage
 import com.kylecorry.trail_sense.tools.map.forage.ForageGeoJsonSource
+import com.kylecorry.trail_sense.tools.map.streets.Streets
+import com.kylecorry.trail_sense.tools.map.streets.StreetsGeoJsonSource
+import com.kylecorry.trail_sense.tools.paths.PathsToolRegistration
 import com.kylecorry.trail_sense.tools.map.map_layers.BaseMapTileSource
 import com.kylecorry.trail_sense.tools.map.map_layers.MyElevationLayer
 import com.kylecorry.trail_sense.tools.map.map_layers.MyLocationGeoJsonSource
@@ -57,7 +60,8 @@ object MapToolRegistration : ToolRegistration {
                     BROADCAST_GEOJSON_FEATURE_SELECTION_CHANGED,
                     "GeoJSON feature selection changed"
                 ),
-                ToolBroadcast(Forage.BROADCAST_UPDATED, "Forage spots fetched")
+                ToolBroadcast(Forage.BROADCAST_UPDATED, "Forage spots fetched"),
+                ToolBroadcast(Streets.BROADCAST_UPDATED, "Streets fetched")
             ),
             widgets = listOf(
                 ToolWidget(
@@ -328,6 +332,22 @@ object MapToolRegistration : ToolRegistration {
                     ),
                     geoJsonSource = ::ForageGeoJsonSource,
                     refreshBroadcasts = listOf(Forage.BROADCAST_UPDATED)
+                ),
+                // Streets walked and not yet walked: added from the layer list, off until then
+                MapLayerDefinition(
+                    Streets.LAYER_ID,
+                    context.getString(R.string.streets),
+                    description = context.getString(R.string.map_layer_streets_description),
+                    attribution = MapLayerAttribution(
+                        context.getString(R.string.streets_attribution),
+                        context.getString(R.string.streets_attribution_long),
+                        alwaysShow = true
+                    ),
+                    geoJsonSource = ::StreetsGeoJsonSource,
+                    refreshBroadcasts = listOf(
+                        Streets.BROADCAST_UPDATED,
+                        PathsToolRegistration.BROADCAST_PATHS_CHANGED
+                    )
                 ),
                 MapLayerDefinition(
                     MyLocationGeoJsonSource.SOURCE_ID,

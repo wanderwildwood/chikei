@@ -137,6 +137,7 @@
     <string name="save_area_holds_map">the topo map and contour lines</string>
     <string name="save_area_holds_contours">contour lines</string>
     <string name="save_area_holds_forage">%s, and the fruit and nut trees on the Forage layer,</string>
+    <string name="save_area_holds_streets">%s, and the streets on the Streets layer,</string>
     <string name="save_area_too_big">This area is too big to save at once: about %s. Zoom in and save a smaller area.</string>
     <string name="saving_area">Saving area</string>
     <string name="area_saved">Saved %1$s (%2$s)</string>
@@ -146,6 +147,13 @@
     <string name="credit_opentopomap" translatable="false">OpenStreetMap contributors, SRTM | © OpenTopoMap (CC-BY-SA)</string>
     <string name="credit_terrain" translatable="false">Terrain Tiles: Mapzen/AWS</string>
     <!-- Forage -->
+    <string name="streets">Streets</string>
+    <string name="map_layer_streets_description">Every street and path, cut into pieces of about 25 m: thin where you have not been, thick where a recorded or imported track has. Streets come from OpenStreetMap once per place and are kept; the walked part is worked out on the phone.</string>
+    <string name="streets_attribution" translatable="false">OpenStreetMap contributors</string>
+    <string name="streets_attribution_long">Streets from OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy).</string>
+    <string name="streets_zoom_in">Zoom in to see the streets</string>
+    <string name="streets_walked_share">%d%% of the streets here walked</string>
+    <string name="streets_none">No streets kept here yet</string>
     <string name="forage">Forage</string>
     <string name="map_layer_forage_description">Fruit and nut trees and shrubs, from OpenStreetMap and Falling Fruit, fetched for what is on the screen while this layer is on. Mushrooms are never shown.</string>
     <string name="map_layer_forage_description_osm">Fruit and nut trees and shrubs, from OpenStreetMap, fetched for what is on the screen while this layer is on. Mushrooms are never shown.</string>

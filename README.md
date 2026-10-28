@@ -87,6 +87,13 @@ Region packs from a server of your own, if you run one, draw over all of this an
   layer works with no signal where you have already looked, and Save this area keeps the
   area's spots too. Mushrooms are never shown: Topo does not say what is safe to eat. Check
   before you pick: some spots are on private land or gone.
+- **Streets**, a layer added the same way, draws every street and path cut into pieces of about
+  25 m: thin black where none of your tracks has been along it, thick where one has, and a line
+  just below the middle of the screen with the share of the streets on screen you have walked. It counts
+  every recorded track and imported GPX in Paths; a straight run between two fixes counts as
+  walked, but a pause of more than two minutes between fixes does not. Streets come from OpenStreetMap
+  once per place and are kept, so the layer works with no signal, and Save this area keeps the
+  area's streets too. The walked part is worked out on the phone.
 - Navigate to a marked place, with distance, bearing and elevation.
 - **User guides** (hold a finger on a tool): their text can be selected and a word sent to a
   dictionary app such as Define, which waits behind a ⋮ on the selection bar.
@@ -95,7 +102,7 @@ Region packs from a server of your own, if you run one, draw over all of this an
 
 - **Location**, to put you on the map and record tracks. It stays on the phone.
 - **Internet**, only to fetch map tiles and elevation, while the map is open or when you save
-  an area; fruit and nut trees for the area on screen, while the Forage layer is on; and region
+  an area; fruit and nut trees for the area on screen, while the Forage layer is on; streets for the area on screen, while the Streets layer is on; and region
   packs from a server you set, when you ask. See [PRIVACY.md](PRIVACY.md).
 - **A map server of your own: optional.** Region packs add public land, lot lines and forest
   roads offline. They are plain files built by the scripts in [`mapdata/`](mapdata) from public

@@ -6,7 +6,7 @@ file through Android's share sheet, for instance).
 
 ## When it uses the network
 
-Only for maps and the Forage layer, and only while you are using them:
+Only for maps and the Forage and Streets layers, and only while you are using them:
 
 - **Map tiles and elevation, while the map is open.** The map fetches the tiles for what is on
   the screen: USGS topo from The National Map (`basemap.nationalmap.gov`) in the US,
@@ -25,6 +25,14 @@ Only for maps and the Forage layer, and only while you are using them:
   (`fallingfruit.org`). All either is told is the corners of the map squares on the screen,
   rounded to about 100 m, plus, when you open a Falling Fruit spot, that spot's number.
   What comes back is kept on the phone for a month, so the same place is not asked for again.
+- **Streets, while the Streets layer is on.** The layer is off until you add it. While it is on,
+  Topo asks for the streets and paths in the part of the map on the screen, once the map has been
+  still for a moment, from OpenStreetMap through the same Overpass servers as Forage (the
+  main one, or the Private.coffee one when it is busy), and keeps them on the phone, asking for
+  a place again only after six months. All the server is told is the corners of the map squares
+  on the screen, rounded to about 100 m. Which streets you have walked is worked out on the phone
+  from your recorded and imported tracks; no track, position or count is ever sent. With no
+  signal the kept streets are drawn.
 - **When you download region packs** from a server you set yourself, and only when you ask.
 
 Each request says it comes from Topo, with a link to this repository, as the map services ask.
@@ -63,5 +71,7 @@ Android asks you for the first four before they are used; the rest it grants on 
   as each server says.
 - Saved areas, until you delete them under Settings > Map > Saved areas.
 - Elevation fetched while looking at the map, up to about 150 tiles; the oldest go first.
+- Streets the Streets layer fetched, until six months pass and there is signal to fetch them
+  again, and thrown out after a year unseen; those kept with a saved area stay.
 - Fruit and nut trees the Forage layer fetched, for a month before they are asked for again, and
   thrown out after four months unseen; those kept with a saved area stay.

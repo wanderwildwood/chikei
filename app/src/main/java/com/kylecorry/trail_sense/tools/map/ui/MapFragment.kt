@@ -1,6 +1,7 @@
 package com.kylecorry.trail_sense.tools.map.ui
 
 import com.kylecorry.trail_sense.tools.map.forage.ForageBox
+import com.kylecorry.trail_sense.tools.map.streets.Streets
 import com.kylecorry.trail_sense.tools.map.forage.Forage
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerPreferenceRepo
 import com.kylecorry.andromeda.core.cache.DependencyRegistry
@@ -720,11 +721,14 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                 }
                 return@inBackground
             }
-            val forageOn = DependencyRegistry.get<MapLayerPreferenceRepo>()
-                .getActiveLayerIds(MapToolRegistration.MAP_ID).contains(Forage.LAYER_ID)
+            val activeLayers = DependencyRegistry.get<MapLayerPreferenceRepo>()
+                .getActiveLayerIds(MapToolRegistration.MAP_ID)
+            val forageOn = activeLayers.contains(Forage.LAYER_ID)
+            val streetsOn = activeLayers.contains(Streets.LAYER_ID)
             val holds = getString(
                 if (plan.mapTiles.isNotEmpty()) R.string.save_area_holds_map else R.string.save_area_holds_contours
             ).let { if (forageOn) getString(R.string.save_area_holds_forage, it) else it }
+                .let { if (streetsOn) getString(R.string.save_area_holds_streets, it) else it }
             val defaultName = getString(
                 R.string.saved_area_default_name,
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).format(LocalDate.now())
@@ -754,6 +758,9 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                 // With the Forage layer in use, the area's edible plants are kept with it too
                 if (area != null && forageOn) {
                     Forage.keepArea(context, ForageBox(bounds.south, bounds.west, bounds.north, bounds.east))
+                }
+                if (area != null && streetsOn) {
+                    Streets.keepArea(context, ForageBox(bounds.south, bounds.west, bounds.north, bounds.east))
                 }
             }
             onMain {
