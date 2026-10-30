@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.shared.permissions
 
+import com.kylecorry.trail_sense.shared.views.guardLinks
 import android.Manifest
 import android.os.Build
 import androidx.fragment.app.Fragment
@@ -34,7 +35,7 @@ class BackgroundLocationAlerter<T>(private val fragment: T) :
 
             fragment.dialog(
                 context.getString(R.string.access_background_location),
-                contents,
+                contents.guardLinks(),
                 okText = context.getString(R.string.settings),
                 allowLinks = true
             ) { cancelled ->

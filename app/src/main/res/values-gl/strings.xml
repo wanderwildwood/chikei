@@ -1335,7 +1335,6 @@
     <string name="sleep_sound_ocean_waves">Ondas oceánicas</string>
     <string name="sleep_sound_fan">Ventilador</string>
     <string name="hillshade">Sombras de relevo</string>
-    <string name="color_usgs">USGS</string>
     <string name="color_grayscale">Escala de grises</string>
     <string name="color_vibrant">Vibrante</string>
     <string name="color_muted">Acalado</string>

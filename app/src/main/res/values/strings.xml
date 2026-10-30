@@ -110,6 +110,18 @@
     <string name="about_after">After Trail Sense by Kyle Corry, whose sensors, paths, beacons and map drawing this carries, under the MIT License.</string>
     <string name="about_licence">GNU General Public License v3 only</string>
     <string name="about_bundled">Lato, SIL Open Font License 1.1. Maps: USGS The National Map (public domain); OpenTopoMap (CC-BY-SA), from OpenStreetMap contributors (ODbL) and SRTM; Terrain Tiles by Mapzen on the AWS Registry of Open Data, from USGS 3DEP, SRTM and GMTED2010, NOAA ETOPO1, Copernicus EU-DEM (funded by the European Union), ArcticDEM (DigitalGlobe imagery, NSF awards 1043681, 1559691 and 1542736), Geoscience Australia, Canada (Open Government Licence – Canada), INEGI, LINZ, Kartverket, the Environment Agency (UK) and data.gv.at; the US outline from Natural Earth. Forage: OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy); edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL). Region packs carry OpenStreetMap and the public records each region is built from: in the US, the USDA Forest Service, USGS PAD-US and 3DEP, the Census Bureau and county parcels; elsewhere, Protected Planet (WDPA) and Copernicus DEM.</string>
+    <string name="licences_topo_title">Topo</string>
+    <string name="licences_topo_body">Topo is free software under the GNU General Public License, version 3 only. Copyright wander wildwood for the changes in this fork; the code it is built on is by Kyle Corry and contributors (Trail Sense, MIT).
+
+Source code: %1$s
+
+The full licence text follows.</string>
+    <string name="licences_map_title">Map data</string>
+    <string name="licences_map_summary">USGS, OpenTopoMap, OpenStreetMap, Mapzen</string>
+    <string name="about_privacy_title">Privacy</string>
+    <string name="about_terms_title">Terms</string>
+    <string name="about_licences_title">Licences</string>
+    <string name="about_source_title">Source code: github.com/wanderwildwood/chikei</string>
     <string name="about_source" translatable="false">github.com/wanderwildwood/chikei</string>
     <!-- The donation link label, beside a drawing of a llama. A verb and an object, so the reader knows what pressing it does -->
     <string name="about_feed_the_llamas">feed the llamas</string>
@@ -346,6 +358,7 @@
         <item>Service tree</item>
     </string-array>
     <string name="about_close">Close</string>
+    <string name="about_no_browser_address">No browser is installed. The address is %1$s.</string>
     <string name="about_no_browser">There is no browser on this phone to open that with.</string>
     <string name="share_path">Share GPX</string>
     <string name="here_actions">Here</string>
@@ -706,7 +719,6 @@
     <string name="guide_map_layers">Map Layers</string>
     <string name="pref_privacy_policy_title">Privacy policy</string>
     <string name="pref_privacy_policy" translatable="false">pref_privacy_policy</string>
-    <string name="privacy_policy_url" translatable="false">https://kylecorry.com/Trail-Sense/privacy_policy.html</string>
     <string name="tool_solar_panel_summary">Position solar panels for optimal power production</string>
     <string name="tool_solar_panel_title">Solar Panel Aligner</string>
     <string name="solar_panel_instructions">Place your phone on the face of the solar panel to begin.</string>
@@ -2186,7 +2198,6 @@
     <string name="sleep_sound_ocean_waves">Ocean waves</string>
     <string name="sleep_sound_fan">Fan</string>
     <string name="hillshade">Hillshade</string>
-    <string name="color_usgs">USGS</string>
     <string name="color_grayscale">Grayscale</string>
     <string name="color_vibrant">Vibrant</string>
     <string name="color_muted">Muted</string>

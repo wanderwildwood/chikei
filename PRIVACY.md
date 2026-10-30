@@ -67,6 +67,10 @@ Android asks you for the first four before they are used; the rest it grants on 
 
 ## What stays on the phone
 
+Topo does not allow Android's backup: nothing it keeps goes to a cloud backup or is copied to a
+new phone by Android's transfer. To move your data, use Settings > Backup, which writes a file
+you choose where to keep.
+
 - Tiles you have looked at, in a cache of up to 100 MB that the phone may clear, kept as long
   as each server says.
 - Saved areas, until you delete them under Settings > Map > Saved areas.

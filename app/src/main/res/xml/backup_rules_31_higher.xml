@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Nothing leaves the phone through Android's backup or a device transfer. -->
 <data-extraction-rules>
-    <cloud-backup disableIfNoEncryptionCapabilities="true">
-        <include domain="sharedpref" path="."/>
-        <include domain="database" path="."/>
-        <include domain="file" path="."/>
+    <cloud-backup>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
     </cloud-backup>
     <device-transfer>
-        <include domain="sharedpref" path="."/>
-        <include domain="database" path="."/>
-        <include domain="file" path="."/>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
     </device-transfer>
 </data-extraction-rules>

@@ -446,9 +446,9 @@ ETOPO 2022 metadata may be accessed here: ETOPO 2022 metadata landing page"""
         },
         Library(
             "Survival guide",
-            ""
+            "https://creativecommons.org/licenses/by-sa/4.0/"
         ) {
-            """The survival guide is licensed under CC BY-SA 4.0 and was written by Kyle Corry""".trimIndent()
+            """The survival guide is licensed under CC BY-SA 4.0 and was written by Kyle Corry. You may share and adapt it, with credit to the author, a link to the licence (above) and a note of what you changed; an adaptation must be shared under the same licence.""".trimIndent()
         },
         Library(
             "Color maps",
@@ -457,7 +457,6 @@ ETOPO 2022 metadata may be accessed here: ETOPO 2022 metadata landing page"""
             """
                 The color maps were designed by various authors.
 
-                - USGS: U.S. Geological Survey and R. Langford under CC Attribution-NonCommercial 3.0 unported (2021) https://creativecommons.org/licenses/by-nc/3.0/
                 - Muted: Tom Patterson under public domain
                 - Viridis, Magma, Plasma, Inferno: Nathaniel J. Smith, Stefan van der Walt, and Eric Firing under CC0 1.0 Universal (http://creativecommons.org/publicdomain/zero/1.0)
             """.trimIndent()

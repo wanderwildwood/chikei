@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.offline_maps.ui.commands
 
+import com.kylecorry.trail_sense.shared.views.guardLinks
 import android.text.util.Linkify
 import androidx.core.text.toSpannable
 import androidx.core.text.util.LinkifyCompat
@@ -17,7 +18,7 @@ class ShowMapsDisclaimerCommand(private val fragment: Fragment) : Command {
         CustomUiUtils.disclaimer(
             context,
             context.getString(R.string.photo_maps),
-            message,
+            message.guardLinks(),
             context.getString(R.string.photo_map_disclaimer_shown),
             okText = context.getString(android.R.string.ok),
             considerShownIfCancelled = true,

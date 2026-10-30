@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.signal_finder.ui
 
+import com.kylecorry.trail_sense.shared.views.guardLinks
 import android.os.Bundle
 import android.widget.TextView
 import androidx.core.text.method.LinkMovementMethodCompat
@@ -77,7 +78,7 @@ class ToolSignalFinderFragment : TrailSenseReactiveFragment(R.layout.fragment_to
         // Set up the disclaimer
         useEffect(disclaimer) {
             disclaimer.text = markdown.toMarkdown(getString(R.string.cell_tower_disclaimer))
-            disclaimer.movementMethod = LinkMovementMethodCompat.getInstance()
+            disclaimer.guardLinks()
         }
 
         // List items

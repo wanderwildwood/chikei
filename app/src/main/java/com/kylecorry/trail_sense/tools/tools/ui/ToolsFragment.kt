@@ -1,6 +1,8 @@
 package com.kylecorry.trail_sense.tools.tools.ui
 
 import android.view.View
+import com.kylecorry.trail_sense.shared.text.TextUtils
+import com.kylecorry.trail_sense.shared.views.openGuarded
 import com.kylecorry.trail_sense.BuildConfig
 import com.kylecorry.andromeda.alerts.Alerts
 import android.net.Uri
@@ -376,18 +378,36 @@ class ToolsFragment : BoundFragment<FragmentToolsBinding>() {
     private fun showAbout() {
         val context = requireContext()
         val view = layoutInflater.inflate(R.layout.dialog_about, null)
-        fun open(url: String) {
-            try {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
-            } catch (e: ActivityNotFoundException) {
-                Alerts.toast(context, getString(R.string.about_no_browser))
-            }
+        fun open(url: String) = openGuarded(context, url)
+        var dialog: androidx.appcompat.app.AlertDialog? = null
+        view.findViewById<View>(R.id.about_privacy_row).setOnClickListener {
+            Alerts.dialog(
+                context,
+                getString(R.string.about_privacy_title),
+                TextUtils.loadTextFromResources(context, R.raw.privacy),
+                cancelText = null,
+                okText = getString(R.string.about_close)
+            )
         }
+        view.findViewById<View>(R.id.about_terms_row).setOnClickListener {
+            Alerts.dialog(
+                context,
+                getString(R.string.about_terms_title),
+                getString(R.string.disclaimer_message_content),
+                cancelText = null,
+                okText = getString(R.string.about_close)
+            )
+        }
+        view.findViewById<View>(R.id.about_licences_row).setOnClickListener {
+            dialog?.dismiss()
+            findNavController().navigate(R.id.licenseFragment)
+        }
+        view.findViewById<View>(R.id.about_source_row).setOnClickListener { open(SOURCE_URL) }
         view.findViewById<View>(R.id.about_site).setOnClickListener { open("https://wanderthe.dev") }
         // The short square.link form: the site's own donate button leads there, so a regenerated
         // checkout follows it and the app does not break.
         view.findViewById<View>(R.id.about_llama).setOnClickListener { open("https://square.link/u/AGu8oT10") }
-        Alerts.dialog(
+        dialog = Alerts.dialog(
             context,
             getString(R.string.about_title, BuildConfig.VERSION_NAME),
             null,
@@ -395,5 +415,9 @@ class ToolsFragment : BoundFragment<FragmentToolsBinding>() {
             getString(R.string.about_close),
             null
         )
+    }
+
+    companion object {
+        const val SOURCE_URL = "https://github.com/wanderwildwood/chikei"
     }
 }

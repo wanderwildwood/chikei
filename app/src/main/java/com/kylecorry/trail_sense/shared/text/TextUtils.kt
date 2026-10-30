@@ -26,6 +26,7 @@ import com.kylecorry.trail_sense.shared.text.nlp.tokenizers.PostProcessedTokeniz
 import com.kylecorry.trail_sense.shared.text.nlp.tokenizers.SimpleWordTokenizer
 import com.kylecorry.trail_sense.shared.text.search.TextMatchStrategy
 import com.kylecorry.trail_sense.shared.views.SelectionMenu
+import com.kylecorry.trail_sense.shared.views.guardLinks
 import com.kylecorry.trail_sense.shared.views.TrailSenseTextView
 import com.kylecorry.trail_sense.shared.views.Views
 
@@ -120,14 +121,14 @@ object TextUtils {
                         it,
                         removeMarkdownComments(first.content) + "\n" + section.drop(1)
                             .joinToString("\n") { it.toMarkdown(shouldUppercaseSubheadings) })
-                    it.movementMethod = LinkMovementMethodCompat.getInstance()
+                    it.guardLinks()
                 }
                 expandable
             } else {
                 // Only text nodes
                 val t = defaultTextView(context)
                 markdown.setMarkdown(t, section.joinToString("\n") { it.toMarkdown() })
-                t.movementMethod = LinkMovementMethodCompat.getInstance()
+                t.guardLinks()
                 t
             }
         }

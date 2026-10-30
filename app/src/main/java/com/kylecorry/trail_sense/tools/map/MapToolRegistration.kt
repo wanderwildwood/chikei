@@ -121,7 +121,6 @@ object MapToolRegistration : ToolRegistration {
                             title = context.getString(R.string.color),
                             type = MapLayerPreferenceType.Enum,
                             values = listOf(
-                                context.getString(R.string.color_usgs) to ElevationColorStrategy.USGS.id.toString(),
                                 context.getString(R.string.color_grayscale) to ElevationColorStrategy.Grayscale.id.toString(),
                                 context.getString(R.string.color_muted) to ElevationColorStrategy.Muted.id.toString(),
                                 context.getString(R.string.color_vibrant) to ElevationColorStrategy.Vibrant.id.toString(),
@@ -297,7 +296,6 @@ object MapToolRegistration : ToolRegistration {
                                 context.getString(R.string.color_brown) to ElevationColorStrategy.Brown.id.toString(),
                                 context.getString(R.string.color_gray) to ElevationColorStrategy.Gray.id.toString(),
                                 context.getString(R.string.color_white) to ElevationColorStrategy.White.id.toString(),
-                                context.getString(R.string.color_usgs) to ElevationColorStrategy.USGS.id.toString(),
                                 context.getString(R.string.color_grayscale) to ElevationColorStrategy.Grayscale.id.toString(),
                                 context.getString(R.string.color_muted) to ElevationColorStrategy.Muted.id.toString(),
                                 context.getString(R.string.color_vibrant) to ElevationColorStrategy.Vibrant.id.toString(),

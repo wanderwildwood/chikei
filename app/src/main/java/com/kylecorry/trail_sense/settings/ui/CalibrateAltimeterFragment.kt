@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.settings.ui
 
+import com.kylecorry.trail_sense.shared.views.guardLinks
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.InputType
@@ -426,7 +427,7 @@ class CalibrateAltimeterFragment : AndromedaPreferenceFragment() {
             LinkifyCompat.addLinks(instructions, WEB_URLS)
             val cancelled = CoroutineAlerts.dialog(
                 requireContext(), getString(R.string.plugin_digital_elevation_model),
-                instructions, allowLinks = true
+                instructions.guardLinks(), allowLinks = true
             )
 
             if (cancelled) {

@@ -7,7 +7,6 @@ enum class ElevationColorStrategy(override val id: Long) : Identifiable {
     White(2),
     Black(3),
     Gray(4),
-    USGS(5),
     Grayscale(6),
     Vibrant(7),
     Muted(8),

@@ -60,7 +60,7 @@ class ElevationMapTileSource : TileSource {
         const val SOURCE_ID = "elevation"
         const val COLOR = "color"
         const val HIGH_RESOLUTION = "high_resolution"
-        val DEFAULT_COLOR = ElevationColorStrategy.USGS
+        val DEFAULT_COLOR = ElevationColorStrategy.Muted
         const val DEFAULT_HIGH_RESOLUTION = false
     }
 }

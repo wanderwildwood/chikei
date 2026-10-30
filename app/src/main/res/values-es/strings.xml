@@ -1363,7 +1363,6 @@
     <string name="sleep_sound_ocean_waves">Olas oceánicas</string>
     <string name="sleep_sound_fan">Ventilador</string>
     <string name="hillshade">Sombreado del terreno</string>
-    <string name="color_usgs">USGS</string>
     <string name="color_grayscale">Escala de grises</string>
     <string name="color_vibrant">Vibrante</string>
     <string name="color_muted">Silenciado</string>

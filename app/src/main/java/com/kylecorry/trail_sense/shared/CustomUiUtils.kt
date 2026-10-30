@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.shared
 
+import com.kylecorry.trail_sense.shared.views.guardLinks
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Configuration
@@ -338,7 +339,7 @@ object CustomUiUtils {
         val prefs = PreferencesSubsystem.getInstance(context).preferences
         if (prefs.getBoolean(shownKey) != shownValue) {
             if (considerShownIfCancelled && cancelText == null) {
-                Alerts.dialog(context, title, message, okText = okText, cancelText = null, allowLinks = true) {
+                Alerts.dialog(context, title, message.guardLinks(), okText = okText, cancelText = null, allowLinks = true) {
                     prefs.putBoolean(shownKey, shownValue)
                     onClose(it, true)
                 }
@@ -346,7 +347,7 @@ object CustomUiUtils {
                 Alerts.dialog(
                     context,
                     title,
-                    message,
+                    message.guardLinks(),
                     okText = okText,
                     cancelText = cancelText,
                     allowLinks = true

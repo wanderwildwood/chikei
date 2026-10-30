@@ -13,7 +13,6 @@ class ElevationColorMapFactory {
             ElevationColorStrategy.White -> SingleColorElevationColorMap(Color.WHITE)
             ElevationColorStrategy.Black -> SingleColorElevationColorMap(Color.BLACK)
             ElevationColorStrategy.Gray -> SingleColorElevationColorMap(Color.GRAY)
-            ElevationColorStrategy.USGS -> USGSElevationColorMap()
             ElevationColorStrategy.Grayscale -> GrayscaleElevationColorMap()
             ElevationColorStrategy.Vibrant -> TrailSenseVibrantElevationColorMap()
             ElevationColorStrategy.Muted -> TomPattersonElevationColorMap()

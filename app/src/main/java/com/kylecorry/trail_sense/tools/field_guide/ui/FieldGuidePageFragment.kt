@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.field_guide.ui
 
+import com.kylecorry.trail_sense.shared.views.guardLinks
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -113,6 +114,7 @@ class FieldGuidePageFragment : TrailSenseReactiveFragment(R.layout.fragment_fiel
             val noteText = page?.notes?.toSpannable()
             noteText?.let { LinkifyCompat.addLinks(it, WEB_URLS) }
             notesView.text = noteText
+            notesView.guardLinks()
 
             displayTags(tagsView, page?.tags)
         }

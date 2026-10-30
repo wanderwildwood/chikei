@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.onboarding
 
+import com.kylecorry.trail_sense.shared.views.guardLinks
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -116,6 +117,7 @@ class OnboardingActivity : AndromedaActivity() {
             } else {
                 binding.pageContents.text = pageContents.contents
             }
+            binding.pageContents.guardLinks()
         }
     }
 

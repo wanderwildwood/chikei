@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.shared.map_layers.ui
 
+import com.kylecorry.trail_sense.shared.views.guardLinks
 import android.text.TextUtils
 import android.widget.TextView
 import com.kylecorry.andromeda.alerts.Alerts
@@ -14,7 +15,7 @@ fun TextView.setupMapAttribution() {
         Alerts.dialog(
             context,
             context.getString(R.string.attribution),
-            text,
+            text.guardLinks(),
             cancelText = null,
             allowLinks = true
         )
