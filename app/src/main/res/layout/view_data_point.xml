@@ -32,7 +32,7 @@
         android:id="@+id/data_point_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:textAppearance="@style/TextAppearance.Topo.BodySmall"
         app:layout_constraintStart_toStartOf="@id/data_point_title"
         app:layout_constraintTop_toBottomOf="@id/data_point_title"
         tools:text="Steps" />

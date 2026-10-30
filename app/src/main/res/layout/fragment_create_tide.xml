@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:text="@string/tide_frequency_description"
-                android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+                android:textAppearance="@style/TextAppearance.Topo.LabelSmall" />
 
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/tide_frequency"

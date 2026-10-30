@@ -95,7 +95,7 @@
         android:linksClickable="true"
         android:minHeight="24dp"
         android:textColor="?android:textColorSecondary"
-        android:textSize="8sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/radar_compass"

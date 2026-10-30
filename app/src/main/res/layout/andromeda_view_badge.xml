@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The library's badge, 14sp text and a 48dp touch height (STYLE.md) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/andromeda_badge"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/andromeda_rounded_rectangle_small"
+    android:gravity="center"
+    android:minHeight="48dp"
+    android:orientation="horizontal"
+    android:padding="4dp">
+
+    <ImageView
+        android:id="@+id/andromeda_badge_image"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="4dp"
+        android:scaleType="fitCenter"
+        app:tint="@android:color/black" />
+
+    <TextView
+        android:id="@+id/andromeda_badge_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        tools:text="Unknown" />
+</LinearLayout>

@@ -309,7 +309,7 @@ class GeoJsonLineStringRenderer : FeatureRenderer() {
             if (path.points.size < 2) return
 
             // TODO: Adjust text size / wrapping based on name length
-            drawer.textSize(drawer.sp(10f * map.layerScale))
+            drawer.textSize(drawer.sp(14f * map.layerScale))
             val strokeWeight = drawer.dp(2.5f * map.layerScale)
             val maxLabels = 5
 

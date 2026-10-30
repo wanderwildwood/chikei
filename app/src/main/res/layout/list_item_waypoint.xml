@@ -38,7 +38,7 @@
         android:layout_marginTop="4dp"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
-        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:textAppearance="@style/TextAppearance.Topo.BodySmall"
         app:drawableStartCompat="@drawable/ic_altitude"
         app:drawableTint="?android:textColorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"

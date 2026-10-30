@@ -84,6 +84,8 @@
         <item name="bottomNavigationStyle">@style/Widget.Topo.BottomNavigation</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="quickActionButtonStyle">@style/Widget.App.QuickActionButton</item>
+        <!-- Text fields draw a cursor that does not blink -->
+        <item name="viewInflaterClass">com.kylecorry.trail_sense.shared.views.SteadyViewInflater</item>
         <item name="preferenceTheme">@style/AppThemePreferenceThemeOverlay</item>
     </style>
 
@@ -168,6 +170,7 @@
         <item name="fontFamily">@font/lato</item>
     </style>
     <style name="TextAppearance.Topo.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>
     </style>
@@ -176,10 +179,12 @@
         <item name="fontFamily">@font/lato</item>
     </style>
     <style name="TextAppearance.Topo.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>
     </style>
     <style name="TextAppearance.Topo.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/lato</item>
         <item name="fontFamily">@font/lato</item>
     </style>
@@ -239,6 +244,14 @@
     <style name="AppThemePreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
         <item name="switchPreferenceCompatStyle">@style/SwitchPreferenceStyle</item>
         <item name="preferenceFragmentCompatStyle">@style/Topo.PreferenceFragment</item>
+        <item name="preferenceCategoryTitleTextAppearance">@style/TextAppearance.Topo.PreferenceCategory</item>
+    </style>
+
+    <!-- A group title on a settings page: bold, never under 14sp -->
+    <style name="TextAppearance.Topo.PreferenceCategory" parent="TextAppearance.Topo.LabelLarge">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <!-- A settings screen gets the house top bar; see SettingsChrome -->

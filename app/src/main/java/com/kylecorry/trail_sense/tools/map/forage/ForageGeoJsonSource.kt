@@ -62,26 +62,30 @@ class ForageGeoJsonSource : GeoJsonSource {
 
         view.clusters.forEach { cluster ->
             val text = count(cluster.count)
+            val image = label(context, text, round = true)
+            val width = dpWidth(context, image)
             features.add(
                 GeoJsonFeature.point(
                     Coordinate(cluster.lat, cluster.lng),
                     markerShape = null,
-                    size = 22f,
-                    iconSize = 22f,
-                    bitmap = label(context, text, round = true),
+                    size = width,
+                    iconSize = width,
+                    bitmap = image,
                     layerId = Forage.LAYER_ID
                 )
             )
         }
 
         if (view.zoomIn && !isWidget) {
+            val image = label(context, context.getString(R.string.forage_zoom_in), round = false)
+            val width = dpWidth(context, image)
             features.add(
                 GeoJsonFeature.point(
                     bounds.center,
                     markerShape = null,
-                    size = 24f,
-                    iconSize = 24f,
-                    bitmap = label(context, context.getString(R.string.forage_zoom_in), round = false),
+                    size = width,
+                    iconSize = width,
+                    bitmap = image,
                     layerId = Forage.LAYER_ID
                 )
             )
@@ -89,6 +93,10 @@ class ForageGeoJsonSource : GeoJsonSource {
 
         return GeoJsonFeatureCollection(features)
     }
+
+    /** A wide picture is drawn as wide as the size given, so that is its width in dp (labels are drawn at twice the density). */
+    private fun dpWidth(context: Context, image: Bitmap): Float =
+        image.width / (context.resources.displayMetrics.density * 2)
 
     override suspend fun cleanup() {
         synchronized(labels) { labels.clear() }
@@ -107,12 +115,12 @@ class ForageGeoJsonSource : GeoJsonSource {
         val density = context.resources.displayMetrics.density * 2
         val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.BLACK
-            textSize = (if (round) 11f else 14f) * density
+            textSize = 14f * density
             typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
             textAlign = Paint.Align.CENTER
         }
         val stroke = 2f * density
-        val height = ((if (round) 22f else 24f) * density).toInt()
+        val height = (24f * density).toInt()
         val textWidth = paint.measureText(text)
         val width = if (round) maxOf(height, (textWidth + 10 * density).toInt()) else (textWidth + 20 * density).toInt()
         val bitmap = createBitmap(width, height)

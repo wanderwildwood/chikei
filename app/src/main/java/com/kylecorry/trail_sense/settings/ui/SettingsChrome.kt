@@ -1,7 +1,5 @@
 package com.kylecorry.trail_sense.settings.ui
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
@@ -13,7 +11,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceGroup
-import com.kylecorry.andromeda.core.system.Resources
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.shared.views.Toolbar
 import com.kylecorry.trail_sense.tools.map.ui.MapSettingsFragment
@@ -25,7 +22,7 @@ import com.kylecorry.trail_sense.tools.tools.ui.ToolsSettingsFragment
 /**
  * What every settings screen is given, from one place rather than thirty fragments: the house
  * top bar with the screen's name, rows with no space kept for icons (STYLE.md: no icons on
- * settings rows), and MMD's 2dp black divider between groups. Bottom sheets get their black
+ * settings rows), and no divider lines (groups are set apart by space). Bottom sheets get their black
  * rim here too, for the same reason: one place, not one per sheet.
  */
 object SettingsChrome {
@@ -96,8 +93,9 @@ object SettingsChrome {
             }
         }
         fragment.preferenceScreen?.let { removeIconSpace(it) }
-        fragment.setDivider(ColorDrawable(Color.BLACK))
-        fragment.setDividerHeight(Resources.dp(fragment.requireContext(), 2f).toInt())
+        // STYLE.md: a settings page draws no separator lines; rows are set apart by space
+        fragment.setDivider(null)
+        fragment.setDividerHeight(0)
     }
 
     private fun removeIconSpace(group: PreferenceGroup) {

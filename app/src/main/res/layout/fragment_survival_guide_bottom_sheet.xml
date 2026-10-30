@@ -30,7 +30,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/survival_guide_empty_desc"
-        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:textAppearance="@style/TextAppearance.Topo.BodySmall"
         app:layout_constraintTop_toBottomOf="@id/search" />
 
     <com.google.android.material.card.MaterialCardView

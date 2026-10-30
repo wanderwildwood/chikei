@@ -29,3 +29,5 @@
 -dontwarn com.caverock.androidsvg.SVG
 -dontwarn com.caverock.androidsvg.SVGParseException
 -dontwarn pl.droidsonroids.gif.GifDrawable
+# Named only in the theme (viewInflaterClass), so nothing else keeps it
+-keep class com.kylecorry.trail_sense.shared.views.SteadyViewInflater { <init>(); }

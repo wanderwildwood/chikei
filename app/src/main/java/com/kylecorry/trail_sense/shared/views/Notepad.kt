@@ -18,6 +18,7 @@ class Notepad(context: Context, attrs: AttributeSet?) :
     private var isSetup = false
     private val bounds = Rect()
     private var offset: Float = 0f
+    private val caret = SteadyCaret(this)
 
     init {
         inputType = InputType.TYPE_CLASS_TEXT or
@@ -38,8 +39,13 @@ class Notepad(context: Context, attrs: AttributeSet?) :
 
         drawer.canvas = canvas
         draw()
+        caret.draw(canvas)
     }
 
+    override fun onSelectionChanged(selStart: Int, selEnd: Int) {
+        super.onSelectionChanged(selStart, selEnd)
+        invalidate()
+    }
 
     fun setup() {
         drawer.stroke(Resources.androidTextColorSecondary(context))

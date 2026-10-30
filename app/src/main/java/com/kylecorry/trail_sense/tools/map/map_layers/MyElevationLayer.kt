@@ -57,7 +57,7 @@ class MyElevationLayer : OverlayLayer() {
         drawer.push()
         drawer.translate(drawer.dp(bottomLeft.x), drawer.canvas.height + drawer.dp(bottomLeft.y))
         drawer.textMode(TextMode.Corner)
-        drawer.textSize(drawer.sp(12f))
+        drawer.textSize(drawer.sp(14f))
         drawer.strokeWeight(4f)
         drawer.stroke(Color.BLACK)
         drawer.fill(Color.WHITE)

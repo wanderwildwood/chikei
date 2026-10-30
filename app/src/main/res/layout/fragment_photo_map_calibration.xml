@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="@string/calibrate_map_point_instructions"
-            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            android:textAppearance="@style/TextAppearance.Topo.BodySmall"
             android:textColor="?android:attr/textColorSecondary" />
 
         <com.kylecorry.trail_sense.shared.views.CoordinateInputView

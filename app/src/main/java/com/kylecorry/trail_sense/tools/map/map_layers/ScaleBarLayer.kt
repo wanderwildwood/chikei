@@ -56,7 +56,7 @@ class ScaleBarLayer : OverlayLayer() {
         drawer.pop()
 
         drawer.textMode(TextMode.Corner)
-        drawer.textSize(drawer.sp(12f))
+        drawer.textSize(drawer.sp(14f))
         drawer.strokeWeight(4f)
         drawer.stroke(Color.BLACK)
         drawer.fill(Color.WHITE)
