@@ -3,6 +3,9 @@ package com.kylecorry.trail_sense.tools.tools.ui
 import android.view.View
 import com.kylecorry.trail_sense.shared.text.TextUtils
 import com.kylecorry.trail_sense.shared.views.openGuarded
+import com.kylecorry.trail_sense.shared.views.guardLinks
+import com.kylecorry.andromeda.core.cache.DependencyRegistry
+import com.kylecorry.andromeda.markdown.MarkdownService
 import com.kylecorry.trail_sense.BuildConfig
 import com.kylecorry.andromeda.alerts.Alerts
 import android.net.Uri
@@ -384,8 +387,11 @@ class ToolsFragment : BoundFragment<FragmentToolsBinding>() {
             Alerts.dialog(
                 context,
                 getString(R.string.about_privacy_title),
-                TextUtils.loadTextFromResources(context, R.raw.privacy),
+                DependencyRegistry.get<MarkdownService>()
+                    .toMarkdown(TextUtils.loadTextFromResources(context, R.raw.privacy))
+                    .guardLinks(),
                 cancelText = null,
+                allowLinks = true,
                 okText = getString(R.string.about_close)
             )
         }

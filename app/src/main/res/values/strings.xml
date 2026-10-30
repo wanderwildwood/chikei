@@ -111,11 +111,7 @@
     <string name="about_licence">GNU General Public License v3 only</string>
     <string name="about_bundled">Lato, SIL Open Font License 1.1. Maps: USGS The National Map (public domain); OpenTopoMap (CC-BY-SA), from OpenStreetMap contributors (ODbL) and SRTM; Terrain Tiles by Mapzen on the AWS Registry of Open Data, from USGS 3DEP, SRTM and GMTED2010, NOAA ETOPO1, Copernicus EU-DEM (funded by the European Union), ArcticDEM (DigitalGlobe imagery, NSF awards 1043681, 1559691 and 1542736), Geoscience Australia, Canada (Open Government Licence – Canada), INEGI, LINZ, Kartverket, the Environment Agency (UK) and data.gv.at; the US outline from Natural Earth. Forage: OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy); edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL). Region packs carry OpenStreetMap and the public records each region is built from: in the US, the USDA Forest Service, USGS PAD-US and 3DEP, the Census Bureau and county parcels; elsewhere, Protected Planet (WDPA) and Copernicus DEM.</string>
     <string name="licences_topo_title">Topo</string>
-    <string name="licences_topo_body">Topo is free software under the GNU General Public License, version 3 only. Copyright wander wildwood for the changes in this fork; the code it is built on is by Kyle Corry and contributors (Trail Sense, MIT).
-
-Source code: %1$s
-
-The full licence text follows.</string>
+    <string name="licences_topo_body">Topo is free software under the GNU General Public License, version 3 only. Copyright wander wildwood for the changes in this fork; the code it is built on is by Kyle Corry and contributors (Trail Sense, MIT).\n\nSource code: %1$s\n\nThe full licence text follows.</string>
     <string name="licences_map_title">Map data</string>
     <string name="licences_map_summary">USGS, OpenTopoMap, OpenStreetMap, Mapzen</string>
     <string name="about_privacy_title">Privacy</string>
