@@ -9,7 +9,7 @@ signal.
 *Chikei* is the lie of the land: the ordinary word for the shape of the ground a topo map
 sets out to show.
 
-Current version: 0.2.5.
+Current version: 0.2.6.
 
 Built for the [Mudita Kompakt](https://mudita.com/products/kompakt/), whose 4.3" panel has
 sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.

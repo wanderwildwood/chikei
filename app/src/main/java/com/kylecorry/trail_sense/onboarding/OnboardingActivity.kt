@@ -41,6 +41,8 @@ class OnboardingActivity : AndromedaActivity() {
         setContentView(binding.root)
 
         bindLayoutInsets()
+        // No half line at the foot of a page: the text above the button is whole lines only.
+        binding.pageScroll.textId = R.id.page_contents
 
         load(pageIdx)
 
@@ -99,6 +101,7 @@ class OnboardingActivity : AndromedaActivity() {
 
     private fun load(page: Int) {
         binding.pageSettings.removeAllViews()
+        binding.pageScroll.scrollTo(0, 0)
 
         pageIdx = page
 

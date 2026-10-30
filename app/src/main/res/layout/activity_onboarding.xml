@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <com.kylecorry.trail_sense.shared.views.WholeLineScrollView
+        android:id="@+id/page_scroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
@@ -56,7 +57,7 @@
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical" />
         </LinearLayout>
-    </ScrollView>
+    </com.kylecorry.trail_sense.shared.views.WholeLineScrollView>
 
 
     <Button
