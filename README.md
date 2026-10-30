@@ -18,7 +18,7 @@ sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.
 
 | | | | |
 |---|---|---|---|
-| ![USGS topo of Yosemite Valley, with no setup](screenshots/01-usgs.png) | ![OpenTopoMap around Chamonix](screenshots/02-opentopomap.png) | ![Save this area, with its size](screenshots/03-save-area.png) | ![Contour lines with no signal](screenshots/04-contours.png) |
+| ![USGS topo of Yosemite Valley, with no setup](screenshots/1-usgs.png) | ![Save this area, with its size](screenshots/2-save-area.png) | ![The disclaimer, shown before first use](screenshots/3-disclaimer.png) | ![About: privacy, credits and licences](screenshots/4-about.png) |
 
 ## What it shows
 
