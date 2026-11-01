@@ -28,7 +28,7 @@ import java.time.format.FormatStyle
 
 /**
  * The areas saved for use with no signal, in plain words: what each holds, its size, and when it
- * was saved. A row deletes on a second tap within four seconds.
+ * was saved. A row deletes on a second tap within six seconds.
  */
 class SavedAreasFragment : BoundFragment<FragmentSavedAreasBinding>() {
 
@@ -116,7 +116,7 @@ class SavedAreasFragment : BoundFragment<FragmentSavedAreasBinding>() {
             handler.postDelayed({
                 armed = null
                 if (isBound) draw()
-            }, 4_000)
+            }, 6_000)
             return
         }
         armed = null
