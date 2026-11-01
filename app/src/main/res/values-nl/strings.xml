@@ -166,7 +166,6 @@
     <string name="precise_nautical_miles_format">%s nm</string>
     <string name="precise_miles_format">%s mijl</string>
     <string name="precise_feet_format">%s voet</string>
-    <string name="access_background_location">Locatie-instellingen bijwerken</string>
     <string name="copied_to_clipboard_toast">Naar klembord gekopieerd</string>
     <string name="moderate">Matig</string>
     <string name="high">Hoog</string>
@@ -595,7 +594,6 @@
     <string name="unblock_notification_channel">%s-melding voor Topo deblokkeren</string>
     <string name="get_gps_signal">Ga naar buiten met een vrij zicht op de hemel.</string>
     <string name="activity_recognition">Activiteitsherkenning</string>
-    <string name="background_location_permission">Locatie (altijd toestaan)</string>
     <string name="grant_permission">%s-toestemming verlenen</string>
     <string name="no_resolution">Geen oplossing</string>
     <string name="sighting_compass">Handkompas</string>
@@ -935,7 +933,6 @@
     <string name="next_24_hours">Volgende 24 uur</string>
     <string name="backup_restore">Back-up / Herstel</string>
     <string name="delete_map_group_message">%s en al zijn kaarten zullen worden verwijderd.</string>
-    <string name="sunset_alerts_background_location_disclaimer">Zonsondergangmeldingen zijn misschien niet accuraat tijdens een reis</string>
     <string name="weather_thunderstorm">Onweersbui</string>
     <string name="backtrack_no_permission">Terugweg heeft locatietoestemming nodig om te functioneren</string>
     <string name="autofill_source">Bron automatisch invullen</string>

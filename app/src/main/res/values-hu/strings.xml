@@ -52,7 +52,6 @@
     <string name="duration_hour_format">%dó</string>
     <string name="miles_per_hour_format">%s mérf./h</string>
     <string name="kilometers_per_hour_format">%s km/h</string>
-    <string name="access_background_location">Tartózkodási hely beállítások frissítése</string>
     <string name="copied_to_clipboard_toast">Vágólapra másolva</string>
     <string name="tools">Eszközök</string>
     <string name="astronomy">Csillagászat</string>
@@ -212,7 +211,6 @@
     <string name="humidity">Páratartalom</string>
     <string name="sighting_compass">Tájoló iránytű</string>
     <string name="grant_permission">Add meg a %s hozzáférést</string>
-    <string name="background_location_permission">Hely (Mindig engedélyezett)</string>
     <string name="power_saving_mode_resolution">Kapcsold ki az energiatakarékos módot</string>
     <string name="season_summer">Nyár</string>
     <string name="season_fall">Ősz</string>
@@ -928,7 +926,6 @@
     <string name="sunset_alert_scheduled">Riasztás beállítva naplemente előtt %s-val</string>
     <string name="photo_maps">Fotótérképek</string>
     <string name="delete_map_group_message">%s és minden térképe törölve lesz.</string>
-    <string name="sunset_alerts_background_location_disclaimer">A naplemente riasztások pontatlanok lehetnek utazás közben</string>
     <string name="weather_thunderstorm">Zivatar</string>
     <string name="backtrack_no_permission">A visszakövetés helyhozzáférést igényel</string>
     <string name="autofill_source">Forrás automatikus kitöltése</string>

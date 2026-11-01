@@ -108,7 +108,6 @@
     <string name="sos">SOS</string>
     <string name="dash">-</string>
     <string name="kilometers_per_hour_format">%s km/t</string>
-    <string name="access_background_location">Oppdater posisjonsinnstillinger</string>
     <string name="tool_user_guide_summary">Veiledning for bruk av Topo</string>
     <string name="tool_user_guide_title">Brukerveiledning</string>
     <string name="degree_format">%.0f°</string>
@@ -883,7 +882,6 @@
     <string name="blank">Blankt</string>
     <string name="coordinate_format_osgb">OSGB</string>
     <string name="activity_recognition">Aktivitetsgjenkjennelse</string>
-    <string name="background_location_permission">Posisjon (tillat hele tiden)</string>
     <string name="location_override_resolution">Skru på auto-justering av posisjon i innstillingene.</string>
     <string name="location_override_not_set_resolution">Sett posisjonsoverstyring i innstillingene</string>
     <string name="auto">Automatisk</string>
@@ -937,7 +935,6 @@
     <string name="allow_schedule_exact_alarms_instructions">Dette lar %1$s stille inn nøyaktige alarmer og påminnelser, for eksempel solnedgangsvarsler. Uten dette kan det hende at alarmer ikke utløses på riktig tidspunkt.
 \n
 \nFor å tillate, trykk \"%2$s\" og aktiver innstillingen for å tillate alarmer og påminnelser.</string>
-    <string name="sunset_alerts_background_location_disclaimer">Solnedgangsvarsler kan være unøyaktige mens du reiser</string>
     <string name="i_agree">Jeg er enig</string>
     <string name="battery_settings_limit_accuracy">Batterirestriksjoner kan redusere nøyaktigheten</string>
     <string name="battery_usage_allowed">Batteribruk tillatt</string>

@@ -194,7 +194,6 @@
     <string name="sos">SOS</string>
     <string name="tap_to_turn_off">Toque para desligar</string>
     <string name="flashlight_title">Lanterna</string>
-    <string name="access_background_location">Atualizar as configurações de localização</string>
     <string name="copied_to_clipboard_toast">Copiado para área de transferência</string>
     <string name="distance_from">De</string>
     <string name="category_fire">Fogo</string>
@@ -618,7 +617,6 @@
     <string name="unblock_notification_channel">Desbloquear %s notificação do Topo</string>
     <string name="get_gps_signal">Vá para um espaço exterior e sem obstruções ao redor.</string>
     <string name="activity_recognition">Reconhecimento de atividades</string>
-    <string name="background_location_permission">Localização (permitir sempre)</string>
     <string name="grant_permission">Conceder permissão a %s</string>
     <string name="no_resolution">Nenhuma resolução</string>
     <string name="sighting_compass">Bússola de observação</string>
@@ -1023,7 +1021,6 @@
     <string name="triangulate_self_location_1_instructions">Escolha um local conhecido que você possa ver e registre a direção de onde você está até esse local.</string>
     <string name="battery_usage_allowed">Uso da bateria permitido</string>
     <string name="allow_ignore_battery_restrictions">Permitir que %s ignore as restrições de bateria</string>
-    <string name="sunset_alerts_background_location_disclaimer">Os alertas de pôr do sol podem ser imprecisos durante a viagem</string>
     <string name="horizon">Horizonte</string>
     <string name="allow_schedule_exact_alarms">Permitir que %s crie alarmes e lembretes</string>
     <string name="allow_schedule_exact_alarms_instructions">Isso permite que %1$s defina alarmes e lembretes exatos, como alertas de pôr do sol. Sem isso, os alarmes podem não ser acionados no horário correto. \n \nPara permitir, toque em \"%2$s\" e ative a configuração para permitir alarmes e lembretes.</string>

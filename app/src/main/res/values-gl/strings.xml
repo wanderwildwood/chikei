@@ -6,7 +6,6 @@
     <string name="astronomy">Astronomía</string>
     <string name="tools">Ferramentas</string>
     <string name="copied_to_clipboard_toast">Copiado no portapapeis</string>
-    <string name="access_background_location">Actualizar a configuración de localización</string>
     <string name="disclaimer_message_title">Aviso legal</string>
     <string name="app_disclaimer_message_title">Aviso legal / condicións de servizo</string>
     <string name="precise_feet_format">%s pés</string>
@@ -657,7 +656,6 @@
     <string name="sighting_compass">Compás de puntería</string>
     <string name="no_resolution">Sen resolución</string>
     <string name="grant_permission">Conceder permiso a %s</string>
-    <string name="background_location_permission">Localización (Permitir todo o tempo)</string>
     <string name="activity_recognition">Recoñecemento de actividades</string>
     <string name="get_gps_signal">Saia ao exterior cunha vista despexada do ceo.</string>
     <string name="unblock_notification_channel">Desbloquear a notificación %s para Topo</string>
@@ -954,7 +952,6 @@
     <string name="allow_schedule_exact_alarms">Permitir que %s configure alarmas e recordatorios</string>
     <string name="allow_schedule_exact_alarms_instructions">Isto permite que %1$s configure alarmas e recordatorios exactos, como alertas de solpor. Sen isto, as alarmas poden non activarse á hora correcta.\n\nPara permitilo, fai clic en ‘%2$s’ e activa a configuración para permitir alarmas e recordatorios.</string>
     <string name="exact_alarm_permission_denied">Alarmas e recordatorios rexeitados; as alertas poden ser inexactas.</string>
-    <string name="sunset_alerts_background_location_disclaimer">As alertas do solpor poden ser imprecisas mentres viaxas</string>
     <string name="backtrack_no_permission">Recuar require permiso de localización para funcionar</string>
     <string name="notifications_channel">Notificacións (%s)</string>
     <string name="sunset_alert_scheduled">Alerta programada para %s antes do solpor</string>

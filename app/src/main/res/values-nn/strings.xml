@@ -14,7 +14,6 @@
     <string name="plugin_connect_message">Kopl deg til %s einast om du stolar på han.</string>
     <string name="plugin_disconnect_title">Kopl frå pluginen?</string>
     <string name="plugin_disconnect_message">Kopl frå %s?</string>
-    <string name="access_background_location">Oppdater stadinnstillingar</string>
     <string name="disclaimer_message_title">Andsvarsfråskriving</string>
     <string name="app_disclaimer_message_title">Andsvarsfråskriving / bruksvilkår</string>
     <string name="precise_feet_format">%s fot</string>
@@ -448,7 +447,6 @@
     <string name="gps_signal_lost">Miste GPS-samband</string>
     <string name="pref_sunset_alert_time_title">Klokkeslett for solegladvarsling</string>
     <string name="until_sunset">Til sola gladar</string>
-    <string name="sunset_alerts_background_location_disclaimer">Solegladvarsel kan vera galne når du er på ferd</string>
     <string name="sunset_alert_scheduled">Varsling %s før sola gladar</string>
     <string name="sunset">Sola gladar</string>
     <string name="use_alarm_for_sunset_alert">Nytt alarm til solegladvarsling</string>

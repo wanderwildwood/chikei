@@ -273,7 +273,6 @@
         <item quantity="other">%d秒後に飲めます</item>
     </plurals>
     <string name="copied_to_clipboard_toast">クリップボードにコピー</string>
-    <string name="access_background_location">位置情報の設定を更新</string>
     <string name="degree">%s度</string>
     <string name="error_occurred_message">Topoでエラーが発生しました。開発者に電子メールで報告してください。</string>
     <string name="error_occurred">エラーを検知</string>

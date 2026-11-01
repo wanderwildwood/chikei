@@ -45,7 +45,6 @@
     <string name="pressure_12_hours">12 sati</string>
     <string name="pressure_4_hours">4 sata</string>
     <string name="pref_pressure_history_title">Istorija pritiska</string>
-    <string name="access_background_location">Ažurirajte postavke lokacije</string>
     <string name="copied_to_clipboard_toast">Kopirano u međuspremnik</string>
     <string name="tools">Alati</string>
     <string name="coordinate_format_usng">USNG</string>
@@ -775,7 +774,6 @@
     <string name="result_deleted">Rezultat je izbrisan</string>
     <string name="steps">Koraci</string>
     <string name="last_duration">Posljednjih %s</string>
-    <string name="background_location_permission">Lokacija (dopustite za uvijek)</string>
     <string name="take_photo">Uslikajte</string>
     <string name="low_tide_letter">N</string>
     <string name="off">Isključeno</string>

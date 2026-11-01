@@ -130,7 +130,6 @@ object WeatherToolRegistration : ToolRegistration {
                 ToolDiagnosticFactory.externalStorage(context),
                 ToolDiagnosticFactory.barometer(context),
                 *ToolDiagnosticFactory.altimeter(context),
-                ToolDiagnosticFactory.backgroundLocation(context),
                 ToolDiagnostic(
                     "weather-monitor",
                     context.getString(R.string.weather_monitor),

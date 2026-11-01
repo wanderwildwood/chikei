@@ -65,7 +65,6 @@
     <string name="high_tide">Alta</string>
     <string name="precise_meters_format">%s m</string>
     <string name="precise_kilometers_format">%s km</string>
-    <string name="access_background_location">Aggiorna le impostazioni di geolocalizzazione</string>
     <string name="pref_num_visible_beacons_title">Segnaposto vicini</string>
     <string name="never">Mai</string>
     <string name="tools">Strumenti</string>
@@ -655,7 +654,6 @@
     <string name="pref_backtrack_history_days_title">Cronologia dei percorsi di ritorno</string>
     <string name="pref_auto_low_power_summary">Quando la batteria ha un livello di carica basso</string>
     <string name="pounds_format">%s lb</string>
-    <string name="background_location_permission">Posizione (Autorizza sempre)</string>
     <string name="activity_recognition">Riconoscimento attività</string>
     <string name="gps_unavailable_resolution">Attiva la posizione o modifica l\'origine dei dati sulla posizione in \'Solo Dispositivo\' o \'Alta Precisione\'</string>
     <string name="power_saving_mode_resolution">Disattiva modalità risparmio energetico</string>
@@ -915,7 +913,6 @@
     <string name="path_slope">Pendenza</string>
     <string name="camera_unavailable">Fotocamera non disponibile</string>
     <string name="last_lightning_strike_at">Ultima scarica alle %s</string>
-    <string name="sunset_alerts_background_location_disclaimer">Gli avvisi di tramonto potrebbero essere imprecisi mentre si viaggia</string>
     <plurals name="waypoints_to_be_deleted">
         <item quantity="one">%d punto Intermedio verrà eliminato</item>
         <item quantity="many">%d punti Intermedi verranno eliminati</item>

@@ -75,7 +75,7 @@ Region packs from a server of your own, if you run one, draw over all of this an
 - **Call for help from here**: with Field Kit installed, the last item under Here opens Field
   Kit's "Calling for help" page with your position on it, ready to read out or send.
 - **Share GPX** hands a recorded track to CalTopo, or to anything else that takes GPX.
-- **Open a GPX file** from [Files](https://github.com/wanderwildwood/tana) or an attachment,
+- **Open a GPX file** from [Cabinet](https://github.com/wanderwildwood/tana) or an attachment,
   and Topo offers its paths to import; a file of waypoints alone becomes beacons.
 - **Forage**, a layer added from the map's Layers > Additional layers, shows fruit and nut
   trees and shrubs nearby: trees and shrubs from OpenStreetMap, and, in builds with a Falling

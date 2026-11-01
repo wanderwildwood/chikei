@@ -29,8 +29,6 @@
     <string name="plugin_disconnect_title">Disconnect plugin?</string>
     <string name="plugin_disconnect_message">Disconnect %s?</string>
     <!--Permissions-->
-    <string name="access_background_location">Update location settings</string>
-    <string name="access_background_location_rationale">Topo uses your location in the background, even when the app is closed, so a track keeps recording with the screen off. It stays on this phone.</string>
     <!--Disclaimer-->
     <string name="disclaimer_message_title">Disclaimer</string>
     <string name="app_disclaimer_message_title">Disclaimer / terms of service</string>
@@ -1242,7 +1240,6 @@
     <string name="sighting_compass">Sighting compass</string>
     <string name="no_resolution">No resolution</string>
     <string name="grant_permission">Grant the %s permission</string>
-    <string name="background_location_permission">Location (Allow all the time)</string>
     <string name="location_permission">Location permission</string>
     <string name="activity_recognition">Activity recognition</string>
     <string name="get_gps_signal">Go outside with an unobstructed view of the sky.</string>
@@ -1667,7 +1664,6 @@
     <!-- First parameter is the app name (Trail Sense), second parameter is the displayed button text to confirm (Settings) -->
     <string name="allow_schedule_exact_alarms_instructions">This allows %1$s to set exact alarms and reminders, such as sunset alerts. Without this, alarms may not trigger at the correct time.\n\nTo allow, click ‘%2$s’ and enable the setting for allowing alarms and reminders.</string>
     <string name="exact_alarm_permission_denied">Alarms and reminders denied, alerts may be inaccurate.</string>
-    <string name="sunset_alerts_background_location_disclaimer">Sunset alerts may be inaccurate while traveling</string>
     <string name="backtrack_no_permission">Backtrack requires location permission to run</string>
     <string name="pref_backtrack_notifications_link" translatable="false">pref_backtrack_notifications_link</string>
     <!--    %s is the notification channel name. Ex. Backtrack-->

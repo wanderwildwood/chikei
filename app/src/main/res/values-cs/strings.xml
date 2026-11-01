@@ -118,7 +118,6 @@
     <string name="sunset_alerts">Upozornění na západ slunce</string>
     <string name="waxing_crescent">Dorůstající srpek</string>
     <string name="waning_crescent">Couvající srpek</string>
-    <string name="access_background_location">Změnit nastavení polohy</string>
     <string name="tool_lightning_description">Změřit vzdálenost od místa úderu blesku</string>
     <string name="tool_lightning_title">Vzdálenost od místa úderu blesku</string>
     <string name="tool_ruler_title">Pravítko</string>
@@ -577,7 +576,6 @@
     <string name="hours">Hodiny</string>
     <string name="delete_pack">Odstranit balíček\?</string>
     <string name="grant_permission">Udělte oprávnění %s</string>
-    <string name="background_location_permission">Poloha (povolit vždy)</string>
     <string name="activity_recognition">Rozpoznávání aktivit</string>
     <string name="elevation_override_resolution">Povolte automatickou kalibraci v nastavení.</string>
     <string name="closest">Nejbližší</string>
@@ -998,7 +996,6 @@
     <string name="exact_alarm_permission_denied">Budíky a připomenutí odepřeny, upozornění mohou být nepřesná.</string>
     <string name="allow_schedule_exact_alarms">Povolit %s nastavit budíky a připomenutí</string>
     <string name="allow_schedule_exact_alarms_instructions">Toto umožňuje aplikaci %1$s nastavit přesné budíky a připomenutí, například upozornění na západ slunce. Bez toho se budíky nemusí spustit ve správný čas. \n \nChcete-li oprávnění povolit, klepněte na „%2$s“ a povolte nastavení pro povolení budíků a připomenutí.</string>
-    <string name="sunset_alerts_background_location_disclaimer">Upozornění na západ slunce mohou být při cestování nepřesná</string>
     <string name="backup">Záloha</string>
     <string name="restore">Obnovení</string>
     <string name="restore_disclaimer">Tato akce přepíše všechna vaše aktuální data. Před pokračováním se ujistěte, že máte zálohu.

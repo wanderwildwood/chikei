@@ -8,7 +8,6 @@ import com.kylecorry.andromeda.background.IOneTimeTaskScheduler
 import com.kylecorry.andromeda.background.OneTimeTaskSchedulerFactory
 import com.kylecorry.andromeda.fragments.IPermissionRequester
 import com.kylecorry.trail_sense.shared.UserPreferences
-import com.kylecorry.trail_sense.shared.permissions.RequestBackgroundLocationCommand
 import com.kylecorry.trail_sense.shared.permissions.requestScheduleExactAlarms
 import com.kylecorry.trail_sense.tools.astronomy.AstronomyToolRegistration
 import com.kylecorry.trail_sense.tools.astronomy.infrastructure.commands.SunsetAlarmCommand
@@ -73,7 +72,6 @@ class SunsetAlarmReceiver : BroadcastReceiver() {
                     runBlocking {
                         service?.restart()
                     }
-                    RequestBackgroundLocationCommand(fragment).execute()
                 }
             }
         }

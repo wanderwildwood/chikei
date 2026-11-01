@@ -140,7 +140,7 @@ fun isAppForeground(): Boolean {
 }
 
 fun Permissions.canGetLocationCustom(context: Context): Boolean {
-    return isBackgroundLocationEnabled(context) || canGetLocation(
+    return canGetLocation(
         context,
         // We only need to check app ops when running in the background. Running in foreground grants while-in-use and some manufacters incorrectly deal with app ops
         checkAppOps = !isAppForeground()

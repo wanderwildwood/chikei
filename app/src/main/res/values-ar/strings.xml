@@ -62,7 +62,6 @@
     <string name="miles_per_hour_format">%s ميل/ساعة</string>
     <string name="duration_hour_format">%d ساعة</string>
     <string name="duration_minute_format">%d دقيقة</string>
-    <string name="access_background_location">تحديث إعدادات الموقع</string>
     <string name="precise_feet_format">%s قدم</string>
     <string name="precise_miles_format">%s ميل</string>
     <string name="elevation_diff_format">%1$s%2$s</string>

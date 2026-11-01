@@ -158,7 +158,6 @@
     <string name="calibrate_compass_dialog_content">Faites tourner votre téléphone plusieurs fois en formant un « 8 » ou dans toutes les directions, puis cliquez sur %s lorsque vous avez terminé.</string>
     <string name="pref_adjust_for_temperature_title">Prendre en compte la température</string>
     <string name="coordinate_format_degrees_decimal_minutes">Degrés minutes décimales</string>
-    <string name="access_background_location">Mettre à jour les paramètres de localisation</string>
     <string name="error_occurred_message">Topo a rencontré une erreur. Veuillez envoyer un e-mail au développeur pour résoudre ce problème.</string>
     <string name="error_occurred">Une erreur est survenue</string>
     <string name="no_group">Aucun groupe</string>
@@ -616,7 +615,6 @@
     <string name="coordinate_format_usng">USNG</string>
     <string name="weight_per_item">Masse par objet</string>
     <string name="gps_signal_lost">Signal GPS perdu</string>
-    <string name="background_location_permission">Position (Accorder tout le temps)</string>
     <string name="location_override_not_set_resolution">Définir une position fixe dans les paramètres</string>
     <string name="units_mmhg_short">mm</string>
     <string name="imperial_cups">Tasse Impériale</string>
@@ -991,7 +989,6 @@
     <string name="pref_keep_map_facing_up_summary">La carte s\'alignera avec le haut de l\'écran au lieu du Nord Vrai.</string>
     <string name="until_sunset">jusqu\'au coucher du soleil</string>
     <string name="reduce_map_resolution_crop_disclaimer">Recadrer la carte réduira toujours la résolution. Si vous avez besoin de recadrer la carte avec une haute résolution, veuillez utiliser une application d\'édition de photos. Il est prévu de résoudre ce problème à l’avenir.</string>
-    <string name="sunset_alerts_background_location_disclaimer">Les alertes de coucher de soleil peuvent être imprécises en voyage</string>
     <string name="map_file">Fichier (JPG, PNG, PDF, Mapsforge)</string>
     <string name="gps_location_accuracy">Précision de la localisation GPS</string>
     <string name="gps_elevation_accuracy">Précision de l\'altitude GPS</string>

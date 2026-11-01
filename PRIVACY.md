@@ -49,8 +49,8 @@ Android asks you for the first four before they are used; the rest it grants on 
 
 - **Location** (precise and approximate): to put you on the map, record tracks and navigate.
   It stays on the phone.
-- **Background location**: Topo never asks for it. If you allow it yourself in Android's
-  settings, a track that was recording when the phone restarted picks up again on its own.
+- **Background location**: Topo does not use it and does not ask for it. Location is read
+  only while the app is open or while a track is recording and its notice is showing.
 - **Camera**: only while you use it, for the sighting compass (a bearing taken through the
   camera, on the Navigation tab and when entering a bearing) and for reading a beacon from a QR
   code. No picture is saved or sent.

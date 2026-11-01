@@ -14,14 +14,6 @@ object ToolDiagnosticFactory {
         )
     }
 
-    fun backgroundLocation(context: Context): ToolDiagnostic {
-        return ToolDiagnostic(
-            "background-location",
-            context.getString(R.string.background_location_permission),
-            scanner = BackgroundLocationDiagnosticScanner()
-        )
-    }
-
     fun externalStorage(context: Context): ToolDiagnostic {
         return ToolDiagnostic(
             "external-storage",

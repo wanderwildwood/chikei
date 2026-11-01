@@ -96,7 +96,6 @@
     <string name="direction_north">С</string>
     <string name="kilometers_per_hour_format">%s км/ч</string>
     <string name="disclaimer_message_title">Отказ от ответственности</string>
-    <string name="access_background_location">Обновить настройки местоположения</string>
     <string name="copied_to_clipboard_toast">Скопировано в буфер обмена</string>
     <string name="tools">Инструменты</string>
     <string name="pressure_reading_time_ago">%1$s - %2$s тому назад</string>
@@ -616,7 +615,6 @@
     <string name="unblock_notification_channel">Разблокировать уведомления %s для Topo</string>
     <string name="get_gps_signal">Выйдите на улицу с беспрепятственным видом на небо.</string>
     <string name="activity_recognition">Распознавание активности</string>
-    <string name="background_location_permission">Местоположение (разрешить постоянно)</string>
     <string name="grant_permission">Предоставить разрешение %s</string>
     <string name="no_resolution">Нет разрешения</string>
     <string name="sighting_compass">Ручной компас</string>
@@ -977,7 +975,6 @@
     <string name="battery_settings_limit_accuracy">Ограничения по заряду батареи могут снизить точность</string>
     <string name="offline_maps_summary">Использование фотографии в качестве карты</string>
     <string name="solar_eclipse">Солнечное затмение</string>
-    <string name="sunset_alerts_background_location_disclaimer">Предупреждения о закате могут быть неточными во время путешествия</string>
     <string name="my_location">Мое местоположение</string>
     <string name="service_restart">Перезагрузить Сервис</string>
     <string name="start_time">Старт</string>

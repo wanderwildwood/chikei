@@ -63,7 +63,7 @@ class BacktrackToolService(private val context: Context) : ToolService {
             getAppService<Logger>().warn(
                 TAG,
                 "Cannot start backtrack: missing location permission for foreground service " +
-                    "(app in foreground: ${isAppForeground()}, background location: ${Permissions.isBackgroundLocationEnabled(context)})"
+                    "(app in foreground: ${isAppForeground()})"
             )
             return
         }

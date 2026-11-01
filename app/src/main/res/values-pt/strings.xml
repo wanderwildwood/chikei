@@ -422,7 +422,6 @@
     <string name="precise_nautical_miles_format">%s nm</string>
     <string name="precise_miles_format">%s mi</string>
     <string name="precise_feet_format">%s pés</string>
-    <string name="access_background_location">Atualizar as configurações de localização</string>
     <plurals name="waypoints_to_be_deleted">
         <item quantity="one">%d ponto de passagem será eliminado</item>
         <item quantity="other">%d pontos de passagem serão eliminados</item>
@@ -450,7 +449,6 @@
     <string name="unblock_notification_channel">Desbloquear %s notificação do Topo</string>
     <string name="get_gps_signal">Vá para um espaço exterior e sem obstruções em redor.</string>
     <string name="activity_recognition">Reconhecimento de atividades</string>
-    <string name="background_location_permission">Localização (permitir sempre)</string>
     <string name="grant_permission">Conceder a permissão de %s</string>
     <string name="no_resolution">Nenhuma resolução</string>
     <string name="sighting_compass">Bússola de observação</string>
@@ -973,7 +971,6 @@
     <string name="astronomy_set">Poente</string>
     <string name="no">Não</string>
     <string name="distance_away_from_self">%s distante</string>
-    <string name="sunset_alerts_background_location_disclaimer">Os alertas de pôr do sol podem ser imprecisos durante a viagem</string>
     <string name="learn_more">Saiba mais</string>
     <string name="map_file">Ficheiro (JPG, PNG, PDF)</string>
     <string name="crop_map_instructions_long">Alinhe os cantos da caixa com os cantos do mapa para gravá-lo. O corte reduzirá a resolução do mapa.</string>

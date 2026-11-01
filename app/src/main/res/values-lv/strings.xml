@@ -89,7 +89,6 @@
     <string name="pref_center_sun_and_moon_title">Turēt Sauli/Mēnesi centrā</string>
     <string name="app_info">Lietotnes informācija</string>
     <string name="copied_to_clipboard_toast">Kopēts starpliktuvē</string>
-    <string name="access_background_location">Atjaunināt atrašanās vietas iestatījumus</string>
     <string name="precise_meters_format">%s m</string>
     <string name="precise_kilometers_format">%s km</string>
     <string name="kilometers_per_hour_format">%s km/h</string>

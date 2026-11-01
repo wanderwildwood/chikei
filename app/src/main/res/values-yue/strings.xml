@@ -2,7 +2,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="tools">架生</string>
     <string name="copied_to_clipboard_toast">複製咗去剪貼簿</string>
-    <string name="access_background_location">更新定位設定</string>
     <string name="navigation">定向</string>
     <string name="weather">氣象</string>
     <string name="astronomy">天文</string>
@@ -508,7 +507,6 @@
     <string name="pref_coordinate_format_title">座標格式</string>
     <string name="pref_ruler_calibration_title">間尺比例</string>
     <string name="pref_sunset_alert_time_title">日落警示時間</string>
-    <string name="background_location_permission">位置 (幾時都允許)</string>
     <string name="activity_recognition">活動辨識</string>
     <string name="unblock_notification_channel">解除封鎖 Topo 嘅%s通知</string>
     <string name="elevation_override_resolution">喺設定入面啟用自動校正。</string>
@@ -772,7 +770,6 @@
     <string name="get_gps_signal">出走一處抬頭望向天空一覽無遺嘅地方。</string>
     <string name="delete_map_group_message">%s 同埋入面嗰啲地圖，統統都會剷走晒個囉噃。</string>
     <string name="delete_path_group_message">%s 同埋入面嗰啲路徑，統統都會剷走晒個囉噃。</string>
-    <string name="sunset_alerts_background_location_disclaimer">移動之時日落警示未必太準</string>
     <string name="rotation_amount">旋轉：%s</string>
     <string name="reset_calibration">重設校正</string>
     <string name="notifications_channel">通知 (%s)</string>

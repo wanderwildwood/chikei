@@ -38,7 +38,6 @@
     <string name="precise_meters_format">%s เมตร</string>
     <string name="settings">การตั้งค่า</string>
     <string name="direction_north">เหนือ</string>
-    <string name="access_background_location">อัปเดตการตั้งค่าตำแหน่ง</string>
     <string name="discharging_fast">กำลังคายประจุอย่างรวดเร็ว(%s)</string>
     <string name="battery_capacity_format">%s มิลลิแอมป์ชั่วโมง</string>
     <string name="app_disclaimer_message_title">เงื่อนไขการใช้งาน</string>
@@ -199,7 +198,6 @@
     <string name="export_path_error">ส่งออกเส้นทางไม่ได้</string>
     <string name="blank">ว่าง</string>
     <string name="grant_permission">อนุญาตสิทธิ์%s</string>
-    <string name="background_location_permission">ตำแหน่ง (อนุญาตตลอดเวลา)</string>
     <string name="warning">คำเตือน</string>
     <string name="map_file">ไฟล์ (JPG, PNG, PDF)</string>
     <string name="sensor_gyroscope">ไจโรสโคป</string>

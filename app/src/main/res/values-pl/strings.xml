@@ -103,7 +103,6 @@
     <string name="kilometers_per_hour_format">%s km/h</string>
     <string name="copied_to_clipboard_toast">Skopiowano do schowka</string>
     <string name="tools">Narzędzia</string>
-    <string name="access_background_location">Zaktualizuj ustawienia lokalizacji</string>
     <string name="third_quarter">Ostatnia kwadra</string>
     <string name="notification_monitoring_weather">Monitorowanie pogody w tle</string>
     <string name="alerts">Alerty</string>
@@ -563,7 +562,6 @@
     <string name="location_override_not_set_resolution">Ustaw nadpisanie lokalizacji w ustawieniach</string>
     <string name="power_saving_mode_resolution">Wyłącz tryb oszczędzania energii</string>
     <string name="activity_recognition">Rozpoznawanie aktywności fizycznej</string>
-    <string name="background_location_permission">Lokalizacja (Zawsze zezwalaj)</string>
     <string name="grant_permission">Przyznaj uprawnienia %s</string>
     <string name="no_issues">Nie wykryto problemów</string>
     <string name="no_permission">Nie przyznano uprawnień</string>
@@ -859,7 +857,6 @@
     <string name="allow_ignore_battery_restrictions">Zezwól %s na ignorowanie ograniczeń użycia baterii</string>
     <string name="allow_schedule_exact_alarms">Zezwól %s na ustawianie alarmów i przypomnień</string>
     <string name="allow_schedule_exact_alarms_instructions">Zezwól %1$s na ustawianie dokładnych alarmów i przypomnień, jak alerty zachodu słońca. W przeciwnym razie alarmy mogą nie uruchamiać się we właściwym czasie. \n \nAby zezwolić, kliknij \"%2$s\" żeby przyznać dostęp do alarmów i przypomnień.</string>
-    <string name="sunset_alerts_background_location_disclaimer">Alerty zachodu słońca mogą być niedokładne podczas podróży</string>
     <string name="start_time">Początek</string>
     <string name="end_time">Koniec</string>
     <string name="map_is_not_calibrated">Mapa nie jest skalibrowana</string>

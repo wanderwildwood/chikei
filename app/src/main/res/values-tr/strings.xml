@@ -398,7 +398,6 @@
     <string name="precise_feet_format">%s ft</string>
     <string name="app_disclaimer_message_title">Sorumluluk reddi / hizmet kullanım şartları</string>
     <string name="disclaimer_message_title">Sorumluluk reddi</string>
-    <string name="access_background_location">Konum bilgisini güncelle</string>
     <string name="copied_to_clipboard_toast">Panoya kopyalandı</string>
     <string name="tools">Araçlar</string>
     <string name="astronomy">Gök bilimi</string>
@@ -547,7 +546,6 @@
     <string name="unblock_notification_channel">Topo için %s bildiriminin engellemesini kaldır</string>
     <string name="get_gps_signal">Engelsiz bir gökyüzü görünümü olacak şekilde dışarı çıkın.</string>
     <string name="activity_recognition">Etkinlik algılama</string>
-    <string name="background_location_permission">Konum (Her zaman izin ver)</string>
     <string name="grant_permission">%s izni ver</string>
     <string name="no_resolution">Çözünürlük yok</string>
     <string name="no_issues">Sorun algılanmadı</string>
@@ -962,7 +960,6 @@
     <string name="invalid_backup_file">Geçersiz yedekleme dosyası</string>
     <string name="sunset_alert_scheduled">Gün batımından %s öncesi için uyarı zamanlandı</string>
     <string name="backup_restore">Yedekle / geri yükle</string>
-    <string name="sunset_alerts_background_location_disclaimer">Seyahat ederken gün batımı uyarıları hatalı olabilir</string>
     <string name="backtrack_no_permission">Geri iz sürmenin çalıştırması için konum izni gerekir</string>
     <string name="gps_accuracy_tip">Gökyüzünü engelsiz bir şekilde gördüğünüzden emin olun ve yüksek binalardan ve ağaçlardan uzaklaşın.</string>
     <string name="triangulate_self_location_1_instructions">Görebildiğiniz bilinen bir konum seçin ve bulunduğunuz yerden o konuma olan yönü kaydedin.</string>

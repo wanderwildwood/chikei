@@ -396,7 +396,6 @@
     <string name="start_time">شروع</string>
     <string name="miles_per_hour_format">%s متر در ساعت</string>
     <string name="last_duration">آخر %s</string>
-    <string name="access_background_location">بروز کردن تنظیمات مکانی</string>
     <string name="pref_flashlight_toggle_with_volume_summary">در حالی که Topo باز است</string>
     <string name="pref_daily_weather_notification_title">اطلاعیه هواشناسی روزانه</string>
     <string name="distance_to">به</string>
@@ -710,7 +709,6 @@
     <string name="no_permission">اجازه داده نشد</string>
     <string name="notifications_blocked">اعلان ها مسدود شد</string>
     <string name="grant_permission">به %s اجازه بدهید</string>
-    <string name="background_location_permission">مکان (همیشه مجاز باشد)</string>
     <string name="activity_recognition">تشخیص فعالیت</string>
     <string name="get_gps_signal">با منظره ای بدون مانع از آسمان به بیرون بروید.</string>
     <string name="autofill">تکمیل خودکار</string>

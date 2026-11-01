@@ -9,7 +9,6 @@
     <string name="direction_east">מז</string>
     <string name="direction_south">ד</string>
     <string name="direction_north">צ</string>
-    <string name="access_background_location">עדכן הגדרות מיקום</string>
     <string name="copied_to_clipboard_toast">הועתק ללוח</string>
     <string name="tools">כלים</string>
     <string name="astronomy">אסטרונומיה</string>
@@ -682,7 +681,6 @@
     <string name="percent_packed">%s ארוז</string>
     <string name="new_packing_list">רשימת אריזה חדשה</string>
     <string name="pack_sort_percent_high_to_low">אחוז ארוז (מהגבוה לנמוך)</string>
-    <string name="background_location_permission">מיקום (אפשר כל הזמן)</string>
     <string name="location_override_resolution">אפשר מיקום התאמה אוטומטית בהגדרות.</string>
     <string name="power_saving_mode_resolution">השבת את מצב חיסכון בחשמל</string>
     <string name="lightning_dangerously_close">ברק קרוב בצורה מסוכנת</string>
@@ -908,7 +906,6 @@
     <string name="camera_unavailable">המצלמה אינה זמינה</string>
     <string name="manual">ידני</string>
     <string name="battery_usage_allowed">השימוש בסוללה מותר</string>
-    <string name="sunset_alerts_background_location_disclaimer">התראות שקיעה עשויות להיות לא מדויקות בזמן נסיעה</string>
     <string name="lowest_point_elevation">הנקודה הנמוכה ביותר</string>
     <string name="highest_point_elevation">הנקודה הגבוהה ביותר</string>
     <string name="high_pressure">גבוה</string>

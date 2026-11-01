@@ -124,7 +124,6 @@
     <string name="precise_feet_format">%s ft</string>
     <string name="app_disclaimer_message_title">Clàusula de protecció / Termes de serveis</string>
     <string name="disclaimer_message_title">Avís legal</string>
-    <string name="access_background_location">Actualitza els paràmetres de la ubicació</string>
     <string name="copied_to_clipboard_toast">Copiat al porta-retalls</string>
     <string name="tools">Eines</string>
     <string name="astronomy">Astronomia</string>

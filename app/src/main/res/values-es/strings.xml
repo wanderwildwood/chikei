@@ -122,7 +122,6 @@
     <string name="precise_meters_format">%s m</string>
     <string name="precise_miles_format">%s mill</string>
     <string name="precise_feet_format">%s pies</string>
-    <string name="access_background_location">Actualizar ajustes de ubicación</string>
     <string name="dash">-</string>
     <string name="battery_capacity_format">%s mAh</string>
     <string name="direction_south_east">SE</string>
@@ -632,7 +631,6 @@
     <string name="no_issues">No problemas detectados</string>
     <string name="sighting_compass">Brújula de mira</string>
     <string name="grant_permission">Otorga el permiso %s</string>
-    <string name="background_location_permission">Ubicación (Permitir todo el tiempo)</string>
     <string name="activity_recognition">Reconocimiento de actividad</string>
     <string name="unblock_notification_channel">Desbloquear la notificación %s para Topo</string>
     <string name="elevation_override_resolution">Habilita la calibración automática en la configuración.</string>
@@ -965,7 +963,6 @@
     <string name="learn_more">Más información</string>
     <string name="i_agree">Acepto</string>
     <string name="battery_usage_allowed">Se permite el uso de la batería</string>
-    <string name="sunset_alerts_background_location_disclaimer">Las alertas de puesta de sol pueden ser imprecisas durante los viajes</string>
     <string name="allow_ignore_battery_restrictions">Permitir que %s ignore las restricciones de la batería</string>
     <string name="exact_alarm_permission_denied">Alarmas y recordatorios denegados, las alertas pueden ser inexactas.</string>
     <string name="allow_schedule_exact_alarms_instructions">Esto permite que %1$s establezca alarmas y recordatorios exactos, como alertas de puesta de sol. Sin esto, las alarmas no pueden activarse en el momento correcto.\n\nPara permitir, haga clic en \'%2$s\' y active la configuración para permitir alarmas y recordatorios.</string>

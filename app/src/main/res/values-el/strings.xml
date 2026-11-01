@@ -160,7 +160,6 @@
     <string name="pref_show_calibrate_on_navigate_dialog_title">Βαθμονομήστε πριν την πλοήγηση</string>
     <string name="degree_format">%.0f°</string>
     <string name="category">Κατηγορία</string>
-    <string name="access_background_location">Ενημέρωση ρυθμίσεων τοποθεσίας</string>
     <string name="beacon_comment">Σημειώσεις (Προαιρετικό)</string>
     <string name="true_north">Αληθής Βορράς</string>
     <string name="add">Προσθήκη</string>
@@ -570,7 +569,6 @@
     <string name="dotted">Διάστικτο</string>
     <string name="pref_monitor_weather_title">Παρακολούθηση καιρού</string>
     <string name="category_shelter">Καταφύγιο</string>
-    <string name="background_location_permission">Τοποθεσία (Να επιτρέπεται πάντα)</string>
     <plurals name="beacons_exported">
         <item quantity="one">%d τοπόσημο εξήχθη</item>
         <item quantity="other">%d τοπόσημα εξήχθησαν</item>
@@ -822,7 +820,6 @@
     <string name="tool_climate_summary">Προβολή ιστορικού θερμοκρασιών</string>
     <string name="astronomy_rise">Ανατολή</string>
     <string name="backtrack_no_permission">Για τη λειτουργία του Ιχνηθέτη απαιτείται άδεια πρόσβασης στην τοποθεσία</string>
-    <string name="sunset_alerts_background_location_disclaimer">Οι ειδοποιήσεις δύσης του ηλίου ίσως είναι ανακριβείς όσο ταξιδεύετε</string>
     <string name="whistle_signal_come_here">Προσέγγισε</string>
     <string name="pref_map_url_source_title">Χάρτης για κοινοποίηση τοποθεσίας</string>
     <string name="simplify">Απλοποίηση</string>

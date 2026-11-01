@@ -108,12 +108,8 @@ class SensorService(ctx: Context) {
         }
     }
 
-    fun hasLocationPermission(background: Boolean = false): Boolean {
-        return if (background) {
-            Permissions.isBackgroundLocationEnabled(context)
-        } else {
-            Permissions.canGetFineLocation(context)
-        }
+    fun hasLocationPermission(): Boolean {
+        return Permissions.canGetFineLocation(context)
     }
 
     fun getPedometer(): IPedometer {

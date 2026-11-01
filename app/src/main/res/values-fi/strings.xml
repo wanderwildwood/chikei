@@ -59,7 +59,6 @@
     <string name="precise_kilometers_format">%s km</string>
     <string name="precise_meters_format">%s m</string>
     <string name="precise_nautical_miles_format">%s nm</string>
-    <string name="access_background_location">Päivitä sijainnin asetukset</string>
     <string name="copied_to_clipboard_toast">Kopioitu leikepöydälle</string>
     <string name="tools">Työkalut</string>
     <string name="astronomy">Astronomia</string>
@@ -466,7 +465,6 @@
     <string name="delete_map_group_message">%s ja kaikki sen kartat poistetaan.</string>
     <string name="tool_thermometer_title">Lämpömittari</string>
     <string name="pref_auto_low_power_title">Automaattinen virransäästö</string>
-    <string name="sunset_alerts_background_location_disclaimer">Auringonlaskuilmoitukset voivat olla epätarkkoja matkoilla</string>
     <string name="time_until_empty">tyhjään asti</string>
     <string name="diamond">Timantti</string>
     <string name="tool_boil_summary">Kerro milloin vesi on juomakelpoista</string>
@@ -683,7 +681,6 @@
     <string name="gps_location_accuracy">GPS-sijainnin tarkkuus</string>
     <string name="category_shelter">Suoja</string>
     <string name="restore_complete_message">Palautus onnistui, käynnistetään uudelleen muutosten käyttöönottamiseksi</string>
-    <string name="background_location_permission">Sijainti (Salli aina)</string>
     <plurals name="beacons_exported">
         <item quantity="one">%d majakka viety</item>
         <item quantity="other">%d majakkaa viety</item>

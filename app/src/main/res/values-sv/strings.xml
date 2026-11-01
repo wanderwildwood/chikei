@@ -224,7 +224,6 @@
     <string name="plugin_connect_message">Anslut bara till %s om du litar på insticksmodulen.</string>
     <string name="plugin_disconnect_title">Koppla från insticksmodulen?</string>
     <string name="plugin_disconnect_message">Koppla från %s?</string>
-    <string name="access_background_location">Uppdatera platsinställningarna</string>
     <string name="disclaimer_message_title">Ansvarsfriskrivning</string>
     <string name="app_disclaimer_message_title">Ansvarsfriskrivning/användarvillkor</string>
     <string name="precise_nautical_miles_format">%s sjömil</string>
@@ -740,7 +739,6 @@
     <string name="sighting_compass">Pejlkompass</string>
     <string name="no_resolution">Ingen lösning</string>
     <string name="grant_permission">Ge behörighet för %s</string>
-    <string name="background_location_permission">Plats (Tillåt alltid)</string>
     <string name="location_permission">Platsbehörighet</string>
     <string name="activity_recognition">Aktivitetsigenkänning</string>
     <string name="get_gps_signal">Gå ut till en plats med fri sikt mot himlen.</string>
@@ -1039,7 +1037,6 @@
     <string name="allow_schedule_exact_alarms">Tillåt att %s ställer in alarm och påminnelser</string>
     <string name="allow_schedule_exact_alarms_instructions">Detta gör att %1$s kan ställa in exakta alarm och påminnelser, till exempel solnedgångsvarningar. Utan behörigheten kanske alarm inte utlöses vid rätt tid.\n\nTryck på ”%2$s” och aktivera inställningen som tillåter alarm och påminnelser.</string>
     <string name="exact_alarm_permission_denied">Alarm och påminnelser nekades. Varningar kan bli inexakta.</string>
-    <string name="sunset_alerts_background_location_disclaimer">Solnedgångsvarningar kan bli inexakta under resor</string>
     <string name="backtrack_no_permission">Tillbakaspårning kräver platsbehörighet</string>
     <string name="notifications_channel">Aviseringar (%s)</string>
     <string name="sunset_alert_scheduled">Varning schemalagd till %s före solnedgång</string>

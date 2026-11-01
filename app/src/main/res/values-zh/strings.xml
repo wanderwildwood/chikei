@@ -124,7 +124,6 @@
     <string name="direction_north">北</string>
     <string name="duration_minute_format">%d 分钟</string>
     <string name="duration_hour_format">%d 小时</string>
-    <string name="access_background_location">更新定位设置</string>
     <string name="copied_to_clipboard_toast">已复制到剪贴板</string>
     <string name="tools">工具</string>
     <string name="kilometers_per_hour_format">%s 公里 / 小时</string>
@@ -595,7 +594,6 @@
     <string name="unblock_notification_channel">取消屏蔽 Topo 的 %s 通知</string>
     <string name="get_gps_signal">走到无遮挡的天空下。</string>
     <string name="activity_recognition">活动识别</string>
-    <string name="background_location_permission">位置（始终允许）</string>
     <string name="grant_permission">授予 %s 权限</string>
     <string name="no_resolution">无解决方案</string>
     <string name="sighting_compass">瞄准指南针</string>
@@ -948,7 +946,6 @@
     <string name="i_agree">我同意</string>
     <string name="battery_settings_limit_accuracy">限制使用电量可能降低精度</string>
     <string name="learn_more">了解更多</string>
-    <string name="sunset_alerts_background_location_disclaimer">旅行时日落警报可能不精确</string>
     <string name="allow_ignore_battery_restrictions">允许 %s 忽略电量限制</string>
     <string name="battery_usage_allowed">已允许使用电量</string>
     <string name="allow_schedule_exact_alarms">允许 %s 设置闹铃和提醒</string>

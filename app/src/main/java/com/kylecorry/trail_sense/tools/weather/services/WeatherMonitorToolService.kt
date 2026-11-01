@@ -97,7 +97,7 @@ class WeatherMonitorToolService(private val context: Context) : ToolService {
             getAppService<Logger>().warn(
                 TAG,
                 "Cannot start weather monitoring: has location permission but cannot start a location foreground service " +
-                    "(app in foreground: ${isAppForeground()}, background location: ${Permissions.isBackgroundLocationEnabled(context)})"
+                    "(app in foreground: ${isAppForeground()})"
             )
             return
         }

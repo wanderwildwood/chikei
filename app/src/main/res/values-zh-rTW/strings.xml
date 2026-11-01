@@ -105,7 +105,6 @@
     <string name="precise_nautical_miles_format">%s 海里</string>
     <string name="precise_miles_format">%s 英里</string>
     <string name="precise_feet_format">%s 英尺</string>
-    <string name="access_background_location">更新位置設定</string>
     <string name="copied_to_clipboard_toast">已複製至剪貼簿</string>
     <string name="tools">工具</string>
     <string name="astronomy">天文</string>
@@ -505,7 +504,6 @@
     <string name="low_pressure">低</string>
     <string name="next_24_hours">未來 24 小時</string>
     <string name="tool_climate">氣候</string>
-    <string name="sunset_alerts_background_location_disclaimer">旅行時日落警報可能不準確</string>
     <string name="pin">釘選</string>
     <string name="restart_services_title">重新啟動服務</string>
     <string name="category_hydration">保濕</string>
@@ -846,7 +844,6 @@
     <string name="battery_usage_restricted">電池使用受到限制</string>
     <string name="overridden">已覆寫</string>
     <string name="grant_permission">授予 %s 權限</string>
-    <string name="background_location_permission">位置（始終允許）</string>
     <string name="activity_recognition">活動識別</string>
     <string name="lightning_dangerously_close">閃電過近　危險</string>
     <string name="auto">自動</string>

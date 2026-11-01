@@ -165,7 +165,6 @@
     <string name="delete_beacon_group_message">%s und alle zugehörigen Wegpunkte werden gelöscht.</string>
     <string name="error_occurred_message">Ein Fehler ist aufgetreten. Bitte sende eine E-Mail an den Entwickler, um den Fehler beheben zu lassen.</string>
     <string name="error_occurred">Ein Fehler ist aufgetreten</string>
-    <string name="access_background_location">Standortseinstellungen aktualisieren</string>
     <string name="pref_adjust_for_temperature_title">Faktor für Temperatur</string>
     <string name="navigation_nearby_category">Nahegelegen</string>
     <string name="forecasts_category">Vorhersagen</string>
@@ -613,7 +612,6 @@
 \n### Lösungen
 \n%4$s</string>
     <string name="gps_unavailable_resolution">Aktivieren Sie die Standortbestimmung oder ändern Sie Ihre Standortquelle auf „Nur Gerät“ oder „Hohe Genauigkeit“</string>
-    <string name="background_location_permission">Standort (Immer zulassen)</string>
     <string name="battery_restricted_resolution">Topo als nicht optimiert festlegen</string>
     <string name="power_saving_mode_resolution">Stromsparmodus deaktivieren</string>
     <string name="location_override_not_set_resolution">Standort in den Einstellungen überschreiben</string>
@@ -975,7 +973,6 @@
     <string name="i_agree">Ich akzeptiere</string>
     <string name="battery_usage_allowed">Batterie nutzung erlaubt</string>
     <string name="allow_ignore_battery_restrictions">Erlaube %s den Energiesparmodus zu ignorieren</string>
-    <string name="sunset_alerts_background_location_disclaimer">Sonnenuntergang Alarme sind vielleicht ungenau während dem Reisen</string>
     <string name="allow_schedule_exact_alarms">Erlaube %s Alarme und Erinnerungen zu starten</string>
     <string name="allow_schedule_exact_alarms_instructions">Dies erlaubt %1$s exakte Alarme und Erinnerungen, wie z.B. Sonnenuntergangs Alarme zu starten.
 \nOhne dies, Alarme starten vielleicht nicht zur richtigen zeit.

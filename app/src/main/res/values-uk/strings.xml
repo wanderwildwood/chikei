@@ -475,7 +475,6 @@
     <string name="precise_miles_format">%s миль</string>
     <string name="app_disclaimer_message_title">Відмова від відповідальності / Умови надання послуг</string>
     <string name="disclaimer_message_title">Відмова від відповідальності</string>
-    <string name="access_background_location">Оновити налаштування місцеперебування</string>
     <string name="copied_to_clipboard_toast">Скопійовано до буфера обміну</string>
     <string name="astronomy">Астрономія</string>
     <string name="settings">Налаштування</string>
@@ -614,7 +613,6 @@
     <string name="unblock_notification_channel">Розблокувати сповіщення %s для Topo</string>
     <string name="get_gps_signal">Вийдіть на вулицю з безперепонним видом на небо.</string>
     <string name="activity_recognition">Розпізнавання діяльності</string>
-    <string name="background_location_permission">Розташування (дозволити весь час)</string>
     <string name="grant_permission">Надання дозволу %s</string>
     <string name="no_resolution">Немає дозволу</string>
     <string name="sighting_compass">Ручний компас</string>
@@ -997,7 +995,6 @@
     <string name="backup">Бекап</string>
     <string name="restore">Відновити</string>
     <string name="notifications_channel">Сповіщення (%s)</string>
-    <string name="sunset_alerts_background_location_disclaimer">Сповіщення про захід сонця можуть бути неточними під час подорожі</string>
     <string name="allow_schedule_exact_alarms_instructions">Це дозволяє %1$s встановлювати точні будильники та нагадування, наприклад, про захід сонця. Без цього будильники можуть не спрацьовувати в потрібний час.
 \n
 \nЩоб дозволити, натисніть \"%2$s\" і увімкніть налаштування для дозволу будильників і нагадувань.</string>

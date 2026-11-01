@@ -68,7 +68,6 @@
     <string name="duration_second_format">%d s</string>
     <string name="direction_north_east">NØ</string>
     <string name="weather">Vejr</string>
-    <string name="access_background_location">Opdater placeringsindstillinger</string>
     <string name="precise_feet_format">%s fod</string>
     <string name="precise_nautical_miles_format">%s nm</string>
     <string name="direction_south_east">SØ</string>
@@ -532,7 +531,6 @@
     </plurals>
     <string name="pref_adjust_for_temperature_summary">Brug temperatur ved konvertering af havniveautryk</string>
     <string name="other">Andet</string>
-    <string name="background_location_permission">Placering (tillad hele tiden)</string>
     <string name="get_gps_signal">Gå udenfor med et uhindret udsyn til himlen.</string>
     <string name="unblock_notification_channel">Fjern blokering af %s-notifikation for Topo</string>
     <string name="location_override_resolution">Aktiver autojustering af placering i indstillingerne.</string>

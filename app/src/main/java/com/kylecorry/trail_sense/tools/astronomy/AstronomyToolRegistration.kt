@@ -153,7 +153,6 @@ object AstronomyToolRegistration : ToolRegistration {
             ),
             diagnostics = listOf(
                 ToolDiagnosticFactory.gps(context),
-                ToolDiagnosticFactory.backgroundLocation(context),
                 ToolDiagnosticFactory.alarm(context),
                 ToolDiagnosticFactory.notification(
                     SunsetAlarmCommand.NOTIFICATION_CHANNEL_ID,

@@ -53,12 +53,6 @@ class ToolAstronomyTest : ToolTestBase(Tools.ASTRONOMY) {
 
         // Verify the View in 3D button is visible and works
         if (Tools.isToolAvailable(TestUtils.context, Tools.AUGMENTED_REALITY)) {
-            // Wait for the toast do disappear
-            not {
-                hasText(
-                    string(R.string.sunset_alerts_background_location_disclaimer)
-                )
-            }
             click(R.id.button_3d)
 
             // Verify the AR tool is open
