@@ -106,19 +106,12 @@
     <string name="about_title">Topo %1$s</string>
     <string name="about_privacy">Your location, tracks and marks stay on this phone. The network is used only to fetch map tiles and elevation, while the map is open or when you save an area; fruit and nut trees for the area on screen, rounded to about 100 m, while the Forage layer is on (from overpass-api.de, or Private.coffee\'s public Overpass server only when that one is busy); and region packs from a server you set, when you ask.</string>
     <string name="about_after">After Trail Sense by Kyle Corry, whose sensors, paths, beacons and map drawing this carries, under the MIT License.</string>
-    <string name="about_licence">GNU General Public License v3 only</string>
+    <string name="about_licence">Topo is free software under the GNU General Public License v3 only, copyright wander wildwood for the changes in this fork.</string>
     <string name="about_bundled">Lato, SIL Open Font License 1.1. Maps: USGS The National Map (public domain); OpenTopoMap (CC-BY-SA), from OpenStreetMap contributors (ODbL) and SRTM; Terrain Tiles by Mapzen on the AWS Registry of Open Data, from USGS 3DEP, SRTM and GMTED2010, NOAA ETOPO1, Copernicus EU-DEM (funded by the European Union), ArcticDEM (DigitalGlobe imagery, NSF awards 1043681, 1559691 and 1542736), Geoscience Australia, Canada (Open Government Licence – Canada), INEGI, LINZ, Kartverket, the Environment Agency (UK) and data.gv.at; the US outline from Natural Earth. Forage: OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy); edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL). Region packs carry OpenStreetMap and the public records each region is built from: in the US, the USDA Forest Service, USGS PAD-US and 3DEP, the Census Bureau and county parcels; elsewhere, Protected Planet (WDPA) and Copernicus DEM.</string>
-    <string name="licences_topo_title">Topo</string>
-    <string name="licences_topo_body">Topo is free software under the GNU General Public License, version 3 only. Copyright wander wildwood for the changes in this fork; the code it is built on is by Kyle Corry and contributors (Trail Sense, MIT).\n\nSource code: %1$s\n\nThe full licence text follows.</string>
-    <string name="licences_map_title">Map data</string>
-    <string name="licences_map_summary">USGS, OpenTopoMap, OpenStreetMap, Mapzen</string>
     <string name="about_privacy_title">Privacy</string>
     <string name="about_terms_title">Terms</string>
-    <string name="about_licences_title">Licences</string>
-    <string name="about_source_title">Source code: github.com/wanderwildwood/chikei</string>
-    <string name="about_source" translatable="false">github.com/wanderwildwood/chikei</string>
     <!-- The donation link label, beside a drawing of a llama. A verb and an object, so the reader knows what pressing it does -->
-    <string name="about_feed_the_llamas">feed the llamas</string>
+    <string name="about_feed_the_llamas">Feed the llamas</string>
     <!-- Map sources: USGS, OpenTopoMap and the Terrain Tiles, with no setup -->
     <string name="pref_topo_map_source" translatable="false">pref_topo_map_source</string>
     <string name="pref_saved_areas" translatable="false">pref_saved_areas</string>
@@ -352,6 +345,20 @@
         <item>Service tree</item>
     </string-array>
     <string name="about_close">Close</string>
+    <string name="about_privacy_policy">Privacy policy</string>
+    <!-- Licences: the list and each library's page (shared screen) -->
+    <string name="licences_title">Licences</string>
+    <string name="licences_back">Back</string>
+    <string name="licences_source_head">Source code</string>
+    <string name="licences_no_text">%s needs no licence text here.</string>
+    <string name="licences_licence">Topo is free software: GPL-3.0-only, copyright wander wildwood for the changes in this fork; the code it is built on is Trail Sense by Kyle Corry (MIT). What it is built on keeps its own licences, each on its own page.</string>
+    <string name="licences_full_head">Full texts</string>
+    <string name="licences_full_gpl">GNU General Public License v3 (full text)</string>
+    <string name="licences_full_apache">Apache License 2.0 (full text)</string>
+    <string name="licences_full_lgpl">GNU Lesser General Public License v3 (full text)</string>
+    <string name="licences_full_mit">MIT License (full text)</string>
+    <string name="licences_full_bsd">BSD 3-Clause License (full text)</string>
+    <string name="licences_full_ofl">SIL Open Font Licence 1.1 (full text)</string>
     <string name="about_no_browser_address">No browser is installed. The address is %1$s.</string>
     <string name="about_no_browser">There is no browser on this phone to open that with.</string>
     <string name="share_path">Share GPX</string>

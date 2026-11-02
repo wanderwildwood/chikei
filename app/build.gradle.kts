@@ -6,6 +6,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("dev.detekt")
     id("kotlin-parcelize")
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -182,6 +183,13 @@ dependencies {
     // Kotlin
     implementation(libs.kotlinx.coroutines.android)
     coreLibraryDesugaring(libs.desugar.jdk.libs)
+
+    // The shared About dialog and Licences list (Compose, drawn in Mudita's MMD)
+    implementation(libs.activity.compose)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.foundation)
+    implementation(libs.compose.material3)
+    implementation(libs.mmd)
 
     // AndroidX
     implementation(libs.constraintlayout)

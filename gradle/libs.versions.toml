@@ -1,4 +1,9 @@
 [versions]
+kotlin = "2.3.10"
+mmd = "1.0.2"
+activityCompose = "1.12.0"
+compose = "1.9.5"
+composeMaterial3 = "1.4.0"
 androidApplication = "9.4.1"
 androidXTest = "1.7.0"
 androidXTestRunner = "1.7.0"
@@ -36,6 +41,11 @@ workRuntimeKtx = "2.12.0"
 preferenceKtx = "1.2.1"
 
 [libraries]
+mmd = { module = "com.mudita:MMD", version.ref = "mmd" }
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3" }
 androidx-test-core = { module = "androidx.test:core", version.ref = "androidXTest" }
 androidx-test-orchestrator = { module = "androidx.test:orchestrator", version.ref = "androidXTestOrchestrator" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidXTestRunner" }
@@ -118,6 +128,7 @@ preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = 
 work-testing = { module = "androidx.work:work-testing", version.ref = "workRuntimeKtx" }
 
 [plugins]
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "androidApplication" }
 detekt = { id = "dev.detekt", version.ref = "detekt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
