@@ -221,7 +221,6 @@
     <string name="pref_center_sun_and_moon_title">Manter sol/lúa centrados</string>
     <string name="pref_sunset_alert_time_title">Hora de alerta do solpor</string>
     <string name="pref_sunrise_alert_time_title">Hora de alerta do abrente</string>
-    <string name="pref_open_source_licenses_title">Licenzas</string>
     <string name="pref_category_about">Acerca de</string>
     <string name="pref_app_version_title">Versión</string>
     <string name="pref_github_title">GitHub</string>

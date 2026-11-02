@@ -593,7 +593,6 @@
     <string name="pref_monitor_weather_title">Időjárás monitorozása</string>
     <string name="always">Mindig</string>
     <string name="pressure_24_hours">24 óra</string>
-    <string name="pref_open_source_licenses_title">Licenszek</string>
     <string name="pref_center_sun_and_moon_title">Nap/Hold középen tartása</string>
     <string name="pref_email_title">E-mailezés a fejlesztővel</string>
     <string name="pref_github_title">GitHub</string>

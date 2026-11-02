@@ -214,7 +214,6 @@
     <string name="pref_github_title">GitHub</string>
     <string name="pref_app_version_title">Versiyon</string>
     <string name="pref_category_about">Hakkında</string>
-    <string name="pref_open_source_licenses_title">Lisanslar</string>
     <string name="pref_sunset_alert_time_title">Gün batımı uyarı zamanı</string>
     <string name="pref_center_sun_and_moon_title">Güneşi/ayı ortalanmış tut</string>
     <string name="sun_moon_compass_when_up">Doğduğunda</string>

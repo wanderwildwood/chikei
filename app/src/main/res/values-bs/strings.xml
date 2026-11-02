@@ -400,7 +400,6 @@
     <string name="pref_github_title">GitHub</string>
     <string name="pref_app_version_title">Verzija</string>
     <string name="pref_category_about">O</string>
-    <string name="pref_open_source_licenses_title">Dozvole</string>
     <string name="pref_sunset_alert_time_title">Vrijeme upozorenja za zalazak sunca</string>
     <string name="pref_center_sun_and_moon_title">Nek bude sunce/mjesec centriran</string>
     <string name="sun_moon_compass_when_up">Kad je gore</string>

@@ -251,7 +251,6 @@
     <string name="sun_moon_compass_when_up">Saat bangun</string>
     <string name="pref_center_sun_and_moon_title">Jaga matahari/bulan tetap di tengah</string>
     <string name="pref_sunset_alert_time_title">Peringatan matahari terbenam</string>
-    <string name="pref_open_source_licenses_title">Lisensi</string>
     <string name="no_group">Tidak ada grup</string>
     <string name="advanced">Lanjutan</string>
     <string name="tap_sun_moon_hint">Ketuk matahari atau bulan untuk rincian posisi</string>

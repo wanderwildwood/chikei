@@ -38,12 +38,6 @@
             android:title="@string/diagnostics"
             app:iconSpaceReserved="false"
             app:singleLineTitle="false" />
-
-        <Preference
-            android:key="@string/pref_open_source_licenses"
-            android:title="@string/pref_open_source_licenses_title"
-            app:iconSpaceReserved="false"
-            app:singleLineTitle="false" />
     </PreferenceCategory>
 
     <PreferenceCategory

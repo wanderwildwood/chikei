@@ -196,7 +196,6 @@
     <string name="tap_sun_moon_hint">輕觸太陽或月亮可知悉詳細位置</string>
     <string name="error_occurred_message">Topo 遇到錯誤。請向開發人員發送電子郵件以解決此問題。</string>
     <string name="error_occurred">發生錯誤</string>
-    <string name="pref_open_source_licenses_title">許可證</string>
     <string name="pref_sunset_alert_time_title">日落警報時間</string>
     <string name="pref_center_sun_and_moon_title">保持太陽／月亮置中</string>
     <string name="sun_moon_compass_when_up">當升起時</string>

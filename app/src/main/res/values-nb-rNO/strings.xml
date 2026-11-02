@@ -5,7 +5,6 @@
     <string name="pref_github_title">GitHub</string>
     <string name="pref_app_version_title">Versjon</string>
     <string name="pref_category_about">Om</string>
-    <string name="pref_open_source_licenses_title">Lisenser</string>
     <string name="always">Alltid</string>
     <string name="pref_show_pressure_in_notification_title">Vis lufttrykk i varsel</string>
     <string name="pref_monitor_weather_title">Overvåk været</string>

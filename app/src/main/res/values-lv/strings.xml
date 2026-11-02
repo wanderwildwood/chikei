@@ -71,7 +71,6 @@
     <string name="sun_nautical">Jūras laiks</string>
     <string name="sun_astronomical">Astronomiskais laiks</string>
     <string name="always">Vienmēr</string>
-    <string name="pref_open_source_licenses_title">Licences</string>
     <string name="pref_category_about">Par lietotni</string>
     <string name="pref_app_version_title">Versija</string>
     <string name="pref_github_title">GitHub</string>

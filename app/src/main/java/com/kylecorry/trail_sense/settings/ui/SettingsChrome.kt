@@ -2,6 +2,8 @@ package com.kylecorry.trail_sense.settings.ui
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import com.kylecorry.trail_sense.shared.house.showAboutDialog
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isVisible
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -84,6 +86,15 @@ object SettingsChrome {
             bar.isVisible = title != null
             if (title != null) {
                 bar.title.text = fragment.getString(title)
+                if (fragment is SettingsFragment) {
+                    // About is behind Settings and nowhere else: an info icon at the right of this bar
+                    bar.rightButton.isVisible = true
+                    bar.rightButton.setIconResource(R.drawable.ic_info)
+                    bar.rightButton.contentDescription = fragment.getString(R.string.about)
+                    bar.rightButton.setOnClickListener {
+                        showAboutDialog(fragment.requireContext(), view as ViewGroup)
+                    }
+                }
                 // A first group named for the screen only says the title again, a line lower
                 val screen = fragment.preferenceScreen
                 val first = if ((screen?.preferenceCount ?: 0) > 0) screen?.getPreference(0) else null

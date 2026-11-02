@@ -1,7 +1,6 @@
 package com.kylecorry.trail_sense.tools.tools.ui
 
 import android.view.View
-import com.kylecorry.trail_sense.shared.house.showAboutDialog
 import com.kylecorry.trail_sense.shared.text.TextUtils
 import com.kylecorry.trail_sense.shared.views.openGuarded
 import com.kylecorry.trail_sense.shared.views.guardLinks
@@ -116,8 +115,6 @@ class ToolsFragment : BoundFragment<FragmentToolsBinding>() {
             binding.settingsBtn.setOnClickListener {
                 findNavController().navigate(R.id.action_settings)
             }
-
-            binding.aboutBtn.setOnClickListener { showAbout() }
 
             binding.toolSearchbox.setOnSearchListener {
                 updateTools()
@@ -378,11 +375,6 @@ class ToolsFragment : BoundFragment<FragmentToolsBinding>() {
         )
     }
 
-
-    private fun showAbout() {
-        // The shared About dialog (Compose, MMD), hosted over this screen's layout.
-        showAboutDialog(requireContext(), binding.root)
-    }
 
     companion object {
         const val SOURCE_URL = com.kylecorry.trail_sense.shared.house.SOURCE_URL

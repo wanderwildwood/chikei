@@ -72,7 +72,6 @@
     <string name="tool_long_press_hint_toast">กดค้างที่เครื่องมือเพื่อดูตัวเลือกเพื่มเติม</string>
     <string name="pref_privacy_policy_title">นโยบายความเป็นส่วนตัว</string>
     <string name="pref_altimeter_calibration_title">เซ็นเซอร์วัดความสูง</string>
-    <string name="pref_open_source_licenses_title">สัญญาอนุญาต</string>
     <string name="pref_app_version_title">เวอร์ชั่น</string>
     <string name="battery_usage_restricted">การใช้แบตเตอรี่ถูกจำกัด</string>
     <string name="accelerometer">เซ็นเซอร์วัดความเร่ง</string>

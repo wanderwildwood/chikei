@@ -28,8 +28,6 @@ class SettingsFragment : AndromedaPreferenceFragment() {
         R.string.pref_sensor_settings to R.id.action_settings_to_sensor_settings,
         R.string.pref_backup_settings to R.id.action_settings_to_backup_settings,
         R.string.pref_tool_settings_header_key to R.id.toolsSettingsFragment,
-        // About
-        R.string.pref_open_source_licenses to R.id.action_action_settings_to_licenseFragment,
         R.string.pref_diagnostics to R.id.action_settings_to_diagnostics
     )
 

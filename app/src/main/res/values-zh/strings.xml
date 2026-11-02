@@ -222,7 +222,6 @@
     <string name="pref_github_title">GitHub</string>
     <string name="pref_app_version_title">版本</string>
     <string name="pref_category_about">关于</string>
-    <string name="pref_open_source_licenses_title">许可证</string>
     <string name="pref_sunset_alert_time_title">日落提醒时间</string>
     <string name="pref_center_sun_and_moon_title">保持太阳/月亮居中</string>
     <string name="always">始终</string>

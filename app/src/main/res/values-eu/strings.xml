@@ -57,7 +57,6 @@
     <string name="pref_github_title">GitHub</string>
     <string name="pref_app_version_title">Bertsioa</string>
     <string name="pref_category_about">Honi buruz</string>
-    <string name="pref_open_source_licenses_title">Lizentziak</string>
     <string name="never">Inoiz</string>
     <string name="always">Beti</string>
     <string name="pref_altimeter_calibration_title">Altimetroa</string>

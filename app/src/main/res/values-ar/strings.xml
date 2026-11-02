@@ -226,7 +226,6 @@
     <string name="always">دائمًا</string>
     <string name="sun_moon_compass_when_up">عندما يكون مشرقًا</string>
     <string name="pref_sunrise_alert_time_title">وقت تنبيه الشروق</string>
-    <string name="pref_open_source_licenses_title">التراخيص</string>
     <string name="pref_app_version_title">الإصدار</string>
     <string name="pref_github_title">GitHub</string>
     <string name="error_occurred_message">واجه Topo خطأ. يرجى التواصل مع المطور عبر البريد الإلكتروني لإصلاح هذه المشكلة.</string>

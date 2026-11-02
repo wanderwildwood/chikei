@@ -612,7 +612,6 @@
     <string name="pref_forecast_sensitivity_title">حساسیت پیش بینی</string>
     <string name="pref_weather_update_frequency_title">فرکانس به روز رسانی آب و هوا</string>
     <string name="pref_sunset_alert_time_title">زمان هشدار غروب</string>
-    <string name="pref_open_source_licenses_title">مجوزها</string>
     <string name="pref_category_about">درباره</string>
     <string name="pref_app_version_title">نسخه</string>
     <string name="tool_user_guide_title">راهنمای کاربر</string>

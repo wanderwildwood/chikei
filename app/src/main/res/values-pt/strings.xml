@@ -186,7 +186,6 @@
     <string name="pref_github_title">GitHub</string>
     <string name="pref_app_version_title">Versão</string>
     <string name="pref_category_about">Sobre</string>
-    <string name="pref_open_source_licenses_title">Licenças</string>
     <string name="pref_sunset_alert_time_title">Tempo de alerta de pôr do sol</string>
     <string name="pref_center_sun_and_moon_title">Manter sol/lua centrados</string>
     <string name="sun_moon_compass_when_up">Quando subir</string>

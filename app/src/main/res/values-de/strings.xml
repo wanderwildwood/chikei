@@ -132,7 +132,6 @@
     <string name="pref_github_title">GitHub</string>
     <string name="pref_app_version_title">Version</string>
     <string name="pref_category_about">Über</string>
-    <string name="pref_open_source_licenses_title">Lizenzen</string>
     <string name="pref_email_title">Entwickler kontaktieren</string>
     <string name="pref_auto_declination_summary">Basiert auf aktuellem Standort</string>
     <string name="declination_override_updated_toast">Deklination gesetzt</string>

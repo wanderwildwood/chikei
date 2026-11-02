@@ -37,7 +37,6 @@ object SettingsToolRegistration : ToolRegistration {
                 R.id.experimentalSettingsFragment,
                 R.id.errorSettingsFragment,
                 R.id.sensorSettingsFragment,
-                R.id.licenseFragment,
                 R.id.cellSignalSettingsFragment,
                 R.id.calibrateCompassFragment,
                 R.id.calibrateAltimeterFragment,

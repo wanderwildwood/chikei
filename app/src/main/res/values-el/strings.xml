@@ -297,7 +297,6 @@
     <string name="seconds_format">%s s</string>
     <string name="kilograms">Χιλιόγραμμα</string>
     <string name="pref_show_last_signal_beacon_summary">Δημιουργεί ένα τοπόσημο για την τοποθεσία που σημειώθηκε η τελευταία λήψη σήματος από το δίκτυο κινητής τηλεφωνίας</string>
-    <string name="pref_open_source_licenses_title">Άδειες χρήσης</string>
     <string name="unit_meters">Μέτρα</string>
     <string name="clock_sync_time_settings">Μετάβαση στις ρυθμίσεις ώρας;</string>
     <string name="icon">Εικονίδιο</string>

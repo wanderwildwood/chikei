@@ -243,7 +243,6 @@
     <string name="pressure_24_hours">24 hodin</string>
     <string name="pressure_4_hours">4 hodiny</string>
     <string name="sun_civil">Civilní</string>
-    <string name="pref_open_source_licenses_title">Licence</string>
     <string name="pref_category_about">O aplikaci</string>
     <string name="tool_bubble_level_summary">Určete, zda jsou povrchy rovné</string>
     <string name="distance_to">Na</string>

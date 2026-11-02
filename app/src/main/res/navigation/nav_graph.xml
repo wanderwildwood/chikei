@@ -27,7 +27,6 @@
         <action android:id="@+id/action_settings_to_privacy_settings" app:destination="@id/privacySettingsFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
         <action android:id="@+id/action_settings_to_theme_settings" app:destination="@id/themeSettingsFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
         <action android:id="@+id/action_settings_to_backup_settings" app:destination="@id/backupSettingsFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
-        <action android:id="@+id/action_action_settings_to_licenseFragment" app:destination="@id/licenseFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment android:id="@+id/fieldGuideFragment" android:name="com.kylecorry.trail_sense.tools.field_guide.ui.FieldGuideFragment" android:label="FieldGuideFragment" />
     <fragment android:id="@+id/fieldGuideSettingsFragment" android:name="com.kylecorry.trail_sense.tools.field_guide.ui.FieldGuideSettingsFragment" android:label="FieldGuideSettingsFragment" />
@@ -60,7 +59,6 @@
     <fragment android:id="@+id/calibrateBarometerFragment" android:name="com.kylecorry.trail_sense.settings.ui.CalibrateBarometerFragment" android:label="CalibrateBarometerFragment" />
     <fragment android:id="@+id/calibrateCompassFragment" android:name="com.kylecorry.trail_sense.settings.ui.CalibrateCompassFragment" android:label="CalibrateCompassFragment" />
     <fragment android:id="@+id/calibrateGPSFragment" android:name="com.kylecorry.trail_sense.settings.ui.CalibrateGPSFragment" android:label="CalibrateGPSFragment" />
-    <fragment android:id="@+id/licenseFragment" android:name="com.kylecorry.trail_sense.settings.licenses.LicenseFragment" android:label="LicenseFragment" />
     <fragment android:id="@+id/weatherSettingsFragment" android:name="com.kylecorry.trail_sense.tools.weather.ui.WeatherSettingsFragment" android:label="WeatherSettingsFragment" />
     <fragment android:id="@+id/navigationSettingsFragment" android:name="com.kylecorry.trail_sense.tools.navigation.ui.NavigationSettingsFragment" android:label="NavigationSettingsFragment" />
     <fragment android:id="@+id/pathsSettingsFragment" android:name="com.kylecorry.trail_sense.settings.ui.PathsSettingsFragment" android:label="PathsSettingsFragment" />

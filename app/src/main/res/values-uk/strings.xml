@@ -173,7 +173,6 @@
     <string name="pref_github_title">GitHub</string>
     <string name="pref_app_version_title">Версія</string>
     <string name="pref_category_about">Про застосунок</string>
-    <string name="pref_open_source_licenses_title">Ліцензії</string>
     <string name="pref_sunset_alert_time_title">Попереджати про захід за</string>
     <string name="contents">Зміст</string>
     <string name="pref_sensor_details_title">Подробиці датників</string>

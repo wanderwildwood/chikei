@@ -219,7 +219,6 @@
     <string name="pref_show_temperature_in_notification_title">அறிவிப்பில் வெப்பநிலையைக் காட்டு</string>
     <string name="pref_weather_update_frequency_title">வானிலை புதுப்பிப்பு அதிர்வெண்</string>
     <string name="pref_sunset_alert_time_title">சூரிய மறைவு எச்சரிக்கை நேரம்</string>
-    <string name="pref_open_source_licenses_title">உரிமங்கள்</string>
     <string name="pref_category_about">பற்றி</string>
     <string name="continue_button">தொடரவும்</string>
     <plurals name="number_steps">

@@ -380,7 +380,6 @@
     <string name="water_purification_step_2">הרתחת מים עד לבעבוע</string>
     <string name="water_purification_step_3">הפעל את שעון העצר</string>
     <string name="clock_waiting_for_gps">מעדכן זמן מ-GPS…</string>
-    <string name="pref_open_source_licenses_title">רישיונות</string>
     <string name="pref_category_about">אודות</string>
     <string name="water_boil_timer">טיימר להרתחת מים</string>
     <string name="precise_inches_format">%s אינץ\'</string>

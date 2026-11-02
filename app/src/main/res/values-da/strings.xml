@@ -281,7 +281,6 @@
     <string name="disclaimer_estimated_tide_title">Estimeret tidevand</string>
     <string name="pref_sun_time_mode_title">Tider for solopgang/solnedgang</string>
     <string name="pref_show_sun_moon_compass_title">Vis sol/måne på kompas</string>
-    <string name="pref_open_source_licenses_title">Licenser</string>
     <string name="seconds">Sekunder</string>
     <string name="num_satellites">%d satellitter</string>
     <string name="exporting_map">Eksporterer kort</string>

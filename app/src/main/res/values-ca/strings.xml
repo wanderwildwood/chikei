@@ -27,7 +27,6 @@
     <string name="pref_github_title">GitHub</string>
     <string name="pref_app_version_title">Versió</string>
     <string name="pref_category_about">Quant a</string>
-    <string name="pref_open_source_licenses_title">Llicències</string>
     <string name="pref_sunset_alert_time_title">Temps de notificació de l\'ocàs</string>
     <string name="pref_center_sun_and_moon_title">Mantenir el sol i la lluna centrats</string>
     <string name="sun_moon_compass_when_up">Al estar a dalt</string>
