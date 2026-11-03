@@ -144,6 +144,8 @@ android {
         unitTests.all {
             it.useJUnitPlatform()
         }
+        // The Licences screen is checked under Robolectric, which reads the app's resources.
+        unitTests.isIncludeAndroidResources = true
     }
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
@@ -288,6 +290,12 @@ dependencies {
     // The house tests are JUnit 4; without this engine the JUnit Platform skips them quietly.
     testRuntimeOnly(libs.junit.vintage)
     testImplementation(libs.mockito.kotlin)
+    // The Licences screen drawn and turned page by page without a phone (Compose on Robolectric,
+    // JUnit 4 tests run by the vintage engine beside the JUnit Platform ones).
+    testImplementation("org.robolectric:robolectric:4.16")
+    testImplementation("androidx.compose.ui:ui-test-junit4:${libs.versions.compose.get()}")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:${libs.versions.compose.get()}")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:${libs.versions.junitJupiter.get()}")
 }
 
 // The Licenses page lists what the build actually packs: this plugin walks each variant's runtime
