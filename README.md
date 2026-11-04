@@ -2,23 +2,21 @@
 
 地形 *chikei*
 
-Topographic maps for the trail on an E Ink phone: contours, public land, forest roads,
-trails and lot lines, drawn in black and white like a paper quadrangle, and there with no
-signal.
+Topographic maps for the trail on an E Ink phone: contours, forest roads and trails, drawn
+in black and white like a paper quadrangle, and there with no signal. Public land and lot
+lines come from region packs on a map server of your own, if you run one.
 
 *Chikei* is the lie of the land: the ordinary word for the shape of the ground a topo map
 sets out to show.
 
-Current version: 0.2.6.
-
 Built for the [Mudita Kompakt](https://mudita.com/products/kompakt/), whose 4.3" panel has
-sixteen greys, a slow redraw, and is read on a ridge as often as at a desk.
+sixteen grays, a slow redraw, and is read on a ridge as often as at a desk.
 
 ## Screenshots
 
 | | | | |
 |---|---|---|---|
-| ![USGS topo of Yosemite Valley, with no setup](screenshots/1-usgs.png) | ![Save this area, with its size](screenshots/2-save-area.png) | ![The disclaimer, shown before first use](screenshots/3-disclaimer.png) | ![About: privacy, credits and licences](screenshots/4-about.png) |
+| ![USGS topo of Yosemite Valley, with no setup](screenshots/1-usgs.png) | ![Save this area, with its size](screenshots/2-save-area.png) | ![The disclaimer, shown before first use](screenshots/3-disclaimer.png) | ![About: privacy, credits and licenses](screenshots/4-about.png) |
 
 ## What it shows
 
@@ -35,10 +33,10 @@ The map works as soon as it is installed, with nothing to set up:
 Region packs from a server of your own, if you run one, draw over all of this and show more:
 
 - **Contours** from the region's elevation model. In the US they come from 3DEP's lidar where
-  it has it, in feet: every 40 with every 200 labelled when zoomed out, and every 20 with every
-  100 labelled close in, like a 20 ft USGS quad. Elsewhere they are in metres (every 20 and
+  it has it, in feet: every 40 with every 200 labeled when zoomed out, and every 20 with every
+  100 labeled close in, like a 20 ft USGS quad. Elsewhere they are in meters (every 20 and
   100, then every 10 and 50)
-- **Public land** as a light grey tint with its boundary: national forests, BLM land, national
+- **Public land** as a light gray tint with its boundary: national forests, BLM land, national
   and state parks, wildlife areas, state trust land and local parks. Private land stays white;
   tribal land is outlined but not tinted, since it is not public land
 - **Lot lines** on private land, where a state or county publishes them
@@ -62,7 +60,7 @@ Region packs from a server of your own, if you run one, draw over all of this an
 - **Download region** shows the regions on the server as squares on a map: USGS 7.5-minute
   quadrangles in the US, and elsewhere 1/8-degree squares named after the largest place in
   each.
-  Tap the squares you need; each comes with its own elevation, and neighbours join without
+  Tap the squares you need; each comes with its own elevation, and neighbors join without
   a seam.
 - **Here**, on the map: mark where you are standing, or start and stop recording your track.
 - **Hold a finger on the map** to see whose land it is, as far as the region's records go:
@@ -223,7 +221,7 @@ domain).
 Forage: trees from © OpenStreetMap contributors (ODbL), through the
 [Overpass API](https://overpass-api.de/), or, when that server is busy, the public instance
 run by [Private.coffee](https://overpass.private.coffee/). Edible plant locations from
-[Falling Fruit](https://fallingfruit.org) and its sources, under each dataset's licence (mostly
+[Falling Fruit](https://fallingfruit.org) and its sources, under each dataset's license (mostly
 ODbL).
 
 After [Trail Sense](https://github.com/kylecorry31/Trail-Sense) by Kyle Corry, which this
@@ -239,7 +237,7 @@ Protected Planet (WDPA), and elevation from Copernicus DEM GLO-30, © DLR e.V. 2
 © Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union
 and ESA.
 
-## Licence
+## License
 
 GPL-3.0-only. See [LICENSE](LICENSE).
 
@@ -256,4 +254,4 @@ You should have received a copy of the GNU General Public License along with thi
 If not, see <https://www.gnu.org/licenses/>.
 
 A map you carry into the woods should stay free to fix and share, so the changes made here
-are copyleft. Trail Sense's own code keeps its MIT licence.
+are copyleft. Trail Sense's own code keeps its MIT license.
