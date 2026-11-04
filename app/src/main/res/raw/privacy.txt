@@ -83,7 +83,7 @@ you choose where to keep.
 <!-- shared-about privacy section -->
 ## Who we are
 
-Topo is made by wander wildwood, an independent developer: one person, not a company. wander wildwood is the data controller for anything the app itself handles, and that is very little. Topo keeps what you put in it on your phone, apart from what it sends to The National Map (USGS), OpenTopoMap, Terrain Tiles on AWS, OpenStreetMap's Overpass API, Private.coffee and Falling Fruit as described above, and sends nothing to the developer, so the developer holds no data about you.
+Topo is made by wander wildwood, an independent developer: one person, not a company. wander wildwood is the data controller for anything the app itself handles, and that is very little. What you put in Topo stays on your phone. The only things that go out are the requests described above: requests for the map tiles and elevation of the part of the map on the screen, to The National Map (USGS), OpenTopoMap and Terrain Tiles on AWS; while the Forage layer is on, a request for the fruit and nut trees in the rounded map area on the screen, to OpenStreetMap's Overpass API (or Private.coffee) and Falling Fruit, plus the number of a Falling Fruit spot you open; while the Streets layer is on, a request for the streets and paths in that rounded area, to the same Overpass servers; and region pack downloads from a server you set yourself, when you ask. None of them carries your GPS position, tracks or marks. The developer receives nothing, so holds no data about you.
 
 ## How to contact us
 
