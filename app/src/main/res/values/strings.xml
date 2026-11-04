@@ -107,7 +107,7 @@
     <string name="about_privacy">Your location, tracks and marks stay on this phone. The network is used only to fetch map tiles and elevation, while the map is open or when you save an area; fruit and nut trees for the area on screen, rounded to about 100 m, while the Forage layer is on (from overpass-api.de, or Private.coffee\'s public Overpass server only when that one is busy); and region packs from a server you set, when you ask.</string>
     <string name="about_after">After Trail Sense by Kyle Corry, whose sensors, paths, beacons and map drawing this carries, under the MIT License.</string>
     <string name="about_licence">Topo is free software under the GNU General Public License v3 only, copyright wander wildwood for the changes in this fork.</string>
-    <string name="about_bundled">Lato, SIL Open Font License 1.1. Maps: USGS The National Map (public domain); OpenTopoMap (CC-BY-SA), from OpenStreetMap contributors (ODbL) and SRTM; Terrain Tiles by Mapzen on the AWS Registry of Open Data, from USGS 3DEP, SRTM and GMTED2010, NOAA ETOPO1, Copernicus EU-DEM (funded by the European Union), ArcticDEM (DigitalGlobe imagery, NSF awards 1043681, 1559691 and 1542736), Geoscience Australia, Canada (Open Government Licence – Canada), INEGI, LINZ, Kartverket, the Environment Agency (UK) and data.gv.at; the US outline from Natural Earth. Forage: OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy); edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL). Region packs carry OpenStreetMap and the public records each region is built from: in the US, the USDA Forest Service, USGS PAD-US and 3DEP, the Census Bureau and county parcels; elsewhere, Protected Planet (WDPA) and Copernicus DEM.</string>
+    <string name="about_bundled">Lato, SIL Open Font License 1.1. Maps: USGS The National Map (public domain); OpenTopoMap (CC-BY-SA), from OpenStreetMap contributors (ODbL) and SRTM; Terrain Tiles by Mapzen on the AWS Registry of Open Data, from USGS 3DEP, SRTM and GMTED2010, NOAA ETOPO1, Copernicus EU-DEM (funded by the European Union), ArcticDEM (DigitalGlobe imagery, NSF awards 1043681, 1559691 and 1542736), Geoscience Australia, Canada (Open Government License – Canada), INEGI, LINZ, Kartverket, the Environment Agency (UK) and data.gv.at; the US outline from Natural Earth. Forage: OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy); edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s license (mostly ODbL). Region packs carry OpenStreetMap and the public records each region is built from: in the US, the USDA Forest Service, USGS PAD-US and 3DEP, the Census Bureau and county parcels; elsewhere, Protected Planet (WDPA) and Copernicus DEM.</string>
     <string name="about_privacy_title">Privacy</string>
     <string name="about_terms_title">Terms</string>
     <!-- The donation link label, beside a drawing of a llama. A verb and an object, so the reader knows what pressing it does -->
@@ -158,14 +158,14 @@
     <string name="map_layer_forage_description_osm">Fruit and nut trees and shrubs, from OpenStreetMap, fetched for what is on the screen while this layer is on. Mushrooms are never shown.</string>
     <string name="forage_attribution" translatable="false">OpenStreetMap contributors, Falling Fruit</string>
     <string name="forage_attribution_osm" translatable="false">OpenStreetMap contributors</string>
-    <string name="forage_attribution_long">Trees from OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy). Edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL).</string>
+    <string name="forage_attribution_long">Trees from OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy). Edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s license (mostly ODbL).</string>
     <string name="forage_attribution_long_osm">Trees from OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy).</string>
     <string name="forage_zoom_in">Zoom in to see fruit and nut trees</string>
     <string name="forage_check">Check before you pick: some spots are on private land or gone.</string>
-    <string name="forage_credit_falling_fruit">Edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s licence (mostly ODbL).</string>
+    <string name="forage_credit_falling_fruit">Edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s license (mostly ODbL).</string>
     <string name="forage_credit_osm">From OpenStreetMap (openstreetmap.org), © OpenStreetMap contributors, under the ODbL.</string>
     <string name="forage_source_osm">OpenStreetMap node %s</string>
-    <string name="forage_source_dataset">Source: %1$s. Licence: %2$s</string>
+    <string name="forage_source_dataset">Source: %1$s. License: %2$s</string>
     <string name="forage_source_dataset_no_licence">Source: %s</string>
     <string name="forage_source_falling_fruit_users">Added to Falling Fruit by its users.</string>
     <string name="forage_details_offline">More about this spot needs a connection.</string>
@@ -347,18 +347,18 @@
     <string name="about_close">Close</string>
     <string name="about_privacy_policy">Privacy policy</string>
     <!-- Licences: the list and each library's page (shared screen) -->
-    <string name="licences_title">Licences</string>
+    <string name="licences_title">Licenses</string>
     <string name="licences_back">Back</string>
     <string name="licences_source_head">Source code</string>
-    <string name="licences_no_text">%s needs no licence text here.</string>
-    <string name="licences_licence">Topo is free software: GPL-3.0-only, copyright wander wildwood for the changes in this fork; the code it is built on is Trail Sense by Kyle Corry (MIT). What it is built on keeps its own licences, each on its own page.</string>
+    <string name="licences_no_text">%s needs no license text here.</string>
+    <string name="licences_licence">Topo is free software: GPL-3.0-only, copyright wander wildwood for the changes in this fork; the code it is built on is Trail Sense by Kyle Corry (MIT). What it is built on keeps its own licenses, each on its own page.</string>
     <string name="licences_full_head">Full texts</string>
     <string name="licences_full_gpl">GNU General Public License v3 (full text)</string>
     <string name="licences_full_apache">Apache License 2.0 (full text)</string>
     <string name="licences_full_lgpl">GNU Lesser General Public License v3 (full text)</string>
     <string name="licences_full_mit">MIT License (full text)</string>
     <string name="licences_full_bsd">BSD 3-Clause License (full text)</string>
-    <string name="licences_full_ofl">SIL Open Font Licence 1.1 (full text)</string>
+    <string name="licences_full_ofl">SIL Open Font License 1.1 (full text)</string>
     <string name="about_no_browser_address">No browser is installed. The address is %1$s.</string>
     <string name="about_no_browser">There is no browser on this phone to open that with.</string>
     <string name="share_path">Share GPX</string>
