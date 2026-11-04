@@ -193,7 +193,7 @@ class RadarCompassView : BaseCompassView {
         compassPath = Path().apply {
             addCircle(width / 2f, height / 2f, compassSize / 2f, Path.Direction.CW)
         }
-        distanceSize = sp(10f)
+        distanceSize = sp(16f)
         cardinalSize = sp(20f)
         primaryColor = Resources.getCardinalDirectionColor(context)
         secondaryColor = Resources.color(context, R.color.colorSecondary)

@@ -89,7 +89,8 @@ class MapCalibrationView : BasePhotoMapView {
                 drawer.fill(Color.BLACK)
             }
             drawer.strokeWeight(drawer.dp(1f) / layerScale)
-            drawer.circle(coord.x, coord.y, drawer.dp(12f) / layerScale)
+            // The point's number is 16 sp (house floor), so the dot is wide enough to hold it.
+            drawer.circle(coord.x, coord.y, drawer.sp(24f) / layerScale)
 
             drawer.textMode(TextMode.Center)
             if (i == highlightedIndex) {
@@ -98,7 +99,7 @@ class MapCalibrationView : BasePhotoMapView {
                 drawer.fill(Color.WHITE)
             }
             drawer.noStroke()
-            drawer.textSize(drawer.dp(10f) / layerScale)
+            drawer.textSize(drawer.sp(16f) / layerScale)
             drawer.text((i + 1).toString(), coord.x, coord.y)
         }
     }

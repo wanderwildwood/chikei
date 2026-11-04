@@ -309,6 +309,7 @@ class GeoJsonLineStringRenderer : FeatureRenderer() {
             if (path.points.size < 2) return
 
             // TODO: Adjust text size / wrapping based on name length
+            // Map label, drawn on the map: exempt from the 16 sp floor (like the Calendar month grid).
             drawer.textSize(drawer.sp(14f * map.layerScale))
             val strokeWeight = drawer.dp(2.5f * map.layerScale)
             val maxLabels = 5

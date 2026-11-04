@@ -38,7 +38,7 @@ class ColorScaleView(context: Context, attrs: AttributeSet? = null) : CanvasView
         clear()
         val colorScale = colorScale ?: return
 
-        textSize(sp(12f))
+        textSize(sp(16f))
         val labelPadding = dp(2.5f)
         val labelHeight = (labels.maxOfOrNull { textHeight(it.value) } ?: 0f) + labelPadding * 2
 

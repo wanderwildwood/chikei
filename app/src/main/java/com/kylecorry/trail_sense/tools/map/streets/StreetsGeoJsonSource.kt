@@ -93,6 +93,7 @@ class StreetsGeoJsonSource : GeoJsonSource {
         val density = context.resources.displayMetrics.density * 2
         val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.BLACK
+            // Map label, drawn on the map: exempt from the 16 sp floor (like the Calendar month grid).
             textSize = 14f * density
             typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
             textAlign = Paint.Align.CENTER

@@ -14,6 +14,7 @@ class TextMapMarker(
     @ColorInt private val color: Int,
     @ColorInt private val strokeColor: Int? = null,
     private val opacity: Int = 255,
+    // Map label, drawn on the map: exempt from the 16 sp floor (like the Calendar month grid).
     override val size: Float = 12f,
     private val strokeWeight: Float = 0.5f,
     override val rotation: Float? = null,

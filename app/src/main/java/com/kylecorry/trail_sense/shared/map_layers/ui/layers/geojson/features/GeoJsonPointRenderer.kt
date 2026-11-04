@@ -210,6 +210,7 @@ class GeoJsonPointRenderer : FeatureRenderer() {
                             point.coordinate,
                             name.trim(),
                             color,
+                            // Map label, drawn on the map: exempt from the 16 sp floor (like the Calendar month grid).
                             size = size * 0.75f,
                             rotation = rotation
                         ) {
