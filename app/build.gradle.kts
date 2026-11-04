@@ -283,5 +283,7 @@ dependencies {
     testImplementation(libs.junit.jupiter.params)
     testRuntimeOnly(libs.junit.jupiter.engine)
     testRuntimeOnly(libs.junit.platform.launcher)
+    // The house tests are JUnit 4; without this engine the JUnit Platform skips them quietly.
+    testRuntimeOnly(libs.junit.vintage)
     testImplementation(libs.mockito.kotlin)
 }

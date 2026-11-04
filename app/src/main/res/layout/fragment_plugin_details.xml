@@ -40,14 +40,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/plugin_unavailable"
-                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textAppearance="@style/TextAppearance.Topo.BodyMedium"
                 android:visibility="gone" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/map_layers"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+                android:textAppearance="@style/TextAppearance.Topo.LabelLarge" />
 
             <com.kylecorry.andromeda.views.list.AndromedaListView
                 android:id="@+id/map_layers"

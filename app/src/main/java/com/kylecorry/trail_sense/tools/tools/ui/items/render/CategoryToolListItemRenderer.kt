@@ -26,7 +26,7 @@ class CategoryToolListItemRenderer : ToolListItemRenderer {
         // Text
         binding.title.setTextColor(Resources.getPrimaryColor(context))
         binding.title.paint.isFakeBoldText = true
-        binding.title.textSize = 14f
+        binding.title.textSize = 16f
         binding.title.text = item.title?.capitalizeWords()
         binding.title.isVisible = item.title != null
 

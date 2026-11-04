@@ -15,7 +15,7 @@ import androidx.compose.ui.platform.LocalCursorBlinkEnabled
  */
 @Composable
 fun HouseTheme(content: @Composable () -> Unit) {
-    ThemeMMD(colorScheme = monochrome) {
+    ThemeMMD(colorScheme = monochrome, typography = houseTypography) {
         CompositionLocalProvider(LocalCursorBlinkEnabled provides false) { content() }
     }
 }

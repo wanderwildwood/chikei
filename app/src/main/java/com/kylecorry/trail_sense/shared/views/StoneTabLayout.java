@@ -119,7 +119,7 @@ public final class StoneTabLayout {
         int gaps = Math.max(0, n - 1) * 6 + 24;
         if (rowWidth(tabs, 20) + px(c, n * 28 + gaps) <= width) size(tabs, 20, 14);
         else if (rowWidth(tabs, 16) + px(c, n * 16 + gaps) <= width) size(tabs, 16, 8);
-        else size(tabs, 14, 4);
+        else size(tabs, 16, 4);
     }
 
     private static float rowWidth(TabLayout tabs, int sp) {

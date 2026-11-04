@@ -111,7 +111,7 @@ class LinearCompassView : BaseCompassView {
         super.setup()
         textAlign(TextAlign.Center)
         iconSize = dp(25f).toInt()
-        textSize = sp(15f)
+        textSize = sp(16f)
         textSize(textSize)
     }
 

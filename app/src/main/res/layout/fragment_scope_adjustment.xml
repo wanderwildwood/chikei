@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/windage_miss"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+                android:textAppearance="@style/TextAppearance.Topo.LabelLarge" />
 
             <com.kylecorry.trail_sense.shared.views.DistanceInputView
                 android:id="@+id/miss_distance_x"
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/elevation_miss"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+                android:textAppearance="@style/TextAppearance.Topo.LabelLarge" />
 
             <com.kylecorry.trail_sense.shared.views.DistanceInputView
                 android:id="@+id/miss_distance_y"
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/scope_adjustment"
-                android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+                android:textAppearance="@style/TextAppearance.Topo.LabelLarge" />
 
             <TextView
                 android:id="@+id/adjustment_amount"

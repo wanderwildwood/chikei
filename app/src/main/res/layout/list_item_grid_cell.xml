@@ -12,7 +12,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        android:textAppearance="@style/TextAppearance.Topo.BodyMedium"
         tools:text="Name" />
 
 </FrameLayout>

@@ -42,7 +42,7 @@
                 android:layout_marginTop="4dp"
                 android:drawablePadding="8dp"
                 android:paddingBottom="0dp"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:drawableTint="?android:attr/textColorSecondary" />
 

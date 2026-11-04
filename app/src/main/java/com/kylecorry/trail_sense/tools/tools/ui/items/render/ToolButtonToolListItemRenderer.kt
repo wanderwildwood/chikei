@@ -45,7 +45,7 @@ class ToolButtonToolListItemRenderer : ToolListItemRenderer {
         // Text
         binding.title.setTextColor(contentColor)
         binding.title.paint.isFakeBoldText = false
-        binding.title.textSize = 14f
+        binding.title.textSize = 16f
         binding.title.text = item.title?.capitalizeWords()
         binding.title.isVisible = item.title != null
 

@@ -160,7 +160,7 @@ class FieldGuidePageFragment : TrailSenseReactiveFragment(R.layout.fragment_fiel
             val foregroundColor = Colors.mostContrastingColor(Color.WHITE, Color.BLACK, badgeColor)
             val tagView = Badge(requireContext(), null).apply {
                 statusImage.isVisible = false
-                statusText.textSize = 14f
+                statusText.textSize = 16f
                 setStatusText(mapper.getName(tag))
                 statusText.setTextColor(foregroundColor)
                 setBackgroundTint(badgeColor)
