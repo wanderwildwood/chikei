@@ -3,8 +3,6 @@ package com.kylecorry.trail_sense.tools.map.ui
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +17,7 @@ import com.kylecorry.luna.concurrency.onMain
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.databinding.FragmentSavedAreasBinding
 import com.kylecorry.trail_sense.shared.FormatService
+import com.kylecorry.trail_sense.shared.house.ArmedWatch
 import com.kylecorry.trail_sense.tools.map.sources.SavedArea
 import com.kylecorry.trail_sense.tools.map.sources.SavedAreas
 import java.time.Instant
@@ -28,13 +27,23 @@ import java.time.format.FormatStyle
 
 /**
  * The areas saved for use with no signal, in plain words: what each holds, its size, and when it
- * was saved. A row deletes on a second tap within six seconds.
+ * was saved. A row deletes on a second tap; it stays armed until the next other touch, Back or
+ * leaving the screen.
  */
 class SavedAreasFragment : BoundFragment<FragmentSavedAreasBinding>() {
 
     private val formatter by lazy { FormatService.getInstance(requireContext()) }
-    private val handler = Handler(Looper.getMainLooper())
     private var armed: String? = null
+    private val watch by lazy { ArmedWatch.of(requireActivity()) }
+    // One stable lambda per row, as ArmedWatch tells rows apart by identity.
+    private val disarmRows = mutableMapOf<String, () -> Unit>()
+
+    private fun disarmRow(id: String): () -> Unit = disarmRows.getOrPut(id) {
+        {
+            if (armed == id) armed = null
+            if (isBound) draw()
+        }
+    }
     private var areas: List<SavedArea> = emptyList()
 
     override fun generateBinding(layoutInflater: LayoutInflater, container: ViewGroup?): FragmentSavedAreasBinding {
@@ -48,7 +57,7 @@ class SavedAreasFragment : BoundFragment<FragmentSavedAreasBinding>() {
 
     override fun onPause() {
         super.onPause()
-        handler.removeCallbacksAndMessages(null)
+        if (armed != null) watch.disarm()
         armed = null
     }
 
@@ -108,17 +117,14 @@ class SavedAreasFragment : BoundFragment<FragmentSavedAreasBinding>() {
     }
 
     private fun tapped(area: SavedArea) {
-        handler.removeCallbacksAndMessages(null)
-        if (armed != area.id) {
+        val disarm = disarmRow(area.id)
+        if (armed != area.id || !watch.isArmed(disarm)) {
             armed = area.id
+            watch.arm(disarm)
             draw()
-            // An armed row disarms itself, so a stray tap never leaves a live delete behind.
-            handler.postDelayed({
-                armed = null
-                if (isBound) draw()
-            }, 6_000)
             return
         }
+        watch.done(disarm)
         armed = null
         inBackground {
             SavedAreas.delete(requireContext(), area)
