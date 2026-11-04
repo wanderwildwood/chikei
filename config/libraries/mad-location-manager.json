@@ -1,0 +1,14 @@
+{
+  "uniqueId": "mad-location-manager",
+  "name": "MAD Location Manager",
+  "description": "Carried in the source (location smoothing). Copyright (c) 2020 Mad Devs.",
+  "developers": [
+    {
+      "name": "Mad Devs"
+    }
+  ],
+  "website": "https://github.com/maddevsio/mad-location-manager",
+  "licenses": [
+    "mad-location-manager-mit"
+  ]
+}

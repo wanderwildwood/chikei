@@ -1,0 +1,14 @@
+{
+  "uniqueId": "era5",
+  "name": "ERA5",
+  "description": "Climate data.",
+  "developers": [
+    {
+      "name": "Copernicus Climate Change Service"
+    }
+  ],
+  "website": "https://cds.climate.copernicus.eu",
+  "licenses": [
+    "era5-citation"
+  ]
+}

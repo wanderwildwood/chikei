@@ -1,0 +1,14 @@
+{
+  "uniqueId": "compassview",
+  "name": "CompassView",
+  "description": "Carried in the source. Modifications made by Kyle Corry: ported to Kotlin, changed styling.",
+  "developers": [
+    {
+      "name": "kix2902"
+    }
+  ],
+  "website": "https://github.com/kix2902/CompassView",
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

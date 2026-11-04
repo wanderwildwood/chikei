@@ -1,0 +1,14 @@
+{
+  "uniqueId": "merra-2",
+  "name": "MERRA-2",
+  "description": "Climate data.",
+  "developers": [
+    {
+      "name": "NASA GMAO"
+    }
+  ],
+  "website": "https://disc.gsfc.nasa.gov/datasets/M2SMNXSLV_5.12.4/summary?keywords=statM_2d_slv_Nx",
+  "licenses": [
+    "merra-2-citation"
+  ]
+}

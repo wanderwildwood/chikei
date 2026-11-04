@@ -1,0 +1,14 @@
+{
+  "uniqueId": "material-design-icons",
+  "name": "Material Design Icons",
+  "description": "Icons copied into the app as vector drawables. Copyright Google.",
+  "developers": [
+    {
+      "name": "Google"
+    }
+  ],
+  "website": "https://github.com/google/material-design-icons/",
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

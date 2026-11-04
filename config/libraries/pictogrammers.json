@@ -1,0 +1,14 @@
+{
+  "uniqueId": "pictogrammers",
+  "name": "Pictogrammers",
+  "description": "Icons. Pictogrammers Free License, last updated February 1st, 2023: released as free, open-source and GPL friendly. Icons and fonts are Apache 2.0; the code is MIT; some icons are redistributed under their own licenses.",
+  "developers": [
+    {
+      "name": "Pictogrammers"
+    }
+  ],
+  "website": "https://pictogrammers.com/",
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

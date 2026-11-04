@@ -1,0 +1,15 @@
+{
+  "uniqueId": "color-maps",
+  "name": "Color maps",
+  "description": "Muted: Tom Patterson, public domain. Viridis, Magma, Plasma, Inferno: Nathaniel J. Smith, Stefan van der Walt and Eric Firing, CC0 1.0 Universal.",
+  "developers": [
+    {
+      "name": "Various authors"
+    }
+  ],
+  "website": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "licenses": [
+    "public-domain",
+    "CC0-1.0"
+  ]
+}

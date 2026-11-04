@@ -1,0 +1,14 @@
+{
+  "uniqueId": "opencellid",
+  "name": "OpenCelliD",
+  "description": "Cell tower locations. OpenCelliD Project is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.",
+  "developers": [
+    {
+      "name": "OpenCelliD Project"
+    }
+  ],
+  "website": "https://opencellid.org/",
+  "licenses": [
+    "CC-BY-SA-4.0"
+  ]
+}

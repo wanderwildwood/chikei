@@ -1,0 +1,14 @@
+{
+  "uniqueId": "map-data",
+  "name": "Map data",
+  "description": "USGS The National Map (public domain); OpenTopoMap (CC BY-SA), from OpenStreetMap contributors (ODbL) and SRTM; Terrain Tiles by Mapzen; Forage and Streets: OpenStreetMap contributors (ODbL), through the Overpass API; Falling Fruit and its sources.",
+  "developers": [
+    {
+      "name": "USGS, OpenTopoMap, OpenStreetMap contributors, Mapzen and others"
+    }
+  ],
+  "website": "https://www.openstreetmap.org/copyright",
+  "licenses": [
+    "map-data-attribution"
+  ]
+}

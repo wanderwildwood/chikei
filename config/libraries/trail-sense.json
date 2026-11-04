@@ -1,0 +1,14 @@
+{
+  "uniqueId": "trail-sense",
+  "name": "Trail Sense",
+  "description": "Topo is a fork of Trail Sense. Copyright (c) 2020 Kyle Corry. The following people contributed code or translations to Trail Sense under the MIT License: kylecorry31, qwerty287, Fjuro, muryno, oersen, LosstarottArt, ChuckMichael, Mickael81, weblate, laralem, github-actions[bot], inavleb, tosinonikute, bowornsin, fitojb, comradekingu, zsbetu, shilonit, AlessandroFrangiamone, beriain, Jakarrrg, SecularSteve, ebraminio, hao123111230, SantosSi, CloneWith, jer194, raphaelventura, ACABMAN666, Kamilkampfwagen-II, Maqbool61, CesPaul, love80312, another-sapiens, delthia, cleveHEX, BorATICI, khwolf, ysccsyysc, naoliv, trymbf, Xoronic, gustavi, Craftefix, mfrancesconi, StarSkyGeminid, eagledofc, TamilNeram, mrestivill, crlambda, carter-oswald-dev, Leopardus4, comcloudway, fnogcps, Coool, s3n-w6i, Mohammadshir2004, Skivad-ananas, tacostea, Jan1qre, Portagoras, AsmodeumX, arifpedia, volodymyr-ahafonov, paulle, olczcolor, notramo, NaserKhoshfetrat, Tyxiel, Sak94664, le-jun, jrgn9, LiJu09, ingfabby, hphan9, AshishDhyani131, KovalevArtem, Poussinou, rezaalmanda, Ricky-Tigg, Seruanoo, imBigo, SebV60, yurtpage, naoritzio, bgo-eiu, huuhaa, kaile1234, lucasmz-dev, mellvie, jere-a, qinmin1212, AHOHNMYC, asafran, arpitagarwal1301, helloiamcait, sguinetti, tetrdd, FrameXX, ygorigor, LuccoJ, L-P, MateusRodCosta, NicolaSmaniotto, Oymate, WuerfelDev, VasilisKos, Tijs-B, swltr, A5468, Shadowstrike-code, rherilier, VectorKappa, Pastitas, the7thNightmare, mgorny, Kapral67, TomasCartman, ARtHryDr, yamin8000, darrencoen, dependabot[bot], efraletti, f4n0, hrachmnam, nautilusx, doomed-neko, kasmide, tct123, xax, jacoii, zaioti, btsmartx, Abdulkarim28, Ajay-S-Biradar, Akamar, dasrecht, realgooseman, CgtyC, CanUCMeSharp, E440QF, EnderPicture, Estebastien, fparri, Johnny846, OurKode, W113565456, gerrydoro, gustavosilveiragss, Hitesh-XS, IgotDlore, iRomanyshyn, teketemdn, croozer4, Xim-yo, LightFOSS, grntcr, Luiz-bro, BatuAtlas, xmbhasin",
+  "developers": [
+    {
+      "name": "Kyle Corry and contributors"
+    }
+  ],
+  "website": "https://github.com/kylecorry31/Trail-Sense",
+  "licenses": [
+    "trail-sense-mit"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "uniqueId": "fcc-antenna-registrations",
+  "name": "FCC Antenna Registrations",
+  "description": "Cell tower locations, public domain.",
+  "developers": [
+    {
+      "name": "Federal Communications Commission"
+    }
+  ],
+  "website": "https://www.fcc.gov/uls/transactions/daily-weekly",
+  "licenses": [
+    "public-domain"
+  ]
+}

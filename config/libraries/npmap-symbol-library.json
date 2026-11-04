@@ -1,0 +1,14 @@
+{
+  "uniqueId": "npmap-symbol-library",
+  "name": "NPMap Symbol Library",
+  "description": "Map symbols. Copyright 2013 Mapbox, LLC.",
+  "developers": [
+    {
+      "name": "National Park Service"
+    }
+  ],
+  "website": "https://github.com/nationalparkservice/symbol-library",
+  "licenses": [
+    "npmap-symbol-library-bsd"
+  ]
+}

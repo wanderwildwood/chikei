@@ -1,0 +1,14 @@
+{
+  "uniqueId": "nasa-world-wind",
+  "name": "NASA World Wind (ported by Berico Technologies)",
+  "description": "Coordinate conversion carried in the source. Copyright (C) 2001 United States Government as represented by the Administrator of the National Aeronautics and Space Administration. All Rights Reserved.",
+  "developers": [
+    {
+      "name": "NASA"
+    }
+  ],
+  "website": "https://github.com/Berico-Technologies/Geo-Coordinate-Conversion-Java",
+  "licenses": [
+    "nasa-osa-1.3"
+  ]
+}

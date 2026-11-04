@@ -1,0 +1,6 @@
+{
+  "hash": "map-data-attribution",
+  "name": "Attribution (Public domain, CC BY-SA 4.0 and ODbL)",
+  "url": "https://www.openstreetmap.org/copyright",
+  "content": "USGS The National Map: public domain.\n\nOpenTopoMap: map style CC BY-SA, from OpenStreetMap contributors (ODbL) and SRTM.\n\nTerrain Tiles by Mapzen, from USGS 3DEP, SRTM, GMTED2010, NOAA ETOPO1, Copernicus EU-DEM and others.\n\nForage and Streets: © OpenStreetMap contributors, available under the Open Database License (ODbL), https://www.openstreetmap.org/copyright, through the Overpass API.\n\nEdible plant locations from Falling Fruit and its sources, under each dataset's license (mostly ODbL)."
+}

@@ -1,0 +1,14 @@
+{
+  "uniqueId": "osgb",
+  "name": "osgb",
+  "description": "Carried in the source. Modifications made by Kyle Corry: fixed a WGS84 conversion bug.",
+  "developers": [
+    {
+      "name": "Dstl"
+    }
+  ],
+  "website": "https://github.com/dstl/osgb",
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "uniqueId": "etopo-2022",
+  "name": "ETOPO 2022",
+  "description": "Global relief model.",
+  "developers": [
+    {
+      "name": "NOAA NCEI"
+    }
+  ],
+  "website": "https://doi.org/10.25921/fd45-gt74",
+  "licenses": [
+    "etopo-2022-citation"
+  ]
+}

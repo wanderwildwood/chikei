@@ -1,0 +1,14 @@
+{
+  "uniqueId": "survival-guide",
+  "name": "Survival guide",
+  "description": "The survival guide is licensed under CC BY-SA 4.0 and was written by Kyle Corry. You may share and adapt it, with credit to the author, a link to the license and a note of what you changed; an adaptation must be shared under the same license.",
+  "developers": [
+    {
+      "name": "Kyle Corry"
+    }
+  ],
+  "website": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "licenses": [
+    "CC-BY-SA-4.0"
+  ]
+}

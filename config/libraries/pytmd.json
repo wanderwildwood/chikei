@@ -1,0 +1,14 @@
+{
+  "uniqueId": "pytmd",
+  "name": "pyTMD",
+  "description": "Tide calculations ported from it. Copyright (c) 2017 Tyler C Sutterley.",
+  "developers": [
+    {
+      "name": "Tyler C Sutterley"
+    }
+  ],
+  "website": "https://github.com/tsutterley/pyTMD",
+  "licenses": [
+    "pytmd-mit"
+  ]
+}

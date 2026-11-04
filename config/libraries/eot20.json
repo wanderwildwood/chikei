@@ -1,0 +1,14 @@
+{
+  "uniqueId": "eot20",
+  "name": "EOT20",
+  "description": "Ocean tide model.",
+  "developers": [
+    {
+      "name": "Hart-Davis, Piccioni, Dettmering, Schwatke, Passaro and Seitz"
+    }
+  ],
+  "website": "https://doi.org/10.17882/79489",
+  "licenses": [
+    "eot20-citation"
+  ]
+}

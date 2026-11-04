@@ -1,0 +1,14 @@
+{
+  "uniqueId": "simbad",
+  "name": "SIMBAD",
+  "description": "Star data.",
+  "developers": [
+    {
+      "name": "CDS, Strasbourg"
+    }
+  ],
+  "website": "https://doi.org/10.1051/aas:2000332",
+  "licenses": [
+    "simbad-citation"
+  ]
+}

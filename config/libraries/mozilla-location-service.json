@@ -1,0 +1,14 @@
+{
+  "uniqueId": "mozilla-location-service",
+  "name": "Mozilla Location Service",
+  "description": "Cell tower locations. Mozilla Corporation, public domain. Final data export, no longer maintained.",
+  "developers": [
+    {
+      "name": "Mozilla Corporation"
+    }
+  ],
+  "website": "https://archive.org/details/MLS_Full_Cell_Export_Final",
+  "licenses": [
+    "public-domain"
+  ]
+}
