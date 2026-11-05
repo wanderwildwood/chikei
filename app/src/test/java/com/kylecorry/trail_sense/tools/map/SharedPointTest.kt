@@ -11,8 +11,8 @@ class SharedPointTest {
     @Test
     fun plainPoint() {
         assertEquals(
-            SharedPoint(Coordinate(35.59512, -82.55123), null),
-            SharedPoint.parse("geo:35.59512,-82.55123")
+            SharedPoint(Coordinate(12.34567, -45.67891), null),
+            SharedPoint.parse("geo:12.34567,-45.67891")
         )
     }
 
