@@ -104,6 +104,7 @@
     <string name="share_action_send">Send</string>
     <string name="about">About</string>
     <string name="about_title">Topo %1$s</string>
+    <string name="about_what">Topographic maps for walking off the road: contours, trails and forest roads, drawn in black and white like a paper map. Once an area is downloaded, they are there with no signal.</string>
     <string name="about_privacy">Your location, tracks and marks stay on this phone. The network is used only to fetch map tiles and elevation, while the map is open or when you save an area; fruit and nut trees for the area on screen, rounded to about 100 m, while the Forage layer is on (from overpass-api.de, or Private.coffee\'s public Overpass server only when that one is busy, and from Falling Fruit, with the number of a Falling Fruit spot you open); streets and paths for that rounded area, from the same Overpass servers, while the Streets layer is on; and region packs from a server you set, when you ask.</string>
     <string name="about_after">After Trail Sense by Kyle Corry, whose sensors, paths, beacons and map drawing this carries, under the MIT License.</string>
     <string name="about_licence">Topo is free software under the GNU General Public License v3 only, copyright wander wildwood for the changes in this fork.</string>
@@ -351,7 +352,7 @@
     <string name="licences_back">Back</string>
     <string name="licences_source_head">Source code</string>
     <string name="licences_no_text">%s needs no license text here.</string>
-    <string name="licences_licence">Topo is free software: GPL-3.0-only, copyright wander wildwood for the changes in this fork; the code it is built on is Trail Sense by Kyle Corry (MIT). What it is built on keeps its own licenses, each on its own page.</string>
+    <string name="licences_licence">Topo is free software: GPL-3.0-only, copyright wander wildwood for the changes in this fork; the code it is built on is Trail Sense by Kyle Corry (MIT). What it is built on keeps its own licenses, listed below.</string>
     <string name="licences_full_head">Full texts</string>
     <string name="licences_full_gpl">GNU General Public License v3 (full text)</string>
     <string name="licences_full_apache">Apache License 2.0 (full text)</string>
@@ -2368,6 +2369,10 @@
     <!-- shared-about: contact row + privacy section (edit in /opt/projects/shared-about) -->
     <string name="about_write_to">Write to %1$s</string>
     <string name="about_no_mail_app">No email app is installed. The address is %1$s.</string>
+    <string name="about_open_drawer">Open %1$s</string>
+    <string name="about_close_drawer">Close %1$s</string>
+    <string name="about_contact_head">Contact</string>
+    <string name="about_links_head">Links</string>
     <string name="privacy_who_title">Who we are</string>
     <string name="privacy_who">This app is made by wander wildwood, an independent developer: one person, not a company. That makes wander wildwood the data controller for anything the app itself handles, and that is very little. What you put in stays on this phone unless you send it somewhere yourself. The only things that go out are the app\'s own requests: requests for the map tiles and elevation of the part of the map on the screen, to The National Map (USGS), OpenTopoMap and Terrain Tiles on AWS; while the Forage layer is on, a request for the fruit and nut trees in that part of the map (its corners rounded to about 100 m) to OpenStreetMap\'s Overpass API, or Private.coffee when it is busy, and to Falling Fruit, plus the number of a Falling Fruit spot you open; while the Streets layer is on, a request for the streets and paths there, to the same Overpass servers; and the region packs you download yourself from a server you set. None of them carries your position, tracks or marks, and the developer receives nothing.</string>
     <string name="privacy_contact_title">How to contact us</string>
