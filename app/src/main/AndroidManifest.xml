@@ -133,7 +133,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
-            <intent-filter android:label="@string/create_beacon">
+            <!-- A point from another app opens on the map; addresses still go to Beacons. -->
+            <intent-filter android:label="@string/show_in_topo">
                 <action android:name="android.intent.action.VIEW" />
                 <data android:scheme="geo" />
                 <category android:name="android.intent.category.DEFAULT" />

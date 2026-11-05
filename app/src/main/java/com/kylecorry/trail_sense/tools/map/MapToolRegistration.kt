@@ -1,6 +1,9 @@
 package com.kylecorry.trail_sense.tools.map
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import com.kylecorry.andromeda.core.system.GeoUri
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.shared.dem.colors.ElevationColorStrategy
 import com.kylecorry.trail_sense.shared.dem.colors.SlopeColorStrategy
@@ -10,6 +13,7 @@ import com.kylecorry.trail_sense.shared.dem.map_layers.ElevationMapTileSource
 import com.kylecorry.trail_sense.shared.dem.map_layers.HillshadeMapTileSource
 import com.kylecorry.trail_sense.shared.dem.map_layers.RuggednessMapTileSource
 import com.kylecorry.trail_sense.shared.dem.map_layers.SlopeMapTileSource
+import com.kylecorry.trail_sense.shared.extensions.findNavController
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.DefaultMapLayerDefinitions
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerAttribution
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerDefinition
@@ -18,6 +22,7 @@ import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerPref
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerType
 import com.kylecorry.trail_sense.tools.map.forage.Forage
 import com.kylecorry.trail_sense.tools.map.forage.ForageGeoJsonSource
+import com.kylecorry.trail_sense.tools.map.infrastructure.SharedPoint
 import com.kylecorry.trail_sense.tools.map.streets.Streets
 import com.kylecorry.trail_sense.tools.map.streets.StreetsGeoJsonSource
 import com.kylecorry.trail_sense.tools.paths.PathsToolRegistration
@@ -34,6 +39,7 @@ import com.kylecorry.trail_sense.tools.navigation.map_layers.CompassOverlayLayer
 import com.kylecorry.trail_sense.tools.tools.infrastructure.Tool
 import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolBroadcast
 import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolCategory
+import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolIntentHandler
 import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolRegistration
 import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolSummarySize
 import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolWidget
@@ -41,6 +47,27 @@ import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
 import com.kylecorry.trail_sense.tools.tools.infrastructure.diagnostics.ToolDiagnosticFactory
 
 object MapToolRegistration : ToolRegistration {
+
+    // A point sent from another app opens the map on it; Save as beacon is in its actions
+    private val geoIntentHandler =
+        ToolIntentHandler { activity, intent ->
+            if (intent.action != Intent.ACTION_VIEW) return@ToolIntentHandler false
+            val intentData = intent.data ?: return@ToolIntentHandler false
+            if (intent.scheme != "geo") return@ToolIntentHandler false
+            val point = SharedPoint.parse(intentData.toString()) ?: return@ToolIntentHandler false
+
+            val bundle = Bundle().apply {
+                putParcelable(
+                    "initial_location",
+                    GeoUri(point.coordinate, null, point.label?.let { mapOf("label" to it) } ?: emptyMap())
+                )
+            }
+            activity.findNavController()?.navigate(
+                R.id.mapFragment,
+                bundle
+            )
+            true
+        }
 
     override fun getTool(context: Context): Tool {
         return Tool(
@@ -55,6 +82,7 @@ object MapToolRegistration : ToolRegistration {
                 ToolDiagnosticFactory.gps(context),
                 *ToolDiagnosticFactory.compass(context)
             ).distinctBy { it.id },
+            intentHandlers = listOf(geoIntentHandler),
             broadcasts = listOf(
                 ToolBroadcast(
                     BROADCAST_GEOJSON_FEATURE_SELECTION_CHANGED,

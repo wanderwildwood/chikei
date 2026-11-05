@@ -31,6 +31,7 @@ import com.kylecorry.trail_sense.shared.sensors.gps.ISatelliteGPS
 import com.kylecorry.trail_sense.shared.views.LocationDataPointView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.os.BundleCompat
 import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
 import com.kylecorry.andromeda.core.coroutines.BackgroundMinimumState
@@ -363,109 +364,142 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
             }
         }
 
-        useEffect(mapView, manager, navController, startDistanceMeasurement, prefs) {
+        // A point's actions: from a long press, or a point another app sent (with its label)
+        val showPointActions = useCallback(
+            manager,
+            navController,
+            startDistanceMeasurement,
+            prefs
+        ) { location: Coordinate, label: String? ->
+            manager.setSelectedLocation(location)
+            inBackground {
+                val selectedElevation = DEM.getElevation(location).elevation
+                val formattedLocation = formatter.formatLocation(location)
+                val landWords = LandWords(requireContext()).describe(PointInfo.land(requireContext(), location))
+                val ground = PointInfo.ground(location)
+
+                onMain {
+                    val pointView = layoutInflater.inflate(R.layout.view_point_info, null) as LinearLayout
+                    pointView.findViewById<TextView>(R.id.point_land).apply {
+                        text = landWords.title
+                        isVisible = text != null
+                    }
+                    pointView.findViewById<TextView>(R.id.point_land_detail).apply {
+                        text = landWords.lines.joinToString("\n").ifBlank { null }
+                        isVisible = text != null
+                    }
+                    pointView.findViewById<TextView>(R.id.point_ground).apply {
+                        text = ground?.let {
+                            val aspect = it.aspect
+                            if (aspect == null) {
+                                getString(R.string.ground_flat)
+                            } else {
+                                getString(
+                                    R.string.ground_slope,
+                                    formatter.formatDegrees(it.slope),
+                                    formatter.formatDirection(aspect.direction)
+                                )
+                            }
+                        }
+                        isVisible = text != null
+                    }
+                    // The title is in the chosen format; the second line gives the other
+                    // one a map is read by, so a spot can be read out either way
+                    pointView.findViewById<TextView>(R.id.point_coordinate).apply {
+                        val other = if (prefs.navigation.coordinateFormat == BuiltInCoordinateFormat.UTM) {
+                            BuiltInCoordinateFormat.DecimalDegrees
+                        } else {
+                            BuiltInCoordinateFormat.UTM
+                        }
+                        text = formatter.formatLocation(location, other, fallbackToDD = false)
+                            .takeIf { it != "?" }
+                        isVisible = text != null
+                    }
+
+                    // Build the data point row using the shared LocationDataPointView
+                    val currentNavigation = navigationRef.current
+                    val infoView = LocationDataPointView(requireContext(), null)
+                    pointView.addView(infoView)
+                    infoView.setDistance(
+                        Distance.meters(currentNavigation.location.distanceTo(location))
+                            .convertTo(prefs.baseDistanceUnits)
+                    )
+                    infoView.setDirection(currentNavigation.location.bearingTo(location))
+                    infoView.setElevationDiff(
+                        Distance.meters(
+                            selectedElevation - currentNavigation.elevation.meters().value
+                        )
+                    )
+
+                    Share.actions(
+                        this@MapFragment,
+                        label ?: formattedLocation,
+                        listOf(
+                            ActionItem(getString(R.string.beacon), R.drawable.ic_location) {
+                                val uri = if (label == null) {
+                                    GeoUri(location)
+                                } else {
+                                    GeoUri(location, null, mapOf("label" to label))
+                                }
+                                val bundle = Bundle().apply {
+                                    putParcelable("initial_location", uri)
+                                }
+                                navController.navigateWithAnimation(
+                                    R.id.placeBeaconFragment,
+                                    bundle
+                                )
+                                manager.setSelectedLocation(null)
+                            },
+                            ActionItem(getString(R.string.navigate), R.drawable.ic_beacon) {
+                                navigator.navigateTo(
+                                    location,
+                                    label ?: formattedLocation,
+                                    BeaconOwner.Maps
+                                )
+                                manager.setSelectedLocation(null)
+                            },
+                            ActionItem(getString(R.string.distance), R.drawable.ruler) {
+                                startDistanceMeasurement(location, true)
+                                manager.setSelectedLocation(null)
+                            },
+                        ),
+                        subtitle = listOfNotNull(
+                            if (label != null) formattedLocation else null,
+                            getString(
+                                R.string.elevation_value,
+                                formatter.formatElevation(Distance.meters(selectedElevation))
+                            )
+                        ).joinToString("\n"),
+                        customView = pointView
+                    ) {
+                        manager.setSelectedLocation(null)
+                    }
+                }
+            }
+        }
+
+        useEffect(mapView, manager, showPointActions) {
             mapView.setOnLongPressListener { location ->
                 if (manager.isMeasuringDistance()) {
                     return@setOnLongPressListener
                 }
-                manager.setSelectedLocation(location)
-                inBackground {
-                    val selectedElevation = DEM.getElevation(location).elevation
-                    val formattedLocation = formatter.formatLocation(location)
-                    val landWords = LandWords(requireContext()).describe(PointInfo.land(requireContext(), location))
-                    val ground = PointInfo.ground(location)
-
-                    onMain {
-                        val pointView = layoutInflater.inflate(R.layout.view_point_info, null) as LinearLayout
-                        pointView.findViewById<TextView>(R.id.point_land).apply {
-                            text = landWords.title
-                            isVisible = text != null
-                        }
-                        pointView.findViewById<TextView>(R.id.point_land_detail).apply {
-                            text = landWords.lines.joinToString("\n").ifBlank { null }
-                            isVisible = text != null
-                        }
-                        pointView.findViewById<TextView>(R.id.point_ground).apply {
-                            text = ground?.let {
-                                val aspect = it.aspect
-                                if (aspect == null) {
-                                    getString(R.string.ground_flat)
-                                } else {
-                                    getString(
-                                        R.string.ground_slope,
-                                        formatter.formatDegrees(it.slope),
-                                        formatter.formatDirection(aspect.direction)
-                                    )
-                                }
-                            }
-                            isVisible = text != null
-                        }
-                        // The title is in the chosen format; the second line gives the other
-                        // one a map is read by, so a spot can be read out either way
-                        pointView.findViewById<TextView>(R.id.point_coordinate).apply {
-                            val other = if (prefs.navigation.coordinateFormat == BuiltInCoordinateFormat.UTM) {
-                                BuiltInCoordinateFormat.DecimalDegrees
-                            } else {
-                                BuiltInCoordinateFormat.UTM
-                            }
-                            text = formatter.formatLocation(location, other, fallbackToDD = false)
-                                .takeIf { it != "?" }
-                            isVisible = text != null
-                        }
-
-                        // Build the data point row using the shared LocationDataPointView
-                        val currentNavigation = navigationRef.current
-                        val infoView = LocationDataPointView(requireContext(), null)
-                        pointView.addView(infoView)
-                        infoView.setDistance(
-                            Distance.meters(currentNavigation.location.distanceTo(location))
-                                .convertTo(prefs.baseDistanceUnits)
-                        )
-                        infoView.setDirection(currentNavigation.location.bearingTo(location))
-                        infoView.setElevationDiff(
-                            Distance.meters(
-                                selectedElevation - currentNavigation.elevation.meters().value
-                            )
-                        )
-
-                        Share.actions(
-                            this@MapFragment,
-                            formattedLocation,
-                            listOf(
-                                ActionItem(getString(R.string.beacon), R.drawable.ic_location) {
-                                    val bundle = Bundle().apply {
-                                        putParcelable("initial_location", GeoUri(location))
-                                    }
-                                    navController.navigateWithAnimation(
-                                        R.id.placeBeaconFragment,
-                                        bundle
-                                    )
-                                    manager.setSelectedLocation(null)
-                                },
-                                ActionItem(getString(R.string.navigate), R.drawable.ic_beacon) {
-                                    navigator.navigateTo(
-                                        location,
-                                        formattedLocation,
-                                        BeaconOwner.Maps
-                                    )
-                                    manager.setSelectedLocation(null)
-                                },
-                                ActionItem(getString(R.string.distance), R.drawable.ruler) {
-                                    startDistanceMeasurement(location, true)
-                                    manager.setSelectedLocation(null)
-                                },
-                            ),
-                            subtitle = getString(
-                                R.string.elevation_value,
-                                formatter.formatElevation(Distance.meters(selectedElevation))
-                            ),
-                            customView = pointView
-                        ) {
-                            manager.setSelectedLocation(null)
-                        }
-                    }
-                }
+                showPointActions(location, null)
             }
+        }
+
+        // A point another app sent (geo:), shown once: centered, marked and with its actions
+        useEffect(mapView, showPointActions) {
+            val args = arguments ?: return@useEffect
+            val point = BundleCompat.getParcelable(
+                args,
+                "initial_location",
+                GeoUri::class.java
+            ) ?: return@useEffect
+            args.remove("initial_location")
+            setLockMode(MapLockMode.Free)
+            mapView.mapCenter = point.coordinate
+            mapView.resolution = 2f
+            showPointActions(point.coordinate, point.queryParameters["label"])
         }
 
         useEffect(mapDistanceSheetView, manager, prefs) {
