@@ -16,7 +16,8 @@ import com.google.android.material.color.MaterialColors
  * Drawn over the foot of each row rather than between rows, so no row changes height and a page
  * still ends where it did.
  */
-class DottedRuleDecoration(private val insetDp: Float = 16f) : RecyclerView.ItemDecoration() {
+/** Added to a list with `addItemDecoration(DottedRule())`. */
+class DottedRule(private val insetDp: Float = 16f) : RecyclerView.ItemDecoration() {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE }
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
@@ -33,10 +34,4 @@ class DottedRuleDecoration(private val insetDp: Float = 16f) : RecyclerView.Item
             c.drawLine(left, y, right, y, paint)
         }
     }
-}
-
-/** Parts this list's rows with the house dotted rule (once, however often it is called). */
-fun RecyclerView.addDottedRule() {
-    for (i in 0 until itemDecorationCount) if (getItemDecorationAt(i) is DottedRuleDecoration) return
-    addItemDecoration(DottedRuleDecoration())
 }

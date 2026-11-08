@@ -1,6 +1,6 @@
 package com.kylecorry.trail_sense.shared.grouping.picker
 
-import com.kylecorry.trail_sense.shared.views.addDottedRule
+import com.kylecorry.trail_sense.shared.views.DottedRule
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
@@ -42,7 +42,7 @@ class GroupableSelectView<T : Groupable>(
 
         // List items
         binding.list.emptyView = binding.emptyText
-        binding.list.addDottedRule()
+        binding.list.addItemDecoration(DottedRule())
         binding.emptyText.text = emptyText
         manager.onChange = { root, items, rootChanged ->
             this.root = root

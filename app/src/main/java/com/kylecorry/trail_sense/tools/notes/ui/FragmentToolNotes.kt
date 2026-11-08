@@ -1,6 +1,6 @@
 package com.kylecorry.trail_sense.tools.notes.ui
 
-import com.kylecorry.trail_sense.shared.views.addDottedRule
+import com.kylecorry.trail_sense.shared.views.DottedRule
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +32,7 @@ class FragmentToolNotes : BoundFragment<FragmentToolNotesBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.noteList.emptyView = binding.notesEmptyText
-        binding.noteList.addDottedRule()
+        binding.noteList.addItemDecoration(DottedRule())
         notesLiveData = notesRepo.getNotes()
         observe(notesLiveData) { items ->
             notes = items

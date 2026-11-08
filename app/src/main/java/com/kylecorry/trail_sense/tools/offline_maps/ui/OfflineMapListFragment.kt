@@ -1,6 +1,6 @@
 package com.kylecorry.trail_sense.tools.offline_maps.ui
 
-import com.kylecorry.trail_sense.shared.views.addDottedRule
+import com.kylecorry.trail_sense.shared.views.DottedRule
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -132,7 +132,7 @@ class OfflineMapListFragment : BoundFragment<FragmentOfflineMapListBinding>() {
 
         binding.mapList.emptyView = binding.mapEmptyText
 
-        binding.mapList.addDottedRule()
+        binding.mapList.addItemDecoration(DottedRule())
 
         binding.mapListTitle.leftButton.setOnClickListener {
             UserGuideUtils.showGuide(this, R.raw.guide_tool_offline_maps)

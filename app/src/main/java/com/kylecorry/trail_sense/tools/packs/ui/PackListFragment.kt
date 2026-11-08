@@ -1,6 +1,6 @@
 package com.kylecorry.trail_sense.tools.packs.ui
 
-import com.kylecorry.trail_sense.shared.views.addDottedRule
+import com.kylecorry.trail_sense.shared.views.DottedRule
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -56,7 +56,7 @@ class PackListFragment : BoundFragment<FragmentPackListBinding>() {
 
     private fun loadPacks() {
         binding.packList.emptyView = binding.emptyText
-        binding.packList.addDottedRule()
+        binding.packList.addItemDecoration(DottedRule())
 
         observe(packRepo.getPacks()) {
             packs = it.sortedWith(compareBy { -it.id })
