@@ -61,7 +61,7 @@ class DiagnosticsFragment : BoundFragment<FragmentDiagnosticsBinding>() {
                     alerter.alert(item)
                 }
             }
-        diagnosticListView.addItemDecoration(DottedRule())
+        binding.diagnosticsList.addItemDecoration(DottedRule())
 
         val tools = Tools.getTools(requireContext())
         // TODO: Keep the mapping of tools to diagnostics and the mapping of ID to diagnostic

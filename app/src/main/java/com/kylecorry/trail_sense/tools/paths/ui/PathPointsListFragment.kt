@@ -34,7 +34,7 @@ class PathPointsListFragment : BoundBottomSheetDialogFragment<FragmentPathPoints
             val binding = ListItemWaypointBinding.bind(view)
             drawWaypointListItem(binding, point)
         }
-        list?.addItemDecoration(DottedRule())
+        binding.pathPointsList.addItemDecoration(DottedRule())
         list?.setData(points)
     }
 

@@ -105,7 +105,7 @@ class SensorDetailsFragment : BoundFragment<FragmentSensorDetailsBinding>() {
                 itemBinding.sensorStatus.setForegroundTint(Color.BLACK)
             }
 
-        sensorListView.addItemDecoration(DottedRule())
+        binding.sensorsList.addItemDecoration(DottedRule())
 
         observe(cachedGPS) { updateGPSCache() }
         observe(cachedAltimeter) { updateAltimeterCache() }

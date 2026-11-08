@@ -248,7 +248,7 @@ class CreateTideFragment : BoundFragment<FragmentCreateTideBinding>() {
             }
         }
 
-        tideTimesList.addItemDecoration(DottedRule())
+        binding.tideTimes.addItemDecoration(DottedRule())
 
         tides.clear()
         if (editingId != 0L) {
