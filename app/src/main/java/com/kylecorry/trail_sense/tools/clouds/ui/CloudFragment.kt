@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.clouds.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.os.Bundle
 import android.util.Size
 import android.view.LayoutInflater
@@ -63,6 +64,8 @@ class CloudFragment : BoundFragment<FragmentToolCloudsBinding>() {
         )
 
         binding.cloudList.emptyView = binding.cloudEmptyText
+
+        binding.cloudList.addDottedRule()
         setupCreateMenu()
 
         val shouldOpenScanner = requireArguments().getBoolean("open_scanner", false)

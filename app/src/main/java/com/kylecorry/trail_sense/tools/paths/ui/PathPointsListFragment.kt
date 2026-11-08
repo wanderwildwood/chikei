@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.paths.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +34,7 @@ class PathPointsListFragment : BoundBottomSheetDialogFragment<FragmentPathPoints
             val binding = ListItemWaypointBinding.bind(view)
             drawWaypointListItem(binding, point)
         }
-        list?.addLineSeparator()
+        list?.addDottedRule()
         list?.setData(points)
     }
 

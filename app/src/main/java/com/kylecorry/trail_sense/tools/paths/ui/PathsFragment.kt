@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.paths.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -96,6 +97,8 @@ class PathsFragment : BoundFragment<FragmentToolPathsBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.pathsList.emptyView = binding.waypointsEmptyText
+
+        binding.pathsList.addDottedRule()
         manager = GroupListManager(
             lifecycleScope,
             pathLoader,

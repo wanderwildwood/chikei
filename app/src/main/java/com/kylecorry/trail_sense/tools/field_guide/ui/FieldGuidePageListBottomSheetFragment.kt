@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.field_guide.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.widget.TextView
 import com.kylecorry.andromeda.core.ui.useCallback
 import com.kylecorry.andromeda.fragments.useClickCallback
@@ -27,6 +28,7 @@ class FieldGuidePageListBottomSheetFragment :
         val navController = useNavController()
         useEffect(listView, emptyView) {
             listView.emptyView = emptyView
+            listView.addDottedRule()
         }
 
         useClickCallback(title.rightButton) {

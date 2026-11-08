@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.field_guide.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.os.Bundle
 import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -169,6 +170,7 @@ class SightingListFragment : TrailSenseReactiveFragment(R.layout.fragment_sighti
         // Effects
         useEffect(listView, emptyTextView) {
             listView.emptyView = emptyTextView
+            listView.addDottedRule()
         }
 
         useEffect(listView, sightingListItems) {

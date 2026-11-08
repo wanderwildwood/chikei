@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.sensors.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorManager
@@ -104,7 +105,7 @@ class SensorDetailsFragment : BoundFragment<FragmentSensorDetailsBinding>() {
                 itemBinding.sensorStatus.setForegroundTint(Color.BLACK)
             }
 
-        sensorListView.addLineSeparator()
+        sensorListView.addDottedRule()
 
         observe(cachedGPS) { updateGPSCache() }
         observe(cachedAltimeter) { updateAltimeterCache() }

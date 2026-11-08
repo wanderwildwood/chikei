@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.offline_maps.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -130,6 +131,8 @@ class OfflineMapListFragment : BoundFragment<FragmentOfflineMapListBinding>() {
         ShowMapsDisclaimerCommand(this).execute()
 
         binding.mapList.emptyView = binding.mapEmptyText
+
+        binding.mapList.addDottedRule()
 
         binding.mapListTitle.leftButton.setOnClickListener {
             UserGuideUtils.showGuide(this, R.raw.guide_tool_offline_maps)

@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.beacons.ui.list
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -104,6 +105,8 @@ class BeaconListFragment : BoundFragment<FragmentBeaconListBinding>() {
         sort = prefs.beacons.beaconSort
 
         binding.beaconRecycler.emptyView = binding.beaconEmptyText
+
+        binding.beaconRecycler.addDottedRule()
         manager = GroupListManager(
             lifecycleScope,
             beaconLoader,

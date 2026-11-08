@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.tides.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,6 +56,8 @@ class TideListFragment : BoundFragment<FragmentTideListBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.tideList.emptyView = binding.tidesEmptyText
+
+        binding.tideList.addDottedRule()
 
         refreshTides()
 

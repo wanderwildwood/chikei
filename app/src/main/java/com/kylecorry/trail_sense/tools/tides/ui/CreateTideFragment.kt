@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.tides.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -247,7 +248,7 @@ class CreateTideFragment : BoundFragment<FragmentCreateTideBinding>() {
             }
         }
 
-        tideTimesList.addLineSeparator()
+        tideTimesList.addDottedRule()
 
         tides.clear()
         if (editingId != 0L) {

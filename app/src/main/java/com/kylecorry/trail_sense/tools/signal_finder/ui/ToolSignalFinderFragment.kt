@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.signal_finder.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import com.kylecorry.trail_sense.shared.views.guardLinks
 import android.os.Bundle
 import android.widget.TextView
@@ -74,6 +75,8 @@ class ToolSignalFinderFragment : TrailSenseReactiveFragment(R.layout.fragment_to
         }
 
         list.emptyView = emptyText
+
+        list.addDottedRule()
 
         // Set up the disclaimer
         useEffect(disclaimer) {

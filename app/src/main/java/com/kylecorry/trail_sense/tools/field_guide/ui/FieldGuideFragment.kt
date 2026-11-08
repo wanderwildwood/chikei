@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.field_guide.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.os.Bundle
 import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -33,6 +34,8 @@ class FieldGuideFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_fie
         val emptyView = useView<TextView>(R.id.empty_text)
 
         listView.emptyView = emptyView
+
+        listView.addDottedRule()
 
         // State
         val (reloadKey, triggerReload) = useTrigger()

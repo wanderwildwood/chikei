@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.augmented_reality.ui.guidance
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.view.View
 import android.widget.TextView
 import androidx.core.graphics.drawable.toDrawable
@@ -158,6 +159,8 @@ class AstronomyGuidanceTargetPicker(
         var resumed = false
 
         list.emptyView = empty
+
+        list.addDottedRule()
         empty.text = view.context.getString(R.string.no_results)
 
         val alert = Alerts.dialog(

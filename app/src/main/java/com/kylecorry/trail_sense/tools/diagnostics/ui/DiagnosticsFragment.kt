@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.diagnostics.ui
 
+import com.kylecorry.trail_sense.shared.views.addDottedRule
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -60,7 +61,7 @@ class DiagnosticsFragment : BoundFragment<FragmentDiagnosticsBinding>() {
                     alerter.alert(item)
                 }
             }
-        diagnosticListView.addLineSeparator()
+        diagnosticListView.addDottedRule()
 
         val tools = Tools.getTools(requireContext())
         // TODO: Keep the mapping of tools to diagnostics and the mapping of ID to diagnostic
