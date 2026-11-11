@@ -1,6 +1,4 @@
-# Topo
-
-地形 *chikei*
+# 地形 chikei — Topo
 
 Topographic maps for the trail on an E Ink phone: contours, forest roads and trails, drawn
 in black and white like a paper quadrangle, and there with no signal. Public land and lot
