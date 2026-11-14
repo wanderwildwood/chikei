@@ -123,7 +123,10 @@
 
 
     <!--Override this for other Android versions-->
-    <style name="AppTheme" parent="BaseAppTheme" />
+    <style name="AppTheme" parent="BaseAppTheme">
+        <!-- No start-up window: in dark mode it would flash white before the first frame. -->
+        <item name="android:windowDisablePreview">true</item>
+    </style>
 
     <!-- Nothing smaller than 16sp (the house floor, 4 Nov 2026): a line of 16sp Lato is 25.6 px tall
          on the Kompakt, over Mudita's 24 px. The small Material styles are raised to it. -->
