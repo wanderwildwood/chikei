@@ -20,8 +20,8 @@ android {
         applicationId = "com.wanderwildwood.chikei"
         minSdk = 24
         targetSdk = 37
-        versionCode = 32
-        versionName = "0.2.17"
+        versionCode = 33
+        versionName = "0.2.18"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["clearPackageData"] = "true"
         // Falling Fruit's API key for the Forage layer, from the gitignored signing/ folder. With
