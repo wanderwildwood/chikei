@@ -10,6 +10,7 @@ import com.kylecorry.andromeda.fragments.BoundBottomSheetDialogFragment
 import com.kylecorry.andromeda.qr.QR
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.databinding.FragmentQrShareSheetBinding
+import com.kylecorry.trail_sense.shared.house.DarkMode
 
 class ViewQRBottomSheet(
     private val title: String,
@@ -19,6 +20,7 @@ class ViewQRBottomSheet(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.qrCode.clipToOutline = true
+        DarkMode.keep(binding.qrCode)
         updateUI()
     }
 

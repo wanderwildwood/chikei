@@ -620,6 +620,7 @@
     <string name="pref_compass_filter_amt" translatable="false">pref_compass_filter_amt</string>
     <string name="pref_theme" translatable="false">pref_theme</string>
     <string name="pref_night_mode_fullscreen" translatable="false">pref_night_mode_fullscreen</string>
+    <string name="pref_dark_mode" translatable="false">pref_dark_mode</string>
     <string name="pref_display_multi_beacons" translatable="false">pref_display_multi_beacons</string>
     <string name="pref_nearby_linear_only" translatable="false">pref_nearby_linear_only</string>
     <string name="pref_storm_alert_sensitivity" translatable="false">pref_storm_alert_sensitivity</string>

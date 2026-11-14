@@ -6,6 +6,7 @@ import com.kylecorry.andromeda.core.cache.DependencyRegistry
 import com.kylecorry.andromeda.fragments.AndromedaPreferenceFragment
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.shared.UserPreferences
+import com.kylecorry.trail_sense.shared.house.DarkMode
 import com.kylecorry.trail_sense.shared.preferences.PreferencesSubsystem
 import com.kylecorry.trail_sense.shared.requireMainActivity
 import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
@@ -28,6 +29,13 @@ class ThemeSettingsFragment : AndromedaPreferenceFragment() {
         dynamicColorsSwitch?.setOnPreferenceChangeListener { _, _ ->
             requireMainActivity().reloadTheme()
             dynamicCompassColorsSwitch?.isEnabled = prefs.useDynamicColors
+            true
+        }
+
+        val darkMode = switch(R.string.pref_dark_mode)
+        darkMode?.isChecked = DarkMode.on
+        darkMode?.setOnPreferenceChangeListener { _, checked ->
+            DarkMode.set(requireContext(), checked as Boolean)
             true
         }
 

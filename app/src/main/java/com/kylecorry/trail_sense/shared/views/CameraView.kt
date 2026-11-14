@@ -27,6 +27,7 @@ import com.kylecorry.andromeda.camera.ImageCaptureSettings
 import com.kylecorry.sol.math.Range
 import com.kylecorry.sol.math.interpolation.Interpolation
 import com.kylecorry.trail_sense.R
+import com.kylecorry.trail_sense.shared.house.DarkMode
 import java.io.File
 import java.time.Duration
 import kotlin.math.roundToInt
@@ -266,6 +267,7 @@ class CameraView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
     init {
         inflate(context, R.layout.view_camera, this)
         preview = findViewById(R.id.camera_preview)
+        DarkMode.keep(preview)
         torchBtn = findViewById(R.id.camera_torch)
         zoomSeek = findViewById(R.id.camera_zoom)
         zoomSeek.valueFrom = 0f

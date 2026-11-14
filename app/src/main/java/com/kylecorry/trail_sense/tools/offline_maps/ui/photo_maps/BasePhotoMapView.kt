@@ -14,6 +14,7 @@ import com.kylecorry.sol.units.Bearing
 import com.kylecorry.sol.units.Coordinate
 import com.kylecorry.sol.units.Distance
 import com.kylecorry.trail_sense.R
+import com.kylecorry.trail_sense.shared.house.DarkMode
 import com.kylecorry.trail_sense.shared.io.FileSubsystem
 import com.kylecorry.trail_sense.shared.map_layers.MapViewLayerManager
 import com.kylecorry.trail_sense.shared.map_layers.tiles.TileMath
@@ -29,6 +30,10 @@ import kotlin.math.min
 
 
 abstract class BasePhotoMapView : EnhancedImageView, IMapView {
+
+    init {
+        DarkMode.keep(this)
+    }
 
     private val density = context.resources.displayMetrics.density
 

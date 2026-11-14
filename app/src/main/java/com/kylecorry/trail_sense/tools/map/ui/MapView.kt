@@ -25,6 +25,7 @@ import com.kylecorry.sol.science.geology.CoordinateBounds
 import com.kylecorry.sol.units.Bearing
 import com.kylecorry.sol.units.Coordinate
 import com.kylecorry.sol.units.Distance
+import com.kylecorry.trail_sense.shared.house.DarkMode
 import com.kylecorry.trail_sense.shared.map_layers.MapViewLayerManager
 import com.kylecorry.trail_sense.shared.map_layers.tiles.TileMath
 import com.kylecorry.trail_sense.shared.map_layers.ui.layers.IMapView
@@ -86,6 +87,7 @@ class MapView(context: Context, attrs: AttributeSet? = null) : CanvasView(contex
 
     init {
         runEveryCycle = false
+        DarkMode.keep(this)
     }
 
     fun setOnLongPressListener(callback: ((Coordinate) -> Unit)?) {

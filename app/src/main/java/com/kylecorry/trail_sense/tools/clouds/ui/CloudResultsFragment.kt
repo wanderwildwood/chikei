@@ -28,6 +28,7 @@ import com.kylecorry.trail_sense.databinding.FragmentCloudResultsBinding
 import com.kylecorry.trail_sense.shared.FormatService
 import com.kylecorry.trail_sense.shared.UserPreferences
 import com.kylecorry.trail_sense.shared.debugging.DebugCloudCommand
+import com.kylecorry.trail_sense.shared.house.DarkMode
 import com.kylecorry.trail_sense.shared.io.DeleteTempFilesCommand
 import com.kylecorry.trail_sense.tools.clouds.domain.classification.ClassificationResult
 import com.kylecorry.trail_sense.tools.clouds.domain.classification.ICloudClassifier
@@ -76,6 +77,7 @@ class CloudResultsFragment : BoundFragment<FragmentCloudResultsBinding>() {
         super.onViewCreated(view, savedInstanceState)
         time = Instant.now()
         binding.cloudImage.clipToOutline = true
+        DarkMode.keep(binding.cloudImage)
         binding.cloudTitle.subtitle.text =
             formatter.formatDateTime(
                 time.toZonedDateTime(),

@@ -22,6 +22,7 @@ import com.kylecorry.luna.concurrency.onMain
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.shared.CustomUiUtils
 import com.kylecorry.luna.result.getOrNull
+import com.kylecorry.trail_sense.shared.house.DarkMode
 import com.kylecorry.trail_sense.shared.io.FileSubsystem
 import com.kylecorry.trail_sense.shared.io.IntentUriPicker
 import java.util.UUID
@@ -51,6 +52,7 @@ class PhotoUploadView(context: Context, attrs: AttributeSet? = null) :
         imageHolder = findViewById(R.id.photo_upload_image_holder)
         emptyView = findViewById(R.id.photo_upload_empty)
         image = findViewById(R.id.photo_upload_image)
+        DarkMode.keep(image)
         menuButton = findViewById(R.id.photo_upload_menu_button)
         takePhotoButton = findViewById(R.id.photo_upload_take_photo_button)
         selectPhotoButton = findViewById(R.id.photo_upload_select_photo_button)
