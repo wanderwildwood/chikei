@@ -8,6 +8,7 @@ import com.kylecorry.andromeda.core.system.CurrentApp
 import com.kylecorry.andromeda.core.system.Intents
 import com.kylecorry.andromeda.fragments.useArgument
 import com.kylecorry.trail_sense.R
+import com.kylecorry.trail_sense.shared.Notices
 import com.kylecorry.trail_sense.shared.extensions.TrailSenseReactiveFragment
 import com.kylecorry.trail_sense.shared.extensions.useNavController
 import com.kylecorry.trail_sense.shared.openTool
@@ -52,11 +53,8 @@ class ErrorHandlerFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_e
 
         useEffect(copyButton, errorDetails, context) {
             copyButton.setOnClickListener {
-                Clipboard.copy(
-                    context,
-                    errorDetails,
-                    getString(R.string.copied_to_clipboard_toast)
-                )
+                Clipboard.copy(context, errorDetails, null)
+                Notices.say(context, getString(R.string.copied_to_clipboard_toast))
             }
         }
 

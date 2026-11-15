@@ -155,7 +155,8 @@ class ScanQRFragment : BoundFragment<FragmentScanTextBinding>() {
     }
 
     private fun copy(text: String) {
-        Clipboard.copy(requireContext(), text, getString(R.string.copied_to_clipboard_toast))
+        Clipboard.copy(requireContext(), text, null)
+        Notices.say(requireContext(), getString(R.string.copied_to_clipboard_toast))
     }
 
     private fun createNote(text: String) {
