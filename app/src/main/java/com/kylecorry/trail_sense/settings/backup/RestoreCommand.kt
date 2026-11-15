@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.settings.backup
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import com.kylecorry.andromeda.alerts.Alerts
 import com.kylecorry.andromeda.alerts.CoroutineAlerts
@@ -36,7 +37,7 @@ class RestoreCommand(private val context: Context, private val uriPicker: UriPic
                 backupService.restore(source, setProgress)
             }
 
-            Alerts.toast(
+            Notices.toast(
                 context,
                 context.getString(R.string.restore_complete_message),
                 short = false
@@ -44,9 +45,9 @@ class RestoreCommand(private val context: Context, private val uriPicker: UriPic
             // Restart the app
             CurrentApp.restart(context)
         } catch (e: BackupService.InvalidBackupException) {
-            Alerts.toast(context, context.getString(R.string.invalid_backup_file))
+            Notices.toast(context, context.getString(R.string.invalid_backup_file))
         } catch (e: BackupService.NewerBackupException) {
-            Alerts.toast(
+            Notices.toast(
                 context,
                 context.getString(
                     R.string.restore_failure_newer_version,

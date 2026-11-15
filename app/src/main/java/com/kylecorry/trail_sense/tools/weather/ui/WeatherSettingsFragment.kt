@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.weather.ui
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.os.Bundle
 import android.view.View
 import androidx.preference.ListPreference
@@ -284,7 +285,7 @@ class WeatherSettingsFragment : AndromedaPreferenceFragment() {
             }
             if (exported) {
                 withContext(Dispatchers.Main) {
-                    Alerts.toast(requireContext(), getString(R.string.weather_exported))
+                    Notices.toast(requireContext(), getString(R.string.weather_exported))
                 }
             }
         }

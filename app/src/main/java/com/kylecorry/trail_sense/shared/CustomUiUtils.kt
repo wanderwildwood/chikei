@@ -320,7 +320,7 @@ object CustomUiUtils {
     ) {
         val prefs = PreferencesSubsystem.getInstance(context).preferences
         if (prefs.getBoolean(shownKey) != true) {
-            Alerts.toast(context, message, short)
+            Notices.toast(context, message, short)
             prefs.putBoolean(shownKey, true)
         }
     }
@@ -383,6 +383,7 @@ object CustomUiUtils {
 
         val view = playBar ?: fragment.requireActivity().findViewById(R.id.bottom_navigation)
 
+        // Shown until the next press, whatever duration was asked for (see Notices).
         return Alerts.snackbar(
             fragment,
             view,
@@ -390,7 +391,7 @@ object CustomUiUtils {
             duration,
             action,
             onAction
-        )
+        ).also { Notices.stay(it) }
     }
 
     fun showQR(

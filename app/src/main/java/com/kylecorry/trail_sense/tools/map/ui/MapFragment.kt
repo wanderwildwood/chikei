@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.map.ui
 
+import com.kylecorry.trail_sense.shared.Notices
 import com.kylecorry.trail_sense.tools.map.forage.ForageBox
 import com.kylecorry.trail_sense.tools.map.streets.Streets
 import com.kylecorry.trail_sense.tools.map.forage.Forage
@@ -807,7 +808,7 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                         cancelText = null
                     )
                 } else {
-                    Alerts.toast(
+                    Notices.toast(
                         context,
                         getString(R.string.area_saved, saved.name, formatter.formatFileSize(saved.bytes))
                     )

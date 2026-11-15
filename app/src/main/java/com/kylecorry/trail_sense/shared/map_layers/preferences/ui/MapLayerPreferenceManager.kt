@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.shared.map_layers.preferences.ui
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
@@ -176,7 +177,7 @@ class MapLayerPreferenceManager(
 
                         val destinationIds = indices.map { otherMaps[it] }
                         repo.copyLayerPreferences(layer.id, mapId, destinationIds)
-                        Alerts.toast(context, context.getString(R.string.settings_copied))
+                        Notices.toast(context, context.getString(R.string.settings_copied))
                     }
                 }
                 category.addPreference(copyPreference)

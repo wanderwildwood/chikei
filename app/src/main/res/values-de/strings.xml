@@ -271,6 +271,7 @@
     <string name="battery_health_over_voltage">Überspannung</string>
     <string name="battery_health_cold">Kalt</string>
     <string name="metal_detector_disclaimer">Erkennt nur magnetische Metalle (z.B. Eisen)</string>
+    <string name="metal_detector_sound_failed">Der Ton des Detektors kann auf diesem Telefon nicht abgespielt werden. Er zeigt und vibriert weiterhin.</string>
     <string name="pip_notification_scheduled">Benachrichtigung für %s geplant</string>
     <string name="pip_button">Systemzeit aktualisieren</string>
     <string name="map_scale_verbal">Beschreibend</string>

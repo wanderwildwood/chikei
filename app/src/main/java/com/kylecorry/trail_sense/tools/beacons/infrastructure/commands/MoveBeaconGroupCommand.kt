@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.beacons.infrastructure.commands
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import com.kylecorry.andromeda.alerts.Alerts
 import com.kylecorry.luna.concurrency.onIO
@@ -37,7 +38,7 @@ class MoveBeaconGroupCommand(
             }
 
             onMain {
-                Alerts.toast(
+                Notices.toast(
                     context,
                     context.getString(R.string.moved_to, groupName)
                 )

@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.shared.views
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
@@ -94,14 +95,14 @@ class CameraView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
         }
 
         if (!Camera.isAvailable(context)) {
-            Alerts.toast(context, context.getString(R.string.camera_unavailable))
+            Notices.toast(context, context.getString(R.string.camera_unavailable))
             return
         }
 
         val useBackCamera = preferBackCamera && Camera.hasBackCamera(context)
 
         if (!useBackCamera && !Camera.hasFrontCamera(context)) {
-            Alerts.toast(context, context.getString(R.string.camera_unavailable))
+            Notices.toast(context, context.getString(R.string.camera_unavailable))
             return
         }
 

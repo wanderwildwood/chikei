@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.shared.permissions
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.Manifest
 import android.content.Context
 import android.os.Build
@@ -7,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.kylecorry.andromeda.alerts.Alerts
-import com.kylecorry.andromeda.alerts.toast
+import com.kylecorry.trail_sense.shared.toast
 import com.kylecorry.andromeda.camera.Camera
 import com.kylecorry.andromeda.core.cache.DependencyRegistry
 import com.kylecorry.andromeda.fragments.AndromedaFragment
@@ -19,7 +20,7 @@ import com.kylecorry.andromeda.permissions.SpecialPermission
 import com.kylecorry.trail_sense.R
 
 fun Fragment.alertNoCameraPermission() {
-    Alerts.toast(
+    Notices.toast(
         requireContext(),
         getString(R.string.camera_permission_denied),
         short = false
@@ -27,7 +28,7 @@ fun Fragment.alertNoCameraPermission() {
 }
 
 fun Fragment.alertNoActivityRecognitionPermission() {
-    Alerts.toast(
+    Notices.toast(
         requireContext(),
         getString(R.string.activity_recognition_permission_denied),
         short = false

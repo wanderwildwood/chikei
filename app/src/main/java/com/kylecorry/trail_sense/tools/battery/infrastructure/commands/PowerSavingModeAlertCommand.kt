@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.battery.infrastructure.commands
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import com.kylecorry.andromeda.alerts.Alerts
 import com.kylecorry.trail_sense.R
@@ -12,7 +13,7 @@ class PowerSavingModeAlertCommand(private val context: Context) : Command {
 
     override fun execute() {
         if (preference.isLowPowerModeOn) {
-            Alerts.toast(context, context.getString(R.string.low_power_mode_on_message))
+            Notices.toast(context, context.getString(R.string.low_power_mode_on_message))
         }
     }
 }

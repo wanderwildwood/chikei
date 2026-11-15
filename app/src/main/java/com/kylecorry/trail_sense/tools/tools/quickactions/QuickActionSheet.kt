@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.tools.quickactions
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
@@ -91,7 +92,7 @@ class QuickActionSheet @JvmOverloads constructor(
         val fragment = activity.getFragment()
 
         if (fragment == null) {
-            Alerts.toast(context, context.getString(R.string.quick_actions_are_unavailable))
+            Notices.toast(context, context.getString(R.string.quick_actions_are_unavailable))
             return
         }
 

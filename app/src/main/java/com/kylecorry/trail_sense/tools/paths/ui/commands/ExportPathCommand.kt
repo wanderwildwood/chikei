@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.paths.ui.commands
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import com.kylecorry.andromeda.alerts.Alerts
@@ -76,9 +77,9 @@ class ExportPathCommand(
             // Notify the user
             onMain {
                 if (success) {
-                    Alerts.toast(context, context.getString(R.string.path_exported))
+                    Notices.toast(context, context.getString(R.string.path_exported))
                 } else {
-                    Alerts.toast(context, context.getString(R.string.export_path_error))
+                    Notices.toast(context, context.getString(R.string.export_path_error))
                 }
             }
         }

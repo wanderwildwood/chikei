@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.paths.ui.commands
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import com.kylecorry.andromeda.alerts.Alerts
@@ -48,9 +49,9 @@ class ImportPathsCommand(
             if (paths.isEmpty()) {
                 val count = if (gpx.waypoints.isEmpty()) 0 else onIO { BeaconGpxImporter(context).import(gpx) }
                 if (count > 0) {
-                    Alerts.toast(context, context.resources.getQuantityString(R.plurals.beacons_imported, count, count))
+                    Notices.toast(context, context.resources.getQuantityString(R.plurals.beacons_imported, count, count))
                 } else {
-                    Alerts.toast(context, context.getString(R.string.gpx_nothing_to_import))
+                    Notices.toast(context, context.getString(R.string.gpx_nothing_to_import))
                 }
                 return@inBackground
             }
@@ -72,7 +73,7 @@ class ImportPathsCommand(
                 importPaths(selectedPaths, parentId)
 
                 // Let the user know the import was successful
-                Alerts.toast(
+                Notices.toast(
                     context, context.resources.getQuantityString(
                         R.plurals.paths_imported,
                         selectedPathIndices.size,

@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.navigation.ui
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.view.View
 import androidx.camera.view.PreviewView
 import androidx.core.view.isVisible
@@ -48,7 +49,7 @@ class SightingCompassView(
             )
         } catch (e: Exception) {
             e.printStackTrace()
-            Alerts.toast(camera.context, camera.context.getString(R.string.no_camera_access))
+            Notices.toast(camera.context, camera.context.getString(R.string.no_camera_access))
             stop()
             return
         }

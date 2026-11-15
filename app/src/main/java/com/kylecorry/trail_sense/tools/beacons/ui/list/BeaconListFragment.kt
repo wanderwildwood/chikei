@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.beacons.ui.list
 
+import com.kylecorry.trail_sense.shared.Notices
 import com.kylecorry.trail_sense.shared.views.DottedRule
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.kylecorry.andromeda.alerts.Alerts
-import com.kylecorry.andromeda.alerts.toast
+import com.kylecorry.trail_sense.shared.toast
 import com.kylecorry.andromeda.core.coroutines.BackgroundMinimumState
 import com.kylecorry.luna.concurrency.onIO
 import com.kylecorry.luna.concurrency.onMain
@@ -349,7 +350,7 @@ class BeaconListFragment : BoundFragment<FragmentBeaconListBinding>() {
                                 importer.import(gpxToImport, manager.root?.id)
                             }
                             onMain {
-                                Alerts.toast(
+                                Notices.toast(
                                     requireContext(),
                                     resources.getQuantityString(
                                         R.plurals.beacons_imported,

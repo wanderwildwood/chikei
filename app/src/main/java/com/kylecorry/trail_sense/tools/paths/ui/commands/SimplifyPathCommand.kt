@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.paths.ui.commands
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import com.kylecorry.andromeda.alerts.Alerts
@@ -43,7 +44,7 @@ class SimplifyPathCommand(
                     }
                     withContext(Dispatchers.Main) {
                         loading.dismiss()
-                        Alerts.toast(
+                        Notices.toast(
                             context,
                             context.resources.getQuantityString(
                                 R.plurals.waypoints_deleted,

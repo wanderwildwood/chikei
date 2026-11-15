@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.offline_maps.infrastructure.packs
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import androidx.preference.PreferenceManager
 import com.kylecorry.andromeda.alerts.Alerts
@@ -23,7 +24,7 @@ class RegionPackSource(private val context: Context) {
         return try {
             val index = Alerts.withLoading(context, context.getString(R.string.loading)) { client.index() }
             if (index.packs.isEmpty()) {
-                onMain { Alerts.toast(context, context.getString(R.string.region_pack_none)) }
+                onMain { Notices.toast(context, context.getString(R.string.region_pack_none)) }
                 null
             } else {
                 client to index.packs

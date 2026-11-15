@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.settings.ui
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
@@ -114,7 +115,7 @@ class PluginDetailsFragment : TrailSenseReactiveFragment(R.layout.fragment_plugi
                 lifecycleScope.launch {
                     pluginSubsystem.reloadRegistration(packageId)
                     setReloadKey(reloadKey + 1)
-                    Alerts.toast(requireContext(), getString(R.string.done))
+                    Notices.toast(requireContext(), getString(R.string.done))
                 }
             }
         }

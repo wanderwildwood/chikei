@@ -257,6 +257,7 @@
     <string name="delete_note_title">Supprimer la note \?</string>
     <string name="notes_empty_text">Aucune note</string>
     <string name="metal_detector_disclaimer">Détecte uniquement les métaux magnétiques (par exemple, le fer)</string>
+    <string name="metal_detector_sound_failed">Le son du détecteur ne peut pas être joué sur ce téléphone. Il affiche et vibre toujours.</string>
     <string name="tool_metal_detector_title">Détecteur de métaux</string>
     <string name="threshold">Seuil</string>
     <string name="clock_sync_time_settings">Ouvrir les paramètres de l\'horloge \?</string>

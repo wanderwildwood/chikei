@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.settings.backup
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import com.kylecorry.andromeda.alerts.Alerts
 import com.kylecorry.andromeda.core.system.IntentResultRetriever
@@ -26,7 +27,7 @@ class ChangeAutomaticBackupDirectoryCommand(
             )
         ) {
             if (it == null) {
-                Alerts.toast(context, context.getString(R.string.no_directory_selected))
+                Notices.toast(context, context.getString(R.string.no_directory_selected))
                 onChange(false)
                 return@pickDirectory
             }

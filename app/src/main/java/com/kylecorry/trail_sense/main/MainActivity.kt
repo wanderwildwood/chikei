@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.main
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.Manifest
 import android.app.PendingIntent
 import android.content.Context
@@ -268,6 +269,7 @@ class MainActivity : AndromedaActivity() {
 
     override fun onResume() {
         super.onResume()
+        Notices.front(this)
         isRunning = true
         updateAllWidgets()
         updateDeviceSurfaceRotation()
@@ -283,7 +285,19 @@ class MainActivity : AndromedaActivity() {
         )
     }
 
+    // A notice stays until the next press (see Notices): the presses are handed to it here.
+    override fun dispatchTouchEvent(ev: android.view.MotionEvent): Boolean {
+        Notices.pressed(ev)
+        return super.dispatchTouchEvent(ev)
+    }
+
+    override fun dispatchKeyEvent(event: android.view.KeyEvent): Boolean {
+        Notices.pressed(event)
+        return super.dispatchKeyEvent(event)
+    }
+
     override fun onPause() {
+        Notices.front(null)
         super.onPause()
         isRunning = false
         FlashlightSubsystem.getInstance(this).stopSystemMonitor()
@@ -325,7 +339,7 @@ class MainActivity : AndromedaActivity() {
         handleIntentAction(intent)
 
         if (SafeMode.isEnabled()) {
-            Alerts.toast(
+            Notices.toast(
                 this,
                 getString(R.string.safe_mode_toast),
                 false

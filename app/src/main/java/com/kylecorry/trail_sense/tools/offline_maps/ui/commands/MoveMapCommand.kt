@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.offline_maps.ui.commands
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import com.kylecorry.andromeda.alerts.Alerts
 import com.kylecorry.luna.concurrency.onMain
@@ -37,7 +38,7 @@ class MoveMapCommand(private val context: Context, private val service: OfflineM
         val groupName = results.second?.name ?: context.getString(R.string.no_group)
 
         onMain {
-            Alerts.toast(
+            Notices.toast(
                 context,
                 context.getString(R.string.moved_to, groupName)
             )

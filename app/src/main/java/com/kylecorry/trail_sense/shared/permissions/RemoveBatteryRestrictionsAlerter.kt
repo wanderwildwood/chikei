@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.shared.permissions
 
+import com.kylecorry.trail_sense.shared.Notices
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.kylecorry.andromeda.alerts.Alerts
@@ -20,7 +21,7 @@ class RemoveBatteryRestrictionsAlerter(private val fragment: Fragment) : IAlerte
             fragment.requestIgnoreBatteryOptimizations { isGranted ->
                 // Let the user know they did it right since this process is confusing
                 if (isGranted) {
-                    Alerts.toast(context, context.getString(R.string.battery_usage_allowed))
+                    Notices.toast(context, context.getString(R.string.battery_usage_allowed))
                 }
             }
         }

@@ -789,6 +789,7 @@
     <string name="threshold">Threshold</string>
     <string name="tool_metal_detector_title">Metal Detector</string>
     <string name="metal_detector_disclaimer">Only detects magnetic metals (ex. iron)</string>
+    <string name="metal_detector_sound_failed">The detector\'s sound could not play on this phone. It still shows and vibrates.</string>
     <string name="update_gps_override">Update GPS override</string>
     <string name="location_override_updated">Location override updated</string>
     <string name="notes_empty_text">No notes</string>

@@ -14,6 +14,8 @@ import com.kylecorry.andromeda.sound.ISoundPlayer
 import com.kylecorry.andromeda.sound.SoundPlayer
 import com.kylecorry.andromeda.sound.ToneGenerator
 import com.kylecorry.luna.concurrency.onDefault
+import com.kylecorry.luna.concurrency.onMain
+import com.kylecorry.trail_sense.shared.Notices
 import com.kylecorry.luna.time.CoroutineTimer
 import com.kylecorry.luna.time.Throttle
 import com.kylecorry.sol.math.Quaternion
@@ -323,7 +325,12 @@ class FragmentToolMetalDetector : BoundFragment<FragmentToolMetalDetectorBinding
                 } catch (e: Exception) {
                     e.printStackTrace()
                     prefs.metalDetector.isMetalAudioEnabled = false
-                    binding.metalDetectorTitle.rightButton.isVisible = false
+                    // The sound switch goes, and the page says why, on the main thread: a view
+                    // touched from here would close the app instead.
+                    onMain {
+                        if (isBound) binding.metalDetectorTitle.rightButton.isVisible = false
+                        context?.let { Notices.say(it, it.getString(R.string.metal_detector_sound_failed)) }
+                    }
                 }
             }
         }

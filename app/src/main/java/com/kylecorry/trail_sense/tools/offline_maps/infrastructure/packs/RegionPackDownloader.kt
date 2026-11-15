@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.offline_maps.infrastructure.packs
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import android.net.Uri
 import android.os.Handler
@@ -40,7 +41,7 @@ class RegionPackDownloader(
             } else {
                 context.getString(R.string.region_packs_ready, imported)
             }
-            onMain { Alerts.toast(context, message) }
+            onMain { Notices.toast(context, message) }
         }
         return imported
     }

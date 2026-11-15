@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.qr.ui
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -277,7 +278,7 @@ class ScanQRFragment : BoundFragment<FragmentScanTextBinding>() {
         if (message != null) {
             onQRScanned(message)
         } else if (isFromGallery) {
-            Alerts.toast(requireContext(), getString(R.string.no_qr_code_detected))
+            Notices.toast(requireContext(), getString(R.string.no_qr_code_detected))
         }
 
         return true

@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.settings.ui
 
+import com.kylecorry.trail_sense.shared.Notices
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
@@ -199,7 +200,7 @@ class CalibrateCompassFragment : AndromedaPreferenceFragment() {
         val declination = Geophysics.getGeomagneticDeclination(gps.location, gps.altitude)
         prefs.declinationOverride = declination
         declinationOverrideEdit.text = declination.toString()
-        Alerts.toast(requireContext(), getString(R.string.declination_override_updated_toast))
+        Notices.toast(requireContext(), getString(R.string.declination_override_updated_toast))
         return false
     }
 
@@ -230,7 +231,7 @@ class CalibrateCompassFragment : AndromedaPreferenceFragment() {
 
         if (prevQuality != Quality.Unknown && prevQuality != compass.quality) {
             if (compass.quality.ordinal > prevQuality.ordinal) {
-                Alerts.toast(
+                Notices.toast(
                     requireContext(),
                     getString(R.string.compass_accuracy_improved, getCompassAccuracy())
                 )
