@@ -15,6 +15,7 @@ import com.kylecorry.luna.concurrency.onMain
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.databinding.FragmentPhotoMapsPerspectiveBinding
 import com.kylecorry.trail_sense.main.getAppService
+import com.kylecorry.trail_sense.shared.house.DarkMode
 import com.kylecorry.trail_sense.shared.extensions.withCancelableLoading
 import com.kylecorry.trail_sense.tools.offline_maps.domain.photo_maps.PhotoMap
 import com.kylecorry.trail_sense.tools.offline_maps.domain.OfflineMapService
@@ -53,6 +54,8 @@ class WarpMapFragment : BoundFragment<FragmentPhotoMapsPerspectiveBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // The photo of the map keeps its real colors in dark mode.
+        DarkMode.keep(binding.perspective)
 
         binding.instructionsText.setOnClickListener {
             dialog(

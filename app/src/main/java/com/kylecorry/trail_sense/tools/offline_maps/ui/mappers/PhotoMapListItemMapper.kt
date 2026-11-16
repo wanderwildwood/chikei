@@ -2,6 +2,9 @@ package com.kylecorry.trail_sense.tools.offline_maps.ui.mappers
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.ColorMatrixColorFilter
+import android.graphics.Paint
 import android.util.Size
 import androidx.core.graphics.createBitmap
 import androidx.lifecycle.LifecycleOwner
@@ -22,6 +25,7 @@ import com.kylecorry.trail_sense.shared.CustomUiUtils.getPrimaryColor
 import com.kylecorry.trail_sense.shared.FormatService
 import com.kylecorry.trail_sense.shared.UserPreferences
 import com.kylecorry.trail_sense.shared.colors.AppColor
+import com.kylecorry.trail_sense.shared.house.DarkMode
 import com.kylecorry.trail_sense.shared.io.FileSubsystem
 import com.kylecorry.trail_sense.tools.offline_maps.domain.OfflineMapState
 import com.kylecorry.trail_sense.tools.offline_maps.domain.photo_maps.PhotoMap
@@ -43,7 +47,7 @@ class PhotoMapListItemMapper(
         val icon = if (prefs.photoMaps.showMapPreviews) {
             AsyncListIcon(
                 lifecycleOwner,
-                { loadMapThumbnail(value) },
+                { keepColors(loadMapThumbnail(value)) },
                 size = 48f,
                 clearOnPause = true
             )
@@ -145,6 +149,30 @@ class PhotoMapListItemMapper(
         }
 
         bitmap
+    }
+
+    /**
+     * The map's photo keeps its real colors in dark mode. Dark mode draws the window through an
+     * inverting filter, and a list row's icon is shared with plain icons, so it cannot be kept as
+     * a view; the thumbnail is handed over already turned and the filter turns it back. The rows
+     * load their icons again on resume, so a change of the switch reaches them.
+     */
+    private fun keepColors(bitmap: Bitmap): Bitmap {
+        if (!DarkMode.on) return bitmap
+        val turned = createBitmap(bitmap.width, bitmap.height)
+        val paint = Paint().apply {
+            colorFilter = ColorMatrixColorFilter(
+                floatArrayOf(
+                    -1f, 0f, 0f, 0f, 255f,
+                    0f, -1f, 0f, 0f, 255f,
+                    0f, 0f, -1f, 0f, 255f,
+                    0f, 0f, 0f, 1f, 0f,
+                )
+            )
+        }
+        Canvas(turned).drawBitmap(bitmap, 0f, 0f, paint)
+        bitmap.recycle()
+        return turned
     }
 
     private fun getDefaultMapThumbnail(): Bitmap {
