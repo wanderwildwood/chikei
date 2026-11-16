@@ -1508,5 +1508,4 @@
     <string name="current_temperature">Aktuelle Temperatur</string>
     <string name="pref_navigation_show_azimuth_indicator_title">Azimutindikator anzeigen</string>
     <string name="settings_dark">Dunkelmodus</string>
-    <string name="settings_dark_note">Weiß auf Schwarz, in dieser App. Home hat einen Schalter für alle Apps.</string>
 </resources>

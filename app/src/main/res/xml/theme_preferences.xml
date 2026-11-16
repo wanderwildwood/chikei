@@ -41,7 +41,6 @@
 
         <!-- Not stored here: DarkMode keeps the state (and follows Home's switch). -->
         <SwitchPreferenceCompat
-            android:summary="@string/settings_dark_note"
             app:iconSpaceReserved="false"
             app:key="@string/pref_dark_mode"
             app:persistent="false"
