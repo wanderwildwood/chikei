@@ -13,6 +13,7 @@ import com.kylecorry.andromeda.fragments.AndromedaPreferenceFragment
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.main.getAppService
 import com.kylecorry.trail_sense.plugins.PluginSubsystem
+import com.kylecorry.trail_sense.shared.house.DarkMode
 import com.kylecorry.trail_sense.shared.navigateWithAnimation
 import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
 import com.kylecorry.trail_sense.tools.tools.ui.sort.AlphabeticalToolSort
@@ -40,6 +41,13 @@ class SettingsFragment : AndromedaPreferenceFragment() {
 
         for (nav in navigationMap) {
             navigateOnClick(preference(nav.key), nav.value)
+        }
+
+        val darkMode = switch(R.string.pref_dark_mode)
+        darkMode?.isChecked = DarkMode.on
+        darkMode?.setOnPreferenceChangeListener { _, checked ->
+            DarkMode.set(requireContext(), checked as Boolean)
+            true
         }
 
         // Populate tool settings
