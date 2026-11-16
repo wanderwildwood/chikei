@@ -22,13 +22,14 @@ fun HouseTheme(content: @Composable () -> Unit) {
 
 /**
  * Shows the About dialog over [root]. The dialog is its own window, so the host view that carries
- * it has no size; it is taken out again when the dialog closes.
+ * it has no size; it is taken out again when the dialog closes. Taking the host out alone would
+ * leave the dialog up (its composition outlives the view), so Close ends the composition first.
  */
 fun showAboutDialog(context: Context, root: ViewGroup) {
     val host = ComposeView(context)
     host.setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
     host.setContent {
-        HouseTheme { AboutDialog(onDismiss = { root.removeView(host) }) }
+        HouseTheme { AboutDialog(onDismiss = { host.disposeComposition(); root.removeView(host) }) }
     }
     root.addView(host, ViewGroup.LayoutParams(0, 0))
 }
