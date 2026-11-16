@@ -76,7 +76,7 @@ class SteadyTextInputEditText(context: Context, attrs: AttributeSet?) :
 }
 
 /** Every EditText and TextInputEditText inflated from a layout gets the steady cursor. */
-class SteadyViewInflater : MaterialComponentsViewInflater() {
+open class SteadyViewInflater : MaterialComponentsViewInflater() {
     override fun createEditText(context: Context, attrs: AttributeSet): AppCompatEditText =
         SteadyEditText(context, attrs)
 

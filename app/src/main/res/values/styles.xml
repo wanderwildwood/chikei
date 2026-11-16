@@ -84,8 +84,12 @@
         <item name="bottomNavigationStyle">@style/Widget.Topo.BottomNavigation</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="quickActionButtonStyle">@style/Widget.App.QuickActionButton</item>
-        <!-- Text fields draw a cursor that does not blink -->
-        <item name="viewInflaterClass">com.kylecorry.trail_sense.shared.views.SteadyViewInflater</item>
+        <!-- Text fields draw a cursor that does not blink; dialogs, sheets and menus follow dark mode -->
+        <!-- Selection handles that show on the white page and on dark mode's black one -->
+        <item name="android:textSelectHandleLeft">@drawable/text_handle_left</item>
+        <item name="android:textSelectHandleRight">@drawable/text_handle_right</item>
+        <item name="android:textSelectHandle">@drawable/text_handle_middle</item>
+        <item name="viewInflaterClass">com.kylecorry.trail_sense.shared.views.DarkWindowsViewInflater</item>
         <item name="preferenceTheme">@style/AppThemePreferenceThemeOverlay</item>
     </style>
 
