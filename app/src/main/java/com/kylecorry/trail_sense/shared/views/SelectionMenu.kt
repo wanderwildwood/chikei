@@ -18,6 +18,7 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import com.kylecorry.trail_sense.shared.house.DarkMode
 
 /**
  * The menu over a selection, given back what the Kompakt takes out of it.
@@ -221,6 +222,8 @@ object SelectionMenu {
             elevation = 0f
         }
         popup.showAtLocation(root, Gravity.TOP or Gravity.START, x, place.first)
+        // The list is a window of its own: dark in dark mode only when handed to the dark filter.
+        DarkMode.window(box)
     }
 
     /**
