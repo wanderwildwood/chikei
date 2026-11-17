@@ -70,24 +70,46 @@ object SavedAreas {
     class Plan(
         val bounds: CoordinateBounds,
         val mapTiles: List<Tile>,
-        val terrainTiles: List<Tile>
+        val terrainTiles: List<Tile>,
+        /** Set when the plan was cut short as too big: its size so far, over [MAX_BYTES]. */
+        private val tooBig: Long? = null,
     ) {
         val estimatedBytes: Long
-            get() = mapTiles.size * MAP_TILE_BYTES + terrainTiles.size * TERRAIN_TILE_BYTES
+            get() = tooBig ?: (mapTiles.size * MAP_TILE_BYTES + terrainTiles.size * TERRAIN_TILE_BYTES)
     }
 
+    /**
+     * The tiles an area would hold. A view too big to save is found from the counts of its
+     * tiles, or as soon as the list passes [MAX_BYTES], rather than after listing a country's
+     * worth of tiles.
+     */
     fun plan(context: Context, bounds: CoordinateBounds): Plan {
+        val terrainBytes = countIn(bounds, TerrainTiles.ZOOM) * TERRAIN_TILE_BYTES
+        if (terrainBytes > MAX_BYTES) return Plan(bounds, emptyList(), emptyList(), tooBig = terrainBytes)
         val mapTiles = mutableListOf<Tile>()
         if (UsCoverage.intersects(context, bounds)) {
             for (z in MIN_MAP_ZOOM..MAX_MAP_ZOOM) {
                 for (tile in tilesIn(bounds, z)) {
                     if (UsCoverage.contains(context, tile.getCenter()) || touchesUs(context, tile)) {
                         mapTiles.add(tile)
+                        val bytes = terrainBytes + mapTiles.size * MAP_TILE_BYTES
+                        if (bytes > MAX_BYTES) return Plan(bounds, emptyList(), emptyList(), tooBig = bytes)
                     }
                 }
             }
         }
         return Plan(bounds, mapTiles, tilesIn(bounds, TerrainTiles.ZOOM))
+    }
+
+    /** How many tiles of zoom [z] cover [bounds], without listing them. */
+    fun countIn(bounds: CoordinateBounds, z: Int): Long {
+        val n = 1 shl z
+        fun x(lon: Double) = floor((lon + 180.0) / 360.0 * n).toInt().coerceIn(0, n - 1)
+        fun y(lat: Double) =
+            floor((1 - asinh(tan(Math.toRadians(lat))) / PI) / 2 * n).toInt().coerceIn(0, n - 1)
+        val across = (x(bounds.east) - x(bounds.west) + 1).coerceAtLeast(0)
+        val down = (y(bounds.south) - y(bounds.north) + 1).coerceAtLeast(0)
+        return across.toLong() * down
     }
 
     suspend fun all(context: Context): List<SavedArea> = lock.withLock { load(context) }
