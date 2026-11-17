@@ -94,6 +94,9 @@ class RegionPackDownloader(
             }
             source.markInstalled(pack)
             return true
+        } catch (e: kotlinx.coroutines.CancellationException) {
+            // Left the picker: not a failure to report, and the temporary files still go below.
+            throw e
         } catch (e: Exception) {
             e.printStackTrace()
             onMain {
@@ -106,10 +109,11 @@ class RegionPackDownloader(
             }
             return false
         } finally {
-            onIO {
-                mapFile.delete()
-                demFile.delete()
-                landFile.delete()
+            kotlinx.coroutines.withContext(kotlinx.coroutines.NonCancellable + kotlinx.coroutines.Dispatchers.IO) {
+                listOf(mapFile, demFile, landFile).forEach { file ->
+                    file.delete()
+                    File(file.parentFile, file.name + ".part").delete()
+                }
             }
         }
     }
