@@ -39,7 +39,10 @@ class StreetsGeoJsonSource : GeoJsonSource {
     ): GeoJsonObject {
         val isWidget = params.getBoolean(MapLayerParams.PARAM_IS_WIDGET, false)
         val box = ForageBox(bounds.south, bounds.west, bounds.north, bounds.east)
-        val view = Streets.view(context, box, zoom, fetch = !isWidget)
+        // "My region packs only" keeps every layer off the network; what is kept still draws.
+        val offline = com.kylecorry.trail_sense.tools.map.sources.TopoMapSource.get(context) ==
+            com.kylecorry.trail_sense.tools.map.sources.TopoMapSource.PacksOnly
+        val view = Streets.view(context, box, zoom, fetch = !isWidget && !offline)
         val features = mutableListOf<GeoJsonFeature>()
 
         view.pieces.forEach { piece ->
