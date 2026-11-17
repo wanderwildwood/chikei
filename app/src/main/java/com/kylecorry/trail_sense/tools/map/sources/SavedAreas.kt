@@ -162,56 +162,68 @@ object SavedAreas {
         val failedInARow = AtomicInteger(0)
         val report = { onProgress(done.incrementAndGet().toFloat() / total) }
 
-        for (tile in plan.terrainTiles) {
-            // A tile this area already holds is not fetched again; its size comes back at once.
-            val kept = withRetries(failedInARow) {
-                TerrainTiles.save(context, tile, folder(id), ignoreOffline = true)
+        try {
+            for (tile in plan.terrainTiles) {
+                // A tile this area already holds is not fetched again; its size comes back at once.
+                val kept = withRetries(failedInARow) {
+                    TerrainTiles.save(context, tile, folder(id), ignoreOffline = true)
+                }
+                if (kept != null) {
+                    bytes.addAndGet(kept)
+                    terrainKept.incrementAndGet()
+                } else {
+                    missing.incrementAndGet()
+                }
+                report()
             }
-            if (kept != null) {
-                bytes.addAndGet(kept)
-                terrainKept.incrementAndGet()
-            } else {
-                missing.incrementAndGet()
-            }
-            report()
-        }
 
-        // Three at a time, which WebTiles also enforces across the whole app.
-        plan.mapTiles.chunked(3).forEach { group ->
-            coroutineScope {
-                group.map { tile ->
-                    async {
-                        val file = mapFile(context, id, tile)
-                        if (file.exists()) {
-                            // Kept by an earlier try at this area
-                            bytes.addAndGet(file.length())
-                            mapKept.incrementAndGet()
-                        } else {
-                            val result = withRetries(failedInARow) {
-                                WebTiles.fromNetwork(
-                                    context,
-                                    TopoBaseTileSource.usgsUrl(tile),
-                                    // Not through the viewing cache, which a save this size would empty.
-                                    useCache = false,
-                                    ignoreOffline = true
-                                ).takeIf { it !is WebTiles.Result.Unreachable }
-                            }
-                            when (result) {
-                                is WebTiles.Result.Found -> {
-                                    file.parentFile?.mkdirs()
-                                    file.writeBytes(result.bytes)
-                                    bytes.addAndGet(result.bytes.size.toLong())
-                                    mapKept.incrementAndGet()
+            // Three at a time, which WebTiles also enforces across the whole app.
+            plan.mapTiles.chunked(3).forEach { group ->
+                coroutineScope {
+                    group.map { tile ->
+                        async {
+                            val file = mapFile(context, id, tile)
+                            if (file.exists()) {
+                                // Kept by an earlier try at this area
+                                bytes.addAndGet(file.length())
+                                mapKept.incrementAndGet()
+                            } else {
+                                val result = withRetries(failedInARow) {
+                                    WebTiles.fromNetwork(
+                                        context,
+                                        TopoBaseTileSource.usgsUrl(tile),
+                                        // Not through the viewing cache, which a save this size would empty.
+                                        useCache = false,
+                                        ignoreOffline = true
+                                    ).takeIf { it !is WebTiles.Result.Unreachable }
                                 }
-                                // The server has no such tile: nothing is missing
-                                WebTiles.Result.Missing -> {}
-                                else -> missing.incrementAndGet()
+                                when (result) {
+                                    is WebTiles.Result.Found -> {
+                                        file.parentFile?.mkdirs()
+                                        file.writeBytes(result.bytes)
+                                        bytes.addAndGet(result.bytes.size.toLong())
+                                        mapKept.incrementAndGet()
+                                    }
+                                    // The server has no such tile: nothing is missing
+                                    WebTiles.Result.Missing -> {}
+                                    else -> missing.incrementAndGet()
+                                }
                             }
+                            report()
                         }
-                        report()
-                    }
-                }.awaitAll()
+                    }.awaitAll()
+                }
             }
+        } catch (e: kotlinx.coroutines.CancellationException) {
+            // Stopped part way (the page closed): a new area's tiles so far would be in no list
+            // and could never be removed, so they go now. An area being topped up keeps them.
+            if (into == null) {
+                withContext(kotlinx.coroutines.NonCancellable) {
+                    File(root(context), id).deleteRecursively()
+                    TerrainTiles.forget(folder(id))
+                }
+            }
+            throw e
         }
 
         if (into == null && mapKept.get() == 0 && terrainKept.get() == 0) {
