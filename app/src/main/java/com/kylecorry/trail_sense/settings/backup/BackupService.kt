@@ -30,13 +30,12 @@ class BackupService(
         // Delete previous version files
         deleteVersionFiles()
 
-        // Get the files to backup
-        val filesToBackup = getFilesToBackup().toMutableList()
-
         val appVersionFile =
             File(context.filesDir, "app-version-${Package.getVersionCode(context)}.txt")
         appVersionFile.createNewFile()
-        filesToBackup.add(appVersionFile)
+
+        // Get the files to backup
+        val filesToBackup = getFilesToBackup(appVersionFile)
 
         try {
             // Create a DB checkpoint to avoid losing data
@@ -44,6 +43,8 @@ class BackupService(
 
             val excludedFiles = listOf(
                 fileSubsystem.getDirectory("dem"),
+                // Map tiles and layer caches, one file per tile or square, fetched again on use
+                *REFETCHABLE_DIRECTORIES.map { fileSubsystem.getDirectory(it) }.toTypedArray(),
                 AppData.getSharedPrefsFile(context, "${context.packageName}_widget_preferences"),
                 if (!preferences.backup.includeMapsforgeMaps) {
                     fileSubsystem.getDirectory(OFFLINE_MAPS_DIRECTORY)
@@ -168,14 +169,14 @@ class BackupService(
         }?.file?.name
     }
 
-    private fun getFilesToBackup(): List<File> {
+    private fun getFilesToBackup(appVersionFile: File): List<File> {
         val files = AppData.getFilesDirectory(context)
         val database = AppData.getDatabaseDirectory(
             context,
             "trail_sense"
         )
         val sharedPrefsDir = AppData.getSharedPrefsDirectory(context)
-        return listOfNotNull(files, database, sharedPrefsDir)
+        return backupOrder(appVersionFile, database, sharedPrefsDir, files)
     }
 
     private fun extractVersionCode(path: String): Long? {
@@ -194,6 +195,22 @@ class BackupService(
 
     companion object {
         private const val MAX_ZIP_FILE_COUNT = 1000
+
+        /**
+         * Folders under files/ that hold only what can be fetched again: saved areas' map tiles,
+         * and the Forage and Streets layers' squares. Each holds a file per tile or square, so
+         * they alone could pass [MAX_ZIP_FILE_COUNT] and leave the backup unrestorable.
+         */
+        val REFETCHABLE_DIRECTORIES = listOf("topo_areas", "forage", "streets")
+
+        /**
+         * The version file, the database and the settings go into the zip first, so a restore
+         * finds them even when the files folder is large.
+         */
+        fun backupOrder(appVersion: File?, database: File?, sharedPrefs: File?, files: File?): List<File> {
+            return listOfNotNull(appVersion, database, sharedPrefs, files)
+        }
+
         private const val OFFLINE_MAPS_DIRECTORY = "offline_maps"
         private val SHARED_PREFS_REGEX =
             Regex("shared_prefs/com\\.kylecorry\\.trail_sense.*_preferences.xml")
