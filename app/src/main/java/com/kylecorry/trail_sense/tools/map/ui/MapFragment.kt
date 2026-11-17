@@ -785,6 +785,8 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
             var into: SavedArea? = null
             while (true) {
                 var result: SavedAreas.SaveResult? = null
+                // Layers asked for but not kept (an area too big for them, or no answer).
+                val notKept = mutableListOf<Int>()
                 Alerts.withProgress(context, getString(R.string.saving_area)) { setProgressOnMain ->
                     val main = Handler(Looper.getMainLooper())
                     var lastPercent = -1
@@ -797,11 +799,11 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                         }
                     }
                     // With the Forage layer in use, the area's edible plants are kept with it too
-                    if (result != null && forageOn) {
-                        Forage.keepArea(context, box)
+                    if (result != null && forageOn && !Forage.keepArea(context, box)) {
+                        notKept += R.string.area_forage_not_kept
                     }
-                    if (result != null && streetsOn) {
-                        Streets.keepArea(context, box)
+                    if (result != null && streetsOn && !Streets.keepArea(context, box)) {
+                        notKept += R.string.area_streets_not_kept
                     }
                 }
                 val saved = result
@@ -817,7 +819,8 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                     } else if (saved.missing == 0) {
                         Notices.toast(
                             context,
-                            getString(R.string.area_saved, saved.area.name, formatter.formatFileSize(saved.area.bytes))
+                            (listOf(getString(R.string.area_saved, saved.area.name, formatter.formatFileSize(saved.area.bytes))) +
+                                notKept.map { getString(it) }).joinToString("\n")
                         )
                         false
                     } else {
@@ -827,13 +830,15 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                             Alerts.dialog(
                                 context,
                                 getString(R.string.area_partly_saved),
-                                getString(
-                                    R.string.area_partly_saved_message,
-                                    saved.area.name,
-                                    formatter.formatFileSize(saved.area.bytes),
-                                    saved.missing,
-                                    planned
-                                ),
+                                (listOf(
+                                    getString(
+                                        R.string.area_partly_saved_message,
+                                        saved.area.name,
+                                        formatter.formatFileSize(saved.area.bytes),
+                                        saved.missing,
+                                        planned
+                                    )
+                                ) + notKept.map { getString(it) }).joinToString("\n\n"),
                                 okText = getString(R.string.area_save_try_again),
                                 cancelText = getString(R.string.area_save_keep_it)
                             ) { keep ->

@@ -137,6 +137,8 @@
     <string name="save_area_message">About %1$s: %2$s for what is on the screen, to use with no signal.</string>
     <string name="save_area_holds_map">the topo map and contour lines</string>
     <string name="save_area_holds_contours">contour lines</string>
+    <string name="area_forage_not_kept">The fruit and nut trees could not be kept with it: the area is too big for them, or the server did not answer.</string>
+    <string name="area_streets_not_kept">The streets could not be kept with it: the area is too big for them, or the server did not answer.</string>
     <string name="save_area_holds_forage">%s, and the fruit and nut trees on the Forage layer,</string>
     <string name="save_area_holds_streets">%s, and the streets on the Streets layer,</string>
     <string name="save_area_too_big">This area is too big to save at once: about %s. Zoom in and save a smaller area.</string>
