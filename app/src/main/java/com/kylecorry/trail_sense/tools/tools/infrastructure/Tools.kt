@@ -133,7 +133,9 @@ object Tools {
     fun getWidgetFromAppWidgetId(context: Context, appWidgetId: Int): ToolWidget? {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val componentName = appWidgetManager.getAppWidgetInfo(appWidgetId)?.provider ?: return null
-        return getTools(context)
+        // Topo: every registered tool, not only the shown ones; a placed widget of a hidden
+        // tool (Location, Elevation) is still the app's to draw.
+        return getTools(context, availableOnly = false)
             .flatMap { it.widgets }
             .firstOrNull {
                 it.widgetClass == componentName.className.let { cls ->
@@ -145,7 +147,7 @@ object Tools {
     }
 
     fun getWidget(context: Context, widgetId: String): ToolWidget? {
-        return getTools(context)
+        return getTools(context, availableOnly = false)
             .flatMap { it.widgets }
             .firstOrNull { it.id == widgetId }
     }
