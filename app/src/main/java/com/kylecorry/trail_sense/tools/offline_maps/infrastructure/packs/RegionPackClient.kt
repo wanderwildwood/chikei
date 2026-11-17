@@ -46,8 +46,14 @@ class RegionPackClient(baseUrl: String) {
     private val base = baseUrl.trim().trimEnd('/')
 
     suspend fun index(): RegionPackIndex = onIO {
-        val text = open(url("packs.json")).use { it.inputStream.bufferedReader().readText() }
-        JsonConvert.fromJson<RegionPackIndex>(text) ?: throw IOException("packs.json is not a pack index")
+        // An index is a few kilobytes; a reply far bigger is not one.
+        val bytes = open(url("packs.json")).use { it.inputStream.use { input -> readAtMost(input, MAX_INDEX_BYTES + 1) } }
+        if (bytes.size > MAX_INDEX_BYTES) throw IOException("packs.json is too big")
+        val index = JsonConvert.fromJson<RegionPackIndex>(bytes.decodeToString())
+            ?: throw IOException("packs.json is not a pack index")
+        // A pack's id names its files and its elevation folder, so only a plain name will do:
+        // one like "../databases" would point a delete outside them.
+        RegionPackIndex(index.packs.filter { isPlainId(it.id) })
     }
 
     /**
@@ -58,27 +64,36 @@ class RegionPackClient(baseUrl: String) {
     suspend fun download(file: RegionPackFile, dest: File, onProgress: (Float) -> Unit) = onIO {
         val part = File(dest.parentFile, dest.name + ".part")
         val digest = MessageDigest.getInstance("SHA-256")
-        open(url(file.path)).use { connection ->
-            connection.inputStream.use { input ->
-                part.outputStream().use { output ->
-                    val buffer = ByteArray(64 * 1024)
-                    var total = 0L
-                    var lastPercent = -1
-                    while (true) {
-                        val read = input.read(buffer)
-                        if (read < 0) break
-                        output.write(buffer, 0, read)
-                        digest.update(buffer, 0, read)
-                        total += read
-                        val fraction = (total.toFloat() / file.bytes.coerceAtLeast(1)).coerceAtMost(1f)
-                        val percent = (fraction * 100).toInt()
-                        if (percent != lastPercent) {
-                            lastPercent = percent
-                            onProgress(fraction)
+        try {
+            open(url(file.path)).use { connection ->
+                connection.inputStream.use { input ->
+                    part.outputStream().use { output ->
+                        val buffer = ByteArray(64 * 1024)
+                        var total = 0L
+                        var lastPercent = -1
+                        while (true) {
+                            val read = input.read(buffer)
+                            if (read < 0) break
+                            total += read
+                            // More than the index said (with room for a rounding): not this file.
+                            if (file.bytes > 0 && total > file.bytes + file.bytes / 100 + 64 * 1024) {
+                                throw IOException("${file.path}: bigger than the index says")
+                            }
+                            output.write(buffer, 0, read)
+                            digest.update(buffer, 0, read)
+                            val fraction = (total.toFloat() / file.bytes.coerceAtLeast(1)).coerceAtMost(1f)
+                            val percent = (fraction * 100).toInt()
+                            if (percent != lastPercent) {
+                                lastPercent = percent
+                                onProgress(fraction)
+                            }
                         }
                     }
                 }
             }
+        } catch (e: Exception) {
+            part.delete()
+            throw e
         }
         val hash = digest.digest().joinToString("") { "%02x".format(it) }
         if (!hash.equals(file.sha256, ignoreCase = true)) {
@@ -88,6 +103,25 @@ class RegionPackClient(baseUrl: String) {
         if (!part.renameTo(dest)) {
             part.delete()
             throw IOException("${file.path}: could not save")
+        }
+    }
+
+    companion object {
+        private const val MAX_INDEX_BYTES = 4 * 1024 * 1024
+        private val PLAIN_ID = Regex("[A-Za-z0-9_-]{1,64}")
+
+        /** Whether [id] can name a pack's files: letters, digits, - and _ only. */
+        fun isPlainId(id: String?): Boolean = id != null && PLAIN_ID.matches(id)
+
+        private fun readAtMost(input: java.io.InputStream, limit: Int): ByteArray {
+            val out = java.io.ByteArrayOutputStream()
+            val buf = ByteArray(64 * 1024)
+            while (out.size() < limit) {
+                val n = input.read(buf, 0, minOf(buf.size, limit - out.size()))
+                if (n < 0) break
+                out.write(buf, 0, n)
+            }
+            return out.toByteArray()
         }
     }
 
