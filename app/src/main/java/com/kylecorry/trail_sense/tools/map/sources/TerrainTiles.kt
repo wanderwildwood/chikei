@@ -97,7 +97,7 @@ object TerrainTiles {
     }
 
     /** Fetches [tile] into a saved area's [folder] (moving it there if it was only viewed). Returns its size. */
-    suspend fun save(context: Context, tile: Tile, folder: String): Long? {
+    suspend fun save(context: Context, tile: Tile, folder: String, ignoreOffline: Boolean = false): Long? {
         val existing = lock.withLock { heldTiles()[key(tile)] }
         if (existing == folder) {
             return withContext(Dispatchers.IO) { fileFor(folder, tile).length() }
@@ -105,7 +105,7 @@ object TerrainTiles {
         if (existing == VIEWED) {
             return move(tile, VIEWED, folder)
         }
-        val bytes = (WebTiles.fromNetwork(context, url(tile), useCache = false)
+        val bytes = (WebTiles.fromNetwork(context, url(tile), useCache = false, ignoreOffline = ignoreOffline)
                 as? WebTiles.Result.Found)?.bytes ?: return null
         return store(tile, bytes, folder)
     }

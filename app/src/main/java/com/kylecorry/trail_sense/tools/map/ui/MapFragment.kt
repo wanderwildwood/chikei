@@ -18,6 +18,8 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 import com.kylecorry.andromeda.alerts.Alerts
 import com.kylecorry.andromeda.pickers.CoroutinePickers
 import com.kylecorry.trail_sense.tools.map.sources.SavedArea
@@ -778,41 +780,71 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                 )
             }?.trim()?.ifBlank { defaultName } ?: return@inBackground
 
-            var area: SavedArea? = null
-            Alerts.withProgress(context, getString(R.string.saving_area)) { setProgressOnMain ->
-                val main = Handler(Looper.getMainLooper())
-                var lastPercent = -1
-                area = SavedAreas.save(context, name, plan) { fraction ->
-                    // Whole percents only: each step is a redraw of the panel.
-                    val percent = (fraction * 100).toInt()
-                    if (percent != lastPercent) {
-                        lastPercent = percent
-                        main.post { setProgressOnMain(fraction) }
+            val box = ForageBox(bounds.south, bounds.west, bounds.north, bounds.east)
+            // A second try fills in only what the first could not fetch
+            var into: SavedArea? = null
+            while (true) {
+                var result: SavedAreas.SaveResult? = null
+                Alerts.withProgress(context, getString(R.string.saving_area)) { setProgressOnMain ->
+                    val main = Handler(Looper.getMainLooper())
+                    var lastPercent = -1
+                    result = SavedAreas.save(context, name, plan, into) { fraction ->
+                        // Whole percents only: each step is a redraw of the panel.
+                        val percent = (fraction * 100).toInt()
+                        if (percent != lastPercent) {
+                            lastPercent = percent
+                            main.post { setProgressOnMain(fraction) }
+                        }
+                    }
+                    // With the Forage layer in use, the area's edible plants are kept with it too
+                    if (result != null && forageOn) {
+                        Forage.keepArea(context, box)
+                    }
+                    if (result != null && streetsOn) {
+                        Streets.keepArea(context, box)
                     }
                 }
-                // With the Forage layer in use, the area's edible plants are kept with it too
-                if (area != null && forageOn) {
-                    Forage.keepArea(context, ForageBox(bounds.south, bounds.west, bounds.north, bounds.east))
+                val saved = result
+                val again = onMain {
+                    if (saved == null) {
+                        Alerts.dialog(
+                            context,
+                            getString(R.string.area_not_saved),
+                            getString(R.string.area_not_saved_message),
+                            cancelText = null
+                        )
+                        false
+                    } else if (saved.missing == 0) {
+                        Notices.toast(
+                            context,
+                            getString(R.string.area_saved, saved.area.name, formatter.formatFileSize(saved.area.bytes))
+                        )
+                        false
+                    } else {
+                        val planned = plan.mapTiles.size + plan.terrainTiles.size
+                        // Cancelled (Keep it, or Back) keeps the area as it is
+                        val cancelled = suspendCoroutine<Boolean> { cont ->
+                            Alerts.dialog(
+                                context,
+                                getString(R.string.area_partly_saved),
+                                getString(
+                                    R.string.area_partly_saved_message,
+                                    saved.area.name,
+                                    formatter.formatFileSize(saved.area.bytes),
+                                    saved.missing,
+                                    planned
+                                ),
+                                okText = getString(R.string.area_save_try_again),
+                                cancelText = getString(R.string.area_save_keep_it)
+                            ) { keep ->
+                                cont.resume(keep)
+                            }
+                        }
+                        !cancelled
+                    }
                 }
-                if (area != null && streetsOn) {
-                    Streets.keepArea(context, ForageBox(bounds.south, bounds.west, bounds.north, bounds.east))
-                }
-            }
-            onMain {
-                val saved = area
-                if (saved == null) {
-                    Alerts.dialog(
-                        context,
-                        getString(R.string.area_not_saved),
-                        getString(R.string.area_not_saved_message),
-                        cancelText = null
-                    )
-                } else {
-                    Notices.toast(
-                        context,
-                        getString(R.string.area_saved, saved.name, formatter.formatFileSize(saved.bytes))
-                    )
-                }
+                if (!again || saved == null) break
+                into = saved.area
             }
         }
     }

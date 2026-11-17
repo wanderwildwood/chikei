@@ -10,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
@@ -109,30 +110,46 @@ object SavedAreas {
         null
     }
 
+    /** A save's outcome: the area, and how many planned tiles could not be fetched. */
+    class SaveResult(val area: SavedArea, val missing: Int)
+
     /**
-     * Saves the planned tiles as a new area, reporting progress 0..1. Returns the area, or null
-     * if nothing could be fetched (no signal). Tiles that fail are left out; most of an area is
-     * better than none, and the size shown afterwards is what was kept.
+     * Saves the planned tiles as a new area, or fills in the gaps of [into] (made from the same
+     * plan), reporting progress 0..1. Returns null if nothing could be fetched (no signal).
+     *
+     * A tile that fails is asked for twice more after a pause. After [GIVE_UP_AFTER] tiles in a
+     * row fail every try the signal is taken as gone and the rest are not asked for. What could
+     * not be fetched is counted in [SaveResult.missing], so the person can be told and try again;
+     * most of an area is still better than none.
      */
     suspend fun save(
         context: Context,
         name: String,
         plan: Plan,
+        into: SavedArea? = null,
         onProgress: (Float) -> Unit
-    ): SavedArea? = withContext(Dispatchers.IO) {
+    ): SaveResult? = withContext(Dispatchers.IO) {
         WebTiles.forgetFailures()
-        val id = System.currentTimeMillis().toString(36)
+        val id = into?.id ?: System.currentTimeMillis().toString(36)
         val total = (plan.mapTiles.size + plan.terrainTiles.size).coerceAtLeast(1)
         val done = AtomicInteger(0)
         val bytes = AtomicLong(0)
         val mapKept = AtomicInteger(0)
         val terrainKept = AtomicInteger(0)
+        val missing = AtomicInteger(0)
+        val failedInARow = AtomicInteger(0)
         val report = { onProgress(done.incrementAndGet().toFloat() / total) }
 
         for (tile in plan.terrainTiles) {
-            TerrainTiles.save(context, tile, folder(id))?.let {
-                bytes.addAndGet(it)
+            // A tile this area already holds is not fetched again; its size comes back at once.
+            val kept = withRetries(failedInARow) {
+                TerrainTiles.save(context, tile, folder(id), ignoreOffline = true)
+            }
+            if (kept != null) {
+                bytes.addAndGet(kept)
                 terrainKept.incrementAndGet()
+            } else {
+                missing.incrementAndGet()
             }
             report()
         }
@@ -142,18 +159,32 @@ object SavedAreas {
             coroutineScope {
                 group.map { tile ->
                     async {
-                        val result = WebTiles.fromNetwork(
-                            context,
-                            TopoBaseTileSource.usgsUrl(tile),
-                            // Not through the viewing cache, which a save this size would empty.
-                            useCache = false
-                        )
-                        if (result is WebTiles.Result.Found) {
-                            val file = mapFile(context, id, tile)
-                            file.parentFile?.mkdirs()
-                            file.writeBytes(result.bytes)
-                            bytes.addAndGet(result.bytes.size.toLong())
+                        val file = mapFile(context, id, tile)
+                        if (file.exists()) {
+                            // Kept by an earlier try at this area
+                            bytes.addAndGet(file.length())
                             mapKept.incrementAndGet()
+                        } else {
+                            val result = withRetries(failedInARow) {
+                                WebTiles.fromNetwork(
+                                    context,
+                                    TopoBaseTileSource.usgsUrl(tile),
+                                    // Not through the viewing cache, which a save this size would empty.
+                                    useCache = false,
+                                    ignoreOffline = true
+                                ).takeIf { it !is WebTiles.Result.Unreachable }
+                            }
+                            when (result) {
+                                is WebTiles.Result.Found -> {
+                                    file.parentFile?.mkdirs()
+                                    file.writeBytes(result.bytes)
+                                    bytes.addAndGet(result.bytes.size.toLong())
+                                    mapKept.incrementAndGet()
+                                }
+                                // The server has no such tile: nothing is missing
+                                WebTiles.Result.Missing -> {}
+                                else -> missing.incrementAndGet()
+                            }
                         }
                         report()
                     }
@@ -161,7 +192,7 @@ object SavedAreas {
             }
         }
 
-        if (mapKept.get() == 0 && terrainKept.get() == 0) {
+        if (into == null && mapKept.get() == 0 && terrainKept.get() == 0) {
             File(root(context), id).deleteRecursively()
             TerrainTiles.forget(folder(id))
             return@withContext null
@@ -169,15 +200,49 @@ object SavedAreas {
 
         val b = plan.bounds
         val area = SavedArea(
-            id, name, b.north, b.south, b.east, b.west,
+            id, into?.name ?: name, b.north, b.south, b.east, b.west,
             System.currentTimeMillis(), bytes.get(), mapKept.get(), terrainKept.get()
         )
         lock.withLock {
-            val list = load(context) + area
+            val existing = load(context)
+            val list = if (existing.any { it.id == id }) {
+                existing.map { if (it.id == id) area else it }
+            } else {
+                existing + area
+            }
             write(context, list)
         }
-        area
+        SaveResult(area, missing.get())
     }
+
+    /**
+     * Runs [attempt] until it gives something, pausing between tries. [failedInARow] counts the
+     * tiles that failed every try, across the whole save; once it reaches [GIVE_UP_AFTER] no more
+     * are asked for.
+     */
+    internal suspend fun <T : Any> withRetries(
+        failedInARow: AtomicInteger,
+        pauses: LongArray = RETRY_PAUSES_MILLIS,
+        attempt: suspend () -> T?
+    ): T? {
+        if (failedInARow.get() >= GIVE_UP_AFTER) return null
+        for (pause in pauses) {
+            attempt()?.let {
+                failedInARow.set(0)
+                return it
+            }
+            delay(pause)
+        }
+        attempt()?.let {
+            failedInARow.set(0)
+            return it
+        }
+        failedInARow.incrementAndGet()
+        return null
+    }
+
+    private val RETRY_PAUSES_MILLIS = longArrayOf(2_000L, 5_000L)
+    internal const val GIVE_UP_AFTER = 3
 
     suspend fun delete(context: Context, area: SavedArea) = withContext(Dispatchers.IO) {
         lock.withLock {

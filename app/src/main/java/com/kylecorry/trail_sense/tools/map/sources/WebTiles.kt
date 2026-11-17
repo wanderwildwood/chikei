@@ -73,12 +73,18 @@ object WebTiles {
     /**
      * Gets [url] from the server (or from the HTTP cache while the server says it is still
      * fresh). [useCache] false is for saving and for elevation, which are kept elsewhere.
-     * Returns [Result.Unreachable] at once while the network is known to be down.
+     * Returns [Result.Unreachable] at once while the network is known to be down, unless
+     * [ignoreOffline]: a save asks every time, so one failed tile does not end it.
      */
-    suspend fun fromNetwork(context: Context, url: String, useCache: Boolean = true): Result =
+    suspend fun fromNetwork(
+        context: Context,
+        url: String,
+        useCache: Boolean = true,
+        ignoreOffline: Boolean = false
+    ): Result =
         withContext(Dispatchers.IO) {
             install(context)
-            if (isOffline()) {
+            if (!ignoreOffline && isOffline()) {
                 return@withContext Result.Unreachable
             }
             try {
