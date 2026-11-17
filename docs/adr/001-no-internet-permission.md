@@ -4,7 +4,9 @@ Trail Sense will not declare the Internet permission in its manifest. This is an
 
 ## Status
 
-accepted
+accepted for Trail Sense; superseded in Topo, which declares INTERNET for map tiles, elevation,
+the Forage and Streets layers and region packs, each listed in PRIVACY.md. Topo still works
+offline with a region pack and nothing else.
 
 ## Consequences
 
