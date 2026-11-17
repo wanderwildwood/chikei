@@ -10,10 +10,8 @@ import com.kylecorry.trail_sense.main.persistence.AppDatabase
 import com.kylecorry.trail_sense.shared.ProguardIgnore
 import com.kylecorry.trail_sense.shared.UserPreferences
 import com.kylecorry.trail_sense.shared.io.FileSubsystem
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.sync.withLock
 
 class DigitalElevationModelFile(
@@ -70,51 +68,16 @@ class CompressedDigitalElevationModelIndex(
 
 class DigitalElevationModelLoader {
 
+    /**
+     * Topo: a model imported in Altimeter settings goes in a folder of its own beside the region
+     * packs' and the saved areas' elevation, replacing only an earlier import. Upstream's import
+     * cleared the whole dem folder and table, and with them every pack's and area's elevation.
+     */
     fun load(source: Uri): Flow<Float> = flow {
-        val files = DependencyRegistry.get<FileSubsystem>()
-        val database = DependencyRegistry.get<AppDatabase>().digitalElevationModelDao()
-        val prefs = DependencyRegistry.get<UserPreferences>()
-        // Validate the source URI
-        val fileCount = files.stream(source)?.use {
-            val files = ZipUtils.list(it, MAX_ZIP_FILE_COUNT)
-            if (!files.any { it.file.name == "index.json" }) {
-                throw IllegalArgumentException("The provided zip file does not contain a valid DEM index.json file.")
-            }
-            files.size
-        } ?: 0
-
-        // Clear the existing files
-        DEMRepo.lock.withLock {
-            files.getDirectory("dem", create = true).deleteRecursively()
-
-            // Unzip the files
-            var count = 0
-            files.stream(source)?.use {
-                ZipUtils.unzip(it, files.getDirectory("dem", create = true), MAX_ZIP_FILE_COUNT) {
-                    count++
-                    emit(count / fileCount.coerceAtLeast(1).toFloat())
-                }
-            } ?: return@flow
-
-            // Read the index file
-            val indexFile = files.get("dem/index.json")
-
-            // Clear tiles
-            database.deleteAll()
-            database.upsert(getTilesFromIndex(files.get("dem/index.json").readText()))
-
-            // Record version
-            files.get("dem/version.txt", create = true).writeText(database.getVersion() ?: "")
-
-            // Delete the index.json file since it is no longer needed
-            indexFile.delete()
-
-            prefs.altimeter.isDigitalElevationModelLoaded = true
-        }
-
-        DEM.invalidateCache()
+        emit(0f)
+        add(source, IMPORTED)
         emit(1f)
-    }.flowOn(Dispatchers.IO)
+    }
 
     /**
      * Adds one region's model alongside whatever is already loaded, replacing only an earlier
@@ -216,18 +179,18 @@ class DigitalElevationModelLoader {
         }
     }
 
+    /** Removes the imported model only; the packs' and saved areas' elevation stays. */
     suspend fun clear() = onIO {
         val prefs = DependencyRegistry.get<UserPreferences>()
-        val files = DependencyRegistry.get<FileSubsystem>()
         val database = DependencyRegistry.get<AppDatabase>().digitalElevationModelDao()
-
-        files.getDirectory("dem", create = true).deleteRecursively()
-        database.deleteAll()
-        prefs.altimeter.isDigitalElevationModelLoaded = false
+        removeFolder("dem/$IMPORTED")
+        prefs.altimeter.isDigitalElevationModelLoaded = database.getAll().isNotEmpty()
         DEM.invalidateCache()
     }
 
     companion object {
+        /** The folder under dem/ that a model imported in Altimeter settings goes in. */
+        private const val IMPORTED = "imported"
         private const val MAX_ZIP_FILE_COUNT = 1000
 
 
