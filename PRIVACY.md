@@ -63,7 +63,8 @@ Android asks you for the first four before they are used; the rest it grants on 
 - **Start at boot**: to carry on recording a track after the phone restarts.
 - **Vibrate**: a short buzz when a QR code is read or a dial clicks round.
 - **Keep awake**: for Android's background-work library, so its tidy-ups of old map data
-  finish; Topo itself never holds the phone awake.
+  finish; and, with a home-screen widget placed, for up to a minute while the widget is
+  brought up to date.
 
 ## What stays on the phone
 
