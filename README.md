@@ -222,6 +222,9 @@ run by [Private.coffee](https://overpass.private.coffee/). Edible plant location
 [Falling Fruit](https://fallingfruit.org) and its sources, under each dataset's license (mostly
 ODbL).
 
+Geocaches follows [c:geo](https://github.com/cgeo/cgeo)'s handling of GPX, OKAPI and field notes
+(Apache-2.0).
+
 After [Trail Sense](https://github.com/kylecorry31/Trail-Sense) by Kyle Corry, which this
 is: its sensors, paths, beacons, navigation and Mapsforge rendering are Trail Sense's, cut
 down to the map and what you do with it. Trail Sense is under the MIT License, kept in
