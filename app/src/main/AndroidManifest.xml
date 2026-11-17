@@ -84,7 +84,7 @@
     </queries>
 
     <!--Permissions-->
-    <!-- Only to download region packs from the map server you set. -->
+    <!-- For map tiles, elevation tiles, the Forage and Streets layers and region packs; PRIVACY.md lists each server. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
