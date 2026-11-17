@@ -5,5 +5,6 @@ enum class MapAction {
     CreatePath,
     AdjustLayers,
     Trace,
-    SaveArea
+    SaveArea,
+    Geocaches
 }

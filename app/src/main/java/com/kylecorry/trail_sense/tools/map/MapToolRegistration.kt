@@ -22,6 +22,8 @@ import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerPref
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerType
 import com.kylecorry.trail_sense.tools.map.forage.Forage
 import com.kylecorry.trail_sense.tools.map.forage.ForageGeoJsonSource
+import com.kylecorry.trail_sense.tools.map.geocache.GeocacheGeoJsonSource
+import com.kylecorry.trail_sense.tools.map.geocache.Geocaches
 import com.kylecorry.trail_sense.tools.map.infrastructure.SharedPoint
 import com.kylecorry.trail_sense.tools.map.streets.Streets
 import com.kylecorry.trail_sense.tools.map.streets.StreetsGeoJsonSource
@@ -89,7 +91,8 @@ object MapToolRegistration : ToolRegistration {
                     "GeoJSON feature selection changed"
                 ),
                 ToolBroadcast(Forage.BROADCAST_UPDATED, "Forage spots fetched"),
-                ToolBroadcast(Streets.BROADCAST_UPDATED, "Streets fetched")
+                ToolBroadcast(Streets.BROADCAST_UPDATED, "Streets fetched"),
+                ToolBroadcast(Geocaches.BROADCAST_UPDATED, "Geocaches changed")
             ),
             widgets = listOf(
                 ToolWidget(
@@ -358,6 +361,22 @@ object MapToolRegistration : ToolRegistration {
                     ),
                     geoJsonSource = ::ForageGeoJsonSource,
                     refreshBroadcasts = listOf(Forage.BROADCAST_UPDATED)
+                ),
+                // Geocaches from opened GPX files and Opencaching: added from the layer list, off until then
+                MapLayerDefinition(
+                    Geocaches.LAYER_ID,
+                    context.getString(R.string.geocaches),
+                    description = context.getString(
+                        if (Geocaches.hasOpencaching) R.string.map_layer_geocaches_description
+                        else R.string.map_layer_geocaches_description_gpx
+                    ),
+                    attribution = if (Geocaches.hasOpencaching) MapLayerAttribution(
+                        context.getString(R.string.geocaches_attribution),
+                        context.getString(R.string.geocaches_attribution_long),
+                        alwaysShow = true
+                    ) else null,
+                    geoJsonSource = ::GeocacheGeoJsonSource,
+                    refreshBroadcasts = listOf(Geocaches.BROADCAST_UPDATED)
                 ),
                 // Streets walked and not yet walked: added from the layer list, off until then
                 MapLayerDefinition(
