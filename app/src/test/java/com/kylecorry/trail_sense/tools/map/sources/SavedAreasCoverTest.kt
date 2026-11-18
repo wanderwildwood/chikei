@@ -14,7 +14,7 @@ class SavedAreasCoverTest {
     fun everyTileASaveKeepsIsLookedForInIt() {
         for (z in SavedAreas.MIN_MAP_ZOOM..SavedAreas.MAX_MAP_ZOOM) {
             for (tile in SavedAreas.tilesIn(area, z)) {
-                assertTrue(SavedAreas.mayHold(area, tile), "$tile")
+                assertTrue(SavedAreas.mayHold(area, tile)) { "${tile.z}/${tile.x}/${tile.y}" }
             }
         }
     }
