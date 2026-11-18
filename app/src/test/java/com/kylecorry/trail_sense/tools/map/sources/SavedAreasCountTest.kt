@@ -8,7 +8,7 @@ class SavedAreasCountTest {
 
     @Test
     fun countingTilesAgreesWithListingThem() {
-        val bounds = CoordinateBounds(35.70, -82.40, 35.50, -82.70)
+        val bounds = CoordinateBounds(39.70, -116.40, 39.50, -116.70)
         for (z in 6..14) {
             assertEquals(SavedAreas.tilesIn(bounds, z).size.toLong(), SavedAreas.countIn(bounds, z))
         }

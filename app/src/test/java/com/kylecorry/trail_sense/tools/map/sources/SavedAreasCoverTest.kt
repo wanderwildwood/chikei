@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 
 class SavedAreasCoverTest {
 
-    private val area = CoordinateBounds(35.70, -82.40, 35.50, -82.70)
+    private val area = CoordinateBounds(39.70, -116.40, 39.50, -116.70)
 
     @Test
     fun everyTileASaveKeepsIsLookedForInIt() {
