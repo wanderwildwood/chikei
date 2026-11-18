@@ -8,6 +8,7 @@ import com.kylecorry.trail_sense.main.persistence.ICleanable
 import com.kylecorry.trail_sense.shared.UserPreferences
 import com.kylecorry.trail_sense.shared.io.FileSubsystem
 import com.kylecorry.trail_sense.shared.logging.Logger
+import com.kylecorry.trail_sense.tools.map.sources.TerrainTiles
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -44,6 +45,8 @@ class DEMRepo private constructor() : ICleanable {
 
         if (removed) {
             DEM.invalidateCache()
+            // The terrain tiles it remembers holding went with the folder: look again.
+            TerrainTiles.invalidate()
         }
     }
 

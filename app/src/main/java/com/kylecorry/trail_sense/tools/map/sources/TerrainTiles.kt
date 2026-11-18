@@ -107,11 +107,17 @@ object TerrainTiles {
     /** Fetches [tile] into a saved area's [folder] (moving it there if it was only viewed). */
     suspend fun save(context: Context, tile: Tile, folder: String, ignoreOffline: Boolean = false): Saved? {
         val existing = lock.withLock { heldTiles()[key(tile)] }
+        // A tile is trusted as held only while its file is there; one wiped from under the
+        // list (DEMRepo.clean) is fetched again.
         if (existing == folder) {
-            return Saved.Kept(withContext(Dispatchers.IO) { fileFor(folder, tile).length() })
-        }
-        if (existing == VIEWED) {
-            return move(tile, VIEWED, folder)?.let { Saved.Kept(it) }
+            val length = withContext(Dispatchers.IO) {
+                fileFor(folder, tile).let { if (it.exists()) it.length() else null }
+            }
+            if (length != null) return Saved.Kept(length)
+        } else if (existing == VIEWED) {
+            move(tile, VIEWED, folder)?.let { return Saved.Kept(it) }
+            // Its file is gone: drop the row that still names it before fetching it afresh.
+            DigitalElevationModelLoader().removeFiles(listOf(relativePath(VIEWED, tile)))
         }
         return when (val result = WebTiles.fromNetwork(context, url(tile), useCache = false, ignoreOffline = ignoreOffline)) {
             is WebTiles.Result.Found -> store(tile, result.bytes, folder)?.let { Saved.Kept(it) }
