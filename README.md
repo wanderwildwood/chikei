@@ -104,7 +104,8 @@ Region packs from a server of your own, if you run one, draw over all of this an
 - **Internet**, only to fetch map tiles and elevation, while the map is open or when you save
   an area; fruit and nut trees for the area on screen, while the Forage layer is on; streets for the area on screen, while the Streets layer is on; and region
   packs from a server you set, when you ask. See [PRIVACY.md](PRIVACY.md).
-- **Camera**, only while you use it: the sighting compass, and reading a beacon from a QR code.
+- **Camera**, only while you use it: the sighting compass, reading a beacon from a QR code,
+  and photographing a paper map for Offline Maps, which keeps that photo on the phone as the map.
 - **Physical activity**, to count steps for pace on the Navigation tab, when you choose that.
 - **Notifications**, for the notice Android requires while a track is recording or steps are
   being counted.

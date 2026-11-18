@@ -52,8 +52,10 @@ Android asks you for the first four before they are used; the rest it grants on 
 - **Background location**: Topo does not use it and does not ask for it. Location is read
   only while the app is open or while a track is recording and its notice is showing.
 - **Camera**: only while you use it, for the sighting compass (a bearing taken through the
-  camera, on the Navigation tab and when entering a bearing) and for reading a beacon from a QR
-  code. No picture is saved or sent.
+  camera, on the Navigation tab and when entering a bearing), for reading a beacon from a QR
+  code, and for photographing a paper map or trailhead board under Offline Maps > + > Camera.
+  That photo is kept on the phone as the map, until you delete the map; no other picture is
+  saved, and none is sent.
 - **Physical activity**: to count steps, for pace on the Navigation tab when you choose it.
 - **Notifications**: for the notice Android requires while a track is recording or steps are
   being counted.
