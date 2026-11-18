@@ -122,15 +122,21 @@ object SavedAreas {
 
     /** A saved USGS tile for [tile], from whichever saved area holds one. */
     suspend fun mapTile(context: Context, tile: Tile): File? = withContext(Dispatchers.IO) {
-        val center = tile.getCenter()
         val areas = lock.withLock { load(context) }
         for (area in areas) {
-            if (area.mapTiles == 0 || !area.bounds.grow(0.05f).contains(center)) continue
+            if (area.mapTiles == 0 || !mayHold(area.bounds, tile)) continue
             val file = mapFile(context, area.id, tile)
             if (file.exists()) return@withContext file
         }
         null
     }
+
+    /**
+     * Whether an area saved over [bounds] may hold [tile]. A save keeps every tile that overlaps
+     * the area, so at low zooms and along the edges a tile's centre is often far outside it.
+     */
+    internal fun mayHold(bounds: CoordinateBounds, tile: Tile): Boolean =
+        bounds.intersects(tile.getBounds())
 
     /** A save's outcome: the area, and how many planned tiles could not be fetched. */
     class SaveResult(val area: SavedArea, val missing: Int)
