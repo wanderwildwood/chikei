@@ -18,6 +18,21 @@ class SavedAreasSweepTest {
     }
 
     @Test
+    fun aSaveStartingWhileFoldersAreListedIsLeftAlone() {
+        val underWay = mutableSetOf<String>()
+        val orphans = SavedAreas.unclaimed(
+            setOf("mf3k2a"),
+            found = {
+                // A save starts and moves in its first tile while the folders are being listed
+                underWay.add("mg01zz")
+                listOf("mf3k2a", "mg01zz", "mh7c4d")
+            },
+            underWay = { underWay.toSet() }
+        )
+        assertEquals(setOf("mh7c4d"), orphans)
+    }
+
+    @Test
     fun anAreaFolderIsNamedAfterItsId() {
         assertEquals("dem/area_mf3k2a", SavedAreas.folder("mf3k2a"))
     }

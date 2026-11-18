@@ -353,25 +353,46 @@ object SavedAreas {
             swept = true
             val listed = load(context)
             if (unreadable) return@withLock emptySet<String>()
-            val known = listed.map { it.id }.toSet() + synchronized(saving) { saving.toSet() }
-            val tileIds = root(context).listFiles()
-                ?.filter { it.isDirectory }
-                ?.map { it.name }
-                ?: emptyList()
-            val demDir = DependencyRegistry.get<FileSubsystem>().getDirectory("dem")
-            val demIds = demDir.listFiles()
-                ?.filter { it.isDirectory && it.name.startsWith(FOLDER_PREFIX) }
-                ?.map { it.name.removePrefix(FOLDER_PREFIX) }
-                ?: emptyList()
-            val rowIds = TerrainTiles.folders()
-                .filter { it.startsWith("dem/$FOLDER_PREFIX") }
-                .map { it.removePrefix("dem/$FOLDER_PREFIX") }
-            orphanIds(known, tileIds + demIds + rowIds)
+            unclaimed(
+                listed.map { it.id }.toSet(),
+                found = {
+                    val tileIds = root(context).listFiles()
+                        ?.filter { it.isDirectory }
+                        ?.map { it.name }
+                        ?: emptyList()
+                    val demDir = DependencyRegistry.get<FileSubsystem>().getDirectory("dem")
+                    val demIds = demDir.listFiles()
+                        ?.filter { it.isDirectory && it.name.startsWith(FOLDER_PREFIX) }
+                        ?.map { it.name.removePrefix(FOLDER_PREFIX) }
+                        ?: emptyList()
+                    val rowIds = TerrainTiles.folders()
+                        .filter { it.startsWith("dem/$FOLDER_PREFIX") }
+                        .map { it.removePrefix("dem/$FOLDER_PREFIX") }
+                    tileIds + demIds + rowIds
+                },
+                underWay = { synchronized(saving) { saving.toSet() } }
+            )
         }
         for (id in orphans) {
             File(root(context), id).deleteRecursively()
             TerrainTiles.forget(folder(id))
         }
+    }
+
+    /**
+     * The ids [found] lists that neither [listed] nor [underWay] names. The folders and rows are
+     * listed before the saves under way are read: a save that starts after the listing is not
+     * among what was found, and one that started before it is still marked as saving, since a
+     * save only unmarks itself after its entry is in the list. Read the other way round, a save
+     * starting in between would have its first tiles taken for orphans and deleted under it.
+     */
+    internal fun unclaimed(
+        listed: Set<String>,
+        found: () -> List<String>,
+        underWay: () -> Set<String>
+    ): Set<String> {
+        val ids = found()
+        return orphanIds(listed + underWay(), ids)
     }
 
     /** The ids among [found] that no saved or saving area has. */
