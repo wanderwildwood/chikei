@@ -311,7 +311,11 @@ object SavedAreas {
     private val RETRY_PAUSES_MILLIS = longArrayOf(2_000L, 5_000L)
     internal const val GIVE_UP_AFTER = 3
 
-    suspend fun delete(context: Context, area: SavedArea) = withContext(Dispatchers.IO) {
+    /**
+     * Removes [area], its map tiles and its elevation. Run to the end even if the page that asked
+     * for it closes: once it is out of the list, nothing else could remove the rest.
+     */
+    suspend fun delete(context: Context, area: SavedArea) = withContext(Dispatchers.IO + NonCancellable) {
         lock.withLock {
             write(context, load(context).filter { it.id != area.id })
         }
