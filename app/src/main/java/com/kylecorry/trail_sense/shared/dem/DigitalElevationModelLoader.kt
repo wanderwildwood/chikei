@@ -76,6 +76,7 @@ class DigitalElevationModelLoader {
     fun load(source: Uri): Flow<Float> = flow {
         emit(0f)
         add(source, IMPORTED)
+        removeRootImport()
         emit(1f)
     }
 
@@ -179,11 +180,34 @@ class DigitalElevationModelLoader {
         }
     }
 
+    /**
+     * Topo 0.2.21 and earlier unzipped an imported model straight into dem/, so its rows name a
+     * file with no folder of its own (dem/<file>). Those rows and their files are the earlier
+     * import: they go when the import is removed or replaced. Every pack's, area's and viewed
+     * tile's row names a folder under dem/, and version.txt has no row, so neither is touched.
+     */
+    private suspend fun removeRootImport() = onIO {
+        val files = DependencyRegistry.get<FileSubsystem>()
+        val database = DependencyRegistry.get<AppDatabase>().digitalElevationModelDao()
+        DEMRepo.lock.withLock {
+            val legacy = database.getAll().filter { isRootFile(it.filename) }
+            if (legacy.isNotEmpty()) {
+                legacy.forEach {
+                    database.delete(it)
+                    files.get(it.filename).delete()
+                }
+                recordVersion()
+            }
+        }
+        DEM.invalidateCache()
+    }
+
     /** Removes the imported model only; the packs' and saved areas' elevation stays. */
     suspend fun clear() = onIO {
         val prefs = DependencyRegistry.get<UserPreferences>()
         val database = DependencyRegistry.get<AppDatabase>().digitalElevationModelDao()
         removeFolder("dem/$IMPORTED")
+        removeRootImport()
         prefs.altimeter.isDigitalElevationModelLoaded = database.getAll().isNotEmpty()
         DEM.invalidateCache()
     }
@@ -193,6 +217,10 @@ class DigitalElevationModelLoader {
         private const val IMPORTED = "imported"
         private const val MAX_ZIP_FILE_COUNT = 1000
 
+        /** A file directly in dem/ rather than in a folder under it: an import from 0.2.21 or earlier. */
+        internal fun isRootFile(filename: String): Boolean {
+            return filename.startsWith("dem/") && filename.indexOf('/', "dem/".length) < 0
+        }
 
         fun getTilesFromIndex(
             indexText: String,
