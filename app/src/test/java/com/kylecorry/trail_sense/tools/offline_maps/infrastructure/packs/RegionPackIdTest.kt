@@ -16,4 +16,13 @@ internal class RegionPackIdTest {
         assertFalse(RegionPackClient.isPlainId(""))
         assertFalse(RegionPackClient.isPlainId(null))
     }
+
+    @Test
+    fun aPackCannotNameAnotherElevationFolder() {
+        assertFalse(RegionPackClient.isPlainId("terrain"))
+        assertFalse(RegionPackClient.isPlainId("imported"))
+        assertFalse(RegionPackClient.isPlainId("area_mf3k2a"))
+        assertTrue(RegionPackClient.isPlainId("terrain-west"))
+        assertTrue(RegionPackClient.isPlainId("us-area_1"))
+    }
 }

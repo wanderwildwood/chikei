@@ -110,8 +110,15 @@ class RegionPackClient(baseUrl: String) {
         private const val MAX_INDEX_BYTES = 4 * 1024 * 1024
         private val PLAIN_ID = Regex("[A-Za-z0-9_-]{1,64}")
 
-        /** Whether [id] can name a pack's files: letters, digits, - and _ only. */
-        fun isPlainId(id: String?): Boolean = id != null && PLAIN_ID.matches(id)
+        /**
+         * Whether [id] can name a pack's files: letters, digits, - and _ only, and not one of
+         * the elevation folders beside the packs' own under dem/ (the viewed terrain, the model
+         * imported in Altimeter settings, a saved area's), which installing the pack would replace.
+         */
+        fun isPlainId(id: String?): Boolean =
+            id != null && PLAIN_ID.matches(id) && id !in RESERVED_IDS && !id.startsWith("area_")
+
+        private val RESERVED_IDS = setOf("terrain", "imported")
 
         private fun readAtMost(input: java.io.InputStream, limit: Int): ByteArray {
             val out = java.io.ByteArrayOutputStream()
