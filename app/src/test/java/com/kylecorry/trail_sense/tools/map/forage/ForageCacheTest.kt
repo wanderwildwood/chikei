@@ -63,4 +63,31 @@ class ForageCacheTest {
         assertNull(cache.get("osm", cell))
         assertNotNull(cache.get("osm", other))
     }
+
+    @Test
+    fun aSquareNoAreaStillCoversIsPrunedLikeAnyOther() {
+        val now = ForageCache.PRUNE_MILLIS * 2
+        val cache = ForageCache(dir) { now }
+        val stillSaved = ForageCell(101, 200, 14)
+        cache.put("osm", cell, ForageCellData(0L, spots = listOf(spot)), kept = true)
+        cache.put("osm", stillSaved, ForageCellData(0L, spots = listOf(spot)), kept = true)
+        dir.walkTopDown().filter { it.isFile }.forEach { it.setLastModified(1_000L) }
+        cache.release(setOf(stillSaved.key))
+        assertFalse(File(dir, "kept/osm/${cell.key}.json").exists())
+        assertTrue(File(dir, "osm/${cell.key}.json").exists())
+        cache.prune()
+        assertNull(cache.get("osm", cell))
+        assertNotNull(cache.get("osm", stillSaved))
+    }
+
+    @Test
+    fun releasingKeepsTheNewerCopy() {
+        val cache = ForageCache(dir) { 0L }
+        cache.put("osm", cell, ForageCellData(5L, spots = emptyList()))
+        cache.put("osm", cell, ForageCellData(9L, spots = listOf(spot)), kept = true)
+        File(dir, "osm/${cell.key}.json").setLastModified(1_000L)
+        File(dir, "kept/osm/${cell.key}.json").setLastModified(2_000L)
+        cache.release(emptySet())
+        assertEquals(9L, ForageCache(dir) { 0L }.get("osm", cell)!!.fetched)
+    }
 }

@@ -1,6 +1,7 @@
 package com.kylecorry.trail_sense.tools.map.streets
 
 import com.kylecorry.andromeda.json.JsonConvert
+import com.kylecorry.trail_sense.tools.map.forage.ForageCache
 import com.kylecorry.trail_sense.tools.map.forage.ForageCell
 import java.io.File
 
@@ -58,6 +59,17 @@ class StreetCache(
     fun prune() {
         val cutoff = clock() - PRUNE_MILLIS
         root.listFiles()?.filter { it.isFile && it.lastModified() < cutoff }?.forEach { it.delete() }
+        synchronized(memory) { memory.clear() }
+    }
+
+    /**
+     * Squares kept with an area that no saved area still covers (their keys not in [keep]) go
+     * back with the others, to be thrown out in time like any square.
+     */
+    fun release(keep: Set<String>) {
+        File(root, "kept").listFiles()
+            ?.filter { it.isFile && it.name.endsWith(".json") && it.name.removeSuffix(".json") !in keep }
+            ?.forEach { ForageCache.moveBack(it, File(root, it.name)) }
         synchronized(memory) { memory.clear() }
     }
 

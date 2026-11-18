@@ -201,6 +201,17 @@ object Streets {
         }
     }
 
+    /**
+     * An area was deleted: the squares kept with it that none of the [remaining] areas covers
+     * are no longer kept for good. Each area keeps the same squares it was saved with.
+     */
+    suspend fun releaseAreas(context: Context, remaining: List<ForageBox>) = withContext(Dispatchers.IO) {
+        val keep = remaining.flatMap { ForageGrid.cells(it, CELL_ZOOM, MAX_SAVED_CELLS) ?: emptyList() }
+            .map { it.key }
+            .toSet()
+        fetchLock.withLock { cache(context).release(keep) }
+    }
+
     private fun fetchCells(context: Context, cells: List<ForageCell>, kept: Boolean): Boolean {
         if (backoffs.values.none { it.ready() }) return false
         val box = ForageGrid.requestBox(cells) ?: return false

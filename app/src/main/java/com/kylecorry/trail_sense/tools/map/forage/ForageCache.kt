@@ -65,8 +65,32 @@ class ForageCache(
         synchronized(memory) { memory.clear() }
     }
 
+    /**
+     * Squares kept with an area that no saved area still covers (their keys not in [keep]) go
+     * back with the others, to be thrown out in time like any square.
+     */
+    fun release(keep: Set<String>) {
+        File(root, "kept").listFiles()?.filter { it.isDirectory }?.forEach { dir ->
+            dir.listFiles()
+                ?.filter { it.isFile && it.name.endsWith(".json") && it.name.removeSuffix(".json") !in keep }
+                ?.forEach { moveBack(it, File(File(root, dir.name), it.name)) }
+        }
+        synchronized(memory) { memory.clear() }
+    }
+
     companion object {
         const val TTL_MILLIS = 30L * 24 * 60 * 60 * 1000
+
+        /** Moves a kept square to [dest], keeping whichever copy is newer. */
+        internal fun moveBack(kept: File, dest: File) {
+            if (dest.exists() && dest.lastModified() >= kept.lastModified()) {
+                kept.delete()
+                return
+            }
+            dest.parentFile?.mkdirs()
+            dest.delete()
+            if (!kept.renameTo(dest)) kept.delete()
+        }
         const val PRUNE_MILLIS = 120L * 24 * 60 * 60 * 1000
     }
 }

@@ -8,6 +8,9 @@ import com.kylecorry.sol.units.Coordinate
 import com.kylecorry.trail_sense.shared.ProguardIgnore
 import com.kylecorry.trail_sense.shared.io.FileSubsystem
 import com.kylecorry.trail_sense.shared.map_layers.tiles.Tile
+import com.kylecorry.trail_sense.tools.map.forage.Forage
+import com.kylecorry.trail_sense.tools.map.forage.ForageBox
+import com.kylecorry.trail_sense.tools.map.streets.Streets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.async
@@ -316,11 +319,15 @@ object SavedAreas {
      * for it closes: once it is out of the list, nothing else could remove the rest.
      */
     suspend fun delete(context: Context, area: SavedArea) = withContext(Dispatchers.IO + NonCancellable) {
-        lock.withLock {
-            write(context, load(context).filter { it.id != area.id })
+        val remaining = lock.withLock {
+            load(context).filter { it.id != area.id }.also { write(context, it) }
         }
         File(root(context), area.id).deleteRecursively()
         TerrainTiles.forget(folder(area.id))
+        // The fruit and nut trees and the streets kept with it, unless another area holds them
+        val boxes = remaining.map { ForageBox(it.south, it.west, it.north, it.east) }
+        Forage.releaseAreas(context, boxes)
+        Streets.releaseAreas(context, boxes)
     }
 
     fun folder(id: String) = "dem/$FOLDER_PREFIX$id"
