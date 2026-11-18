@@ -8,7 +8,7 @@ internal class RegionPackIdTest {
 
     @Test
     fun onlyAPlainNameNamesAPack() {
-        assertTrue(RegionPackClient.isPlainId("us-nc-asheville"))
+        assertTrue(RegionPackClient.isPlainId("us-nc-millbrook-hollow"))
         assertTrue(RegionPackClient.isPlainId("pack_2"))
         assertFalse(RegionPackClient.isPlainId(".."))
         assertFalse(RegionPackClient.isPlainId("../../databases"))
