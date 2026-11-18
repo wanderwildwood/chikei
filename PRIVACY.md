@@ -45,7 +45,8 @@ maps at all.
 
 ## Permissions, and what each is for
 
-Android asks you for the first four before they are used; the rest it grants on install.
+Android asks you for Location, Camera and Physical activity before they are used, and on
+Android 13 and later for Notifications too; the rest it grants on install.
 
 - **Location** (precise and approximate): to put you on the map, record tracks and navigate.
   It stays on the phone.
