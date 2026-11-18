@@ -1361,6 +1361,11 @@
     <string name="importing">Importing</string>
     <!-- A GPX file opened from another app holds no paths and no waypoints -->
     <string name="gpx_nothing_to_import">There are no paths or waypoints in that file.</string>
+    <string name="gpx_too_many_waypoints">That file holds more than %d waypoints, too many to add as beacons.</string>
+    <plurals name="import_beacons_message">
+        <item quantity="one">Add %d waypoint from this file to your beacons?</item>
+        <item quantity="other">Add %d waypoints from this file to your beacons?</item>
+    </plurals>
     <string name="points">Points</string>
     <string name="duration">Duration</string>
     <string name="elevation">Elevation</string>

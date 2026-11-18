@@ -4,6 +4,7 @@ import com.kylecorry.trail_sense.shared.Notices
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import com.kylecorry.andromeda.alerts.Alerts
+import com.kylecorry.andromeda.alerts.CoroutineAlerts
 import com.kylecorry.andromeda.core.coroutines.BackgroundMinimumState
 import com.kylecorry.luna.concurrency.onDefault
 import com.kylecorry.luna.concurrency.onIO
@@ -36,6 +37,11 @@ class ImportPathsCommand(
 
     private val style = prefs.defaultPathStyle
 
+    private companion object {
+        /** More waypoints than this in one file are refused rather than flooding the beacon list. */
+        const val MAX_BEACONS = 5000
+    }
+
     fun execute(parentId: Long?) {
         lifecycleOwner.inBackground(BackgroundMinimumState.Created) {
             val gpx = gpxService.import() ?: return@inBackground
@@ -45,9 +51,24 @@ class ImportPathsCommand(
             paths.addAll(getTracks(gpx))
             paths.addAll(getRoutes(gpx))
 
-            // A file of waypoints alone, such as one opened from Files, becomes beacons.
+            // A file of waypoints alone, such as one opened from Files, becomes beacons, once
+            // the person agrees: another app can open a file here without their asking.
             if (paths.isEmpty()) {
-                val count = if (gpx.waypoints.isEmpty()) 0 else onIO { BeaconGpxImporter(context).import(gpx) }
+                val waypoints = gpx.waypoints.size
+                if (waypoints > MAX_BEACONS) {
+                    Notices.toast(context, context.getString(R.string.gpx_too_many_waypoints, MAX_BEACONS))
+                    return@inBackground
+                }
+                if (waypoints > 0) {
+                    val cancelled = CoroutineAlerts.dialog(
+                        context,
+                        context.getString(R.string.import_btn),
+                        context.resources.getQuantityString(R.plurals.import_beacons_message, waypoints, waypoints),
+                        okText = context.getString(R.string.import_btn)
+                    )
+                    if (cancelled) return@inBackground
+                }
+                val count = if (waypoints == 0) 0 else onIO { BeaconGpxImporter(context).import(gpx) }
                 if (count > 0) {
                     Notices.toast(context, context.resources.getQuantityString(R.plurals.beacons_imported, count, count))
                 } else {

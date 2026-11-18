@@ -1,5 +1,6 @@
 package com.kylecorry.trail_sense.tools.paths
 
+import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -42,6 +43,8 @@ object PathsToolRegistration : ToolRegistration {
     private val openGpxIntentHandler = ToolIntentHandler { activity, intent ->
         if (intent.action != Intent.ACTION_VIEW) return@ToolIntentHandler false
         val uri = intent.data ?: return@ToolIntentHandler false
+        // Only a file another app shares; a file: path would be read with Topo's own rights.
+        if (uri.scheme != ContentResolver.SCHEME_CONTENT) return@ToolIntentHandler false
         val isGpx = intent.type == GPX_MIME || uri.lastPathSegment?.lowercase()?.endsWith(".gpx") == true
         if (!isGpx) return@ToolIntentHandler false
         activity.findNavController()?.navigate(R.id.fragmentBacktrack, Bundle().apply { putParcelable(ARG_OPENED_GPX, uri) })
