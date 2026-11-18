@@ -1,4 +1,3 @@
-import java.time.LocalDate
 import java.util.Properties
 import java.util.regex.Pattern
 
@@ -51,24 +50,6 @@ android {
     } else {
         null
     }
-    signingConfigs {
-        create("nightly") {
-            if (System.getProperty("nightly_store_file") != null) {
-                storeFile = file(System.getProperty("nightly_store_file"))
-                storePassword = System.getProperty("nightly_store_password")
-                keyAlias = System.getProperty("nightly_key_alias")
-                keyPassword = System.getProperty("nightly_key_password")
-            }
-        }
-        create("github") {
-            if (System.getProperty("github_store_file") != null) {
-                storeFile = file(System.getProperty("github_store_file"))
-                storePassword = System.getProperty("github_store_password")
-                keyAlias = System.getProperty("github_key_alias")
-                keyPassword = System.getProperty("github_key_password")
-            }
-        }
-    }
     androidResources {
         // Support for auto-generated locales for per-app language settings
         generateLocaleConfig = true
@@ -79,8 +60,8 @@ android {
         buildConfig = true
     }
     buildTypes {
-        // ------- RELEASES -------
-        // F-Droid
+        // Two build types only: release, and debug for the emulator. Upstream's Play Store,
+        // GitHub, staging and nightly types are gone; releases are built locally.
         getByName("release") {
             // Release APKs carry arm64-v8a only: every device this app is for is arm64. Debug builds keep the emulator's.
             ndk { abiFilters += listOf("arm64-v8a") }
@@ -97,48 +78,12 @@ android {
                 "proguard-rules.pro"
             )
         }
-        // Play Store
-        create("playStore") {
-            initWith(getByName("release"))
-        }
-        // GitHub
-        create("github") {
-            initWith(getByName("release"))
-            signingConfig = signingConfigs.getByName("github")
-        }
-
-        // ------- DEVELOPMENT -------
-        // Local debug
         getByName("debug") {
             realSigningConfig?.let { signingConfig = it }
             testProguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
-        // Staging
-        create("staging") {
-            initWith(getByName("release"))
-            applicationIdSuffix = ".staging"
-            versionNameSuffix = "-staging"
-            signingConfig = signingConfigs.getByName("debug")
-        }
-
-        // ------- NIGHTLY -------
-
-        // Debug
-        create("nightly") {
-            initWith(getByName("debug"))
-            signingConfig = signingConfigs.getByName("nightly")
-            applicationIdSuffix = ".nightly"
-            versionNameSuffix = "-nightly-${LocalDate.now()}"
-        }
-        // Release
-        create("nightlyRelease") {
-            initWith(getByName("release"))
-            signingConfig = signingConfigs.getByName("nightly")
-            applicationIdSuffix = ".nightly_release"
-            versionNameSuffix = "-nightly-release-${LocalDate.now()}"
         }
     }
     testOptions {
