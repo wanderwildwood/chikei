@@ -13,6 +13,8 @@ import com.kylecorry.trail_sense.shared.io.FileSubsystem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.sync.withLock
+import java.io.File
+import java.io.IOException
 
 class DigitalElevationModelFile(
     val filename: String,
@@ -92,25 +94,36 @@ class DigitalElevationModelLoader {
         val folder = "dem/$key"
 
         DEMRepo.lock.withLock {
-            val dir = files.getDirectory(folder, create = true)
-            dir.deleteRecursively()
-            files.stream(source)?.use {
-                ZipUtils.unzip(it, files.getDirectory(folder, create = true), MAX_ZIP_FILE_COUNT)
-            } ?: throw IllegalArgumentException("Unable to read the elevation model")
+            // Unzipped beside the folder first, so a zip that is unreadable or not a model
+            // leaves the earlier copy and its rows as they were. Ids never hold a dot.
+            val unpacked = files.getDirectory("$folder.part", create = true)
+            try {
+                unpacked.deleteRecursively()
+                files.stream(source)?.use {
+                    ZipUtils.unzip(it, files.getDirectory("$folder.part", create = true), MAX_ZIP_FILE_COUNT)
+                } ?: throw IllegalArgumentException("Unable to read the elevation model")
 
-            val indexFile = files.get("$folder/index.json")
-            if (!indexFile.exists()) {
-                files.getDirectory(folder).deleteRecursively()
-                throw IllegalArgumentException("The provided zip file does not contain a valid DEM index.json file.")
+                val indexFile = File(unpacked, "index.json")
+                if (!indexFile.exists()) {
+                    throw IllegalArgumentException("The provided zip file does not contain a valid DEM index.json file.")
+                }
+                val tiles = getTilesFromIndex(indexFile.readText(), directory = folder)
+                indexFile.delete()
+
+                val dir = files.getDirectory(folder)
+                dir.deleteRecursively()
+                database.getAll()
+                    .filter { it.filename.startsWith("$folder/") }
+                    .forEach { database.delete(it) }
+                if (!unpacked.renameTo(dir)) {
+                    throw IOException("Unable to move the elevation model into place")
+                }
+                database.upsert(tiles)
+                prefs.altimeter.isDigitalElevationModelLoaded = true
+            } finally {
+                unpacked.deleteRecursively()
+                recordVersion()
             }
-            val tiles = getTilesFromIndex(indexFile.readText(), directory = folder)
-            database.getAll()
-                .filter { it.filename.startsWith("$folder/") }
-                .forEach { database.delete(it) }
-            database.upsert(tiles)
-            indexFile.delete()
-            prefs.altimeter.isDigitalElevationModelLoaded = true
-            recordVersion()
         }
 
         DEM.invalidateCache()
