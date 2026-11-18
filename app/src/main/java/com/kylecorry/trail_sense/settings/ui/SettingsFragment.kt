@@ -14,6 +14,8 @@ import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.main.getAppService
 import com.kylecorry.trail_sense.plugins.PluginSubsystem
 import com.kylecorry.trail_sense.shared.house.DarkMode
+import com.kylecorry.trail_sense.shared.house.DuraSpeed
+import com.kylecorry.trail_sense.shared.Notices
 import com.kylecorry.trail_sense.shared.navigateWithAnimation
 import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
 import com.kylecorry.trail_sense.tools.tools.ui.sort.AlphabeticalToolSort
@@ -41,6 +43,17 @@ class SettingsFragment : AndromedaPreferenceFragment() {
 
         for (nav in navigationMap) {
             navigateOnClick(preference(nav.key), nav.value)
+        }
+
+        // The Kompakt's DuraSpeed: a row that opens it, on a phone that has it.
+        preference(R.string.pref_duraspeed)?.apply {
+            isVisible = DuraSpeed.installed(requireContext())
+            setOnPreferenceClickListener {
+                if (!DuraSpeed.open(requireContext())) {
+                    Notices.toast(requireContext(), getString(R.string.settings_duraspeed_failed))
+                }
+                true
+            }
         }
 
         val darkMode = switch(R.string.pref_dark_mode)

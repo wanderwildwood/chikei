@@ -40,6 +40,14 @@
             app:icon="@drawable/ic_alert"
             app:key="@string/pref_error_settings"
             app:title="@string/errors" />
+        <!-- Shown only on a phone with DuraSpeed (the Kompakt). -->
+        <Preference
+            app:iconSpaceReserved="false"
+            app:isPreferenceVisible="false"
+            app:key="@string/pref_duraspeed"
+            app:singleLineTitle="false"
+            app:summary="@string/settings_duraspeed_summary"
+            app:title="@string/settings_duraspeed" />
         <Preference
             android:key="@string/pref_diagnostics"
             android:title="@string/diagnostics"

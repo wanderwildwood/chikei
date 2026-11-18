@@ -64,6 +64,8 @@
     <queries>
         <!-- Home, whose dark mode switch this app follows when Home is installed. -->
         <package android:name="com.wanderwildwood.iori" />
+        <!-- DuraSpeed, so Settings can offer to open it on a phone that has it (the Kompakt). -->
+        <package android:name="com.mediatek.duraspeed" />
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="geo" />
