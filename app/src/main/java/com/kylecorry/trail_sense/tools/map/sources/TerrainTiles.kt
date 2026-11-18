@@ -120,6 +120,9 @@ object TerrainTiles {
         }
     }
 
+    /** Every folder that holds a terrain tile, viewed or saved. */
+    suspend fun folders(): Set<String> = lock.withLock { heldTiles().values.toSet() }
+
     /** A saved area's tiles are removed with it. Tiles another saved area also holds stay. */
     suspend fun forget(folder: String) {
         lock.withLock {

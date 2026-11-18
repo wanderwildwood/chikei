@@ -1,12 +1,15 @@
 package com.kylecorry.trail_sense.tools.map.sources
 
 import android.content.Context
+import com.kylecorry.andromeda.core.cache.DependencyRegistry
 import com.kylecorry.andromeda.json.JsonConvert
 import com.kylecorry.sol.science.geology.CoordinateBounds
 import com.kylecorry.sol.units.Coordinate
 import com.kylecorry.trail_sense.shared.ProguardIgnore
+import com.kylecorry.trail_sense.shared.io.FileSubsystem
 import com.kylecorry.trail_sense.shared.map_layers.tiles.Tile
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
@@ -64,6 +67,17 @@ object SavedAreas {
 
     private val lock = Mutex()
 
+    /** Ids of the areas being saved right now, which have tiles but no entry in the list yet. */
+    private val saving: MutableSet<String> = java.util.Collections.synchronizedSet(mutableSetOf())
+
+    /** Whether this run of the app has looked for tiles no saved area names (see [sweep]). */
+    @Volatile
+    private var swept = false
+
+    /** Set when areas.json was there but could not be read. */
+    @Volatile
+    private var unreadable = false
+
     @Volatile
     private var cached: List<SavedArea>? = null
 
@@ -112,17 +126,17 @@ object SavedAreas {
         return across.toLong() * down
     }
 
-    suspend fun all(context: Context): List<SavedArea> = lock.withLock { load(context) }
+    suspend fun all(context: Context): List<SavedArea> = areas(context)
 
     /** Whether the elevation under [bounds] was saved with an area (rather than only viewed). */
     suspend fun hasTerrain(context: Context, tile: Tile): Boolean {
         val center = tile.getCenter()
-        return lock.withLock { load(context) }.any { it.terrainTiles > 0 && it.bounds.contains(center) }
+        return areas(context).any { it.terrainTiles > 0 && it.bounds.contains(center) }
     }
 
     /** A saved USGS tile for [tile], from whichever saved area holds one. */
     suspend fun mapTile(context: Context, tile: Tile): File? = withContext(Dispatchers.IO) {
-        val areas = lock.withLock { load(context) }
+        val areas = areas(context)
         for (area in areas) {
             if (area.mapTiles == 0 || !mayHold(area.bounds, tile)) continue
             val file = mapFile(context, area.id, tile)
@@ -171,94 +185,101 @@ object SavedAreas {
         val mapFailedInARow = AtomicInteger(0)
         val report = { onProgress(done.incrementAndGet().toFloat() / total) }
 
+        saving.add(id)
         try {
-            for (tile in plan.terrainTiles) {
-                // A tile this area already holds is not fetched again; its size comes back at once.
-                val kept = withRetries(terrainFailedInARow) {
-                    TerrainTiles.save(context, tile, folder(id), ignoreOffline = true)
-                }
-                when (kept) {
-                    is TerrainTiles.Saved.Kept -> {
-                        bytes.addAndGet(kept.bytes)
-                        terrainKept.incrementAndGet()
+            try {
+                for (tile in plan.terrainTiles) {
+                    // A tile this area already holds is not fetched again; its size comes back at once.
+                    val kept = withRetries(terrainFailedInARow) {
+                        TerrainTiles.save(context, tile, folder(id), ignoreOffline = true)
                     }
-                    // The server has no such tile: nothing is missing
-                    TerrainTiles.Saved.NoTile -> {}
-                    null -> missing.incrementAndGet()
-                }
-                report()
-            }
-
-            // Three at a time, which WebTiles also enforces across the whole app.
-            plan.mapTiles.chunked(3).forEach { group ->
-                coroutineScope {
-                    group.map { tile ->
-                        async {
-                            val file = mapFile(context, id, tile)
-                            if (file.exists()) {
-                                // Kept by an earlier try at this area
-                                bytes.addAndGet(file.length())
-                                mapKept.incrementAndGet()
-                            } else {
-                                val result = withRetries(mapFailedInARow) {
-                                    WebTiles.fromNetwork(
-                                        context,
-                                        TopoBaseTileSource.usgsUrl(tile),
-                                        // Not through the viewing cache, which a save this size would empty.
-                                        useCache = false,
-                                        ignoreOffline = true
-                                    ).takeIf { it !is WebTiles.Result.Unreachable }
-                                }
-                                when (result) {
-                                    is WebTiles.Result.Found -> {
-                                        file.parentFile?.mkdirs()
-                                        file.writeBytes(result.bytes)
-                                        bytes.addAndGet(result.bytes.size.toLong())
-                                        mapKept.incrementAndGet()
-                                    }
-                                    // The server has no such tile: nothing is missing
-                                    WebTiles.Result.Missing -> {}
-                                    else -> missing.incrementAndGet()
-                                }
-                            }
-                            report()
+                    when (kept) {
+                        is TerrainTiles.Saved.Kept -> {
+                            bytes.addAndGet(kept.bytes)
+                            terrainKept.incrementAndGet()
                         }
-                    }.awaitAll()
+                        // The server has no such tile: nothing is missing
+                        TerrainTiles.Saved.NoTile -> {}
+                        null -> missing.incrementAndGet()
+                    }
+                    report()
                 }
-            }
-        } catch (e: kotlinx.coroutines.CancellationException) {
-            // Stopped part way (the page closed): a new area's tiles so far would be in no list
-            // and could never be removed, so they go now. An area being topped up keeps them.
-            if (into == null) {
-                withContext(kotlinx.coroutines.NonCancellable) {
-                    File(root(context), id).deleteRecursively()
-                    TerrainTiles.forget(folder(id))
+
+                // Three at a time, which WebTiles also enforces across the whole app.
+                plan.mapTiles.chunked(3).forEach { group ->
+                    coroutineScope {
+                        group.map { tile ->
+                            async {
+                                val file = mapFile(context, id, tile)
+                                if (file.exists()) {
+                                    // Kept by an earlier try at this area
+                                    bytes.addAndGet(file.length())
+                                    mapKept.incrementAndGet()
+                                } else {
+                                    val result = withRetries(mapFailedInARow) {
+                                        WebTiles.fromNetwork(
+                                            context,
+                                            TopoBaseTileSource.usgsUrl(tile),
+                                            // Not through the viewing cache, which a save this size would empty.
+                                            useCache = false,
+                                            ignoreOffline = true
+                                        ).takeIf { it !is WebTiles.Result.Unreachable }
+                                    }
+                                    when (result) {
+                                        is WebTiles.Result.Found -> {
+                                            file.parentFile?.mkdirs()
+                                            file.writeBytes(result.bytes)
+                                            bytes.addAndGet(result.bytes.size.toLong())
+                                            mapKept.incrementAndGet()
+                                        }
+                                        // The server has no such tile: nothing is missing
+                                        WebTiles.Result.Missing -> {}
+                                        else -> missing.incrementAndGet()
+                                    }
+                                }
+                                report()
+                            }
+                        }.awaitAll()
+                    }
                 }
+            } catch (e: Throwable) {
+                // Stopped part way (the page closed, the storage filled, anything else): a new
+                // area's tiles so far would be in no list and could never be removed, so they go
+                // now. An area being topped up keeps them. A save cut short by the app being closed
+                // is swept up the next time the app starts (see [sweep]).
+                if (into == null) {
+                    withContext(NonCancellable) {
+                        File(root(context), id).deleteRecursively()
+                        TerrainTiles.forget(folder(id))
+                    }
+                }
+                throw e
             }
-            throw e
-        }
 
-        if (into == null && mapKept.get() == 0 && terrainKept.get() == 0) {
-            File(root(context), id).deleteRecursively()
-            TerrainTiles.forget(folder(id))
-            return@withContext null
-        }
-
-        val b = plan.bounds
-        val area = SavedArea(
-            id, into?.name ?: name, b.north, b.south, b.east, b.west,
-            System.currentTimeMillis(), bytes.get(), mapKept.get(), terrainKept.get()
-        )
-        lock.withLock {
-            val existing = load(context)
-            val list = if (existing.any { it.id == id }) {
-                existing.map { if (it.id == id) area else it }
-            } else {
-                existing + area
+            if (into == null && mapKept.get() == 0 && terrainKept.get() == 0) {
+                File(root(context), id).deleteRecursively()
+                TerrainTiles.forget(folder(id))
+                return@withContext null
             }
-            write(context, list)
+
+            val b = plan.bounds
+            val area = SavedArea(
+                id, into?.name ?: name, b.north, b.south, b.east, b.west,
+                System.currentTimeMillis(), bytes.get(), mapKept.get(), terrainKept.get()
+            )
+            lock.withLock {
+                val existing = load(context)
+                val list = if (existing.any { it.id == id }) {
+                    existing.map { if (it.id == id) area else it }
+                } else {
+                    existing + area
+                }
+                write(context, list)
+            }
+            SaveResult(area, missing.get())
+        } finally {
+            saving.remove(id)
         }
-        SaveResult(area, missing.get())
     }
 
     /**
@@ -298,7 +319,53 @@ object SavedAreas {
         TerrainTiles.forget(folder(area.id))
     }
 
-    fun folder(id: String) = "dem/area_$id"
+    fun folder(id: String) = "dem/$FOLDER_PREFIX$id"
+
+    private const val FOLDER_PREFIX = "area_"
+
+    /** The list, after the first look of this run of the app for tiles it does not name. */
+    private suspend fun areas(context: Context): List<SavedArea> {
+        val list = lock.withLock { load(context) }
+        if (!swept) sweep(context)
+        return list
+    }
+
+    /**
+     * A save stopped by the app being closed (swiped away, or ended by the system) leaves tiles
+     * that no entry in the list names, and so no screen can remove. Once each run of the app,
+     * the tile folders and the elevation of every such area go. An area being saved right now
+     * has no entry yet and is left alone.
+     */
+    private suspend fun sweep(context: Context) = withContext(Dispatchers.IO + NonCancellable) {
+        val orphans = lock.withLock {
+            if (swept) return@withLock emptySet<String>()
+            swept = true
+            val listed = load(context)
+            if (unreadable) return@withLock emptySet<String>()
+            val known = listed.map { it.id }.toSet() + synchronized(saving) { saving.toSet() }
+            val tileIds = root(context).listFiles()
+                ?.filter { it.isDirectory }
+                ?.map { it.name }
+                ?: emptyList()
+            val demDir = DependencyRegistry.get<FileSubsystem>().getDirectory("dem")
+            val demIds = demDir.listFiles()
+                ?.filter { it.isDirectory && it.name.startsWith(FOLDER_PREFIX) }
+                ?.map { it.name.removePrefix(FOLDER_PREFIX) }
+                ?: emptyList()
+            val rowIds = TerrainTiles.folders()
+                .filter { it.startsWith("dem/$FOLDER_PREFIX") }
+                .map { it.removePrefix("dem/$FOLDER_PREFIX") }
+            orphanIds(known, tileIds + demIds + rowIds)
+        }
+        for (id in orphans) {
+            File(root(context), id).deleteRecursively()
+            TerrainTiles.forget(folder(id))
+        }
+    }
+
+    /** The ids among [found] that no saved or saving area has. */
+    internal fun orphanIds(known: Set<String>, found: List<String>): Set<String> =
+        found.filter { it.isNotEmpty() && it !in known }.toSet()
 
     private fun root(context: Context) = File(context.filesDir, "topo_areas")
 
@@ -309,7 +376,11 @@ object SavedAreas {
         cached?.let { return it }
         val file = File(root(context), "areas.json")
         val list = if (file.exists()) {
-            JsonConvert.fromJson<SavedAreaList>(file.readText())?.areas ?: emptyList()
+            val parsed = JsonConvert.fromJson<SavedAreaList>(file.readText())?.areas
+            // A list that cannot be read names nothing: the sweep must not take that as
+            // every area's tiles being unlisted.
+            if (parsed == null) unreadable = true
+            parsed ?: emptyList()
         } else {
             emptyList()
         }
