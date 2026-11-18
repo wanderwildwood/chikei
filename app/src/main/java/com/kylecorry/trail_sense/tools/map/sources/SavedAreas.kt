@@ -146,7 +146,8 @@ object SavedAreas {
      * plan), reporting progress 0..1. Returns null if nothing could be fetched (no signal).
      *
      * A tile that fails is asked for twice more after a pause. After [GIVE_UP_AFTER] tiles in a
-     * row fail every try the signal is taken as gone and the rest are not asked for. What could
+     * row from one server fail every try, that server is taken as out of reach and the rest of
+     * its tiles are not asked for; the other server's still are. What could
      * not be fetched is counted in [SaveResult.missing], so the person can be told and try again;
      * most of an area is still better than none.
      */
@@ -165,20 +166,25 @@ object SavedAreas {
         val mapKept = AtomicInteger(0)
         val terrainKept = AtomicInteger(0)
         val missing = AtomicInteger(0)
-        val failedInARow = AtomicInteger(0)
+        // Counted for each server apart: the elevation server being down does not stop the map tiles.
+        val terrainFailedInARow = AtomicInteger(0)
+        val mapFailedInARow = AtomicInteger(0)
         val report = { onProgress(done.incrementAndGet().toFloat() / total) }
 
         try {
             for (tile in plan.terrainTiles) {
                 // A tile this area already holds is not fetched again; its size comes back at once.
-                val kept = withRetries(failedInARow) {
+                val kept = withRetries(terrainFailedInARow) {
                     TerrainTiles.save(context, tile, folder(id), ignoreOffline = true)
                 }
-                if (kept != null) {
-                    bytes.addAndGet(kept)
-                    terrainKept.incrementAndGet()
-                } else {
-                    missing.incrementAndGet()
+                when (kept) {
+                    is TerrainTiles.Saved.Kept -> {
+                        bytes.addAndGet(kept.bytes)
+                        terrainKept.incrementAndGet()
+                    }
+                    // The server has no such tile: nothing is missing
+                    TerrainTiles.Saved.NoTile -> {}
+                    null -> missing.incrementAndGet()
                 }
                 report()
             }
@@ -194,7 +200,7 @@ object SavedAreas {
                                 bytes.addAndGet(file.length())
                                 mapKept.incrementAndGet()
                             } else {
-                                val result = withRetries(failedInARow) {
+                                val result = withRetries(mapFailedInARow) {
                                     WebTiles.fromNetwork(
                                         context,
                                         TopoBaseTileSource.usgsUrl(tile),
@@ -257,8 +263,8 @@ object SavedAreas {
 
     /**
      * Runs [attempt] until it gives something, pausing between tries. [failedInARow] counts the
-     * tiles that failed every try, across the whole save; once it reaches [GIVE_UP_AFTER] no more
-     * are asked for.
+     * tiles in a row from one server that failed every try; once it reaches [GIVE_UP_AFTER] no
+     * more are asked of that server.
      */
     internal suspend fun <T : Any> withRetries(
         failedInARow: AtomicInteger,

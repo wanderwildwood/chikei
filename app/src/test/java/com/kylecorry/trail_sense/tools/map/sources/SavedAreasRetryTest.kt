@@ -57,4 +57,16 @@ class SavedAreasRetryTest {
         assertNull(got)
         assertEquals(0, tries)
     }
+
+    @Test
+    fun oneServerGivingUpDoesNotStopTheOther() = runBlocking {
+        val terrain = AtomicInteger(0)
+        val map = AtomicInteger(0)
+        repeat(SavedAreas.GIVE_UP_AFTER) {
+            SavedAreas.withRetries<String>(terrain, noPauses) { null }
+        }
+        val got = SavedAreas.withRetries(map, noPauses) { "tile" }
+        assertEquals("tile", got)
+        assertNull(SavedAreas.withRetries(terrain, noPauses) { "tile" })
+    }
 }

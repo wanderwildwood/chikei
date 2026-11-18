@@ -96,18 +96,28 @@ object TerrainTiles {
         return added
     }
 
-    /** Fetches [tile] into a saved area's [folder] (moving it there if it was only viewed). Returns its size. */
-    suspend fun save(context: Context, tile: Tile, folder: String, ignoreOffline: Boolean = false): Long? {
+    /** What [save] did with a tile. A null in its place means it could not be fetched or kept. */
+    sealed class Saved {
+        class Kept(val bytes: Long) : Saved()
+
+        /** The server answered that it has no such tile: nothing to keep, and nothing missing. */
+        data object NoTile : Saved()
+    }
+
+    /** Fetches [tile] into a saved area's [folder] (moving it there if it was only viewed). */
+    suspend fun save(context: Context, tile: Tile, folder: String, ignoreOffline: Boolean = false): Saved? {
         val existing = lock.withLock { heldTiles()[key(tile)] }
         if (existing == folder) {
-            return withContext(Dispatchers.IO) { fileFor(folder, tile).length() }
+            return Saved.Kept(withContext(Dispatchers.IO) { fileFor(folder, tile).length() })
         }
         if (existing == VIEWED) {
-            return move(tile, VIEWED, folder)
+            return move(tile, VIEWED, folder)?.let { Saved.Kept(it) }
         }
-        val bytes = (WebTiles.fromNetwork(context, url(tile), useCache = false, ignoreOffline = ignoreOffline)
-                as? WebTiles.Result.Found)?.bytes ?: return null
-        return store(tile, bytes, folder)
+        return when (val result = WebTiles.fromNetwork(context, url(tile), useCache = false, ignoreOffline = ignoreOffline)) {
+            is WebTiles.Result.Found -> store(tile, result.bytes, folder)?.let { Saved.Kept(it) }
+            WebTiles.Result.Missing -> Saved.NoTile
+            else -> null
+        }
     }
 
     /** A saved area's tiles are removed with it. Tiles another saved area also holds stay. */
