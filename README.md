@@ -48,6 +48,7 @@ Region packs from a server of your own, if you run one, draw over all of this an
   the USGS topo map (in the US) and the elevation for contour lines (anywhere). It shows the
   size first; an area over 200 MB is refused, with a note to zoom in. Saved areas are listed,
   with their sizes, under Settings > Map > Saved areas, where a second tap deletes one.
+  Saved areas are not in Settings > Backup: on a new phone, save them again.
   OpenTopoMap's tiles are never saved, since its rules forbid downloading for offline use;
   what you looked at recently may still show from the phone's cache.
 - **With no signal** the map shows, in order: your region packs, saved areas' topo maps,

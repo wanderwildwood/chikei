@@ -43,7 +43,7 @@ class BackupService(
 
             val excludedFiles = listOf(
                 fileSubsystem.getDirectory("dem"),
-                // Map tiles and layer caches, one file per tile or square, fetched again on use
+                // Saved areas, map tiles and layer caches, one file per tile or square
                 *REFETCHABLE_DIRECTORIES.map { fileSubsystem.getDirectory(it) }.toTypedArray(),
                 AppData.getSharedPrefsFile(context, "${context.packageName}_widget_preferences"),
                 if (!preferences.backup.includeMapsforgeMaps) {
@@ -197,9 +197,12 @@ class BackupService(
         private const val MAX_ZIP_FILE_COUNT = 1000
 
         /**
-         * Folders under files/ that hold only what can be fetched again: saved areas' map tiles,
-         * and the Forage and Streets layers' squares. Each holds a file per tile or square, so
-         * they alone could pass [MAX_ZIP_FILE_COUNT] and leave the backup unrestorable.
+         * Folders under files/ that hold only what can be fetched again: saved areas (their list
+         * as well as their map tiles, since their elevation in dem/ is left out too and a listed
+         * area with no tiles would only mislead), and the Forage and Streets layers' squares.
+         * Each holds a file per tile or square, so they alone could pass [MAX_ZIP_FILE_COUNT] and
+         * leave the backup unrestorable. Saved areas are not fetched again by themselves: the
+         * backup message, README and privacy page say to save them again on a new phone.
          */
         val REFETCHABLE_DIRECTORIES = listOf("topo_areas", "forage", "streets")
 

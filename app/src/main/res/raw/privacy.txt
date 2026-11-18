@@ -70,7 +70,8 @@ Android asks you for the first four before they are used; the rest it grants on 
 
 Topo does not allow Android's backup: nothing it keeps goes to a cloud backup or is copied to a
 new phone by Android's transfer. To move your data, use Settings > Backup, which writes a file
-you choose where to keep.
+you choose where to keep. Saved areas, elevation and the layers' streets and trees are not in
+that file: on a new phone, save the areas again and load the elevation again.
 
 - Tiles you have looked at, in a cache of up to 100 MB that the phone may clear, kept as long
   as each server says.
