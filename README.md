@@ -92,6 +92,7 @@ Region packs from a server of your own, if you run one, draw over all of this an
   walked, but a pause of more than two minutes between fixes does not. Streets come from OpenStreetMap
   once per place and are kept, so the layer works with no signal, and Save this area keeps the
   area's streets too. The walked part is worked out on the phone.
+- **Dark mode** is a switch in Settings, and the app follows the phone's own dark setting.
 - Navigate to a marked place, with distance, bearing and elevation.
 - **User guides** (hold a finger on a tool): their text can be selected and a word sent to a
   dictionary app such as Define, which waits behind a ⋮ on the selection bar.
@@ -102,6 +103,10 @@ Region packs from a server of your own, if you run one, draw over all of this an
 - **Internet**, only to fetch map tiles and elevation, while the map is open or when you save
   an area; fruit and nut trees for the area on screen, while the Forage layer is on; streets for the area on screen, while the Streets layer is on; and region
   packs from a server you set, when you ask. See [PRIVACY.md](PRIVACY.md).
+- **Camera**, only while you use it: the sighting compass, and reading a beacon from a QR code.
+- **Physical activity**, to count steps for pace on the Navigation tab, when you choose that.
+- **Notifications**, for the notice Android requires while a track is recording or steps are
+  being counted.
 - **A map server of your own: optional.** Region packs add public land, lot lines and forest
   roads offline. They are plain files built by the scripts in [`mapdata/`](mapdata) from public
   data and served by anything that serves files: `tailscale serve`, nginx, a folder on a web
@@ -111,7 +116,9 @@ Region packs from a server of your own, if you run one, draw over all of this an
 
 - It does not route. It shows the ground, and you choose the way.
 - It does not replace a paper map and a compass.
-- It does not send your location anywhere. There is no account and no analytics.
+- It does not send where you are, only the map area on screen: tile and elevation requests name
+  that area, and the Forage and Streets layers send the area on screen, rounded to about 100 m.
+  Your recorded tracks and marks stay on the phone. There is no account and no analytics.
 
 ## On a Mudita Kompakt
 
