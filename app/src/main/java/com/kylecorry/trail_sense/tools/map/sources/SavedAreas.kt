@@ -353,6 +353,10 @@ object SavedAreas {
             swept = true
             val listed = load(context)
             if (unreadable) return@withLock emptySet<String>()
+            // Read before unclaimed(): folders() suspends, and found() is a plain lambda.
+            val rowIds = TerrainTiles.folders()
+                .filter { it.startsWith("dem/$FOLDER_PREFIX") }
+                .map { it.removePrefix("dem/$FOLDER_PREFIX") }
             unclaimed(
                 listed.map { it.id }.toSet(),
                 found = {
@@ -365,9 +369,6 @@ object SavedAreas {
                         ?.filter { it.isDirectory && it.name.startsWith(FOLDER_PREFIX) }
                         ?.map { it.name.removePrefix(FOLDER_PREFIX) }
                         ?: emptyList()
-                    val rowIds = TerrainTiles.folders()
-                        .filter { it.startsWith("dem/$FOLDER_PREFIX") }
-                        .map { it.removePrefix("dem/$FOLDER_PREFIX") }
                     tileIds + demIds + rowIds
                 },
                 underWay = { synchronized(saving) { saving.toSet() } }
