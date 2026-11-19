@@ -36,9 +36,10 @@ Only for maps and the Forage and Streets layers, and only while you are using th
 - **Geocaches, while the Geocaches layer is on.** The layer is off until you add it. Caches
   from a GPX file you open stay on the phone. In this build, while the layer is on, Topo also
   asks the Opencaching sites for the caches in the part of the map on the screen, once the map
-  has been still for a moment, and only the sites whose region is on the screen
-  (`www.opencaching.us`, `www.opencaching.de`, `opencaching.pl`, `www.opencaching.nl`,
-  `www.opencaching.ro`, `opencache.uk`). All a site is told is the corners of the map squares
+  has been still for a moment: only the sites this build has a key for (in the release from this
+  repository, `www.opencaching.us`; a build may also have keys for `www.opencaching.de`,
+  `opencaching.pl`, `www.opencaching.nl`, `www.opencaching.ro` and `opencache.uk`), and only those
+  whose region is on the screen. All a site is told is the corners of the map squares
   on the screen (squares about 10 km across), the phone's language, so a cache's text can come
   in it, and this build's key for that site, which is the same in every copy of the app. Which
   caches you found or did not find, and your notes, are never sent: field notes leave the phone
