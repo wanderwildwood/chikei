@@ -38,7 +38,10 @@ class GeocacheGeoJsonSource : GeoJsonSource {
     ): GeoJsonObject {
         val isWidget = params.getBoolean(MapLayerParams.PARAM_IS_WIDGET, false)
         val box = ForageBox(bounds.south, bounds.west, bounds.north, bounds.east)
-        val view = Geocaches.view(context, box, zoom, fetch = !isWidget)
+        // "My region packs only" keeps every layer off the network; what is kept still draws.
+        val offline = com.kylecorry.trail_sense.tools.map.sources.TopoMapSource.get(context) ==
+            com.kylecorry.trail_sense.tools.map.sources.TopoMapSource.PacksOnly
+        val view = Geocaches.view(context, box, zoom, fetch = !isWidget && !offline)
         val store = Geocaches.store(context)
         val features = mutableListOf<GeoJsonFeature>()
 

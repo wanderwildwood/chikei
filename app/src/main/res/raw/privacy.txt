@@ -33,6 +33,17 @@ Only for maps and the Forage and Streets layers, and only while you are using th
   on the screen, rounded to about 100 m. Which streets you have walked is worked out on the phone
   from your recorded and imported tracks; no track, position or count is ever sent. With no
   signal the kept streets are drawn.
+- **Geocaches, while the Geocaches layer is on.** The layer is off until you add it. Caches
+  from a GPX file you open stay on the phone. In this build, while the layer is on, Topo also
+  asks the Opencaching sites for the caches in the part of the map on the screen, once the map
+  has been still for a moment, and only the sites whose region is on the screen
+  (`www.opencaching.us`, `www.opencaching.de`, `opencaching.pl`, `www.opencaching.nl`,
+  `www.opencaching.ro`, `opencache.uk`). All a site is told is the corners of the map squares
+  on the screen (squares about 10 km across), the phone's language, so a cache's text can come
+  in it, and this build's key for that site, which is the same in every copy of the app. Which
+  caches you found or did not find, and your notes, are never sent: field notes leave the phone
+  only as a file you export. What comes back is kept for a week before the same place is asked
+  for again. Opening a cache's web page goes to the browser.
 - **When you download region packs** from a server you set yourself, and only when you ask.
 
 Each request says it comes from Topo, with a link to this repository, as the map services ask.
@@ -84,11 +95,15 @@ that file: on a new phone, save the areas again and load the elevation again.
   again, and thrown out after a year unseen; those kept with a saved area stay.
 - Fruit and nut trees the Forage layer fetched, for a month before they are asked for again, and
   thrown out after four months unseen; those kept with a saved area stay.
+- Geocaches: those from files you opened, until you remove them from the map menu; which caches
+  you found or did not find, and your notes, which stay when those are removed; those the
+  Opencaching sites sent, for a week before they are asked for
+  again, and thrown out after four months unseen; those kept with a saved area stay.
 
 <!-- shared-about privacy section -->
 ## Who we are
 
-Topo is made by wander wildwood, an independent developer: one person, not a company. wander wildwood is the data controller for anything the app itself handles, and that is very little. What you put in Topo stays on your phone. The only things that go out are the requests described above: requests for the map tiles and elevation of the part of the map on the screen, to The National Map (USGS), OpenTopoMap and Terrain Tiles on AWS; while the Forage layer is on, a request for the fruit and nut trees in the rounded map area on the screen, to OpenStreetMap's Overpass API (or Private.coffee) and Falling Fruit, plus the number of a Falling Fruit spot you open; while the Streets layer is on, a request for the streets and paths in that rounded area, to the same Overpass servers; and region pack downloads from a server you set yourself, when you ask. None of them carries your GPS position, tracks or marks. The developer receives nothing, so holds no data about you.
+Topo is made by wander wildwood, an independent developer: one person, not a company. wander wildwood is the data controller for anything the app itself handles, and that is very little. What you put in Topo stays on your phone. The only things that go out are the requests described above: requests for the map tiles and elevation of the part of the map on the screen, to The National Map (USGS), OpenTopoMap and Terrain Tiles on AWS; while the Forage layer is on, a request for the fruit and nut trees in the rounded map area on the screen, to OpenStreetMap's Overpass API (or Private.coffee) and Falling Fruit, plus the number of a Falling Fruit spot you open; while the Streets layer is on, a request for the streets and paths in that rounded area, to the same Overpass servers; while the Geocaches layer is on, a request for the caches in the map squares on the screen, to the Opencaching sites for that region; and region pack downloads from a server you set yourself, when you ask. None of them carries your GPS position, tracks or marks. The developer receives nothing, so holds no data about you.
 
 ## How to contact us
 
@@ -110,6 +125,6 @@ Similar laws elsewhere, such as the CCPA in California, give you the right to kn
 
 Since Topo keeps what it stores only on your phone, you can exercise most of these rights yourself: delete saved areas under Settings > Map > Saved areas, save a copy with Settings > Backup, clear the app's data in Android's settings, or uninstall the app, which deletes all of it. For anything you cannot do yourself, write to the address above.
 
-Topo connects to The National Map (USGS), OpenTopoMap, Terrain Tiles on AWS, OpenStreetMap's Overpass API, Private.coffee and Falling Fruit. They are separate from this app and from its developer, and what they receive is covered by their own privacy policies; ask them about what they hold.
+Topo connects to The National Map (USGS), OpenTopoMap, Terrain Tiles on AWS, OpenStreetMap's Overpass API, Private.coffee, Falling Fruit and the Opencaching sites. They are separate from this app and from its developer, and what they receive is covered by their own privacy policies; ask them about what they hold.
 If you point Topo at a server of your own, what that server keeps is yours to manage.
 <!-- /shared-about privacy section -->
