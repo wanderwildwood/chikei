@@ -3,6 +3,7 @@
     <string name="app_name" translatable="false">Topo</string>
     <!--Tabs-->
     <string name="navigation">Navigation</string>
+    <string name="navigation_tab">Navigate</string>
     <string name="weather">Weather</string>
     <string name="settings">Settings</string>
     <string name="astronomy">Astronomy</string>

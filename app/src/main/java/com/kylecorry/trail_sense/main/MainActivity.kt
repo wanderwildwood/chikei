@@ -506,7 +506,13 @@ class MainActivity : AndromedaActivity() {
                 Menu.NONE,
                 toolItem.navAction,
                 index,
-                toolItem.name
+                // About seven letters fit under each icon on the Kompakt: in English, Navigation gets a
+                // shorter word here; other languages keep their own word for it
+                if (toolId == Tools.NAVIGATION && resources.configuration.locales[0].language == "en") {
+                    getString(R.string.navigation_tab)
+                } else {
+                    toolItem.name
+                }
             ).setIcon(toolItem.icon)
         }
 
