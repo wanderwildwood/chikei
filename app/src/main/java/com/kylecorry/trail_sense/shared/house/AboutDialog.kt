@@ -24,6 +24,7 @@ fun AboutDialog(onDismiss: () -> Unit) {
             AboutSection(stringResource(R.string.about_terms_title), stringResource(R.string.disclaimer_message_content) + "\n\n" + stringResource(R.string.about_terms_donation)),
             AboutSection(null, stringResource(R.string.about_licence)),
             AboutSection(null, stringResource(R.string.about_after)),
+            AboutSection(null, stringResource(R.string.about_geocaches_credit)),
             AboutSection(null, stringResource(R.string.about_bundled)),
         ),
         sourceUrl = SOURCE_URL,

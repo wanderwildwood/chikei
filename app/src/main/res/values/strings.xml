@@ -107,6 +107,7 @@
     <string name="about_what">Topographic maps for walking off the road: contours, trails and forest roads, drawn in black and white like a paper map. Once an area is downloaded, they are there with no signal.</string>
     <string name="about_privacy">Your location, tracks and marks stay on this phone. The network is used only to fetch map tiles and elevation, while the map is open or when you save an area; fruit and nut trees for the area on screen, rounded to about 100 m, while the Forage layer is on (from overpass-api.de, or Private.coffee\'s public Overpass server only when that one is busy, and from Falling Fruit, with the number of a Falling Fruit spot you open); streets and paths for that rounded area, from the same Overpass servers, while the Streets layer is on; and region packs from a server you set, when you ask. \"Feed the llamas\" in About opens a donation page (square.link) in your browser, only when you press it. The app sends nothing there; if you give, the payment is handled on that page by Square, not by this app.</string>
     <string name="about_after">After Trail Sense by Kyle Corry, whose sensors, paths, beacons and map drawing this carries, under the MIT License.</string>
+    <string name="about_geocaches_credit">Geocaches follows c:geo\'s handling of GPX, OKAPI and field notes (Apache-2.0).</string>
     <string name="about_licence">Topo is free software under the GNU General Public License v3 only, copyright wander wildwood for the changes in this fork.</string>
     <string name="about_bundled">Lato, SIL Open Font License 1.1. Maps: USGS The National Map (public domain); OpenTopoMap (CC-BY-SA), from OpenStreetMap contributors (ODbL) and SRTM; Terrain Tiles by Mapzen on the AWS Registry of Open Data, from USGS 3DEP, SRTM and GMTED2010, NOAA ETOPO1, Copernicus EU-DEM (funded by the European Union), ArcticDEM (DigitalGlobe imagery, NSF awards 1043681, 1559691 and 1542736), Geoscience Australia, Canada (Open Government License – Canada), INEGI, LINZ, Kartverket, the Environment Agency (UK) and data.gv.at; the US outline from Natural Earth. Forage: OpenStreetMap contributors (ODbL), through the Overpass API (overpass-api.de, or Private.coffee\'s public server when that one is busy); edible plant locations from Falling Fruit (fallingfruit.org) and its sources, under each dataset\'s license (mostly ODbL). Region packs carry OpenStreetMap and the public records each region is built from: in the US, the USDA Forest Service, USGS PAD-US and 3DEP, the Census Bureau and county parcels; elsewhere, Protected Planet (WDPA) and Copernicus DEM.</string>
     <string name="about_privacy_title">Privacy</string>
@@ -141,6 +142,7 @@
     <string name="area_streets_not_kept">The streets could not be kept with it: the area is too big for them, or the server did not answer.</string>
     <string name="save_area_holds_forage">%s, and the fruit and nut trees on the Forage layer,</string>
     <string name="save_area_holds_streets">%s, and the streets on the Streets layer,</string>
+    <string name="save_area_holds_geocaches">%s, and the Opencaching caches on the Geocaches layer,</string>
     <string name="save_area_too_big">This area is too big to save at once: about %s. Zoom in and save a smaller area.</string>
     <string name="saving_area">Saving area</string>
     <string name="area_saved">Saved %1$s (%2$s)</string>
@@ -2402,4 +2404,48 @@
     <string name="settings_duraspeed_failed">DuraSpeed would not open on this phone.</string>
     <string name="page_arrow_previous">Previous page</string>
     <string name="page_arrow_next">Next page</string>
+    <!-- Geocaches layer -->
+    <string name="geocaches">Geocaches</string>
+    <string name="map_layer_geocaches_description">Geocaches from the GPX files you open in Topo (a Geocaching.com Pocket Query, a cache\'s GPX, or an export from OpenSAK, GSAK or c:geo), and from the Opencaching sites for what is on the screen. Mark each one found or not found, and send your visits to the site later as field notes.</string>
+    <string name="map_layer_geocaches_description_gpx">Geocaches from the GPX files you open in Topo (a Geocaching.com Pocket Query, a cache\'s GPX, or an export from OpenSAK, GSAK or c:geo). Mark each one found or not found, and send your visits to the site later as field notes.</string>
+    <string name="geocaches_attribution" translatable="false">Opencaching</string>
+    <string name="geocaches_attribution_long">Caches from the Opencaching sites (opencaching.us, opencaching.de, opencaching.pl, opencaching.nl, opencaching.ro, opencache.uk) through their OKAPI, under each site\'s license. Caches from GPX files belong to the site they came from.</string>
+    <string name="geocaches_attribution_long_gpx">Caches from GPX files belong to the site they came from.</string>
+    <string name="geocaches_zoom_in">Zoom in to see geocaches</string>
+    <string name="geocaches_none_yet">Open a geocache GPX file to see caches</string>
+    <string name="geocache_owner">Hidden by %s</string>
+    <string name="geocache_size">%s container</string>
+    <string name="geocache_rating">Difficulty %1$s · Terrain %2$s</string>
+    <string name="geocache_unavailable">Temporarily unavailable</string>
+    <string name="geocache_show_hint">Show hint</string>
+    <string name="geocache_hint_shown">Hint: %s</string>
+    <string name="geocache_found_on">You found it on %s</string>
+    <string name="geocache_dnf_on">You did not find it on %s</string>
+    <string name="geocache_your_note">Your note: %s</string>
+    <plurals name="geocache_waypoints">
+        <item quantity="one">%d extra waypoint</item>
+        <item quantity="other">%d extra waypoints</item>
+    </plurals>
+    <string name="geocache_source_gpx">From a GPX file you opened</string>
+    <string name="geocache_source_opencaching">From %s</string>
+    <string name="geocache_found">Found it</string>
+    <string name="geocache_dnf">Not found</string>
+    <string name="geocache_add_note">Note</string>
+    <string name="geocache_note_hint">Note (optional)</string>
+    <string name="geocache_undo">Undo</string>
+    <string name="geocache_description">Details</string>
+    <string name="geocache_open_page">Web page</string>
+    <string name="geocaches_menu">Geocaches…</string>
+    <string name="geocaches_open_file">Open a geocache file</string>
+    <string name="geocaches_export_field_notes">Export field notes</string>
+    <string name="geocaches_remove_opened">Remove the opened caches</string>
+    <string name="geocaches_remove_opened_confirm">Remove the %d caches opened from files? Your found and not found marks stay.</string>
+    <string name="geocaches_imported">%1$d caches opened. %2$d in Topo now.</string>
+    <string name="geocaches_import_failed">No geocaches found in that file.</string>
+    <string name="field_notes_none">No visits to export yet. Mark a cache found or not found from its sheet.</string>
+    <string name="field_notes_site_gc">Geocaching.com: %d new</string>
+    <string name="field_notes_site_oc">Opencaching: %d new</string>
+    <string name="field_notes_all_again">All %d visits again</string>
+    <string name="field_notes_saved">Saved %d visits. Upload the file on the site\'s field notes page.</string>
+    <string name="field_notes_not_saved">The field notes file could not be saved.</string>
 </resources>

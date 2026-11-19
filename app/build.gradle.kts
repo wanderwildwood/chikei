@@ -31,6 +31,15 @@ android {
             ?.takeIf { it.matches(Regex("[A-Za-z0-9]{6,16}")) && it != "ABCD1234" }
             ?: ""
         buildConfigField("String", "FALLING_FRUIT_KEY", "\"$fallingFruitKey\"")
+        // Opencaching OKAPI consumer keys for the Geocaches layer, one "us=KEY" line per site, from
+        // the gitignored signing/ folder. Only sites with a key of letters and digits are asked;
+        // with no file the layer shows the caches from GPX files only.
+        val opencachingKeys = rootProject.file("signing/opencaching.properties")
+            .takeIf { it.isFile }?.readLines().orEmpty()
+            .map { it.trim() }
+            .filter { it.matches(Regex("[a-z]{2}=[A-Za-z0-9]{8,64}")) }
+            .joinToString(";")
+        buildConfigField("String", "OPENCACHING_KEYS", "\"$opencachingKeys\"")
     }
     // A real keystore in signing/ signs every build type when it is present, so the very
     // first install is already release-signed and a later update can never hit

@@ -4,6 +4,8 @@ import com.kylecorry.trail_sense.shared.Notices
 import com.kylecorry.trail_sense.tools.map.forage.ForageBox
 import com.kylecorry.trail_sense.tools.map.streets.Streets
 import com.kylecorry.trail_sense.tools.map.forage.Forage
+import com.kylecorry.trail_sense.tools.map.geocache.GeocacheIntake
+import com.kylecorry.trail_sense.tools.map.geocache.Geocaches
 import com.kylecorry.trail_sense.shared.map_layers.preferences.repo.MapLayerPreferenceRepo
 import com.kylecorry.andromeda.core.cache.DependencyRegistry
 import com.kylecorry.trail_sense.tools.tools.infrastructure.getFeatureState
@@ -490,6 +492,15 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
             }
         }
 
+        // A geocache file another app opened: read once, onto the Geocaches layer
+        useEffect(mapView) {
+            val args = arguments ?: return@useEffect
+            val uri = BundleCompat.getParcelable(args, GeocacheIntake.ARG_OPENED, android.net.Uri::class.java)
+                ?: return@useEffect
+            args.remove(GeocacheIntake.ARG_OPENED)
+            GeocacheIntake.import(this, uri)
+        }
+
         // A point another app sent (geo:), shown once: centered, marked and with its actions
         useEffect(mapView, showPointActions) {
             val args = arguments ?: return@useEffect
@@ -518,12 +529,16 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
         useClickCallback(menuButton, startDistanceMeasurement) {
             // Save this area only when the map comes from the network at all.
             val canSave = TopoMapSource.get(requireContext()) != TopoMapSource.PacksOnly
+            // Geocaches has its own entry only while its layer is on
+            val geocachesOn = DependencyRegistry.get<MapLayerPreferenceRepo>()
+                .getActiveLayerIds(MapToolRegistration.MAP_ID).contains(Geocaches.LAYER_ID)
             val actions = listOfNotNull(
                 MapAction.Measure to getString(R.string.measure),
                 MapAction.CreatePath to getString(R.string.create_path),
                 MapAction.AdjustLayers to getString(R.string.layers),
                 MapAction.Trace to getString(R.string.trace),
-                if (canSave) MapAction.SaveArea to getString(R.string.save_this_area) else null
+                if (canSave) MapAction.SaveArea to getString(R.string.save_this_area) else null,
+                if (geocachesOn) MapAction.Geocaches to getString(R.string.geocaches_menu) else null
             )
 
             Pickers.menu(
@@ -539,6 +554,7 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                     MapAction.AdjustLayers -> adjustLayers()
                     MapAction.Trace -> setLockMode(MapLockMode.Trace)
                     MapAction.SaveArea -> saveArea(mapView)
+                    MapAction.Geocaches -> GeocacheIntake.menu(this, menuButton)
                 }
                 true
             }
@@ -762,10 +778,12 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                 .getActiveLayerIds(MapToolRegistration.MAP_ID)
             val forageOn = activeLayers.contains(Forage.LAYER_ID)
             val streetsOn = activeLayers.contains(Streets.LAYER_ID)
+            val geocachesOn = activeLayers.contains(Geocaches.LAYER_ID) && Geocaches.hasOpencaching
             val holds = getString(
                 if (plan.mapTiles.isNotEmpty()) R.string.save_area_holds_map else R.string.save_area_holds_contours
             ).let { if (forageOn) getString(R.string.save_area_holds_forage, it) else it }
                 .let { if (streetsOn) getString(R.string.save_area_holds_streets, it) else it }
+                .let { if (geocachesOn) getString(R.string.save_area_holds_geocaches, it) else it }
             val defaultName = getString(
                 R.string.saved_area_default_name,
                 DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).format(LocalDate.now())
@@ -804,6 +822,9 @@ class MapFragment : TrailSenseReactiveFragment(R.layout.fragment_tool_map) {
                     }
                     if (result != null && streetsOn && !Streets.keepArea(context, box)) {
                         notKept += R.string.area_streets_not_kept
+                    }
+                    if (result != null && geocachesOn) {
+                        Geocaches.keepArea(context, box)
                     }
                 }
                 val saved = result

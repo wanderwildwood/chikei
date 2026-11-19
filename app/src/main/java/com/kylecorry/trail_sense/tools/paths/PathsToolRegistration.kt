@@ -37,6 +37,8 @@ import com.kylecorry.trail_sense.tools.tools.infrastructure.ToolWidget
 import com.kylecorry.trail_sense.tools.tools.infrastructure.Tools
 import com.kylecorry.trail_sense.tools.tools.infrastructure.diagnostics.ToolDiagnosticFactory
 
+import com.kylecorry.trail_sense.tools.map.geocache.GeocacheIntake
+
 object PathsToolRegistration : ToolRegistration {
 
     /** A .gpx opened from another app, such as Files: shown on Paths, which offers to import it. */
@@ -47,6 +49,11 @@ object PathsToolRegistration : ToolRegistration {
         if (uri.scheme != ContentResolver.SCHEME_CONTENT) return@ToolIntentHandler false
         val isGpx = intent.type == GPX_MIME || uri.lastPathSegment?.lowercase()?.endsWith(".gpx") == true
         if (!isGpx) return@ToolIntentHandler false
+        // A file of geocaches (a Pocket Query, an OpenSAK export) goes to the map's Geocaches layer
+        if (GeocacheIntake.isCacheFile(activity, uri)) {
+            activity.findNavController()?.navigate(R.id.mapFragment, Bundle().apply { putParcelable(GeocacheIntake.ARG_OPENED, uri) })
+            return@ToolIntentHandler true
+        }
         activity.findNavController()?.navigate(R.id.fragmentBacktrack, Bundle().apply { putParcelable(ARG_OPENED_GPX, uri) })
         true
     }
