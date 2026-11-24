@@ -52,6 +52,26 @@ class PathRouteBuilderTest {
     }
 
     @Test
+    fun `section runs between its two points in either direction`() {
+        val longer = points + PathPoint(4, 1, Coordinate(0.0, 0.003), 20f)
+        assertEquals(longer.subList(1, 4), PathRouteBuilder.section(longer, 1, 3))
+        assertEquals(longer.subList(0, 3).reversed(), PathRouteBuilder.section(longer, 2, 0))
+        assertEquals(listOf(longer[2]), PathRouteBuilder.section(longer, 2, 2))
+    }
+
+    @Test
+    fun `saved section ignores where you stand and keeps both of its points`() {
+        val far = Coordinate(1.0, 1.0)
+        // Simplifying may drop the middle point, never the two ends of the section
+        val back = PathRouteBuilder.prepare(points, far, PathNavigationMode.TO_END, 1, 3)
+        assertEquals(3L, back.first().id)
+        assertEquals(1L, back.last().id)
+        val ahead = PathRouteBuilder.prepare(points, far, PathNavigationMode.TO_END, 3, 1)
+        assertEquals(1L, ahead.first().id)
+        assertEquals(3L, ahead.last().id)
+    }
+
+    @Test
     fun `selected point chooses either direction on an open path`() {
         assertEquals(points.last(), PathRouteBuilder.toPoint(points, location, 2).last())
         assertEquals(listOf(points.first()), PathRouteBuilder.toPoint(points, location, 0).drop(1))

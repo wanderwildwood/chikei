@@ -12,15 +12,22 @@ object PathRouteBuilder {
         points: List<PathPoint>,
         location: Coordinate,
         mode: PathNavigationMode,
-        destinationPointId: Long? = null
+        destinationPointId: Long? = null,
+        startPointId: Long? = null
     ): List<PathPoint> {
         val sorted = points.sortedBy { it.id }
         val simplified = PathSimplifier.simplify(sorted, PathSimplificationQuality.High).toSet()
         val ordered = HikingService().correctElevations(
-            sorted.filter { it in simplified || it.id == destinationPointId }
+            sorted.filter { it in simplified || it.id == destinationPointId || it.id == startPointId }
         )
         return if (destinationPointId == null) {
             build(ordered, location, mode)
+        } else if (startPointId != null) {
+            section(
+                ordered,
+                ordered.indexOfFirst { it.id == startPointId },
+                ordered.indexOfFirst { it.id == destinationPointId }
+            )
         } else {
             toPoint(ordered, location, ordered.indexOfFirst { it.id == destinationPointId })
         }
@@ -43,6 +50,19 @@ object PathRouteBuilder {
                 ordered.take(join.segment + 1) + join.point
         } else {
             listOf(join.point) + ordered.drop(join.segment + 1)
+        }
+    }
+
+    /**
+     * The stretch of the path between two of its points, in the order walked from [startIndex]
+     * to [endIndex]. Where you stand plays no part: the route begins at the start point.
+     */
+    fun section(points: List<PathPoint>, startIndex: Int, endIndex: Int): List<PathPoint> {
+        require(startIndex in points.indices && endIndex in points.indices)
+        return if (startIndex <= endIndex) {
+            points.subList(startIndex, endIndex + 1)
+        } else {
+            points.subList(endIndex, startIndex + 1).reversed()
         }
     }
 

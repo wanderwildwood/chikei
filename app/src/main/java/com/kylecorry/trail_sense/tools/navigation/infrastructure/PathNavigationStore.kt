@@ -29,13 +29,15 @@ class PathNavigationStore(context: Context) {
         route: List<PathPoint>,
         start: Coordinate,
         mode: PathNavigationMode,
-        destinationPointId: Long?
+        destinationPointId: Long?,
+        startPointId: Long? = null
     ): Destination.Path {
         revision++
         val state = PathNavigationState(
             id = path.id,
             mode = mode.name,
             destinationPointId = destinationPointId,
+            startPointId = startPointId,
             startLat = start.latitude,
             startLon = start.longitude
         )
@@ -57,7 +59,8 @@ class PathNavigationStore(context: Context) {
             currentCoroutineContext().ensureActive()
             val start = Coordinate(state.startLat, state.startLon)
             val route = PathRouteBuilder.prepare(
-                originalPoints, start, PathNavigationMode.valueOf(state.mode), state.destinationPointId
+                originalPoints, start, PathNavigationMode.valueOf(state.mode), state.destinationPointId,
+                state.startPointId
             )
             val destination = Destination.Path(path, route)
             progressSnapshot?.let {
@@ -108,7 +111,9 @@ class PathNavigationStore(context: Context) {
         val mode: String,
         val destinationPointId: Long?,
         val startLat: Double,
-        val startLon: Double
+        val startLon: Double,
+        // Null in states saved before sections existed, and for every non-section route
+        val startPointId: Long? = null
     ) : ProguardIgnore
 
     private data class PathNavigationProgress(

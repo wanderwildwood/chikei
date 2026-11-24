@@ -32,14 +32,17 @@ import com.kylecorry.sol.math.Range
 import com.kylecorry.sol.math.MathExtensions.roundPlaces
 import com.kylecorry.sol.math.statistics.Statistics
 import com.kylecorry.sol.science.geography.Geography
+import com.kylecorry.sol.units.Coordinate
 import com.kylecorry.sol.science.geology.CoordinateBounds
 import com.kylecorry.sol.science.geology.Geology
 import com.kylecorry.sol.units.Distance
+import kotlin.math.abs
 import com.kylecorry.trail_sense.R
 import com.kylecorry.trail_sense.tools.navigation.domain.PathNavigationMode
 import com.kylecorry.trail_sense.tools.navigation.infrastructure.Navigator
 import com.kylecorry.trail_sense.databinding.FragmentPathOverviewBinding
 import com.kylecorry.trail_sense.databinding.ListItemWaypointBinding
+import com.kylecorry.trail_sense.databinding.ViewPathSectionBinding
 import com.kylecorry.trail_sense.shared.FormatService
 import com.kylecorry.trail_sense.shared.Units
 import com.kylecorry.trail_sense.shared.UserPreferences
@@ -65,6 +68,7 @@ import com.kylecorry.trail_sense.tools.beacons.infrastructure.persistence.Beacon
 import com.kylecorry.trail_sense.tools.beacons.domain.BeaconIcon
 import com.kylecorry.trail_sense.tools.map.map_layers.MyLocationGeoJsonSource
 import com.kylecorry.trail_sense.tools.map.map_layers.ScaleBarLayer
+import com.kylecorry.trail_sense.tools.navigation.domain.PathRouteBuilder
 import com.kylecorry.trail_sense.tools.paths.domain.Path
 import com.kylecorry.trail_sense.tools.paths.domain.PathPoint
 import com.kylecorry.trail_sense.tools.paths.domain.PathPointColoringStyle
@@ -122,6 +126,9 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
     private var waypoints: List<PathPoint> = emptyList()
     private var pathId: Long = 0L
     private var selectedPointId: Long? = null
+    private var sectionStartId: Long? = null
+    private var sectionEndId: Long? = null
+    private var layerTookTap = false
     private var calculatedDuration = Duration.ZERO
     private var elevationGain = Distance.meters(0f)
     private var elevationLoss = Distance.meters(0f)
@@ -159,17 +166,16 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
         pathId = requireArguments().getLong("path_id")
         layer.renderer.configureLineStringRenderer(shouldRenderWithDrawLines = prefs.navigation.useFastPathRendering)
         layer.setOnClickListener {
-            if (selectedPointId != null) {
+            val handled = if (selectedPointId != null) {
                 deselectPoint()
-                return@setOnClickListener true
-            }
-            val point = waypoints.firstOrNull { point -> point.id == it.id }
-            if (point != null) {
-                viewWaypoint(point)
                 true
             } else {
-                false
+                val point = waypoints.firstOrNull { point -> point.id == it.id }
+                point?.let { viewWaypoint(it) }
+                point != null
             }
+            layerTookTap = handled
+            handled
         }
     }
 
@@ -193,6 +199,7 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
         chart = PathElevationChart(binding.chart)
 
         binding.pathImage.isInteractive = true
+        binding.pathImage.setOnSingleTapListener { onMapTap(it) }
 
         binding.pathImage.setOnTouchListener { v, event ->
             binding.root.isScrollable = event.action == MotionEvent.ACTION_UP
@@ -342,6 +349,12 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
                 val selected = selectedPointId
                 if (selected != null && waypoints.find { it.id == selected } == null) {
                     deselectPoint()
+                }
+                val sectionIds = listOfNotNull(sectionStartId, sectionEndId)
+                if (sectionIds.any { id -> waypoints.none { it.id == id } }) {
+                    clearSection()
+                } else if (sectionEndId != null) {
+                    showSection()
                 }
                 pointSheet?.setPoints(this@PathOverviewFragment.waypoints)
                 updateElevationOverview()
@@ -646,7 +659,109 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
             color = path.style.color
         )
 
-        layer.setData(GeoJsonFeatureCollection(waypointFeatures + endpointFeatures + pathFeature))
+        layer.setData(
+            GeoJsonFeatureCollection(waypointFeatures + endpointFeatures + pathFeature + getSectionFeatures(path))
+        )
+    }
+
+    private fun getSectionFeatures(path: Path): List<GeoJsonFeature> {
+        val section = getSectionPoints()
+        if (section != null) {
+            return listOf(
+                GeoJsonFeature.lineString(
+                    section.map { it.coordinate },
+                    color = path.style.color,
+                    thicknessScale = SECTION_THICKNESS
+                )
+            )
+        }
+        val start = waypoints.firstOrNull { it.id == sectionStartId } ?: return emptyList()
+        return listOf(
+            GeoJsonFeature.point(
+                start.coordinate,
+                id = "path-section-start-${path.id}",
+                color = Color.WHITE,
+                strokeColor = path.style.color,
+                strokeWeight = 2f,
+                size = 12f
+            )
+        )
+    }
+
+    /**
+     * The chosen section in walking order, start point first, or null until both ends are chosen.
+     */
+    private fun getSectionPoints(): List<PathPoint>? {
+        val ordered = waypoints.sortedBy { it.id }
+        val start = ordered.indexOfFirst { it.id == sectionStartId }
+        val end = ordered.indexOfFirst { it.id == sectionEndId }
+        if (start < 0 || end < 0) return null
+        return PathRouteBuilder.section(ordered, start, end)
+    }
+
+    /**
+     * A tap on the path line picks the nearest of its points, so a point can be chosen even when
+     * the path's point style draws no points. Taps a point marker already took are left alone.
+     */
+    private fun onMapTap(tap: Coordinate) {
+        if (layerTookTap) {
+            layerTookTap = false
+            return
+        }
+        val ordered = waypoints.sortedBy { it.id }
+        if (ordered.size < 2) return
+        val tolerance = TAP_TOLERANCE_DP * binding.pathImage.resolution
+        val (a, b) = ordered.zipWithNext().minByOrNull { (a, b) ->
+            tap.distanceTo(Geography.getNearestPoint(tap, a.coordinate, b.coordinate))
+        } ?: return
+        if (tap.distanceTo(Geography.getNearestPoint(tap, a.coordinate, b.coordinate)) > tolerance) return
+        val point = if (tap.distanceTo(a.coordinate) <= tap.distanceTo(b.coordinate)) a else b
+        if (point.id != selectedPointId) viewWaypoint(point)
+    }
+
+    private fun startSection(point: PathPoint) {
+        sectionStartId = point.id
+        sectionEndId = null
+        binding.pathSection.isVisible = false
+        deselectPoint()
+        toast(getString(R.string.path_section_pick_end))
+    }
+
+    private fun showSection() {
+        val section = getSectionPoints() ?: return clearSection()
+        val ordered = waypoints.sortedBy { it.id }.map { it.coordinate }
+        val units = prefs.baseDistanceUnits
+        fun distance(meters: Distance): String {
+            val d = meters.convertTo(units).toRelativeDistance()
+            return formatService.formatDistance(d, Units.getDecimalPlaces(d.units), false)
+        }
+        fun elevation(meters: Distance): String {
+            val d = meters.convertTo(units)
+            return formatService.formatDistance(d, Units.getDecimalPlaces(d.units), false)
+        }
+        fun position(id: Long?): Distance {
+            val index = waypoints.sortedBy { it.id }.indexOfFirst { it.id == id }
+            return Geography.getPathDistance(ordered.take(index + 1))
+        }
+        val (loss, gain) = hikingService.getElevationLossGain(section)
+        binding.pathSection.removeAllViews()
+        val card = ViewPathSectionBinding.inflate(layoutInflater, binding.pathSection, true)
+        card.pathSectionTitle.text = getString(
+            R.string.path_section_title,
+            distance(position(sectionStartId)),
+            distance(position(sectionEndId))
+        )
+        card.pathSectionStats.text = getString(
+            R.string.path_section_stats,
+            distance(Geography.getPathDistance(section.map { it.coordinate })),
+            elevation(gain),
+            elevation(Distance.meters(abs(loss.meters().value)))
+        )
+        card.pathSectionFollow.setOnClickListener {
+            followPath(destinationPointId = sectionEndId, startPointId = sectionStartId)
+        }
+        card.pathSectionClear.setOnClickListener { clearSection() }
+        binding.pathSection.isVisible = true
     }
 
     private fun updateDeclination() {
@@ -655,6 +770,16 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
                 declination = declinationProvider.getDeclination()
                 compass.declination = declination
             }
+        }
+    }
+
+    private fun clearSection() {
+        sectionStartId = null
+        sectionEndId = null
+        if (isBound) {
+            binding.pathSection.removeAllViews()
+            binding.pathSection.isVisible = false
+            updateMapLayer()
         }
     }
 
@@ -699,7 +824,8 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
             { createBeacon(it) },
             { deleteWaypoint(it) },
             { navigateToWaypoint(it) },
-            { /* Do nothing */ }
+            { /* Do nothing */ },
+            { startSection(it) }
         )
 
         itemStrategy.display(itemBinding, item)
@@ -713,10 +839,20 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
         pointSheet?.onDeletePointListener = { deleteWaypoint(it) }
         pointSheet?.onNavigateToPointListener = { navigateToWaypoint(it) }
         pointSheet?.onViewPointListener = { viewWaypoint(it) }
+        pointSheet?.onSectionListener = { startSection(it) }
         pointSheet?.setPoints(waypoints)
     }
 
     private fun viewWaypoint(point: PathPoint) {
+        val start = sectionStartId
+        if (start != null && sectionEndId == null && point.id != start) {
+            sectionEndId = point.id
+            deselectPoint()
+            showSection()
+            updateMapLayer()
+            return
+        }
+
         selectedPointId = if (selectedPointId == point.id) {
             null
         } else {
@@ -746,7 +882,8 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
 
     private fun followPath(
         mode: PathNavigationMode = PathNavigationMode.TO_END,
-        destinationPointId: Long? = null
+        destinationPointId: Long? = null,
+        startPointId: Long? = null
     ) {
         val selectedPath = path ?: return
         if (waypoints.isEmpty()) return
@@ -755,7 +892,8 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
                 val navigator = Navigator.getInstance(requireContext())
                 onDefault {
                     navigator.navigateAlongPath(
-                        selectedPath, pathService.getWaypoints(selectedPath.id), mode, destinationPointId
+                        selectedPath, pathService.getWaypoints(selectedPath.id), mode, destinationPointId,
+                        startPointId
                     )
                 }
             }
@@ -843,5 +981,10 @@ class PathOverviewFragment : BoundFragment<FragmentPathOverviewBinding>() {
                 }
             }
         }
+    }
+
+    private companion object {
+        const val SECTION_THICKNESS = 2.5f
+        const val TAP_TOLERANCE_DP = 24f
     }
 }

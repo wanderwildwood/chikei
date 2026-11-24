@@ -201,7 +201,9 @@ class NavigationSheetView(context: Context, attrs: AttributeSet? = null) :
     private fun updatePathNavigation(destination: Destination.Path, values: NavigationSensorValues) {
         val guidance = destination.route.navigate(values.location)
         val gain = guidance.remainingElevationGain.convertTo(prefs.baseDistanceUnits)
-        val loss = guidance.remainingElevationLoss.convertTo(prefs.baseDistanceUnits)
+        // Losses are kept as negative numbers; the arrow already says which way
+        val loss = Distance.meters(guidance.remainingElevationLoss.meters().value.absoluteValue)
+            .convertTo(prefs.baseDistanceUnits)
         elevationDataView.isVisible = gain.value.absoluteValue > 0 || loss.value.absoluteValue > 0
         val gainText = formatter.formatDistance(gain, Units.getDecimalPlaces(gain.units), false)
         val lossText = formatter.formatDistance(loss, Units.getDecimalPlaces(loss.units), false)

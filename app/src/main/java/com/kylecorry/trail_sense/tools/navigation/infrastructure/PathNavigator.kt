@@ -55,14 +55,18 @@ class PathNavigator(context: Context) {
         path: Path,
         points: List<PathPoint>,
         mode: PathNavigationMode = PathNavigationMode.TO_END,
-        destinationPointId: Long? = null
+        destinationPointId: Long? = null,
+        startPointId: Long? = null
     ) {
         if (points.isEmpty()) return
         if (destinationPointId != null && points.none { it.id == destinationPointId }) return
+        if (startPointId != null && (destinationPointId == null || points.none { it.id == startPointId })) return
         val start = locationSubsystem.location
-        val route = PathRouteBuilder.prepare(points, start, mode, destinationPointId)
+        val route = PathRouteBuilder.prepare(points, start, mode, destinationPointId, startPointId)
         cancel()
-        destinationState.value = onIO { store.save(path, route, start, mode, destinationPointId) }
+        destinationState.value = onIO {
+            store.save(path, route, start, mode, destinationPointId, startPointId)
+        }
     }
 
     fun cancel() {

@@ -2449,4 +2449,12 @@
     <string name="field_notes_all_again">All %d visits again</string>
     <string name="field_notes_saved">Saved %d visits. Upload the file on the site\'s field notes page.</string>
     <string name="field_notes_not_saved">The field notes file could not be saved.</string>
+    <string name="path_section_from_here">Section from here</string>
+    <string name="path_section_pick_end">Now tap the point where the section ends</string>
+    <!--The stretch of a path between two points, ex. Section 7.2 km to 18.4 km-->
+    <string name="path_section_title">Section %1$s to %2$s</string>
+    <!--Length, climb and descent of a section, ex. 11.2 km   ↑ 640 m   ↓ 510 m-->
+    <string name="path_section_stats">%1$s   ↑ %2$s   ↓ %3$s</string>
+    <string name="path_section_follow">Follow section</string>
+    <string name="path_section_clear">Clear</string>
 </resources>

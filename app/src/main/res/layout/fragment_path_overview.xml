@@ -101,6 +101,13 @@
             android:layout_marginTop="16dp"
             android:visibility="gone" />
 
+        <FrameLayout
+            android:id="@+id/path_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone" />
+
         <com.kylecorry.trail_sense.shared.views.ColorScaleView
             android:id="@+id/path_legend"
             android:layout_width="match_parent"

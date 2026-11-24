@@ -4,6 +4,9 @@
         android:id="@+id/action_waypoint_navigate"
         android:title="@string/navigate" />
     <item
+        android:id="@+id/action_waypoint_section"
+        android:title="@string/path_section_from_here" />
+    <item
         android:id="@+id/action_waypoint_create_beacon"
         android:title="@string/create_beacon" />
     <item

@@ -101,11 +101,12 @@ class Navigator private constructor(context: Context) {
         path: Path,
         points: List<PathPoint>,
         mode: PathNavigationMode = PathNavigationMode.TO_END,
-        destinationPointId: Long? = null
+        destinationPointId: Long? = null,
+        startPointId: Long? = null
     ) {
         cancelBeaconNavigation()
         clearBearing()
-        pathNavigator.navigate(path, points, mode, destinationPointId)
+        pathNavigator.navigate(path, points, mode, destinationPointId, startPointId)
     }
 
     private val listenTask = BackgroundTask {
