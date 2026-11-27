@@ -93,6 +93,10 @@ Region packs from a server of your own, if you run one, draw over all of this an
   walked, but a pause of more than two minutes between fixes does not. Streets come from OpenStreetMap
   once per place and are kept, so the layer works with no signal, and Save this area keeps the
   area's streets too. The walked part is worked out on the phone.
+- **Geocaches**, a layer added the same way, shows caches from the GPX files you open (a
+  Geocaching.com Pocket Query, a cache's GPX, or an export from OpenSAK, GSAK or c:geo) and from
+  the Opencaching sites for the part of the map on screen. Mark each one found or not found, and
+  send your visits to the site later as field notes; nothing about what you found is sent by the app.
 - **Dark mode** is a switch in Settings, and the app follows the phone's own dark setting.
 - Navigate to a marked place, with distance, bearing and elevation.
 - **User guides** (hold a finger on a tool): their text can be selected and a word sent to a
@@ -102,11 +106,11 @@ Region packs from a server of your own, if you run one, draw over all of this an
 
 - **Location**, to put you on the map and record tracks. It stays on the phone.
 - **Internet**, only to fetch map tiles and elevation, while the map is open or when you save
-  an area; fruit and nut trees for the area on screen, while the Forage layer is on; streets for the area on screen, while the Streets layer is on; and region
+  an area; fruit and nut trees for the area on screen, while the Forage layer is on; streets for the area on screen, while the Streets layer is on; caches for the area on screen, from Opencaching, while the Geocaches layer is on; and region
   packs from a server you set, when you ask. See [PRIVACY.md](PRIVACY.md).
 - **Camera**, only while you use it: the sighting compass, reading a beacon from a QR code,
   and photographing a paper map for Offline Maps, which keeps that photo on the phone as the map.
-- **Physical activity**, to count steps for pace on the Navigation tab, when you choose that.
+- **Physical activity**, to count steps for pace on the Navigate tab, when you choose that.
 - **Notifications**, for the notice Android requires while a track is recording or steps are
   being counted.
 - **A map server of your own: optional.** Region packs add public land, lot lines and forest
@@ -119,7 +123,8 @@ Region packs from a server of your own, if you run one, draw over all of this an
 - It does not route. It shows the ground, and you choose the way.
 - It does not replace a paper map and a compass.
 - It does not send where you are, only the map area on screen: tile and elevation requests name
-  that area, and the Forage and Streets layers send the area on screen, rounded to about 100 m.
+  that area, the Forage and Streets layers send the area on screen, rounded to about 100 m, and the
+  Geocaches layer sends the map squares on screen, about 10 km across.
   Your recorded tracks and marks stay on the phone. There is no account and no analytics.
 
 ## On a Mudita Kompakt
