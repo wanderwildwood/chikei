@@ -74,6 +74,8 @@ Region packs from a server of your own, if you run one, draw over all of this an
 - **Share GPX** hands a recorded track to CalTopo, or to anything else that takes GPX.
 - **Open a GPX file** from [Cabinet](https://github.com/wanderwildwood/tana) or an attachment,
   and Topo offers its paths to import; a file of waypoints alone becomes beacons.
+- **A section of a path**: on a point of a path choose **Section from here**, then tap where the
+  section ends, for its length, climb and descent. **Follow section** leads you along it.
 - **Forage**, a layer added from the map's Layers > Additional layers, shows fruit and nut
   trees and shrubs nearby: trees and shrubs from OpenStreetMap, and, in builds with a Falling
   Fruit key, the spots on [Falling Fruit](https://fallingfruit.org), the open map of edible
